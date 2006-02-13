@@ -1,4 +1,6 @@
-include ../Rules.mak
+TOP_DIR = ..
+
+include $(TOP_DIR)/include.mak
 
 all: eskdx.pdf
 

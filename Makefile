@@ -1,6 +1,7 @@
+TOP_DIR = .
 SUBDIRS = manual source test
 
-include Rules.mak
+include $(TOP_DIR)/include.mak
 
 all: unpacked doc
 

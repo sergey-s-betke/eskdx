@@ -1,12 +1,15 @@
+TOP_DIR = ..
 SOURCES = $(wildcard *.in)
 UNPACKED = $(patsubst %.in, %, $(SOURCES))
 
+include $(TOP_DIR)/include.mak
+
 %.def: %.def.in ../eskdx.m4
-	m4 -P -Dm4_ESKDX_INIT="m4_include(../eskdx.m4)" $< >$@
+	m4 $(M4FLAGS) $< >$@
 %.sty: %.sty.in ../eskdx.m4
-	m4 -P -Dm4_ESKDX_INIT="m4_include(../eskdx.m4)" $< >$@
+	m4 $(M4FLAGS) $< >$@
 %.cls: %.cls.in ../eskdx.m4
-	m4 -P -Dm4_ESKDX_INIT="m4_include(../eskdx.m4)" $< >$@
+	m4 $(M4FLAGS) $< >$@
 
 all: $(UNPACKED)
 

@@ -1,3 +1,6 @@
+VERSION = 0.0
+M4FLAGS = -P -Dm4_ESKDX_INIT="m4_include($(TOP_DIR)/eskdx.m4)" \
+	  -Dm4_ESKDX_VERSION=$(VERSION)
 PASS=1
 
 all: all-recursive
