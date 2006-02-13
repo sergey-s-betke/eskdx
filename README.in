@@ -1,4 +1,5 @@
-                             ESKDX $Name$
+m4_ESKDX_INIT[[]]m4_dnl
+                             ESKDX v[[]]m4_ESKDX_VERSION
              (C) 2006 Konstantin Korikov <lostclus@ua.fm>
 
 eskdx is a collection of LaTeX classes and packages to typeset textual
@@ -22,4 +23,4 @@ This Current Maintainer of this work is Konstantin Korikov.
 
 This work consists of all files listed in manifest.txt.
 
-% vim:tw=70:expandtab
+m4_dnl vim:tw=70:expandtab

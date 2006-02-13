@@ -3,7 +3,7 @@ SUBDIRS = manual source test
 
 include $(TOP_DIR)/include.mak
 
-all: unpacked doc
+all: unpacked doc README
 
 unpacked:
 	$(MAKE) -C source
@@ -14,5 +14,8 @@ doc:
 	$(MAKE) -C manual
 	rm -f doc/*.pdf
 	cp -p manual/*.pdf doc/
+
+README: README.in
+	m4 $(M4FLAGS) $< >$@
 
 .PHONY: doc unpacked
