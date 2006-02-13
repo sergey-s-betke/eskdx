@@ -3,6 +3,10 @@ TOP_DIR = ..
 SOURCES = $(wildcard *.in)
 UNPACKED = $(patsubst %.in, %, $(SOURCES))
 
+DIST_FILES = \
+	     Makefile \
+	     $(SOURCES)
+
 include $(TOP_DIR)/include.mak
 
 %.def: %.def.in $(M4DEPS)

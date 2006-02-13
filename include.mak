@@ -1,9 +1,12 @@
+PACKAGE = eskdx
 VERSION = 0.0
 RELEASE_DATE = 2006/02/13
 M4DEPS = $(TOP_DIR)/include.m4 $(TOP_DIR)/include.mak
 M4FLAGS = -P -Dm4_ESKDX_INIT="m4_include($(TOP_DIR)/include.m4)" \
 	  -Dm4_ESKDX_VERSION=$(VERSION) -Dm4_ESKDX_DATE=$(RELEASE_DATE)
 PASS=1
+DIST_DIR = $(TOP_DIR)/.dist
+DIST_PREFIX = /$(PACKAGE)-$(VERSION)
 
 all: all-recursive
 
@@ -27,4 +30,21 @@ clean: clean-recursive
 clean-recursive:
 	for i in $(SUBDIRS); do $(MAKE) -C $$i clean || exit $$?; done
 
-.PHONY: all all-recursive clean clean-recursive
+dist: $(DIST_FILES) dist-recursive
+	mkdir -p $(DIST_DIR)$(DIST_PREFIX)
+	cp -a $(DIST_FILES) $(DIST_DIR)$(DIST_PREFIX)
+
+dist-recursive:
+	for i in $(SUBDIRS); do $(MAKE) -C $$i \
+	  DIST_PREFIX=$(DIST_PREFIX)/$$i dist || exit $$?; done
+
+dist-bzip2: dist
+	tar -C $(DIST_DIR) -cjf $(PACKAGE)-$(VERSION).tar.bz2 .
+	rm -rf $(DIST_DIR)
+
+dist-zip: dist
+	cd $(DIST_DIR) && zip -r ../$(PACKAGE)-$(VERSION).zip *
+	rm -rf $(DIST_DIR)
+
+.PHONY: all all-recursive clean clean-recursive \
+	dist dist-recursive dist-bzip2
