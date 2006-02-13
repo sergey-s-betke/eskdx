@@ -1,5 +1,6 @@
 m4_ESKDX_INIT[[]]m4_dnl
                              ESKDX v[[]]m4_ESKDX_VERSION
+                             m4_ESKDX_DATE
              (C) 2006 Konstantin Korikov <lostclus@ua.fm>
 
 eskdx is a collection of LaTeX classes and packages to typeset textual

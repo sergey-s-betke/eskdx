@@ -1,7 +1,8 @@
 VERSION = 0.0
+RELEASE_DATE = 2006/02/13
 M4DEPS = $(TOP_DIR)/include.m4 $(TOP_DIR)/include.mak
 M4FLAGS = -P -Dm4_ESKDX_INIT="m4_include($(TOP_DIR)/include.m4)" \
-	  -Dm4_ESKDX_VERSION=$(VERSION)
+	  -Dm4_ESKDX_VERSION=$(VERSION) -Dm4_ESKDX_DATE=$(RELEASE_DATE)
 PASS=1
 
 all: all-recursive
