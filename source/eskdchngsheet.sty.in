@@ -41,10 +41,6 @@ m4_FILE_ID([[$Date$]]) Sheet of Changes GOST 2.503-90]
 \newenvironment{ESKDchangeSheet}{%
 \ESKDclearDoublePage
 \setlength{\tabcolsep}{0.5mm}
-%\setlength{\LTpre}{0mm}
-%\setlength{\LTpost}{0mm}
-%\setlength{\LTleft}{0mm}
-%\setlength{\LTright}{\fill}
 \newcolumntype{s}{>{\ESKDchngFontBody}c}
 \newcolumntype{S}{>{\ESKDchngFontHead}c}
 \noindent
@@ -98,3 +94,5 @@ m4_FILE_ID([[$Date$]]) Sheet of Changes GOST 2.503-90]
 \endhead
 \hline
 \endfoot}{\end{longtable}}
+
+m4_dnl vim:ft=tex:sw=2:ai

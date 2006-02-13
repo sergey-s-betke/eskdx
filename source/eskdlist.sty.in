@@ -21,19 +21,19 @@ m4_FILE_INIT
 m4_FILE_ID([[$Date$]]) List]
 \RequirePackage{calc}
 
-% установки нумерованных списков
+m4_dnl установки нумерованных списков
 \renewcommand{\theenumi}{\asbuk{enumi}}
 \renewcommand{\labelenumi}{\theenumi)}
 \renewcommand{\theenumii}{\arabic{enumii}}
 \renewcommand{\labelenumii}{\theenumii)}
 
-% установки маркированных списков
+m4_dnl установки маркированных списков
 \renewcommand{\labelitemi}{\bfseries\textendash}
 \renewcommand{\labelitemii}{\bfseries\textendash}
 \renewcommand{\labelitemiii}{\bfseries\textendash}
 \renewcommand{\labelitemiv}{\bfseries\textendash}
 
-% установки отступов
+m4_dnl установки отступов
 \renewcommand{\@listi}{%
   \setlength{\itemsep}{0pt}}
 \renewcommand{\@listii}{%
@@ -48,3 +48,5 @@ m4_FILE_ID([[$Date$]]) List]
 \setlength{\labelwidth}{\parindent+.7em+\labelsep}
 \setlength{\itemindent}{0pt}
 \setlength{\leftmargin}{\labelwidth}
+
+m4_dnl vim:ft=tex:sw=2:ai

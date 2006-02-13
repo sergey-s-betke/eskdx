@@ -20,7 +20,7 @@ m4_FILE_INIT
 \ProvidesPackage{eskdtitlebase}[
 m4_FILE_ID([[$Date$]]) Base Title Commands]
 
-% должность и фамилия утверждающего
+m4_dnl должность и фамилия утверждающего
 \newcommand{\ESKDtitleApprovedBy}[2]{%
   \@namedef{ESKD@title@approved@post@1}{#1}
   \@namedef{ESKD@title@approved@name@1}{#2}}
@@ -30,24 +30,24 @@ m4_FILE_ID([[$Date$]]) Base Title Commands]
 \ESKD@title@agreed@cnt = 0
 \ESKD@title@designed@cnt = 0
 
-% добавляет согласовавшего в список согласовавших
+m4_dnl добавляет согласовавшего в список согласовавших
 \newcommand{\ESKDtitleAgreedBy}[2]{%
   \advance \ESKD@title@agreed@cnt 1
   \@namedef{ESKD@title@agreed@post@\number\ESKD@title@agreed@cnt}{#1}
   \@namedef{ESKD@title@agreed@name@\number\ESKD@title@agreed@cnt}{#2}}
 
-% добавляет автора в список авторов
+m4_dnl добавляет автора в список авторов
 \newcommand{\ESKDtitleDesignedBy}[2]{%
   \advance \ESKD@title@designed@cnt 1
   \@namedef{ESKD@title@designed@post@\number\ESKD@title@designed@cnt}{#1}
   \@namedef{ESKD@title@designed@name@\number\ESKD@title@designed@cnt}{#2}}
 
 \let\ESKD@title@approving@sheet\@undefinded
-% в наличии лист утверждения
+m4_dnl в наличии лист утверждения
 \newcommand{\ESKDtitleApprovingSheet}[1]{%
   \def\ESKD@title@approving@sheet{#1}}
 
-% печатает гриф согласования/утверждения
+m4_dnl печатает гриф согласования/утверждения
 \newcommand{\ESKDtitleMakeStamp}[2]{#1\\\rule{2cm}{.1mm}\ #2\\
 ``\rule{.8cm}{.1mm}'' \rule{2.3cm}{.1mm}\ \rule{1.5cm}{.1mm}}
 
@@ -56,7 +56,7 @@ m4_FILE_ID([[$Date$]]) Base Title Commands]
     \@nameuse{ESKD@title@#1@post@#2}}{%
     \@nameuse{ESKD@title@#1@name@#2}}}
 
-% поля титульного листа
+m4_dnl поля титульного листа
 \newcommand{\ESKDtheTitleFieldI}{}
 \newcommand{\ESKDtheTitleFieldII}{}
 \newcommand{\ESKDtheTitleFieldIII}{}
@@ -84,11 +84,11 @@ m4_FILE_ID([[$Date$]]) Base Title Commands]
   \ESKDstyle{formIIsec}
   \ESKDthisStyle{formII}}
 
-% базовый шаблон для любого титульного листа
+m4_dnl базовый шаблон для любого титульного листа
 \newenvironment{ESKDtitlePage}{%
   \begin{ESKDpadding}{5mm}{5mm}
   \ESKDstyle{title}}{%
   \end{ESKDpadding}
   \aftergroup\ESKD@title@after@page}
 
-m4_dnl vim:sw=2:ai
+m4_dnl vim:ft=tex:sw=2:ai

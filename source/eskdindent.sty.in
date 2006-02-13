@@ -21,7 +21,9 @@ m4_FILE_INIT
 m4_FILE_ID([[$Date$]]) Paragraph Indent]
 
 \RequirePackage{indentfirst}
-% отступ в начале абзаца
-%   Абзацы в тексте начинают отступом, равным пяти ударам пишущей машинки
-%   (15 - 17 мм)
+m4_dnl отступ в начале абзаца
+m4_dnl   Абзацы в тексте начинают отступом, равным пяти ударам пишущей машинки
+m4_dnl   (15 - 17 мм)
 \setlength{\parindent}{15mm}
+
+m4_dnl vim:ft=tex:sw=2:ai

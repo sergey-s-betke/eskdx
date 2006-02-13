@@ -132,4 +132,4 @@ m4_FILE_ID([[$Date$]]) Title GOST 2.105]
   \begin{center}\ESKDtitleFontX\ESKDtheTitleFieldX\end{center}
   \end{ESKDtitlePage}}
 
-m4_dnl vim:sw=2:ai
+m4_dnl vim:ft=tex:sw=2:ai

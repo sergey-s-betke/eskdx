@@ -23,19 +23,19 @@ m4_FILE_ID([[$Date$]]) Stamp GOST 2.104-68]
 \RequirePackage{calc}
 \RequirePackage{ifthen}
 
-% формат бумаги:
+m4_dnl формат бумаги:
 \newcommand{\ESKD@paper}{a4}
 
-% ориентация страницы
+m4_dnl ориентация страницы
 \newif\ifESKD@landscape
 \ESKD@landscapefalse
 \newif\ifESKD@given@landscape
 \ESKD@given@landscapefalse
 
-% стиль по умолчанию
+m4_dnl стиль по умолчанию
 \newcommand{\ESKD@default@style}{}
 
-% поля
+m4_dnl поля
 \newlength{\ESKD@margin@si}
 \newlength{\ESKD@margin@so}
 \newlength{\ESKD@margin@t}
@@ -45,13 +45,13 @@ m4_FILE_ID([[$Date$]]) Stamp GOST 2.104-68]
 \setlength{\ESKD@margin@t}{5mm}
 \setlength{\ESKD@margin@b}{5mm}
 
-% толщина линий
+m4_dnl толщина линий
 \newlength{\ESKDlineThick}
 \newlength{\ESKDlineThin}
 \setlength{\ESKDlineThick}{.4mm}
 \setlength{\ESKDlineThin}{.2mm}
 
-% расстояние между рамкой и текстом
+m4_dnl расстояние между рамкой и текстом
 \newlength{\ESKD@padding@h}
 \newlength{\ESKD@padding@v}
 \setlength{\ESKD@padding@h}{3mm}
@@ -97,7 +97,7 @@ m4_FILE_ID([[$Date$]]) Stamp GOST 2.104-68]
 
 \RequirePackage{keyval}
 
-% определение опций
+m4_dnl определение опций
 \DeclareOption{a0paper}{\renewcommand{\ESKD@paper}{a0}}
 \DeclareOption{a1paper}{\renewcommand{\ESKD@paper}{a1}}
 \DeclareOption{a2paper}{\renewcommand{\ESKD@paper}{a2}}
@@ -158,14 +158,14 @@ m4_FILE_ID([[$Date$]]) Stamp GOST 2.104-68]
 
 \ProcessOptions\relax
 
-% некоторые константы для сравнения
+m4_dnl некоторые константы для сравнения
 \newcommand{\ESKD@cmp@empty}{}
 \newcommand{\ESKD@cmp@aIVpaper}{a4}
 \newcommand{\ESKD@cmp@landscape}{landscape}
 \newcommand{\ESKD@cmp@formI}{formI}
 \newcommand{\ESKD@cmp@formII}{formII}
 
-% определение ориентации страницы
+m4_dnl определение ориентации страницы
 \ifESKD@given@landscape\else
   \ifx\ESKD@paper\ESKD@cmp@aIVpaper%
     \ESKD@landscapefalse
@@ -174,7 +174,7 @@ m4_FILE_ID([[$Date$]]) Stamp GOST 2.104-68]
   \fi
 \fi
 
-% настройка геометрии страницы
+m4_dnl настройка геометрии страницы
 \RequirePackage[\ESKD@paper paper,%
 \ifESKD@landscape landscape\else portrait\fi,%
 tmargin=\ESKD@margin@t+\ESKD@padding@v,%
@@ -183,7 +183,7 @@ inner=\ESKD@margin@si+\ESKD@padding@h,%
 outer=\ESKD@margin@so+\ESKD@padding@h,%
 headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 
-% оперделение стиля по умолчанию
+m4_dnl оперделение стиля по умолчанию
 \ifx\ESKD@default@style\ESKD@cmp@empty%
   \ifx\ESKD@paper\ESKD@cmp@aIVpaper%
     \renewcommand{\ESKD@default@style}{formII}%
@@ -201,7 +201,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
   \fi}
 \def\ESKD@pagenum#1{\expandafter\ESKD@p@genum\csname r@#1\endcsname}
 
-% нужна ли графа 7
+m4_dnl нужна ли графа 7
 \ifESKD@given@column@vii\else
   \AtBeginDocument{%
     \ifnum \ESKD@pagenum{LastPage} = 1
@@ -209,22 +209,22 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
     \fi}
 \fi
 
-% определение ориентации графы 26
+m4_dnl определение ориентации графы 26
 \newif\ifESKD@column@xxvi@portrait
 \ESKD@column@xxvi@portraittrue
 \ifESKD@landscape\ESKD@column@xxvi@portraitfalse\fi
 \ifx\ESKD@paper\ESKD@cmp@aIVpaper\ESKD@column@xxvi@portraitfalse\fi
 
-% временные длины
+m4_dnl временные длины
 \newlength{\ESKD@tmpdima}
 \newlength{\ESKD@tmpdimb}
 \newlength{\ESKD@tmpdimc}
 
-% временные счетчики
+m4_dnl временные счетчики
 \newcount\ESKD@tmpcnta
 \newcount\ESKD@tmpcntb
 
-% параметры отметок зон
+m4_dnl параметры отметок зон
 \newcount\ESKD@zonelabel@hc
 \newcount\ESKD@zonelabel@vc
 \newlength{\ESKD@zonelabel@hs}
@@ -254,39 +254,39 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
   \ESKD@zonelabel@cnt = 0
 \fi
 
-% нижний левый край страницы
+m4_dnl нижний левый край страницы
 \newlength{\ESKD@origin@x}
 \newlength{\ESKD@origin@y}
 \setlength{\ESKD@origin@x}{1in}
 \setlength{\ESKD@origin@y}{\paperheight-1in}
 
-% позиция рамки
+m4_dnl позиция рамки
 \newlength{\ESKDframeX}
 \newlength{\ESKDframeY}
 
-% ширина и высота рамки
+m4_dnl ширина и высота рамки
 \newlength{\ESKDframeW}
 \newlength{\ESKDframeH}
 \setlength{\ESKDframeW}{\paperwidth-\ESKD@margin@si-\ESKD@margin@so}
 \setlength{\ESKDframeH}{\paperheight-\ESKD@margin@t-\ESKD@margin@b}
 
-% позиция штампа
+m4_dnl позиция штампа
 \newlength{\ESKDstampX}
 \newlength{\ESKDstampY}
 
 \RequirePackage{eskdfont}
 \RequirePackage{eskdlang}
 
-% переводит длинну в единицу
+m4_dnl переводит длинну в единицу
 \newcommand*{\ESKDltu}[1]{#1\@gobble}
 
-% расширяется в аргумент только на передней стороне листа
+m4_dnl расширяется в аргумент только на передней стороне листа
 \newcommand{\ESKDonFrontSideOnly}[1]{%
   \ifESKD@twoside\ifodd\c@page#1\fi\else#1\fi}
 
 \RequirePackage{rotating}
 
-% рамка
+m4_dnl рамка
 \newsavebox{\ESKD@frame@box}
 \newcommand{\ESKD@make@frame@box}{%
 \savebox{\ESKD@frame@box}{%
@@ -299,7 +299,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \put(\ESKDltu{\ESKDframeW},0){\line(0,1){\ESKDltu{\ESKDframeH}}}
 \end{picture}}}
 
-% штамп форма 1
+m4_dnl штамп форма 1
 \newsavebox{\ESKD@stamp@i@box}
 \newcommand{\ESKD@make@stamp@i@box}{%
 \savebox{\ESKD@stamp@i@box}{%
@@ -374,7 +374,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \fi
 \end{picture}}
 
-% штамп форма 2
+m4_dnl штамп форма 2
 \newsavebox{\ESKD@stamp@ii@box}
 \newcommand{\ESKD@make@stamp@ii@box}{%
 \savebox{\ESKD@stamp@ii@box}{%
@@ -440,7 +440,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \fi
 \end{picture}}
 
-% штамп форма 2а
+m4_dnl штамп форма 2а
 \newsavebox{\ESKD@stamp@ii@a@box}
 \newcommand{\ESKD@make@stamp@ii@a@box}{%
 \savebox{\ESKD@stamp@ii@a@box}{%
@@ -476,7 +476,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \fi
 \end{picture}}
 
-% штамп форма 2б
+m4_dnl штамп форма 2б
 \newsavebox{\ESKD@stamp@ii@b@box}
 \newcommand{\ESKD@make@stamp@ii@b@box}{%
 \savebox{\ESKD@stamp@ii@b@box}{%
@@ -512,7 +512,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \fi
 \end{picture}}
 
-% графы от 19 по 23
+m4_dnl графы от 19 по 23
 \newsavebox{\ESKD@columns@xix@box}
 \newcommand{\ESKD@make@columns@xix@box}{%
 \savebox{\ESKD@columns@xix@box}{%
@@ -537,7 +537,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \put(110, 8.3){\makebox[35mm]{\ESKDfontIII\ESKDcolumnXXIIIname}}
 \end{picture}}}
 
-% графы 24 и 25
+m4_dnl графы 24 и 25
 \newsavebox{\ESKD@columns@xxiv@box}
 \newcommand{\ESKD@make@columns@xxiv@box}{%
 \savebox{\ESKD@columns@xxiv@box}{%
@@ -555,7 +555,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \put(60, 2.3){\makebox[60mm]{\ESKDfontIII\ESKDtheColumnXXV}}
 \end{picture}}}
 
-% графа 26
+m4_dnl графа 26
 \newsavebox{\ESKD@column@xxvi@box}
 \newcommand{\ESKD@make@column@xxvi@box}{%
 \savebox{\ESKD@column@xxvi@box}{%
@@ -568,7 +568,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
   \centering\ESKDfontV\ESKDtheColumnII}\end{turn}}
 \end{picture}}}
 
-% графы 27, 28, 29 для формы 1
+m4_dnl графы 27, 28, 29 для формы 1
 \newsavebox{\ESKD@columns@xxvii@i@box}
 \newcommand{\ESKD@make@columns@xxvii@i@box}{%
 \savebox{\ESKD@columns@xxvii@i@box}{%
@@ -587,7 +587,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
   \ESKDfontIII\ESKDtheColumnXXIX}\end{turn}}
 \end{picture}}}
 
-% графы 27, 28, 29 для формы 2
+m4_dnl графы 27, 28, 29 для формы 2
 \newsavebox{\ESKD@columns@xxvii@ii@box}
 \newcommand{\ESKD@make@columns@xxvii@ii@box}{%
 \savebox{\ESKD@columns@xxvii@ii@box}{%
@@ -604,7 +604,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \put(67,2.3){\makebox[53mm][c]{\ESKDfontIII\ESKDtheColumnXXIX}}
 \end{picture}}}
 
-% графа 30
+m4_dnl графа 30
 \newsavebox{\ESKD@column@xxx@box}
 \newcommand{\ESKD@make@column@xxx@box}{%
 \savebox{\ESKD@column@xxx@box}{%
@@ -616,7 +616,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \put(1,1){\parbox[b][6mm][c]{118mm}{\centering\ESKDfontV\ESKDtheColumnXXX}}
 \end{picture}}}
 
-% графа 33
+m4_dnl графа 33
 \newsavebox{\ESKD@column@xxxiii@box}
 \newcommand{\ESKD@make@column@xxxiii@box}{%
 \savebox{\ESKD@column@xxxiii@box}{%
@@ -632,7 +632,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \put(0,1.3){\makebox[20mm][c]{\ESKDfontIII\ESKDcolumnXXXIIIname}}
 \end{picture}}}
 
-% графа 34
+m4_dnl графа 34
 \newsavebox{\ESKD@column@xxxiv@box}
 \newcommand{\ESKD@make@column@xxxiv@box}{%
 \savebox{\ESKD@column@xxxiv@box}{%
@@ -643,7 +643,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
     \parbox{70mm-2\fboxsep-\fboxrule}{\centering\ESKDfontIII%
       \ESKDtheColumnXXXIV\rule{0mm}{7mm-2\fboxsep-\fboxrule}}}}}}
 
-% обозначения зон
+m4_dnl обозначения зон
 \newcommand{\ESKD@make@h@zonelabels}{
   \ESKD@tmpcnta = 1
   \ESKD@tmpdima = \paperwidth
@@ -749,7 +749,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \fi
 \end{picture}}
 
-% записать боксы полсе начала документа
+m4_dnl записать боксы полсе начала документа
 \AtBeginDocument{%
   \ESKD@make@frame@box%
   \renewcommand{\ESKD@make@frame@box}{}%
@@ -780,7 +780,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
   \ifESKD@enable@column@xxxiv\ESKD@make@column@xxxiv@box\fi%
   \renewcommand{\ESKD@make@column@xxxiv@box}{}}
 
-% определение стилей страниц
+m4_dnl определение стилей страниц
 \newcommand{\ESKD@style@sh@empty}{0mm}
 \newcommand{\ESKD@style@draw@empty}{}
 
@@ -951,7 +951,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
     \ifodd\c@page\ESKD@style@draw@formIIa\else\ESKD@style@draw@formIIb\fi%
   \else\ESKD@style@draw@formIIa\fi}
 
-% текущее расстояние от текса до рамки
+m4_dnl текущее расстояние от текса до рамки
 \newlength{\ESKD@curpad@h}
 \newlength{\ESKD@curpad@v}
 \setlength{\ESKD@curpad@h}{\ESKD@padding@h}
@@ -999,7 +999,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 
 \RequirePackage{chngpage}
 
-% устанавливает стиль текущей и последующих страниц
+m4_dnl устанавливает стиль текущей и последующих страниц
 \newcommand{\ESKDstyle}[1]{%
 \pagestyle{empty}%
 \def\ESKD@Hook{\@nameuse{ESKD@style@draw@#1}}%
@@ -1007,7 +1007,7 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
   \expandafter-\@nameuse{ESKD@style@sh@\ifESKD@ignstamp empty\else #1\fi}-\textheight}{}{}{}{}%
 \let\ESKD@ThisHook\@empty}
 
-% устанавливает стиль текущей страницы
+m4_dnl устанавливает стиль текущей страницы
 \newcommand{\ESKDthisStyle}[1]{%
 \thispagestyle{empty}%
 \def\ESKD@ThisHook{\@nameuse{ESKD@style@draw@#1}}%
@@ -1015,18 +1015,18 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
   \expandafter-\@nameuse{ESKD@style@sh@\ifESKD@ignstamp empty\else #1\fi}}%
 \setlength{\@colht}{\vsize}\setlength{\@colroom}{\vsize}}
 
-% команды для размещения дополнительной графики
+m4_dnl команды для размещения дополнительной графики
 \newcommand{\ESKDput}[1]{\def\ESKD@extra@Hook{#1}}
 \newcommand{\ESKDthisPut}[1]{\def\ESKD@extra@ThisHook{#1}}
 
-%
+m4_dnl
 \newcommand{\ESKDclearDoublePage}{%
   \ifESKD@twoside%
     \clearpage%
     \ifodd\c@page\else\ESKDthisStyle{empty}\rule{0mm}{0mm}\newpage\fi%
   \else\clearpage\fi}
 
-% определение стиля страницы по умолчанию
+m4_dnl определение стиля страницы по умолчанию
 \ifx\ESKD@default@style\ESKD@cmp@formII%
   \ESKDstyle{formIIsec}
   \AtBeginDocument{\ESKDthisStyle{formII}}
@@ -1062,93 +1062,93 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \newenvironment{ESKDzeroPadding}{%
   \begin{ESKDpadding}{0mm}{0mm}}{\end{ESKDpadding}}
 
-% графа 1 -- наименование изделия/документа
+m4_dnl графа 1 -- наименование изделия/документа
 \newcommand{\ESKDtheColumnI}{}
 \newcommand{\ESKDcolumnI}[1]{\renewcommand{\ESKDtheColumnI}{#1}}
-% графа 2 -- обозначение документа
+m4_dnl графа 2 -- обозначение документа
 \newcommand{\ESKDtheColumnII}{}
 \newcommand{\ESKDcolumnII}[1]{\renewcommand{\ESKDtheColumnII}{#1}}
-% графа 3 -- обозначение материала детали
+m4_dnl графа 3 -- обозначение материала детали
 \newcommand{\ESKDtheColumnIII}{}
 \newcommand{\ESKDcolumnIII}[1]{\renewcommand{\ESKDtheColumnIII}{#1}}
-% графа 4 -- литера
-% поле 1
+m4_dnl графа 4 -- литера
+m4_dnl поле 1
 \newcommand{\ESKDtheColumnIVfI}{}
 \newcommand{\ESKDcolumnIVfI}[1]{\renewcommand{\ESKDtheColumnIVfI}{#1}}
-% поле 2
+m4_dnl поле 2
 \newcommand{\ESKDtheColumnIVfII}{}
 \newcommand{\ESKDcolumnIVfII}[1]{\renewcommand{\ESKDtheColumnIVfII}{#1}}
-% поле 3
+m4_dnl поле 3
 \newcommand{\ESKDtheColumnIVfIII}{}
 \newcommand{\ESKDcolumnIVfIII}[1]{\renewcommand{\ESKDtheColumnIVfIII}{#1}}
-% графа 5 -- масса изделия
+m4_dnl графа 5 -- масса изделия
 \newcommand{\ESKDtheColumnV}{}
 \newcommand{\ESKDcolumnV}[1]{\renewcommand{\ESKDtheColumnV}{#1}}
-% графа 6 -- масштаб
+m4_dnl графа 6 -- масштаб
 \newcommand{\ESKDtheColumnVI}{}
 \newcommand{\ESKDcolumnVI}[1]{\renewcommand{\ESKDtheColumnVI}{#1}}
-% графа 9 -- наименование или различительный индекс предприятия
+m4_dnl графа 9 -- наименование или различительный индекс предприятия
 \newcommand{\ESKDtheColumnIX}{}
 \newcommand{\ESKDcolumnIX}[1]{\renewcommand{\ESKDtheColumnIX}{#1}}
-% графа 11 -- фамилии лиц, подписывающих документ
-% поле 1 -- разработал
+m4_dnl графа 11 -- фамилии лиц, подписывающих документ
+m4_dnl поле 1 -- разработал
 \newcommand{\ESKDtheColumnXIfI}{\@author}
 \newcommand{\ESKDcolumnXIfI}[1]{\renewcommand{\ESKDtheColumnXIfI}{#1}}
-% поле 2 -- проверил
+m4_dnl поле 2 -- проверил
 \newcommand{\ESKDtheColumnXIfII}{}
 \newcommand{\ESKDcolumnXIfII}[1]{\renewcommand{\ESKDtheColumnXIfII}{#1}}
-% поле 3 -- Т.контр
+m4_dnl поле 3 -- Т.контр
 \newcommand{\ESKDtheColumnXIfIII}{}
 \newcommand{\ESKDcolumnXIfIII}[1]{\renewcommand{\ESKDtheColumnXIfIII}{#1}}
-% поле 4 -- неизвестный
+m4_dnl поле 4 -- неизвестный
 \newcommand{\ESKDtheColumnXIfIV}{}
 \newcommand{\ESKDcolumnXIfIV}[1]{\renewcommand{\ESKDtheColumnXIfIV}{#1}}
-% поле 5 -- нормист
+m4_dnl поле 5 -- нормист
 \newcommand{\ESKDtheColumnXIfV}{}
 \newcommand{\ESKDcolumnXIfV}[1]{\renewcommand{\ESKDtheColumnXIfV}{#1}}
-% поле 6 -- утвердил
+m4_dnl поле 6 -- утвердил
 \newcommand{\ESKDtheColumnXIfVI}{}
 \newcommand{\ESKDcolumnXIfVI}[1]{\renewcommand{\ESKDtheColumnXIfVI}{#1}}
-% графа 19 -- инвентарный номер подлинника по ГОСТ 2.501 68
+m4_dnl графа 19 -- инвентарный номер подлинника по ГОСТ 2.501 68
 \newcommand{\ESKDtheColumnXIX}{}
 \newcommand{\ESKDcolumnXIX}[1]{\renewcommand{\ESKDtheColumnXIX}{#1}}
-% графа 21 -- инвентарный номер подлинника, взамен которого выпущен
-% данный подлинник по ГОСТ 2.503-90
+m4_dnl графа 21 -- инвентарный номер подлинника, взамен которого выпущен
+m4_dnl данный подлинник по ГОСТ 2.503-90
 \newcommand{\ESKDtheColumnXXI}{}
 \newcommand{\ESKDcolumnXXI}[1]{\renewcommand{\ESKDtheColumnXXI}{#1}}
-% графа 22 -- инвентарный номер дубликата по ГОСТ 2.502-68
+m4_dnl графа 22 -- инвентарный номер дубликата по ГОСТ 2.502-68
 \newcommand{\ESKDtheColumnXXII}{}
 \newcommand{\ESKDcolumnXXII}[1]{\renewcommand{\ESKDtheColumnXXII}{#1}}
-% графа 24 -- обозначение документа, взамен или на основании
-% которого выпущен данный документ
+m4_dnl графа 24 -- обозначение документа, взамен или на основании
+m4_dnl которого выпущен данный документ
 \newcommand{\ESKDtheColumnXXIV}{}
 \newcommand{\ESKDcolumnXXIV}[1]{\renewcommand{\ESKDtheColumnXXIV}{#1}}
-% графа 25 -- обозначение соответствующего документа, в котором впервые
-% записан данный документ
+m4_dnl графа 25 -- обозначение соответствующего документа, в котором впервые
+m4_dnl записан данный документ
 \newcommand{\ESKDtheColumnXXV}{}
 \newcommand{\ESKDcolumnXXV}[1]{\renewcommand{\ESKDtheColumnXXV}{#1}}
-% графа 27 -- знак, установленный заказчиком в соответствии
-% с требованиями нормативно-технической документации и проставляемый
-% представителем заказчика
+m4_dnl графа 27 -- знак, установленный заказчиком в соответствии
+m4_dnl с требованиями нормативно-технической документации и проставляемый
+m4_dnl представителем заказчика
 \newcommand{\ESKDtheColumnXXVII}{}
 \newcommand{\ESKDcolumnXXVII}[1]{\renewcommand{\ESKDtheColumnXXVII}{#1}}
-% графа 28 -- номер решения и год утверждения документации
-% соответствующей литеры
+m4_dnl графа 28 -- номер решения и год утверждения документации
+m4_dnl соответствующей литеры
 \newcommand{\ESKDtheColumnXXVIII}{}
 \newcommand{\ESKDcolumnXXVIII}[1]{\renewcommand{\ESKDtheColumnXXVIII}{#1}}
-% графа 29 -- номер решения и год утверждения документации
+m4_dnl графа 29 -- номер решения и год утверждения документации
 \newcommand{\ESKDtheColumnXXIX}{}
 \newcommand{\ESKDcolumnXXIX}[1]{\renewcommand{\ESKDtheColumnXXIX}{#1}}
-% графа 30 -- индекс заказчика в соответствии с нормативно-технической
-% документацией
+m4_dnl графа 30 -- индекс заказчика в соответствии с нормативно-технической
+m4_dnl документацией
 \newcommand{\ESKDtheColumnXXX}{}
 \newcommand{\ESKDcolumnXXX}[1]{\renewcommand{\ESKDtheColumnXXX}{#1}}
-% графа 32 -- обозначение формата листа по ГОСТ 2.301-68
+m4_dnl графа 32 -- обозначение формата листа по ГОСТ 2.301-68
 \newcommand{\ESKDtheColumnXXXII}{\@nameuse{ESKD\ESKD@paper Name}}
 \newcommand{\ESKDcolumnXXXII}[1]{\renewcommand{\ESKDtheColumnXXXII}{#1}}
-% графа 34 -- номера авторских свидетельств на изобретения,
-% использованные в данном изделии
+m4_dnl графа 34 -- номера авторских свидетельств на изобретения,
+m4_dnl использованные в данном изделии
 \newcommand{\ESKDtheColumnXXXIV}{}
 \newcommand{\ESKDcolumnXXXIV}[1]{\renewcommand{\ESKDtheColumnXXXIV}{#1}}
 
-m4_dnl vim:sw=2:ai
+m4_dnl vim:ft=tex:sw=2:ai

@@ -30,3 +30,5 @@ m4_FILE_ID([[$Date$]]) ESKD Explanation]
   \setlength{\labelwidth}{#1}%
   \setlength{\leftmargin}{#1}}}{%
   \end{list}}
+
+m4_dnl vim:ft=tex:sw=2:ai

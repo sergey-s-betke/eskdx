@@ -114,10 +114,10 @@ m4_FILE_ID([[$Date$]]) Graphical Documentation]
   \clearpage\mbox{}\strut\par\vspace{-\baselineskip}\vfill%
   \begin{center}}{\end{center}\vfill\clearpage}
 
-%\RequirePackage{eskdaddtopkg}
-% настройки пакета hyperref
-\ESKDaddToPackage{hyperref}{%
-\hypersetup{breaklinks,pdftitle=\ESKDtheUnitName,%
-pdfsubject=\ESKDtheUnitName,pdfauthor=\ESKDtheAuthor}}
+m4_dnl\RequirePackage{eskdaddtopkg}
+m4_dnl настройки пакета hyperref
+m4_dnl\ESKDaddToPackage{hyperref}{%
+m4_dnl \hypersetup{breaklinks,pdftitle=\ESKDtheUnitName,%
+m4_dnl pdfsubject=\ESKDtheUnitName,pdfauthor=\ESKDtheAuthor}}
 
 m4_dnl vim:ft=tex:ai:sw=2

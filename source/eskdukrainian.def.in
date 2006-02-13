@@ -109,4 +109,5 @@ m4_FILE_ID([[$Date$]]) Language File]
   \def\tablename{{\cyr\CYRT\cyra\cyrb\cyrl\cyri\cyrc\cyrya}}%
   \def\figurename{{\cyr\CYRR\cyri\cyrs\cyru\cyrn\cyro\cyrk}}%
 }
+
 m4_dnl vim:ft=tex:ai:sw=2

@@ -48,3 +48,5 @@ m4_FILE_ID([[$Date$]]) Font Definitions]
 \newcommand{\ESKDfontX}{%
   \ESKDfontSetBaseLineStretch
   \ESKDfontXsize\selectfont\ESKDfontShape}
+
+m4_dnl vim:ft=tex:sw=2:ai

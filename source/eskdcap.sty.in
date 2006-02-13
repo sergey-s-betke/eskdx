@@ -23,3 +23,5 @@ m4_FILE_ID([[$Date$]]) Captions]
 \RequirePackage{ccaption}
 \captiondelim{ -- }
 \captionstyle{\raggedright}
+
+m4_dnl vim:ft=tex:sw=2:ai

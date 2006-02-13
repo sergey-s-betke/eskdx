@@ -33,13 +33,13 @@ m4_FILE_ID([[$Date$]]) Language]
 
 \ProcessOptions\relax
 
-% установка кодировки
+m4_dnl установка кодировки
 \ifESKD@given@encoding
   \RequirePackage{inputenc}
 \fi
 
-% установка языка
+m4_dnl установка языка
 \RequirePackage[\ESKD@lang]{babel}
 \input{eskd\ESKD@lang.def}
 
-m4_dnl vim:sw=2:ai
+m4_dnl vim:ft=tex:sw=2:ai

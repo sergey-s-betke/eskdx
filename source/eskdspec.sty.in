@@ -29,7 +29,7 @@ m4_FILE_ID([[$Date$]]) Specification GOST 2.106.95]
 \newcommand{\ESKDspecFontHead}{\ESKDfontIII}
 \newcommand{\ESKDspecFontBody}{\ESKDfontIII}
 
-% спецификация
+m4_dnl спецификация
 \newenvironment{ESKDspecification}{%
 \begin{ESKDzeroPadding}%
 \setcounter{page}{1}%
@@ -89,3 +89,5 @@ m4_FILE_ID([[$Date$]]) Specification GOST 2.106.95]
 \end{longtable}%
 \end{ESKDzeroPadding}%
 \ESKDput{}}
+
+m4_dnl vim:ft=tex:sw=2:ai

@@ -48,7 +48,7 @@ m4_FILE_ID([[$Date$]]) Sectioning]
     {\@ssect{#3}{#4}{#5}{#6}}%
     {\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
 
-% выравнивание заголовков рубрикации
+m4_dnl выравнивание заголовков рубрикации
 \newcommand{\ESKDsectAlignLeft}{%
   \let\\\@centercr\@rightskip\@flushglue \rightskip\@rightskip%
   \leftskip\z@skip}
@@ -57,21 +57,21 @@ m4_FILE_ID([[$Date$]]) Sectioning]
 \newcommand{\ESKDsubsectionAlign}{\ESKDsectAlignLeft}
 \newcommand{\ESKDsubsubsectionAlign}{\ESKDsectAlignLeft}
 
-% короткий способ установки выравнивания заголовков
+m4_dnl короткий способ установки выравнивания заголовков
 \newcommand{\ESKDsectAlign}[2]{%
   \expandafter\renewcommand\csname\string ESKD#1Align\endcsname{%
   \@nameuse{ESKDsectAlign#2}}}
 
-% стиль заголовков рубрикации
+m4_dnl стиль заголовков рубрикации
 \newcommand{\ESKDsectionStyle}{\normalfont\Large\bfseries\MakeUppercase}
 \newcommand{\ESKDsubsectionStyle}{\normalfont\large\bfseries}
 \newcommand{\ESKDsubsubsectionStyle}{\normalfont\normalsize\bfseries}
 
-% короткий способ установки стиля заголовков
+m4_dnl короткий способ установки стиля заголовков
 \newcommand{\ESKDsectStyle}[2]{%
   \expandafter\renewcommand\csname\string ESKD#1Style\endcsname{#2}}
 
-% вертикальные отступы заголовков рубрикации
+m4_dnl вертикальные отступы заголовков рубрикации
 \newlength{\ESKDsectionSkipBefore}
 \newlength{\ESKDsectionSkipAfter}
 \setlength{\ESKDsectionSkipBefore}{-15mm \@plus -3mm \@minus -2mm}
@@ -85,7 +85,7 @@ m4_FILE_ID([[$Date$]]) Sectioning]
 \setlength{\ESKDsubsubsectionSkipBefore}{-15mm \@plus -3mm \@minus -2mm}
 \setlength{\ESKDsubsubsectionSkipAfter}{15mm \@plus 1mm \@minus 2mm}
 
-% которкий способ установки отступов
+m4_dnl которкий способ установки отступов
 \newcommand{\plus}{\@plus}
 \newcommand{\minus}{\@minus}
 
@@ -135,7 +135,7 @@ m4_FILE_ID([[$Date$]]) Sectioning]
 \newcommand{\subsubpoint}{%
   \par\refstepcounter{subsubpoint}\thesubsubpoint\quad}
 
-% приложения
+m4_dnl приложения
 \newcounter{appendix}
 \renewcommand{\theappendix}{\Asbuk{appendix}}
 \newlength{\ESKDappendixSkip}
@@ -169,4 +169,4 @@ m4_FILE_ID([[$Date$]]) Sectioning]
   \end{list}%
   \par\nobreak\addvspace{\ESKDappendixSkip}}
 
-m4_dnl vim:sw=2
+m4_dnl vim:ft=tex:sw=2:ai

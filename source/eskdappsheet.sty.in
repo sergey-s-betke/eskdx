@@ -26,24 +26,24 @@ m4_FILE_ID([[$Date$]]) Approving Sheet GOST 2.105]
 \newcount\ESKD@appsheet@doc@cnt
 \ESKD@appsheet@doc@cnt = 0
 
-% добавляет документ в список документов,
-% на которые распространяется данный ЛУ
+m4_dnl добавляет документ в список документов,
+m4_dnl на которые распространяется данный ЛУ
 \newcommand{\ESKDapprovingDoc}[1]{%
   \advance \ESKD@appsheet@doc@cnt 1
   \@namedef{ESKD@appsheet@doc@\number\ESKD@appsheet@doc@cnt}{#1}}
 
-% слова "Лист утверждения"
+m4_dnl слова "Лист утверждения"
 \renewcommand{\ESKDtheTitleFieldV}{%
   \ESKDapprovingSheetName}
 
-% обозначение - ЛУ
+m4_dnl обозначение - ЛУ
 \renewcommand{\ESKDtheTitleFieldVI}{%
   \MakeUppercase{\ESKDtheSignature}}
 
-% количество листов ЛУ
+m4_dnl количество листов ЛУ
 \renewcommand{\ESKDtheTitleFieldVII}{}
 
-% список документов, на которые распространяется данный ЛУ
+m4_dnl список документов, на которые распространяется данный ЛУ
 \def\ESKDtheTitleFieldVIIIlb{}
 \renewcommand{\ESKDtheTitleFieldVIIIlb}{%
   \ESKD@tmpcnta = 1
@@ -69,12 +69,12 @@ m4_FILE_ID([[$Date$]]) Approving Sheet GOST 2.105]
   \par
   \ESKD@title@split@field{\ESKDtheTitleFieldVIIIlb}{\ESKDtheTitleFieldVIIIrb}}
 
-% графы 14 - 18 по ГОСТ 2.104
+m4_dnl графы 14 - 18 по ГОСТ 2.104
 \renewcommand{\ESKDtheTitleFieldX}{}
 
 \renewcommand{\ESKDtitleFontX}{\ESKDfontIII}
 
-% печатает лист утверждения
+m4_dnl печатает лист утверждения
 \newcommand{\ESKDmakeApprovingSheet}{\maketitle}
 
-m4_dnl vim:sw=2:ai
+m4_dnl vim:ft=tex:sw=2:ai

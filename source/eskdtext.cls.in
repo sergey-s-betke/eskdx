@@ -56,60 +56,60 @@ m4_FILE_ID([[$Date$]]) Textual Documentation]
 \RequirePackage{eskdexplan}
 \RequirePackage{eskdtitle}
 
-% межстрочный интервал
+m4_dnl межстрочный интервал
 \linespread{1.25}
 
-% ведомство
+m4_dnl ведомство
 \newcommand{\ESKDtheDepartment}{}
 \newcommand{\ESKDdepartment}[1]{\renewcommand{\ESKDtheDepartment}{#1}}
 
-% предприятие
+m4_dnl предприятие
 \newcommand{\ESKDtheCompany}{}
 \newcommand{\ESKDcompany}[1]{\renewcommand{\ESKDtheCompany}{#1}}
 
-% код по классификатору продукции
+m4_dnl код по классификатору продукции
 \newcommand{\ESKDtheClassCode}{}
 \newcommand{\ESKDclassCode}[1]{\renewcommand{\ESKDtheClassCode}{#1}}
 
-% наименование изделия/тема
+m4_dnl наименование изделия/тема
 \newcommand{\ESKDtheTitle}{}
 \newcommand{\ESKDtitle}[1]{%
   \renewcommand{\ESKDtheTitle}{#1}%
   \def\@title{#1}}
 \renewcommand{\title}[1]{\ESKDtitle{#1}}
 
-% название документа
+m4_dnl название документа
 \newcommand{\ESKDtheDocName}{}
 \newcommand{\ESKDdocName}[1]{\renewcommand{\ESKDtheDocName}{#1}}
 
-% обозначение документа
+m4_dnl обозначение документа
 \newcommand{\ESKDtheSignature}{}
 \newcommand{\ESKDsignature}[1]{\renewcommand{\ESKDtheSignature}{#1}}
 
-% группа, индекс, или наименование предприятия
+m4_dnl группа, индекс, или наименование предприятия
 \newcommand{\ESKDtheGroup}{}
 \newcommand{\ESKDgroup}[1]{\renewcommand{\ESKDtheGroup}{#1}}
 
-% фамилия автора
+m4_dnl фамилия автора
 \newcommand{\ESKDtheAuthor}{}
 \newcommand{\ESKDauthor}[1]{%
   \renewcommand{\ESKDtheAuthor}{#1}%
   \renewcommand{\@author}{#1}}
 \renewcommand{\author}[1]{\ESKDauthor{#1}}
 
-% фамилия проверяющего
+m4_dnl фамилия проверяющего
 \newcommand{\ESKDtheChecker}{}
 \newcommand{\ESKDchecker}[1]{\renewcommand{\ESKDtheChecker}{#1}}
 
-% фамилия нормоконтролера
+m4_dnl фамилия нормоконтролера
 \newcommand{\ESKDtheNormContr}{}
 \newcommand{\ESKDnormContr}[1]{\renewcommand{\ESKDtheNormContr}{#1}}
 
-% фамилия утвердившего
+m4_dnl фамилия утвердившего
 \newcommand{\ESKDtheApprovedBy}{}
 \newcommand{\ESKDapprovedBy}[1]{\renewcommand{\ESKDtheApprovedBy}{#1}}
 
-% дата
+m4_dnl дата
 \newcommand{\ESKDtheYear}{\number\year}
 \newcommand{\ESKDtheMonth}{\number\month}
 \newcommand{\ESKDtheDay}{\number\day}
@@ -130,10 +130,10 @@ m4_FILE_ID([[$Date$]]) Textual Documentation]
 \RequirePackage{eskdtitlebase}
 \RequirePackage{eskdtitle}
 
-%\RequirePackage{eskdaddtopkg}
-% настройки пакета hyperref
-%\ESKDaddToPackage{hyperref}{%
-%\hypersetup{breaklinks,pdftitle=\ESKDtheDocName,%
-%pdfsubject=\ESKDtheTitle,pdfauthor=\ESKDtheAuthor}}
+m4_dnl \RequirePackage{eskdaddtopkg}
+m4_dnl настройки пакета hyperref
+m4_dnl \ESKDaddToPackage{hyperref}{%
+m4_dnl \hypersetup{breaklinks,pdftitle=\ESKDtheDocName,%
+m4_dnl pdfsubject=\ESKDtheTitle,pdfauthor=\ESKDtheAuthor}}
 
 m4_dnl vim:ft=tex:ai:sw=2
