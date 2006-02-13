@@ -1,10 +1,11 @@
+# Process this file with GNU make
 TOP_DIR = ..
 
 include $(TOP_DIR)/include.mak
 
 all: eskdx.pdf
 
-eskdx.tex: eskdx.tex.in
+eskdx.tex: eskdx.tex.in $(M4DEPS)
 	m4 $(M4FLAGS) $< >$@
 
 clean:

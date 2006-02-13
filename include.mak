@@ -1,5 +1,6 @@
 VERSION = 0.0
-M4FLAGS = -P -Dm4_ESKDX_INIT="m4_include($(TOP_DIR)/eskdx.m4)" \
+M4DEPS = $(TOP_DIR)/include.m4 $(TOP_DIR)/include.mak
+M4FLAGS = -P -Dm4_ESKDX_INIT="m4_include($(TOP_DIR)/include.m4)" \
 	  -Dm4_ESKDX_VERSION=$(VERSION)
 PASS=1
 

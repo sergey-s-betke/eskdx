@@ -1,3 +1,4 @@
+# Process this file with GNU make
 TOP_DIR = ..
 
 include $(TOP_DIR)/include.mak

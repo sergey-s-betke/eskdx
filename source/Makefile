@@ -1,14 +1,15 @@
+# Process this file with GNU make
 TOP_DIR = ..
 SOURCES = $(wildcard *.in)
 UNPACKED = $(patsubst %.in, %, $(SOURCES))
 
 include $(TOP_DIR)/include.mak
 
-%.def: %.def.in ../eskdx.m4
+%.def: %.def.in $(M4DEPS)
 	m4 $(M4FLAGS) $< >$@
-%.sty: %.sty.in ../eskdx.m4
+%.sty: %.sty.in $(M4DEPS)
 	m4 $(M4FLAGS) $< >$@
-%.cls: %.cls.in ../eskdx.m4
+%.cls: %.cls.in $(M4DEPS)
 	m4 $(M4FLAGS) $< >$@
 
 all: $(UNPACKED)

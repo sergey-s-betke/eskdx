@@ -1,3 +1,4 @@
+# Process this file with GNU make
 TOP_DIR = .
 SUBDIRS = manual source test
 
@@ -15,7 +16,7 @@ doc:
 	rm -f doc/*.pdf
 	cp -p manual/*.pdf doc/
 
-README: README.in
+README: README.in $(M4DEPS)
 	m4 $(M4FLAGS) $< >$@
 
 .PHONY: doc unpacked
