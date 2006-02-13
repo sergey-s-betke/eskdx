@@ -113,11 +113,12 @@ m4_dnl дата
 \newcommand{\ESKDtheYear}{\number\year}
 \newcommand{\ESKDtheMonth}{\number\month}
 \newcommand{\ESKDtheDay}{\number\day}
-\newcommand{\ESKDdate}[3]{%
+\def\ESKD@set@date#1/#2/#3 enddate{%
   \renewcommand{\ESKDtheYear}{#1}%
   \renewcommand{\ESKDtheMonth}{#2}%
-  \renewcommand{\ESKDtheDay}{#3}%
-  \date{#1/#2/#3}}
+  \renewcommand{\ESKDtheDay}{#3}}
+\newcommand{\ESKDdate}[1]{%
+  \ESKD@set@date #1 enddate}
 
 \ESKDcolumnI{\ESKDtheTitle\par\ESKDtheDocName}
 \ESKDcolumnII{\ESKDtheSignature}
