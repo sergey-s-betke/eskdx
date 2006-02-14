@@ -33,6 +33,8 @@ m4_FILE_INIT
 \copyright 2006 Константин Кориков}
 
 \usepackage[unicode]{hyperref}
+\hypersetup{breaklinks,pdftitle=\ESKDtheDocName,%
+pdfsubject=\ESKDtheTitle,pdfauthor=\ESKDtheAuthor}
 
 \newcommand{\gost}[1]{\mbox{ГОСТ}\ \mbox{#1}}
 \newcommand{\pkg}[1]{\mbox{\textsf{#1}}}
