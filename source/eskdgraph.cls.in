@@ -94,8 +94,16 @@ m4_FILE_ID([[$Date$]]) Graphical Documentation]
 \newcommand{\ESKDtheNormContr}{}
 \newcommand{\ESKDnormContr}[1]{\renewcommand{\ESKDtheNormContr}{#1}}
 
-% дата
-\newcommand{\ESKDdate}[3]{\date{#1/#2/#3}}
+m4_dnl дата
+\newcommand{\ESKDtheYear}{\number\year}
+\newcommand{\ESKDtheMonth}{\number\month}
+\newcommand{\ESKDtheDay}{\number\day}
+\def\ESKD@set@date#1/#2/#3 enddate{%
+  \renewcommand{\ESKDtheYear}{#1}%
+  \renewcommand{\ESKDtheMonth}{#2}%
+  \renewcommand{\ESKDtheDay}{#3}}
+\newcommand{\ESKDdate}[1]{%
+  \ESKD@set@date #1 enddate}
 
 \ESKDcolumnI{\ESKDtheUnitName}
 \ESKDcolumnII{\ESKDtheSignature}
