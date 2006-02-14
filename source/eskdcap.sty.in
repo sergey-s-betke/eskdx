@@ -24,9 +24,9 @@ m4_FILE_ID([[$Date$]]) Captions]
 \DeclareCaptionLabelSeparator{dash}{ -- }
 \captionsetup[table]{%
 labelsep=dash,justification=raggedright,singlelinecheck=false,%
-aboveskip=10mm,belowskip=0mm}
+aboveskip=3mm,belowskip=0mm}
 \captionsetup[figure]{%
 labelsep=dash,justification=centering,singlelinecheck=false,%
-aboveskip=5mm,belowskip=10mm}
+aboveskip=0mm,belowskip=3mm}
 
 m4_dnl vim:ft=tex:sw=2:ai
