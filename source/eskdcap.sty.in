@@ -20,8 +20,13 @@ m4_FILE_INIT
 \ProvidesPackage{eskdcap}[
 m4_FILE_ID([[$Date$]]) Captions]
 
-\RequirePackage{ccaption}
-\captiondelim{ -- }
-\captionstyle{\raggedright}
+\RequirePackage{caption}
+\DeclareCaptionLabelSeparator{dash}{ -- }
+\captionsetup[table]{%
+labelsep=dash,justification=raggedright,singlelinecheck=false,%
+aboveskip=10mm,belowskip=0mm}
+\captionsetup[figure]{%
+labelsep=dash,justification=centering,singlelinecheck=false,%
+aboveskip=5mm,belowskip=10mm}
 
 m4_dnl vim:ft=tex:sw=2:ai
