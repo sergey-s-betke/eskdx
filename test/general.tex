@@ -4,6 +4,7 @@
 \usepackage{pscyr}
 \usepackage{amstext}
 \usepackage{amsmath}
+\usepackage{listings}
 
 \ESKDdepartment{Ведомство}
 \ESKDcompany{Предприятие}
@@ -22,7 +23,7 @@
 согл.}
 \ESKDtitleDesignedBy{Должность первого автора}{Фам. первого автора}
 \ESKDtitleDesignedBy{Должность второго автора}{Фам. второго автора}
-\ESKDdate{2006/02/07}
+\ESKDdate{2006/02/14}
 
 \usepackage[unicode]{hyperref}
 
@@ -41,6 +42,7 @@
 \item основные элементы текста (абзацы, перечни);
 \item формулы;
 \item таблицы;
+\item иллюстрации;
 \item лист регистрации изменений.
 \end{itemize}
 
@@ -226,6 +228,11 @@ W_\text{кол} = K \cdot W_\text{textwidth} - 2 \cdot W_\text{tabcolsep}
 \item $W_\text{arrayrulewidth}$ "--- толщина вертикальной линии, что
 отделяет ячейки.
 \end{ESKDexplanation}
+
+\ESKDappendix{рекомендуемое}{Исходный код этого документа}
+\lstset{columns=fixed,language=[LaTeX]TeX,%
+basicstyle=\small,breaklines=true}
+\lstinputlisting{general.tex}
 
 \begin{ESKDchangeSheet}
 \rule{0mm}{\textheight-4cm}&&&&&&&&&\\
