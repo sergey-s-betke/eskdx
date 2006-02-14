@@ -21,27 +21,37 @@ m4_FILE_INIT
 \usepackage{pscyr}
 \usepackage{amstext}
 \usepackage{amsmath}
+\usepackage{calc}
+\usepackage{array}
+\usepackage{longtable}
 
 \ESKDtitle{Коллекция eskdx v[[]]m4_ESKDX_VERSION}
 \ESKDdocName{Руководство пользователя}
 \ESKDauthor{Кориков~К.~В.}
 \ESKDdate{m4_FILE_DATE([[$Date$]])}
+\renewcommand{\ESKDtheTitleFieldVIIIr}{%
+\copyright 2006 Константин Кориков}
 
 \usepackage[unicode]{hyperref}
 
 \newcommand{\gost}[1]{\mbox{ГОСТ}\ \mbox{#1}}
+\newcommand{\pkg}[1]{\mbox{\textsf{#1}}}
+\newcommand{\cmd}[1]{\mbox{$\backslash$\texttt{#1}}}
+\newcommand{\opt}[1]{\mbox{\texttt{#1}}}
+\newcommand{\optarg}[1]{\mbox{\textit{#1}}}
+\newcommand{\val}[1]{\mbox{\texttt{#1}}}
 
 \begin{document}
 \maketitle
 \tableofcontents
 \newpage
 \section{Введение}
-Коллекция пакетов и классов eskdx расчитана на использование в
-среде \LaTeXe\ и предназначена для верстки документов в
-соответствии с требованиями Единой системы конструкторской
-документации.  Коллекция содержит два класса: eskdtext (для
-текстовой документации) и eskdgraph (для чертежей и схем), а также
-несколько пакетов (некоторые из них являются внутренними).
+Коллекция пакетов и классов \pkg{eskdx} расчитана на использование в
+среде \LaTeXe\ и предназначена для верстки документов в соответствии с
+требованиями Единой системы конструкторской документации.  Коллекция
+содержит два класса: \pkg{eskdtext} (для текстовой документации) и
+\pkg{eskdgraph} (для чертежей и схем), а также несколько пакетов
+(некоторые из них являются внутренними).
 
 Основые возможности:
 \begin{itemize}
@@ -59,9 +69,139 @@ m4_FILE_INIT
 украинский).
 \end{itemize}
 
-\section{Параметы классов}
-\subsection{Общие параметры для обоих классов}
-abc
+\section{Опции классов}
+\subsection{Общие опции для обоих классов}
+Опции, воспринимаемые классами \pkg{eskdtext} и \pkg{eskdgraph}
+приведены в таблице~\ref{t:common:opts}.
+\begin{longtable}{|%
+p{.30\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
+p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
+\caption{Общие опции классов \pkg{eskdtext} и
+\pkg{eskdgraph}\label{t:common:opts}}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endfirsthead
+\caption*{Продолжение таблицы}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endhead
+\opt{russian}\par\opt{ukrainian}&
+Выбирает язык документа, соответственно русский, украинский. По
+умолчанию русский.\\\hline
+\opt{koi8-r}\par\opt{koi8-u}\par\opt{cp1251}\par\opt{iso8859-5}\par
+\opt{cp866}&
+Задает кодировку текста, соответственно \mbox{KOI8-R}, \mbox{KOI8-U},
+\mbox{CP1251}, \mbox{ISO8859-5}, \mbox{CP866}.\\\hline
+\opt{reduceheight=}&
+Уменьшает высоту рамки за счет увеличения нижнего поля на
+заданную высоту.\\\hline
+\opt{emptystyle}&
+Включает пустой стиль страниц, т.е. без рамки формы, без основной
+надписи и без дополнительных граф.\\\hline
+\opt{stitching}\par\opt{nostitching}&
+Включает/выключает поле для переплета. По умолчанию поле включено.\\\hline
+\opt{columnvii}\par\opt{nocolumnvii}&
+Включает/выключает графу 7 основной надписи (номер листа/страницы). По
+умолчанию графа 7 включена только для документов, содержащих больше
+одного листа\\\hline
+\opt{columnviii}\par\opt{nocolumnviii}&
+Включает/выключает графу 8 основной надписи (общее количество
+листов/страниц). По умолчанию графа 8 включена.\\\hline
+\opt{columnsxix}\par\opt{nocolumnsxix}&
+Включает/выключает дополнительные графы 19 по 23. По умолчанию
+включены.\\\hline
+\opt{columnsxxiv}\par\opt{nocolumnsxxiv}&
+Включает/выключает дополнительные графы 24 и 25. По умолчанию
+выключены.\\\hline
+\opt{columnsxxvii}\par\opt{nocolumnsxxvii}&
+Включает/выключает дополнительные графы 27 по 30. По умолчанию
+выключены.\\\hline
+\opt{columnxxxii}\par\opt{nocolumnxxxii}&
+Включает/выключает дополнительную графу 32 (формат листа). По
+умолчанию включена.\\\hline
+\opt{simple}&
+Тоже самое что \opt{nocolumnsxix} и \opt{nocolumnxxxii}.\\\hline
+\opt{linethick=}&
+Устанавливает толщину сплошной толстой линии. По умолчанию
+\val{.4mm}.\\\hline
+\opt{linethin=}&
+Устанавливает толщину сплошной тонкой линии. По умолчанию
+\val{.2mm}.\\\hline
+\opt{vpadding=}&
+Устанавливает расстояние от рамки формы до границ текста в начале и в
+конце строк. По умолчанию \val{3mm}.\\\hline
+\opt{hpadding=}&
+Устанавливает расстояние от верхней или нижней строки текста до
+верхней или нижней рамки. По умолчанию \val{10mm}.\\\hline
+\end{longtable}
+
+\subsection{Опции класса \pkg{eskdtext}}
+Опции, воспринимаемые классом \pkg{eskdtext} приведены в
+таблице~\ref{t:eskdtext:opts}.
+\begin{longtable}{|%
+p{.30\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
+p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
+\caption{Опции класса \pkg{eskdtext}\label{t:eskdtext:opts}}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endfirsthead
+\caption*{Продолжение таблицы}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endhead
+\opt{12pt}\par\opt{14pt}&
+Устанавливает размер шрифта документа, соответственно \val{12pt},
+\val{14pt}. По умолчанию \val{14pt}.\\\hline
+\opt{pointsingle}\par\opt{pointsection}\par\opt{pointsubsection}&
+Устанавливает стиль нумерации пунктов, соответственно в пределах всего
+документа, в пределах раздела, в пределах подраздела. По умолчанию
+пункы нумеруются в пределах всего документа.\\\hline
+\opt{twoside}&
+Включает двустроннюю печать.\\\hline
+\opt{draft}&
+Включает черновой режим.\\\hline
+\end{longtable}
+
+\subsection{Опции класса \pkg{eskdgraph}}
+Опции, воспринимаемые классом \pkg{eskdgraph} приведены в
+таблице~\ref{t:eskdgraph:opts}.
+\begin{longtable}{|%
+p{.30\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
+p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
+\caption{Опции класса \pkg{eskdgraph}\label{t:eskdgraph:opts}}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endfirsthead
+\caption*{Продолжение таблицы}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endhead
+\opt{a0paper}\par\opt{a1paper}\par\opt{a2paper}\par\opt{a3paper}\par
+\opt{a4paper}&
+Устанавливает формат (размер) листа, соответственно А0, А1, А2, А3,
+А4. По умолчанию А4.\\\hline
+\opt{landscape}\par\opt{portrait}&
+Устанавливает ориентацию страницы, соответственно ландшафтная
+ориентация (основаня надпись вдоль длинной стороны листа), портретная
+ориентация (основаня надпись вдоль короткой стороны листа). По
+умолчанию ландшафтная ориентация для листов формата больше А4, и
+портретная ориентация для листов формата А4.\\\hline
+\opt{ignorestamp}\par\opt{noignorestamp}&
+Включает/выключает игнорирование основной надписи при
+позиционировании рисунка чертежа. По умолчанию основная надпись
+игнорируется.\\\hline
+\opt{columnxxvi}\par\opt{nocolumnxxvi}&
+Включает/выключает дополнительную графу 26. По умолчанию графа
+включена.\\\hline
+\opt{columnxxxiii}\par\opt{nocolumnxxxiii}&
+Включает/выключает дополнительную графу 33. По умолчанию
+выключена.\\\hline
+\opt{columnxxxiv}\par\opt{nocolumnxxxiv}&
+Включает/выключает дополнительную графу 34. По умолчанию
+выключена.\\\hline
+\opt{zonelabels}\par\opt{nozonelabels}&
+Включает/выключает отметки зон. По умолчанию отметки выключены.\\\hline
+\end{longtable}
 
 \end{document}
 
