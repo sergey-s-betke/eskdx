@@ -1,0 +1,99 @@
+2006-02-14  Konstantin Korikov  <lostclus@ua.fm>
+
+	* include.mak: Changed version to 0.90.
+
+	* manual/eskdx.tex.in: Added \hypersetup.
+
+	* test/general.tex: Source code listing was added.
+
+	* manual/eskdx.tex.in: *** empty log message ***
+
+	* README.in: README updated.
+
+	* manual/eskdx.tex.in, test/appsheet.tex, test/drawing-a3-mp.tex,
+	test/drawing-a3-p.tex, test/general.tex: Spell checked.
+
+	* test/general.tex: Added figure test.
+
+	* source/eskdcap.sty.in: Reduce aboveskip and belowskip.
+
+	* manual/eskdx.tex.in: Manual updated.
+
+	* test/general.tex: Added table test.
+
+	* source/eskdcap.sty.in: Use caption package instead of ccaption.
+
+2006-02-13  Konstantin Korikov	<lostclus@ua.fm>
+
+	* unpacked/Makefile, Makefile, include.mak, manual/Makefile,
+	source/Makefile, test/Makefile: Added rules for distribution.
+
+	* include.mak, README.in: Added release date information.
+
+	* manual/Makefile, source/Makefile, test/Makefile, Makefile,
+	eskdx.m4, include.m4, include.mak: eskdx.m4 renamed to
+	include.m4. Fixed dependences.
+
+	* Makefile, README, README.in: Process README with m4.
+
+	* eskdx.m4: Fixed m4_FILE_DATE.
+
+	* source/eskdtext.cls.in, test/appsheet.tex, test/general.tex,
+	eskdx.m4, manual/Makefile, manual/eskdx.tex, manual/eskdx.tex.in:
+	Changed arguments for \ESKDdate. Added date substitution in
+	manual.
+
+	* Makefile, Rules.mak, eskdx.m4, include.mak, manual/Makefile,
+	source/Makefile, test/Makefile: Added version information.
+
+	* source/eskdukrainian.def.in, source/eskdexplan.sty.in,
+	source/eskdfont.sty.in, source/eskdgraph.cls.in,
+	source/eskdindent.sty.in, source/eskdlang.sty.in,
+	source/eskdlist.sty.in, source/eskdsect.sty.in,
+	source/eskdspec.sty.in, source/eskdstamp.sty.in,
+	source/eskdtext.cls.in, source/eskdtitle.sty.in,
+	source/eskdtitlebase.sty.in, source/eskdappsheet.sty.in,
+	source/eskdcap.sty.in, source/eskdchngsheet.sty.in: % style
+	comments replaced with m4_dnl style comments. Fixed vim modelines.
+
+	* Makefile: Fixed dependences.
+
+	* source/Makefile: Added dependence on eskdx.m4.
+
+	* eskdx.m4: Fixed regexp in m4_FILE_ID
+
+	* source/Makefile, source/eskdappsheet.sty.in,
+	source/eskdcap.sty.in, source/eskdchngsheet.sty.in,
+	source/eskdexplan.sty.in, source/eskdfont.sty.in,
+	source/eskdgraph.cls.in, source/eskdindent.sty.in,
+	source/eskdlang.sty.in, source/eskdlist.sty.in,
+	source/eskdrussian.def.in, source/eskdsect.sty.in,
+	source/eskdspec.sty.in, source/eskdstamp.sty.in,
+	source/eskdtext.cls.in, source/eskdtitle.sty.in,
+	source/eskdtitlebase.sty.in, source/eskdukrainian.def.in:
+	Imported sources.
+
+	* source/Makefile, source/eskdappsheet.sty.in,
+	source/eskdcap.sty.in, source/eskdchngsheet.sty.in,
+	source/eskdexplan.sty.in, source/eskdfont.sty.in,
+	source/eskdgraph.cls.in, source/eskdindent.sty.in,
+	source/eskdlang.sty.in, source/eskdlist.sty.in,
+	source/eskdrussian.def.in, source/eskdsect.sty.in,
+	source/eskdspec.sty.in, source/eskdstamp.sty.in,
+	source/eskdtext.cls.in, source/eskdtitle.sty.in,
+	source/eskdtitlebase.sty.in, source/eskdukrainian.def.in:
+	New file.
+
+	* ChangeLog, Makefile, README, Rules.mak, eskdx.m4,
+	manifest.txt, manual/Makefile, manual/eskdx.tex, test/Makefile,
+	test/appsheet.tex, test/drawing-a2.tex, test/drawing-a3-mp.tex,
+	test/drawing-a3-p.tex, test/drawing-a3.tex, test/drawing-a4.tex,
+	test/general.tex, test/spec.tex, test/twoside.tex: Imported
+	sources.
+
+	* ChangeLog, Makefile, README, Rules.mak, eskdx.m4,
+	manifest.txt, manual/Makefile, manual/eskdx.tex, test/Makefile,
+	test/appsheet.tex, test/drawing-a2.tex, test/drawing-a3-mp.tex,
+	test/drawing-a3-p.tex, test/drawing-a3.tex, test/drawing-a4.tex,
+	test/general.tex, test/spec.tex, test/twoside.tex: New file.
+
