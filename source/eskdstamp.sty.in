@@ -34,6 +34,8 @@ m4_dnl ориентация страницы
 
 m4_dnl стиль по умолчанию
 \newcommand{\ESKD@default@style}{}
+m4_dnl стиль по умолчанию для последующих страниц
+\newcommand{\ESKD@default@style@sec}{}
 
 m4_dnl поля
 \newlength{\ESKD@margin@si}
@@ -164,6 +166,7 @@ m4_dnl некоторые константы для сравнения
 \newcommand{\ESKD@cmp@landscape}{landscape}
 \newcommand{\ESKD@cmp@formI}{formI}
 \newcommand{\ESKD@cmp@formII}{formII}
+\newcommand{\ESKD@cmp@emptystyle}{empty}
 
 m4_dnl определение ориентации страницы
 \ifESKD@given@landscape\else
@@ -1027,17 +1030,17 @@ m4_dnl
   \else\clearpage\fi}
 
 m4_dnl определение стиля страницы по умолчанию
+\renewcommand{\ESKD@default@style@sec}{formIIsec}
 \ifx\ESKD@default@style\ESKD@cmp@formII%
-  \ESKDstyle{formIIsec}
   \AtBeginDocument{\ESKDthisStyle{formII}}
 \else
   \ifx\ESKD@default@style\ESKD@cmp@formI%
-    \ESKDstyle{formIIsec}
     \AtBeginDocument{\ESKDthisStyle{formI}}
   \else
-    \ESKDstyle{\ESKD@default@style}
+    \renewcommand{\ESKD@default@style@sec}{\ESKD@default@style}
   \fi
 \fi
+\ESKDstyle{\ESKD@default@style@sec}
 
 \newenvironment{ESKDpadding}[2]{%
   \newpage%

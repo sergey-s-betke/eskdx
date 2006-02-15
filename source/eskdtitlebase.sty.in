@@ -81,13 +81,15 @@ m4_dnl поля титульного листа
 \def\ESKD@title@after@page{%
   \ESKDclearDoublePage
   \setcounter{page}{1}
-  \ESKDstyle{formIIsec}
-  \ESKDthisStyle{formII}}
+  \ESKDstyle{\ESKD@default@style@sec}
+  \ESKDthisStyle{\ESKD@default@style}}
 
 m4_dnl базовый шаблон для любого титульного листа
 \newenvironment{ESKDtitlePage}{%
   \begin{ESKDpadding}{5mm}{5mm}
-  \ESKDstyle{title}}{%
+  \ifx\ESKD@default@style\ESKD@cmp@emptystyle\else
+    \ESKDstyle{title}
+  \fi}{%
   \end{ESKDpadding}
   \aftergroup\ESKD@title@after@page}
 
