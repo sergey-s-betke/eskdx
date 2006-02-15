@@ -22,6 +22,7 @@ m4_FILE_ID([[$Date$]]) Title GOST 2.105]
 
 \RequirePackage{eskdstamp}
 \RequirePackage{eskdlang}
+\RequirePackage{eskdinfo}
 \RequirePackage{eskdtitlebase}
 
 \newcommand{\ESKD@title@split@field}[2]{%
