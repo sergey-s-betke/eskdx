@@ -1,4 +1,5 @@
 manual/eskdx.tex
+source/eskdafterpkg.sty.in
 source/eskdappsheet.sty.in
 source/eskdcap.sty.in
 source/eskdchngsheet.sty.in

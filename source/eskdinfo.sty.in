@@ -123,10 +123,10 @@ m4_dnl дата
 \ESKDcolumnXIfV{\ESKDtheNormContr}
 \ESKDcolumnXIfVI{\ESKDtheApprovedBy}
 
-m4_dnl\RequirePackage{eskdaddtopkg}
+\RequirePackage{eskdafterpkg}
 m4_dnl настройки пакета hyperref
-m4_dnl\ESKDaddToPackage{hyperref}{%
-m4_dnl \hypersetup{breaklinks,pdftitle=\ESKDtheUnitName,%
-m4_dnl pdfsubject=\ESKDtheUnitName,pdfauthor=\ESKDtheAuthor}}
+\ESKD@after@package{hyperref}{%
+  \hypersetup{breaklinks,pdftitle=\ESKDtheDocName,%
+    pdfsubject=\ESKDtheUnitName,pdfauthor=\ESKDtheAuthor}}
 
 m4_dnl vim:ft=tex:sw=2:ai
