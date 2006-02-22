@@ -126,7 +126,7 @@ m4_dnl дата
 \RequirePackage{eskdafterpkg}
 m4_dnl настройки пакета hyperref
 \ESKD@after@package{hyperref}{%
-  \hypersetup{breaklinks,pdftitle=\ESKDtheDocName,%
-    pdfsubject=\ESKDtheUnitName,pdfauthor=\ESKDtheAuthor}}
+  \hypersetup{breaklinks,pdftitle=\ESKDtheUnitName,%
+    pdfsubject=\ESKDtheDocName,pdfauthor=\ESKDtheAuthor}}
 
 m4_dnl vim:ft=tex:sw=2:ai
