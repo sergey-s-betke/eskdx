@@ -24,6 +24,11 @@ m4_FILE_INIT
 \usepackage{calc}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{listings}
+\lstset{columns=fixed,language=[LaTeX]TeX,%
+basicstyle=\small,breaklines=true,xleftmargin=10mm}
+\renewcommand{\lstlistingname}{Листинг}
+\captionsetup[lstlisting]{labelsep=dash}
 
 \ESKDtitle{Коллекция eskdx v[[]]m4_ESKDX_VERSION}
 \ESKDdocName{Руководство пользователя}
@@ -33,8 +38,7 @@ m4_FILE_INIT
 \copyright 2006 Константин Кориков}
 
 \usepackage[unicode]{hyperref}
-\hypersetup{breaklinks,pdftitle=\ESKDtheDocName,%
-pdfsubject=\ESKDtheTitle,pdfauthor=\ESKDtheAuthor}
+\hypersetup{pdfkeywords=ЕСКД ГОСТ LaTeX класс пакет}
 
 \newcommand{\gost}[1]{\mbox{ГОСТ}\ \mbox{#1}}
 \newcommand{\pkg}[1]{\mbox{\textsf{#1}}}
@@ -42,20 +46,25 @@ pdfsubject=\ESKDtheTitle,pdfauthor=\ESKDtheAuthor}
 \newcommand{\opt}[1]{\mbox{\texttt{#1}}}
 \newcommand{\optarg}[1]{\mbox{\textit{#1}}}
 \newcommand{\val}[1]{\mbox{\texttt{#1}}}
+\newenvironment{defs}{\begin{itemize}}{\end{itemize}}
+\newcommand{\cmddef}[2]{\item[]\mbox{\textbackslash\texttt{#1#2}}}
+\newcommand{\cmdarg}[1]{\mbox{\textrm{\textit{#1}}}}
 
 \begin{document}
 \maketitle
 \tableofcontents
 \newpage
-\section{Введение}
+\section{Общие сведения}
+\subsection{О коллекции \pkg{eskdx}}
 Коллекция пакетов и классов \pkg{eskdx} рассчитана на использование в
 среде \LaTeXe\ и предназначена для верстки документов в соответствии с
 требованиями Единой системы конструкторской документации.  Коллекция
 содержит два класса: \pkg{eskdtext} (для текстовой документации) и
-\pkg{eskdgraph} (для чертежей и схем), а также несколько пакетов
+\pkg{eskdgraph} (для чертежей и схем), а также некоторое число пакетов
 (некоторые из них являются внутренними).
 
-Основные возможности:
+\subsection{Возможности коллекции}
+Основные возможности \pkg{eskdx}:
 \begin{itemize}
 \item основная надпись и дополнительные графы по \gost{2.104-68},
 форма 1, 2, 2а, 2б;
@@ -71,8 +80,49 @@ pdfsubject=\ESKDtheTitle,pdfauthor=\ESKDtheAuthor}
 украинский).
 \end{itemize}
 
-\section{Опции классов}
-\subsection{Общие опции для обоих классов}
+\section{Использование}
+Для использования коллекции \pkg{eskdx} вам необходимо иметь как
+минимум базовые знания системы \LaTeXe.
+
+Основа коллекции "--- классы \pkg{eskdtext} и \pkg{eskdgraph}. Для
+текстовых документов используется класс \pkg{eskdtext}, для чертежей и
+схем "--- \pkg{eskdgraph}.
+
+\subsection{Пример простого документа}
+Пример простого текста документа приведен в
+листинге~\ref{l:simpleexpmple}.
+\begin{lstlisting}[float=bh,numbers=left,%
+caption=Пример текстового документа,%
+label=l:simpleexpmple]
+\documentclass[russian,koi8-r]{eskdtext}
+\ESKDdepartment{Акционерное Московское общество}
+\ESKDcompany{завод имени И.~А.~Лихачева}
+\ESKDclassCode{31 1398}
+\ESKDtitle{Форсунка Ф-750}
+\ESKDdocName{Технические условия}
+\ESKDsignature{АБВГД ХХХХХХХХ}
+\ESKDauthor{Петров~И.~И.}
+\ESKDtitleApprovedBy{Руководитель ОКБА}{Гусев~И.~И.}
+\ESKDtitleAgreedBy{Директор АМО ЗИЛ}{Иванов~И.~И.}
+\ESKDtitleDesignedBy{Главный инженер АМО ЗИЛ}{Петров~И.~И}
+\ESKDtitleDesignedBy{Руководитель разработки}{Лист~А.~А}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Раздел 1}
+Текст текст текст.
+\end{document}
+\end{lstlisting}
+
+Опции \opt{russian} и \opt{koi8-r}, на строке 1, задают,
+соответственно язык и кодировку документа. Команды на строках 2 по 12
+задают информацию о документе, которая используется в титульном листе
+и в основной надписи. Строки 15 по 19 "--- тело документа.
+
+\subsection{Опции классов}
+\subsubsection{Общие опции обоих классов}
 Опции, воспринимаемые классами \pkg{eskdtext} и \pkg{eskdgraph}
 приведены в таблице~\ref{t:common:opts}.
 \begin{longtable}{|%
@@ -137,7 +187,7 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 верхней или нижней рамки. По умолчанию \val{10mm}.\\\hline
 \end{longtable}
 
-\subsection{Опции класса \pkg{eskdtext}}
+\subsubsection{Опции класса \pkg{eskdtext}}
 Опции, воспринимаемые классом \pkg{eskdtext} приведены в
 таблице~\ref{t:eskdtext:opts}.
 \begin{longtable}{|%
@@ -164,7 +214,7 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 Включает черновой режим.\\\hline
 \end{longtable}
 
-\subsection{Опции класса \pkg{eskdgraph}}
+\subsubsection{Опции класса \pkg{eskdgraph}}
 Опции, воспринимаемые классом \pkg{eskdgraph} приведены в
 таблице~\ref{t:eskdgraph:opts}.
 \begin{longtable}{|%
@@ -204,6 +254,94 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 \opt{zonelabels}\par\opt{nozonelabels}&
 Включает/выключает отметки зон. По умолчанию отметки выключены.\\\hline
 \end{longtable}
+
+\subsection{Информация о документе}
+Информацию о документе размещают в преамбуле документа используя
+описанные ниже команды.
+
+Наименование ведомства, в систему которого входит организация,
+разработавшая документ, задает команда
+\begin{defs}
+\cmddef{ESKDdepartment}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Наименование организации задает команда
+\begin{defs}
+\cmddef{ESKDcompany}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Код по классификатору продукции задает команда
+\begin{defs}
+\cmddef{ESKDclassCode}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Наименование изделия задают команды
+\begin{defs}
+\cmddef{ESKDunitName}{\{\cmdarg{текст}\}}
+\cmddef{ESKDtitle}{\{\cmdarg{текст}\}}
+\end{defs}
+обе команды действуют одинаково (команды близнецы).
+
+Наименование документа задает команда
+\begin{defs}
+\cmddef{ESKDdocName}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Обозначение документа задает команда
+\begin{defs}
+\cmddef{ESKDsignature}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Литеру, присвоенную данному документу, задает команда
+\begin{defs}
+\cmddef{ESKDletter}{\{\cmdarg{буква1}\}\{\cmdarg{буква2}\}%
+\{\cmdarg{буква3}\}}
+\end{defs}
+
+Обозначение материала детали задает команда
+\begin{defs}
+\cmddef{ESKDmaterial}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Массу изделия задает команда
+\begin{defs}
+\cmddef{ESKDmass}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Масштаб чертежа задает команда
+\begin{defs}
+\cmddef{ESKDscale}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Наименование или различительный индекс предприятия задает команда
+\begin{defs}
+\cmddef{ESKDgroup}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Фамилию автора задает команда
+\begin{defs}
+\cmddef{ESKDauthor}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Фамилию проверяющего задает команда
+\begin{defs}
+\cmddef{ESKDchecker}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Фамилию нормоконтролера задает команда
+\begin{defs}
+\cmddef{ESKDnormContr}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Фамилию утвердившего задает команда
+\begin{defs}
+\cmddef{ESKDapprovedBy}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Дату документа задает команда
+\begin{defs}
+\cmddef{ESKDdate}{\{\cmdarg{год/месяц/число}\}}
+\end{defs}
 
 \end{document}
 
