@@ -21,7 +21,6 @@ m4_FILE_INIT
 m4_FILE_ID([[$Date$]]) Stamp GOST 2.104-68]
 
 \RequirePackage{calc}
-\RequirePackage{ifthen}
 
 m4_dnl формат бумаги:
 \newcommand{\ESKD@paper}{a4}
@@ -301,6 +300,9 @@ m4_dnl рамка
 \put(0,0){\line(0,1){\ESKDltu{\ESKDframeH}}}
 \put(\ESKDltu{\ESKDframeW},0){\line(0,1){\ESKDltu{\ESKDframeH}}}
 \end{picture}}}
+\newcommand{\ESKD@draw@frame}{%
+  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
+    \usebox{\ESKD@frame@box}}}
 
 m4_dnl штамп форма 1
 \newsavebox{\ESKD@stamp@i@box}
@@ -376,6 +378,11 @@ m4_dnl штамп форма 1
     \ifESKD@twoside\ESKDcolumnVIItwosideName\else\ESKDcolumnVIIname\fi\ \thepage}}
 \fi
 \end{picture}}
+\newcommand{\ESKD@draw@stamp@i}{%
+  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
+    \usebox{\ESKD@stamp@i@box}}
+  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
+    \ESKD@stamp@i@var}}
 
 m4_dnl штамп форма 2
 \newsavebox{\ESKD@stamp@ii@box}
@@ -442,6 +449,11 @@ m4_dnl штамп форма 2
   \put(165, 16.3){\makebox[20mm]{\ESKDfontIII\pageref{LastPage}}}
 \fi
 \end{picture}}
+\newcommand{\ESKD@draw@stamp@ii}{%
+  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
+    \usebox{\ESKD@stamp@ii@box}}
+  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
+    \ESKD@stamp@ii@var}}
 
 m4_dnl штамп форма 2а
 \newsavebox{\ESKD@stamp@ii@a@box}
@@ -478,6 +490,11 @@ m4_dnl штамп форма 2а
   \put(175, 3){\makebox[10mm]{\ESKDfontIII\thepage}}
 \fi
 \end{picture}}
+\newcommand{\ESKD@draw@stamp@ii@a}{%
+  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
+    \usebox{\ESKD@stamp@ii@a@box}}
+  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
+    \ESKD@stamp@ii@a@var}}
 
 m4_dnl штамп форма 2б
 \newsavebox{\ESKD@stamp@ii@b@box}
@@ -514,6 +531,11 @@ m4_dnl штамп форма 2б
   \put(0, 3){\makebox[10mm]{\ESKDfontIII\thepage}}
 \fi
 \end{picture}}
+\newcommand{\ESKD@draw@stamp@ii@b}{%
+  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
+    \usebox{\ESKD@stamp@ii@b@box}}
+  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
+    \ESKD@stamp@ii@b@var}}
 
 m4_dnl графы от 19 по 23
 \newsavebox{\ESKD@columns@xix@box}
@@ -539,6 +561,10 @@ m4_dnl графы от 19 по 23
 \put(85, 2.3){\makebox[25mm]{\ESKDfontIII\ESKDtheColumnXXII}}
 \put(110, 8.3){\makebox[35mm]{\ESKDfontIII\ESKDcolumnXXIIIname}}
 \end{picture}}}
+\newcommand{\ESKD@draw@columns@xix}{%
+  \ESKDonFrontSideOnly{%
+    \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
+      \begin{turn}{90}\usebox{\ESKD@columns@xix@box}\end{turn}}}}
 
 m4_dnl графы 24 и 25
 \newsavebox{\ESKD@columns@xxiv@box}
@@ -557,6 +583,10 @@ m4_dnl графы 24 и 25
 \put(60, 8.3){\makebox[60mm]{\ESKDfontIII\ESKDcolumnXXVname}}
 \put(60, 2.3){\makebox[60mm]{\ESKDfontIII\ESKDtheColumnXXV}}
 \end{picture}}}
+\newcommand{\ESKD@draw@columns@xxiv}{%
+  \setlength{\ESKD@tmpdima}{\ESKDframeY+167mm}
+  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKD@tmpdima}){%
+    \begin{turn}{90}\usebox{\ESKD@columns@xxiv@box}\end{turn}}}
 
 m4_dnl графа 26
 \newsavebox{\ESKD@column@xxvi@box}
@@ -570,6 +600,17 @@ m4_dnl графа 26
 \put(1,13){\begin{turn}{180}\parbox[b][12mm][c]{68mm}{%
   \centering\ESKDfontV\ESKDtheColumnII}\end{turn}}
 \end{picture}}}
+\newcommand{\ESKD@draw@column@xxvi}{%
+  \ifESKD@column@xxvi@portrait%
+    \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-14mm}%
+    \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH}%
+    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+      \begin{turn}{270}\usebox{\ESKD@column@xxvi@box}\end{turn}}%
+  \else%
+    \setlength{\ESKD@tmpdima}{\ESKDframeY+\ESKDframeH-14mm}%
+    \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKD@tmpdima}){%
+      \usebox{\ESKD@column@xxvi@box}}%
+  \fi}
 
 m4_dnl графы 27, 28, 29 для формы 1
 \newsavebox{\ESKD@columns@xxvii@i@box}
@@ -589,6 +630,22 @@ m4_dnl графы 27, 28, 29 для формы 1
 \put(14,4.7){\begin{turn}{180}\makebox[53mm][c]{%
   \ESKDfontIII\ESKDtheColumnXXIX}\end{turn}}
 \end{picture}}}
+\newcommand{\ESKD@draw@columns@xxvii@i}{%
+  \ifESKD@column@xxvi@portrait%
+    \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-14mm}%
+    \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-70mm}%
+    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+      \begin{turn}{270}\usebox{\ESKD@columns@xxvii@i@box}\end{turn}}%
+  \else%
+    \setlength{\ESKD@tmpdima}{\ESKDframeX+70mm}%
+    \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-14mm}%
+    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+      \usebox{\ESKD@columns@xxvii@i@box}}%
+  \fi%
+  \setlength{\ESKD@tmpdima}{\ESKDstampX+65mm}%
+  \setlength{\ESKD@tmpdimb}{\ESKDstampY+55mm}%
+  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+    \usebox{\ESKD@column@xxx@box}}}%
 
 m4_dnl графы 27, 28, 29 для формы 2
 \newsavebox{\ESKD@columns@xxvii@ii@box}
@@ -606,6 +663,14 @@ m4_dnl графы 27, 28, 29 для формы 2
 \put(14,2.3){\makebox[53mm][c]{\ESKDfontIII\ESKDtheColumnXXVIII}}
 \put(67,2.3){\makebox[53mm][c]{\ESKDfontIII\ESKDtheColumnXXIX}}
 \end{picture}}}
+\newcommand{\ESKD@draw@columns@xxvii@ii}{%
+  \setlength{\ESKD@tmpdima}{\ESKDstampX+65mm}
+  \setlength{\ESKD@tmpdimb}{\ESKDstampY+48mm}
+  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+    \usebox{\ESKD@columns@xxvii@ii@box}}%
+  \setlength{\ESKD@tmpdimb}{\ESKDstampY+40mm}%
+  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+    \usebox{\ESKD@column@xxx@box}}}
 
 m4_dnl графа 30
 \newsavebox{\ESKD@column@xxx@box}
@@ -618,6 +683,13 @@ m4_dnl графа 30
 \put(0,0){\line(0,1){8}}
 \put(1,1){\parbox[b][6mm][c]{118mm}{\centering\ESKDfontV\ESKDtheColumnXXX}}
 \end{picture}}}
+
+m4_dnl графа 32
+\newcommand{\ESKD@draw@column@xxxii}{%
+  \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-50mm}%
+  \setlength{\ESKD@tmpdimb}{\ESKDframeY-3.7mm}%
+  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+    \makebox[50mm][r]{\ESKDfontIII\ESKDtheColumnXXXII}}}
 
 m4_dnl графа 33
 \newsavebox{\ESKD@column@xxxiii@box}
@@ -634,6 +706,11 @@ m4_dnl графа 33
 \multiput(0,20)(0,-5){3}{\line(1,0){20}}
 \put(0,1.3){\makebox[20mm][c]{\ESKDfontIII\ESKDcolumnXXXIIIname}}
 \end{picture}}}
+\newcommand{\ESKD@draw@column@xxxiii}{%
+  \setlength{\ESKD@tmpdima}{\ESKDstampX-20mm}%
+  \setlength{\ESKD@tmpdimb}{\ESKDstampY+30mm}%
+  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+    \usebox{\ESKD@column@xxxiii@box}}}
 
 m4_dnl графа 34
 \newsavebox{\ESKD@column@xxxiv@box}
@@ -645,6 +722,21 @@ m4_dnl графа 34
   \framebox{%
     \parbox{70mm-2\fboxsep-\fboxrule}{\centering\ESKDfontIII%
       \ESKDtheColumnXXXIV\rule{0mm}{7mm-2\fboxsep-\fboxrule}}}}}}
+\newcommand{\ESKD@draw@column@xxxiv}{%
+  \ifESKD@column@xxvi@portrait%
+    \setlength{\ESKD@tmpdima}{%
+      \ESKDframeX+\ESKDframeW-114mm-.5\ESKDlineThick}%
+    \setlength{\ESKD@tmpdimb}{%
+      \ESKDframeY+\ESKDframeH+.5\ESKDlineThick}%
+    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+      \begin{turn}{270}\usebox{\ESKD@column@xxxiv@box}\end{turn}}%
+  \else%
+    \setlength{\ESKD@tmpdima}{\ESKDframeX-.5\ESKDlineThick}%
+    \setlength{\ESKD@tmpdimb}{%
+      \ESKDframeY+\ESKDframeH-114mm-.5\ESKDlineThick}%
+    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+      \usebox{\ESKD@column@xxxiv@box}}%
+  \fi}
 
 m4_dnl обозначения зон
 \newcommand{\ESKD@make@h@zonelabels}{
@@ -783,176 +875,96 @@ m4_dnl записать боксы полсе начала документа
   \ifESKD@enable@column@xxxiv\ESKD@make@column@xxxiv@box\fi%
   \renewcommand{\ESKD@make@column@xxxiv@box}{}}
 
-m4_dnl определение стилей страниц
-\newcommand{\ESKD@style@sh@empty}{0mm}
-\newcommand{\ESKD@style@draw@empty}{}
+\RequirePackage{eskdhash}
 
-\newcommand{\ESKD@check@columns@xix}{%
-  \ifESKD@enable@columns@xix%
-    \ESKDonFrontSideOnly{%
-      \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
-        \begin{turn}{90}\usebox{\ESKD@columns@xix@box}\end{turn}}}%
-  \fi}
+m4_dnl создает новый стиль страницы
+\newcommand{\ESKDnewStyle}[2]{%
+  \ESKD@hash@new{@style@draw@#1}%
+  \@namedef{ESKD@style@sh@#1}{#2}}
 
-\newcommand{\ESKD@check@columns@xxiv}{%
-  \ifESKD@enable@columns@xxiv%
-    \setlength{\ESKD@tmpdima}{\ESKDframeY+167mm}
-    \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKD@tmpdima}){%
-      \begin{turn}{90}\usebox{\ESKD@columns@xxiv@box}\end{turn}}%
-  \fi}
+m4_dnl установка элементов стиля
+\newcommand{\ESKDputOnStyle}[3]{%
+  \ESKD@hash@set{@style@draw@#1}{#2}{#3}}
+\newcommand{\ESKDremoveFromStyle}[2]{%
+  \ESKD@hash@set{@style@draw@#1}{#2}{}}
 
-\newcommand{\ESKD@check@column@xxvi}{%
-  \ifESKD@enable@column@xxvi%
-    \ifESKD@column@xxvi@portrait%
-      \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-14mm}%
-      \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH}%
-      \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-	\begin{turn}{270}\usebox{\ESKD@column@xxvi@box}\end{turn}}%
-    \else%
-      \setlength{\ESKD@tmpdima}{\ESKDframeY+\ESKDframeH-14mm}%
-      \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKD@tmpdima}){%
-	\usebox{\ESKD@column@xxvi@box}}%
-    \fi%
-  \fi}
+m4_dnl пустой стиль
+\ESKDnewStyle{empty}{0mm}
 
-\newcommand{\ESKD@check@columns@xxvii@i}{%
-  \ifESKD@enable@columns@xxvii%
-    \ifESKD@column@xxvi@portrait%
-      \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-14mm}%
-      \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-70mm}%
-      \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-	\begin{turn}{270}\usebox{\ESKD@columns@xxvii@i@box}\end{turn}}%
-    \else%
-      \setlength{\ESKD@tmpdima}{\ESKDframeX+70mm}%
-      \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-14mm}%
-      \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-	\usebox{\ESKD@columns@xxvii@i@box}}%
-    \fi%
-    \setlength{\ESKD@tmpdima}{\ESKDstampX+65mm}%
-    \setlength{\ESKD@tmpdimb}{\ESKDstampY+55mm}%
-    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-      \usebox{\ESKD@column@xxx@box}}%
-  \fi}
+m4_dnl стиль титульной страницы
+\ESKDnewStyle{title}{0mm}
+\ESKDputOnStyle{title}{frame}{\ESKD@draw@frame}
+\ifESKD@enable@columns@xix
+  \ESKDputOnStyle{title}{columnsxix}{\ESKD@draw@columns@xix}
+\fi
 
-\newcommand{\ESKD@check@columns@xxvii@ii}{%
-  \ifESKD@enable@columns@xxvii%
-    \setlength{\ESKD@tmpdima}{\ESKDstampX+65mm}
-    \setlength{\ESKD@tmpdimb}{\ESKDstampY+48mm}
-    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-      \usebox{\ESKD@columns@xxvii@ii@box}}%
-    \setlength{\ESKD@tmpdimb}{\ESKDstampY+40mm}%
-    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-      \usebox{\ESKD@column@xxx@box}}%
-  \fi}
+m4_dnl форма 1
+\ESKDnewStyle{formI}{\ifESKD@enable@columns@xxvii 63mm\else 55mm\fi}
+\ESKDputOnStyle{formI}{frame}{\ESKD@draw@frame}
+\ESKDputOnStyle{formI}{stamp}{\ESKD@draw@stamp@i}
+\ifESKD@enable@columns@xix
+  \ESKDputOnStyle{formI}{columnsxix}{\ESKD@draw@columns@xix}
+\fi
+\ifESKD@enable@columns@xxiv
+  \ESKDputOnStyle{formI}{columnsxxiv}{\ESKD@draw@columns@xxiv}
+\fi
+\ifESKD@enable@column@xxvi
+  \ESKDputOnStyle{formI}{columnxxvi}{\ESKD@draw@column@xxvi}
+\fi
+\ifESKD@enable@columns@xxvii
+  \ESKDputOnStyle{formI}{columnsxxvii}{\ESKD@draw@columns@xxvii@i}
+\fi
+\ifESKD@enable@column@xxxii
+  \ESKDputOnStyle{formI}{columnxxxii}{\ESKD@draw@column@xxxii}
+\fi
+\ifESKD@enable@column@xxxiii
+  \ESKDputOnStyle{formI}{columnxxxiii}{\ESKD@draw@column@xxxiii}
+\fi
+\ifESKD@enable@column@xxxiv
+  \ESKDputOnStyle{formI}{columnxxxiv}{\ESKD@draw@column@xxxiv}
+\fi
+\ifESKD@zonelabels%
+  \ESKDputOnStyle{formI}{zonelabels}{\put(0,0){\ESKD@zonelabels@i@var}}
+\fi
 
-\newcommand{\ESKD@check@column@xxxii}{%
-  \ifESKD@enable@column@xxxii%
-    \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-50mm}%
-    \setlength{\ESKD@tmpdimb}{\ESKDframeY-3.7mm}%
-    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-      \makebox[50mm][r]{\ESKDfontIII\ESKDtheColumnXXXII}}%
-  \fi}
+m4_dnl форма 2
+\ESKDnewStyle{formII}{\ifESKD@enable@columns@xxvii 55mm\else 40mm\fi}
+\ESKDputOnStyle{formII}{frame}{\ESKD@draw@frame}
+\ESKDputOnStyle{formII}{stamp}{\ESKD@draw@stamp@ii}
+\ifESKD@enable@columns@xix
+  \ESKDputOnStyle{formII}{columnsxix}{\ESKD@draw@columns@xix}
+\fi
+\ifESKD@enable@columns@xxiv
+  \ESKDputOnStyle{formII}{columnsxxiv}{\ESKD@draw@columns@xxiv}
+\fi
+\ifESKD@enable@columns@xxvii
+  \ESKDputOnStyle{formII}{columnsxxvii}{\ESKD@draw@columns@xxvii@ii}
+\fi
+\ifESKD@enable@column@xxxii
+  \ESKDputOnStyle{formII}{columnxxxii}{\ESKD@draw@column@xxxii}
+\fi
 
-\newcommand{\ESKD@check@column@xxxiii}{%
-  \ifESKD@enable@column@xxxiii%
-    \setlength{\ESKD@tmpdima}{\ESKDstampX-20mm}%
-    \setlength{\ESKD@tmpdimb}{\ESKDstampY+30mm}%
-    \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-      \usebox{\ESKD@column@xxxiii@box}}%
-  \fi}
-
-\newcommand{\ESKD@check@column@xxxiv}{%
-  \ifESKD@enable@column@xxxiv%
-    \ifESKD@column@xxvi@portrait%
-      \setlength{\ESKD@tmpdima}{%
-        \ESKDframeX+\ESKDframeW-114mm-.5\ESKDlineThick}%
-      \setlength{\ESKD@tmpdimb}{%
-        \ESKDframeY+\ESKDframeH+.5\ESKDlineThick}%
-      \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-	\begin{turn}{270}\usebox{\ESKD@column@xxxiv@box}\end{turn}}%
-    \else%
-      \setlength{\ESKD@tmpdima}{\ESKDframeX-.5\ESKDlineThick}%
-      \setlength{\ESKD@tmpdimb}{%
-        \ESKDframeY+\ESKDframeH-114mm-.5\ESKDlineThick}%
-      \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-	\usebox{\ESKD@column@xxxiv@box}}%
-    \fi%
-  \fi}
-
-\newcommand{\ESKD@style@sh@title}{0mm}
-\newcommand{\ESKD@style@draw@title}{
-  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
-    \usebox{\ESKD@frame@box}}%
-  \ESKD@check@columns@xix}
-
-\newcommand{\ESKD@style@sh@formI}{%
-  \ifESKD@enable@columns@xxvii 63mm\else 55mm\fi}
-\newcommand{\ESKD@style@draw@formI}{
-  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
-    \usebox{\ESKD@frame@box}}
-  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
-    \usebox{\ESKD@stamp@i@box}}
-  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
-    \ESKD@stamp@i@var}
-  \ESKD@check@columns@xix
-  \ESKD@check@columns@xxiv
-  \ESKD@check@column@xxvi
-  \ESKD@check@columns@xxvii@i
-  \ESKD@check@column@xxxii
-  \ESKD@check@column@xxxiii
-  \ESKD@check@column@xxxiv
-  \ifESKD@zonelabels%
-    \put(0,0){\ESKD@zonelabels@i@var}%
-  \fi}
-
-\newcommand{\ESKD@style@sh@formII}{%
-  \ifESKD@enable@columns@xxvii 55mm\else 40mm\fi}
-\newcommand{\ESKD@style@draw@formII}{
-  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
-    \usebox{\ESKD@frame@box}}
-  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
-    \usebox{\ESKD@stamp@ii@box}}
-  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
-    \ESKD@stamp@ii@var}
-  \ESKD@check@columns@xix
-  \ESKD@check@columns@xxiv
-  \ESKD@check@columns@xxvii@ii
-  \ESKD@check@column@xxxii}
-
-\newcommand{\ESKD@style@sh@formIIa}{15mm}
-\newcommand{\ESKD@style@draw@formIIa}{
-  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
-    \usebox{\ESKD@frame@box}}
-  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
-    \usebox{\ESKD@stamp@ii@a@box}}
-  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
-    \ESKD@stamp@ii@a@var}
-  \ESKD@check@columns@xix
-  \ESKD@check@column@xxvi
-  \ESKD@check@column@xxxii
-  \ifESKD@zonelabels
-    \put(0,0){\ESKD@zonelabels@ii@var}
-  \fi}
-
-\newcommand{\ESKD@style@sh@formIIb}{15mm}
-\newcommand{\ESKD@style@draw@formIIb}{
-  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
-    \usebox{\ESKD@frame@box}}
-  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
-    \usebox{\ESKD@stamp@ii@b@box}}
-  \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
-    \ESKD@stamp@ii@b@var}
-  \ESKD@check@columns@xix
-  \ESKD@check@column@xxxii}
-
-\newcommand{\ESKD@style@sh@formIIsec}{%
+m4_dnl форма 2а и 2б
+\ESKDnewStyle{formIIab}{15mm}
+\ESKDputOnStyle{formIIab}{frame}{\ESKD@draw@frame}
+\ESKDputOnStyle{formIIab}{stamp}{%
   \ifESKD@twoside%
-    \ifodd\c@page\ESKD@style@sh@formIIa\else\ESKD@style@sh@formIIb\fi%
-  \else\ESKD@style@sh@formIIa\fi}
-\newcommand{\ESKD@style@draw@formIIsec}{%
-  \ifESKD@twoside%
-    \ifodd\c@page\ESKD@style@draw@formIIa\else\ESKD@style@draw@formIIb\fi%
-  \else\ESKD@style@draw@formIIa\fi}
+    \ifodd\c@page\ESKD@draw@stamp@ii@a\else\ESKD@draw@stamp@ii@b\fi%
+  \else\ESKD@draw@stamp@ii@a\fi}
+\ifESKD@enable@columns@xix
+  \ESKDputOnStyle{formIIab}{columnsxix}{\ESKD@draw@columns@xix}
+\fi
+\ifESKD@enable@columns@xxiv
+  \ESKDputOnStyle{formIIab}{columnsxxiv}{%
+  \ifESKD@twoside\ifodd\c@page\ESKD@draw@columns@xxiv\fi%
+  \else\ESKD@draw@columns@xxiv\fi}
+\fi
+\ifESKD@enable@column@xxxii
+  \ESKDputOnStyle{formIIab}{columnxxxii}{\ESKD@draw@column@xxxii}
+\fi
+\ifESKD@zonelabels
+  \ESKDputOnStyle{formIIab}{zonelabels}{\put(0,0){\ESKD@zonelabels@ii@var}}
+\fi
 
 m4_dnl текущее расстояние от текса до рамки
 \newlength{\ESKD@curpad@h}
@@ -961,8 +973,8 @@ m4_dnl текущее расстояние от текса до рамки
 \setlength{\ESKD@curpad@v}{\ESKD@padding@v}
 
 \RequirePackage{everyshi}
-\def\ESKD@Hook{}
-\def\ESKD@ThisHook{}
+\def\ESKD@curstyle{}
+\def\ESKD@thisstyle{}
 \def\ESKD@extra@Hook{}
 \def\ESKD@extra@ThisHook{}
 \newcommand{\ESKD@ShipoutPicture}{%
@@ -985,13 +997,18 @@ m4_dnl текущее расстояние от текса до рамки
     \global\setbox\@cclv\vbox{%
       \vbox{\let\protect\relax
 	\begin{picture}(0,0)(\ESKDltu{\ESKD@origin@x},\ESKDltu{\ESKD@origin@y})%
-	  \ifx\ESKD@ThisHook\@empty%
-	    \ESKD@Hook\else\ESKD@ThisHook%
-	  \fi%
+	  \ifx\ESKD@thisstyle\@empty
+	    \let\ESKD@thisstyle\ESKD@curstyle
+	  \fi
+	  \loop
+	  \ifnum \ESKD@hash@pos{@style@draw@\ESKD@thisstyle} %
+	    < \ESKD@hash@count{@style@draw@\ESKD@thisstyle}
+	    \ESKD@hash@next@value{@style@draw@\ESKD@thisstyle}\relax
+	  \repeat
 	  \ifx\ESKD@extra@ThisHook\@empty%
 	    \ESKD@extra@Hook\else\ESKD@extra@ThisHook%
 	  \fi%
-	  \global\let\ESKD@ThisHook\@empty%
+	  \global\let\ESKD@thisstyle\@empty%
 	  \global\let\ESKD@extra@ThisHook\@empty%
 	\end{picture}}%
 	\nointerlineskip%
@@ -1005,15 +1022,15 @@ m4_dnl текущее расстояние от текса до рамки
 m4_dnl устанавливает стиль текущей и последующих страниц
 \newcommand{\ESKDstyle}[1]{%
 \pagestyle{empty}%
-\def\ESKD@Hook{\@nameuse{ESKD@style@draw@#1}}%
+\def\ESKD@curstyle{#1}%
 \changetext{\paperheight-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
   \expandafter-\@nameuse{ESKD@style@sh@\ifESKD@ignstamp empty\else #1\fi}-\textheight}{}{}{}{}%
-\let\ESKD@ThisHook\@empty}
+\let\ESKD@thisstyle\@empty}
 
 m4_dnl устанавливает стиль текущей страницы
 \newcommand{\ESKDthisStyle}[1]{%
 \thispagestyle{empty}%
-\def\ESKD@ThisHook{\@nameuse{ESKD@style@draw@#1}}%
+\def\ESKD@thisstyle{#1}%
 \setlength{\vsize}{\paperheight-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
   \expandafter-\@nameuse{ESKD@style@sh@\ifESKD@ignstamp empty\else #1\fi}}%
 \setlength{\@colht}{\vsize}\setlength{\@colroom}{\vsize}}
@@ -1030,7 +1047,7 @@ m4_dnl
   \else\clearpage\fi}
 
 m4_dnl определение стиля страницы по умолчанию
-\renewcommand{\ESKD@default@style@sec}{formIIsec}
+\renewcommand{\ESKD@default@style@sec}{formIIab}
 \ifx\ESKD@default@style\ESKD@cmp@formII%
   \AtBeginDocument{\ESKDthisStyle{formII}}
 \else
@@ -1042,25 +1059,23 @@ m4_dnl определение стиля страницы по умолчанию
 \fi
 \ESKDstyle{\ESKD@default@style@sec}
 
+\newcommand{\ESKDsetPadding}[2]{%
+  \changepage{%
+    2\ESKD@curpad@v-#2-#2}{%
+    2\ESKD@curpad@h-#1-#1}{%
+    #1-\ESKD@curpad@h}{%
+    #1-\ESKD@curpad@h}{}{%
+    #2-\ESKD@curpad@v}{}{}{}
+  \setlength{\ESKD@curpad@h}{#1}
+  \setlength{\ESKD@curpad@v}{#2}
+  \edef\ESKD@tmpcmda{\ESKD@thisstyle}
+  \ifx\ESKD@tmpcmda\@empty\else
+    \ESKDthisStyle{\ESKD@tmpcmda}
+  \fi}
+
 \newenvironment{ESKDpadding}[2]{%
-  \newpage%
-  \setlength{\ESKD@curpad@h}{#1}%
-  \setlength{\ESKD@curpad@v}{#2}%
-  \changepage{%
-    2\ESKD@padding@v-2\ESKD@curpad@v}{%
-    2\ESKD@padding@h-2\ESKD@curpad@h}{%
-    \ESKD@curpad@h-\ESKD@padding@h}{%
-    \ESKD@curpad@h-\ESKD@padding@h}{}{%
-    \ESKD@curpad@v-\ESKD@padding@v}{}{}{}}{%
-  \clearpage%
-  \changepage{%
-    0pt-(2\ESKD@padding@v-2\ESKD@curpad@v)}{%
-    0pt-(2\ESKD@padding@h-2\ESKD@curpad@h)}{%
-    0pt-(\ESKD@curpad@h-\ESKD@padding@h)}{%
-    0pt-(\ESKD@curpad@h-\ESKD@padding@h)}{}{%
-    0pt-(\ESKD@curpad@v-\ESKD@padding@v)}{}{}{}%
-  \setlength{\ESKD@curpad@h}{\ESKD@padding@h}%
-  \setlength{\ESKD@curpad@v}{\ESKD@padding@v}}
+  \newpage\ESKDsetPadding{#1}{#2}}{%
+  \clearpage\ESKDsetPadding{\ESKD@padding@h}{\ESKD@padding@v}}
 
 \newenvironment{ESKDzeroPadding}{%
   \begin{ESKDpadding}{0mm}{0mm}}{\end{ESKDpadding}}

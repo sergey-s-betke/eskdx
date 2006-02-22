@@ -31,10 +31,7 @@ m4_FILE_ID([[$Date$]]) Specification GOST 2.106.95]
 
 m4_dnl спецификация
 \newenvironment{ESKDspecification}{%
-\begin{ESKDzeroPadding}%
-\setcounter{page}{1}%
-\ESKDthisStyle{formII}%
-\ESKDthisPut{
+\ESKDputOnStyle{formII}{spec}{%
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
     \begin{picture}(0,0)
     \linethickness{\ESKDlineThick}
@@ -48,7 +45,7 @@ m4_dnl спецификация
     \linethickness{\ESKDlineThin}
     \multiput(0,48)(0, 8){28}{\line(1,0){185}}
     \end{picture}}}
-\ESKDput{
+\ESKDputOnStyle{formIIab}{spec}{%
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
     \begin{picture}(0,0)
     \linethickness{\ESKDlineThick}
@@ -62,6 +59,7 @@ m4_dnl спецификация
     \linethickness{\ESKDlineThin}
     \multiput(0,24)(0, 8){31}{\line(1,0){185}}
     \end{picture}}}
+\begin{ESKDzeroPadding}%
 \setlength{\tabcolsep}{0.5mm}%
 \setlength{\LTpre}{0mm}%
 \setlength{\LTpost}{0mm}%
@@ -88,6 +86,7 @@ m4_dnl спецификация
 \ESKDspecColumnVIIname}\endhead}{%
 \end{longtable}%
 \end{ESKDzeroPadding}%
-\ESKDput{}}
+\ESKDremoveFromStyle{formII}{spec}%
+\ESKDremoveFromStyle{formIIab}{spec}}
 
 m4_dnl vim:ft=tex:sw=2:ai

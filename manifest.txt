@@ -6,6 +6,7 @@ source/eskdchngsheet.sty.in
 source/eskdexplan.sty.in
 source/eskdfont.sty.in
 source/eskdgraph.cls.in
+source/eskdhash.sty.in
 source/eskdindent.sty.in
 source/eskdinfo.sty.in
 source/eskdlang.sty.in
