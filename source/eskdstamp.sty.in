@@ -761,7 +761,7 @@ m4_dnl обозначения зон
     \advance \ESKD@tmpcnta 1
   \repeat
 }
-\newcommand{\ESKD@make@v@zonelabels}{
+\newcommand{\ESKD@make@v@zonelabels}[1]{
   \ESKD@tmpcnta = 1
   \ESKD@tmpdima = 0mm
   \ESKD@tmpdimb = \ESKDframeX
@@ -782,7 +782,9 @@ m4_dnl обозначения зон
 	\centering\ESKDfontIII\@Alph\ESKD@tmpcnta}}
   \ifnum \ESKD@tmpcnta < \ESKD@zonelabel@vc
     \advance \ESKD@tmpdima \ESKD@zonelabel@vs
-    \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(1,0){5}}
+    \ifnum \ESKD@tmpcnta = #1\else
+      \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(1,0){5}}
+    \fi
     \put(\ESKDltu{\ESKD@tmpdimc},\ESKDltu{\ESKD@tmpdima}){\line(1,0){5}}
     \advance \ESKD@tmpcnta 1
   \repeat
@@ -791,7 +793,13 @@ m4_dnl обозначения зон
 \begin{picture}(0,0)(0,0)
 \linethickness{\ESKDlineThick}
 \ESKD@make@h@zonelabels
-\ESKD@make@v@zonelabels
+\ifESKD@enable@columns@xxiv
+  \ifdim \ESKD@zonelabel@vs < 292mm
+    \ESKD@make@v@zonelabels{1}\else
+    \ESKD@make@v@zonelabels{0}\fi
+\else
+  \ESKD@make@v@zonelabels{0}
+\fi
 \ifdim \ESKD@margin@si > 5mm
   \ESKD@tmpdima = \ESKDframeY
   \ESKD@tmpdimb = \ESKDframeX
@@ -823,7 +831,7 @@ m4_dnl обозначения зон
 \begin{picture}(0,0)(0,0)
 \linethickness{\ESKDlineThick}
 \ESKD@make@h@zonelabels
-\ESKD@make@v@zonelabels
+\ESKD@make@v@zonelabels{0}
 \ifdim \ESKD@margin@si > 5mm
   \ESKD@tmpdima = \ESKDframeY
   \ESKD@tmpdimb = \ESKDframeX
@@ -952,12 +960,9 @@ m4_dnl форма 2а и 2б
     \ifodd\c@page\ESKD@draw@stamp@ii@a\else\ESKD@draw@stamp@ii@b\fi%
   \else\ESKD@draw@stamp@ii@a\fi}
 \ifESKD@enable@columns@xix
-  \ESKDputOnStyle{formIIab}{columnsxix}{\ESKD@draw@columns@xix}
-\fi
-\ifESKD@enable@columns@xxiv
-  \ESKDputOnStyle{formIIab}{columnsxxiv}{%
-  \ifESKD@twoside\ifodd\c@page\ESKD@draw@columns@xxiv\fi%
-  \else\ESKD@draw@columns@xxiv\fi}
+  \ESKDputOnStyle{formIIab}{columnsxix}{%
+    \ifESKD@twoside\ifodd\c@page\ESKD@draw@columns@xix\fi%
+    \else\ESKD@draw@columns@xix\fi}
 \fi
 \ifESKD@enable@column@xxxii
   \ESKDputOnStyle{formIIab}{columnxxxii}{\ESKD@draw@column@xxxii}
