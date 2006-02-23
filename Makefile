@@ -8,12 +8,16 @@ DIST_FILES = \
 	     include.mak \
 	     Makefile \
 	     manifest.txt \
+	     NEWS \
+	     NEWS.in \
 	     README \
 	     README.in
 
 include $(TOP_DIR)/include.mak
 
-all: README
+all: NEWS README
 
+NEWS: NEWS.in $(M4DEPS)
+	m4 $(M4FLAGS) $< >$@
 README: README.in $(M4DEPS)
 	m4 $(M4FLAGS) $< >$@
