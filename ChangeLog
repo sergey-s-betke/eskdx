@@ -1,4 +1,63 @@
-2006-02-14  Konstantin Korikov  <lostclus@ua.fm>
+2006-02-23  Konstantin Korikov  <lostclus@ua.fm>
+
+	* include.mak: Changed version to 0.91.
+
+	* Makefile, NEWS.in: Added NEWS.
+
+	* manual/eskdx.tex.in: Manual updated.
+
+	* source/eskdtext.cls.in, source/eskdtitle.sty.in,
+	source/eskdtitlebase.sty.in, source/eskdukrainian.def.in,
+	source/eskdindent.sty.in, source/eskdinfo.sty.in,
+	source/eskdlang.sty.in, source/eskdlist.sty.in,
+	source/eskdrussian.def.in, source/eskdsect.sty.in,
+	source/eskdspec.sty.in, source/eskdstamp.sty.in,
+	source/eskdappsheet.sty.in, source/eskdcap.sty.in,
+	source/eskdchngsheet.sty.in, source/eskdexplan.sty.in,
+	source/eskdfont.sty.in, source/eskdgraph.cls.in,
+	source/eskdhash.sty.in, source/eskdafterpkg.sty.in: Fixed broken
+	identification lines.
+
+	* source/eskdstamp.sty.in: Make frame stamp column drawing
+	commands public. Some optimizations.
+
+	* manual/eskdx.tex.in, source/eskdrussian.def.in,
+	source/eskdstamp.sty.in, source/eskdukrainian.def.in: Fixed
+	column 32 (added 'Format' word). Added column 31.
+
+	* source/eskdstamp.sty.in: Fixed zone label separator line when
+	its overlaps with columns 24 and 25. Fixed columns 19-23 and
+	columns 24-25 on formIIab style.
+
+2006-02-22  Konstantin Korikov	<lostclus@ua.fm>
+
+	* manual/eskdx.tex.in: Manual updated.
+
+	* source/eskdinfo.sty.in: Fixed \hypersetup.
+
+	* manifest.txt, source/eskdhash.sty.in, source/eskdspec.sty.in,
+	source/eskdstamp.sty.in: New package eskdhash. eskdstamp engine
+	use hashes to store style drawing items.
+
+2006-02-17  Konstantin Korikov	<lostclus@ua.fm>
+
+	* manifest.txt, source/eskdafterpkg.sty.in,
+	source/eskdinfo.sty.in: Added eskdafterpkg package.
+
+2006-02-15  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdtext.cls.in, source/eskdtitle.sty.in, manifest.txt,
+	source/eskdgraph.cls.in, source/eskdinfo.sty.in: New package:
+	eskdinfo.
+
+	* source/eskdstamp.sty.in, source/eskdtitlebase.sty.in: Support
+	for empty style in title page.
+
+2006-02-14  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdgraph.cls.in: Fixed \ESKDdate.
+
+	* ChangeLog: ChangeLog updated.
 
 	* include.mak: Changed version to 0.90.
 
