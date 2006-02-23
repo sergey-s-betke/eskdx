@@ -168,11 +168,15 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 \opt{columnsxxvii}\par\opt{nocolumnsxxvii}&
 Включает/выключает дополнительные графы 27 по 30. По умолчанию
 выключены.\\\hline
+\opt{columnxxxi}\par\opt{nocolumnxxxi}&
+Включает/выключает дополнительную графу 31. По умолчанию
+включена.\\\hline
 \opt{columnxxxii}\par\opt{nocolumnxxxii}&
 Включает/выключает дополнительную графу 32 (формат листа). По
 умолчанию включена.\\\hline
 \opt{simple}&
-Тоже самое что \opt{nocolumnsxix} и \opt{nocolumnxxxii}.\\\hline
+Тоже самое что \opt{nocolumnsxix}, \opt{nocolumnxxxi} и
+\opt{nocolumnxxxii}.\\\hline
 \opt{linethick=}&
 Устанавливает толщину сплошной толстой линии. По умолчанию
 \val{.4mm}.\\\hline

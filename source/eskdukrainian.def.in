@@ -68,14 +68,20 @@ m4_FILE_ID([[$Date$]]) Language File]
   \cyr\CYRS\cyrp\cyrr\cyra\cyrv. \No}
 \newcommand{\ESKDcolumnXXVname}{%
   \cyr\CYRP\cyre\cyrr\cyrsh. \cyrz\cyra\cyrs\cyrt.}
+\newcommand{\ESKDcolumnXXXIname}{%
+  \cyr\CYRK\cyro\cyrp\cyrii\cyryu\cyrv\cyra\cyrv}
+\@namedef{ESKDa0FormatName}{%
+  \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt\ \CYRA{}0}
+\@namedef{ESKDa1FormatName}{%
+  \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt\ \CYRA{}1}
+\@namedef{ESKDa2FormatName}{%
+  \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt\ \CYRA{}2}
+\@namedef{ESKDa3FormatName}{%
+  \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt\ \CYRA{}3}
+\@namedef{ESKDa4FormatName}{%
+  \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt\ \CYRA{}4}
 \newcommand{\ESKDcolumnXXXIIIname}{%
   \cyr\CYRZ\cyro\cyrn\cyra}
-
-\@namedef{ESKDa0Name}{\cyr\CYRA{}0}
-\@namedef{ESKDa1Name}{\cyr\CYRA{}1}
-\@namedef{ESKDa2Name}{\cyr\CYRA{}2}
-\@namedef{ESKDa3Name}{\cyr\CYRA{}3}
-\@namedef{ESKDa4Name}{\cyr\CYRA{}4}
 
 \newcommand{\ESKDagreedName}{%
   \cyr\CYRP\cyro\cyrg\cyro\cyrd\cyrzh\cyre\cyrn\cyro}
