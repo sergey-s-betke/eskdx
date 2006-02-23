@@ -17,7 +17,7 @@
 m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eskdgraph}[
+\ProvidesClass{eskdgraph}[m4_dnl
 m4_FILE_ID([[$Date$]]) Graphical Documentation]
 
 \DeclareOption{russian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}

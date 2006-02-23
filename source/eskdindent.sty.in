@@ -17,7 +17,7 @@
 m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eskdindent}[
+\ProvidesPackage{eskdindent}[m4_dnl
 m4_FILE_ID([[$Date$]]) Paragraph Indent]
 
 \RequirePackage{indentfirst}

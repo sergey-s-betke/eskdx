@@ -17,7 +17,7 @@
 m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eskdtext}[
+\ProvidesClass{eskdtext}[m4_dnl
 m4_FILE_ID([[$Date$]]) Textual Documentation]
 
 \newcommand{\ESKD@docfont}{14pt}

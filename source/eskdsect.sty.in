@@ -17,7 +17,7 @@
 m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eskdsect}[
+\ProvidesPackage{eskdsect}[m4_dnl
 m4_FILE_ID([[$Date$]]) Sectioning]
 
 \newcommand{\ESKD@point@style}{single}

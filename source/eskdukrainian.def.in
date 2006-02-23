@@ -16,7 +16,7 @@
 %
 m4_ESKDX_INIT
 m4_FILE_INIT
-\ProvidesFile{eskd-ukrainian.def}[
+\ProvidesFile{eskdukrainian.def}[m4_dnl
 m4_FILE_ID([[$Date$]]) Language File]
 
 \newcommand{\ESKDcolumnIVname}{%

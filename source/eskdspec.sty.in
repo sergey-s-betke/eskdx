@@ -17,7 +17,7 @@
 m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eskdspec}[
+\ProvidesPackage{eskdspec}[m4_dnl
 m4_FILE_ID([[$Date$]]) Specification GOST 2.106.95]
 
 \RequirePackage{eskdlang}

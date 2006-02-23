@@ -17,7 +17,7 @@
 m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eskdstamp}[
+\ProvidesPackage{eskdstamp}[m4_dnl
 m4_FILE_ID([[$Date$]]) Stamp GOST 2.104-68]
 
 \RequirePackage{calc}
