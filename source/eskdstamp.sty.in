@@ -296,7 +296,7 @@ m4_dnl расширяется в аргумент только на передней стороне листа
 
 m4_dnl рамка
 \newsavebox{\ESKD@frame@box}
-\newcommand{\ESKD@make@frame@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@frame@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -306,13 +306,13 @@ m4_dnl рамка
 \put(0,0){\line(0,1){\ESKDltu{\ESKDframeH}}}
 \put(\ESKDltu{\ESKDframeW},0){\line(0,1){\ESKDltu{\ESKDframeH}}}
 \end{picture}}}
-\newcommand{\ESKD@draw@frame}{%
+\newcommand{\ESKDdrawFrame}{%
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
     \usebox{\ESKD@frame@box}}}
 
 m4_dnl штамп форма 1
 \newsavebox{\ESKD@stamp@i@box}
-\newcommand{\ESKD@make@stamp@i@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@stamp@i@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -384,7 +384,7 @@ m4_dnl штамп форма 1
     \ifESKD@twoside\ESKDcolumnVIItwosideName\else\ESKDcolumnVIIname\fi\ \thepage}}
 \fi
 \end{picture}}
-\newcommand{\ESKD@draw@stamp@i}{%
+\newcommand{\ESKDdrawStampI}{%
   \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
     \usebox{\ESKD@stamp@i@box}}
   \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
@@ -392,7 +392,7 @@ m4_dnl штамп форма 1
 
 m4_dnl штамп форма 2
 \newsavebox{\ESKD@stamp@ii@box}
-\newcommand{\ESKD@make@stamp@ii@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@stamp@ii@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -455,7 +455,7 @@ m4_dnl штамп форма 2
   \put(165, 16.3){\makebox[20mm]{\ESKDfontIII\pageref{LastPage}}}
 \fi
 \end{picture}}
-\newcommand{\ESKD@draw@stamp@ii}{%
+\newcommand{\ESKDdrawStampII}{%
   \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
     \usebox{\ESKD@stamp@ii@box}}
   \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
@@ -463,7 +463,7 @@ m4_dnl штамп форма 2
 
 m4_dnl штамп форма 2а
 \newsavebox{\ESKD@stamp@ii@a@box}
-\newcommand{\ESKD@make@stamp@ii@a@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@stamp@ii@a@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -496,7 +496,7 @@ m4_dnl штамп форма 2а
   \put(175, 3){\makebox[10mm]{\ESKDfontIII\thepage}}
 \fi
 \end{picture}}
-\newcommand{\ESKD@draw@stamp@ii@a}{%
+\newcommand{\ESKDdrawStampIIa}{%
   \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
     \usebox{\ESKD@stamp@ii@a@box}}
   \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
@@ -504,7 +504,7 @@ m4_dnl штамп форма 2а
 
 m4_dnl штамп форма 2б
 \newsavebox{\ESKD@stamp@ii@b@box}
-\newcommand{\ESKD@make@stamp@ii@b@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@stamp@ii@b@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -537,15 +537,16 @@ m4_dnl штамп форма 2б
   \put(0, 3){\makebox[10mm]{\ESKDfontIII\thepage}}
 \fi
 \end{picture}}
-\newcommand{\ESKD@draw@stamp@ii@b}{%
+\newcommand{\ESKDdrawStampIIb}{%
   \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
     \usebox{\ESKD@stamp@ii@b@box}}
   \put(\ESKDltu{\ESKDstampX},\ESKDltu{\ESKDstampY}){%
     \ESKD@stamp@ii@b@var}}
 
 m4_dnl графы от 19 по 23
+\ifESKD@enable@columns@xix
 \newsavebox{\ESKD@columns@xix@box}
-\newcommand{\ESKD@make@columns@xix@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@columns@xix@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -567,14 +568,16 @@ m4_dnl графы от 19 по 23
 \put(85, 2.3){\makebox[25mm]{\ESKDfontIII\ESKDtheColumnXXII}}
 \put(110, 8.3){\makebox[35mm]{\ESKDfontIII\ESKDcolumnXXIIIname}}
 \end{picture}}}
-\newcommand{\ESKD@draw@columns@xix}{%
+\newcommand{\ESKDdrawColumnsXIX}{%
   \ESKDonFrontSideOnly{%
     \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
       \begin{turn}{90}\usebox{\ESKD@columns@xix@box}\end{turn}}}}
+\fi
 
 m4_dnl графы 24 и 25
+\ifESKD@enable@columns@xxiv
 \newsavebox{\ESKD@columns@xxiv@box}
-\newcommand{\ESKD@make@columns@xxiv@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@columns@xxiv@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -589,14 +592,16 @@ m4_dnl графы 24 и 25
 \put(60, 8.3){\makebox[60mm]{\ESKDfontIII\ESKDcolumnXXVname}}
 \put(60, 2.3){\makebox[60mm]{\ESKDfontIII\ESKDtheColumnXXV}}
 \end{picture}}}
-\newcommand{\ESKD@draw@columns@xxiv}{%
+\newcommand{\ESKDdrawColumnsXXIV}{%
   \setlength{\ESKD@tmpdima}{\ESKDframeY+167mm}
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKD@tmpdima}){%
     \begin{turn}{90}\usebox{\ESKD@columns@xxiv@box}\end{turn}}}
+\fi
 
 m4_dnl графа 26
+\ifESKD@enable@column@xxvi
 \newsavebox{\ESKD@column@xxvi@box}
-\newcommand{\ESKD@make@column@xxvi@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@column@xxvi@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -606,7 +611,7 @@ m4_dnl графа 26
 \put(1,13){\begin{turn}{180}\parbox[b][12mm][c]{68mm}{%
   \centering\ESKDfontV\ESKDtheColumnII}\end{turn}}
 \end{picture}}}
-\newcommand{\ESKD@draw@column@xxvi}{%
+\newcommand{\ESKDdrawColumnXXVI}{%
   \ifESKD@column@xxvi@portrait%
     \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-14mm}%
     \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH}%
@@ -617,10 +622,12 @@ m4_dnl графа 26
     \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKD@tmpdima}){%
       \usebox{\ESKD@column@xxvi@box}}%
   \fi}
+\fi
 
-m4_dnl графы 27, 28, 29 для формы 1
+\ifESKD@enable@columns@xxvii
+m4_dnl графы 27, 28, 29, 30
 \newsavebox{\ESKD@columns@xxvii@i@box}
-\newcommand{\ESKD@make@columns@xxvii@i@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@columns@xxvii@i@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -636,7 +643,32 @@ m4_dnl графы 27, 28, 29 для формы 1
 \put(14,4.7){\begin{turn}{180}\makebox[53mm][c]{%
   \ESKDfontIII\ESKDtheColumnXXIX}\end{turn}}
 \end{picture}}}
-\newcommand{\ESKD@draw@columns@xxvii@i}{%
+\newsavebox{\ESKD@columns@xxvii@ii@box}
+\AtBeginDocument{%
+\savebox{\ESKD@columns@xxvii@ii@box}{%
+\setlength{\unitlength}{1mm}%
+\begin{picture}(0,0)(0,0)
+\linethickness{\ESKDlineThick}
+\put(0,7){\line(1,0){120}}
+\put(0,0){\line(0,1){7}}
+\put(14,0){\line(0,1){7}}
+\put(67,0){\line(0,1){7}}
+\put(0,0){\parbox[b][7mm][c]{14mm}{%
+  \centering\ESKDfontIII\ESKDtheColumnXXVII}}
+\put(14,2.3){\makebox[53mm][c]{\ESKDfontIII\ESKDtheColumnXXVIII}}
+\put(67,2.3){\makebox[53mm][c]{\ESKDfontIII\ESKDtheColumnXXIX}}
+\end{picture}}}
+\newsavebox{\ESKD@column@xxx@box}
+\AtBeginDocument{%
+\savebox{\ESKD@column@xxx@box}{%
+\setlength{\unitlength}{1mm}%
+\begin{picture}(0,0)(0,0)
+\linethickness{\ESKDlineThick}
+\put(0,8){\line(1,0){120}}
+\put(0,0){\line(0,1){8}}
+\put(1,1){\parbox[b][6mm][c]{118mm}{\centering\ESKDfontV\ESKDtheColumnXXX}}
+\end{picture}}}
+\newcommand{\ESKDdrawColumnsXXVIIi}{%
   \ifESKD@column@xxvi@portrait%
     \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-14mm}%
     \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-70mm}%
@@ -652,24 +684,7 @@ m4_dnl графы 27, 28, 29 для формы 1
   \setlength{\ESKD@tmpdimb}{\ESKDstampY+55mm}%
   \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
     \usebox{\ESKD@column@xxx@box}}}%
-
-m4_dnl графы 27, 28, 29 для формы 2
-\newsavebox{\ESKD@columns@xxvii@ii@box}
-\newcommand{\ESKD@make@columns@xxvii@ii@box}{%
-\savebox{\ESKD@columns@xxvii@ii@box}{%
-\setlength{\unitlength}{1mm}%
-\begin{picture}(0,0)(0,0)
-\linethickness{\ESKDlineThick}
-\put(0,7){\line(1,0){120}}
-\put(0,0){\line(0,1){7}}
-\put(14,0){\line(0,1){7}}
-\put(67,0){\line(0,1){7}}
-\put(0,0){\parbox[b][7mm][c]{14mm}{%
-  \centering\ESKDfontIII\ESKDtheColumnXXVII}}
-\put(14,2.3){\makebox[53mm][c]{\ESKDfontIII\ESKDtheColumnXXVIII}}
-\put(67,2.3){\makebox[53mm][c]{\ESKDfontIII\ESKDtheColumnXXIX}}
-\end{picture}}}
-\newcommand{\ESKD@draw@columns@xxvii@ii}{%
+\newcommand{\ESKDdrawColumnsXXVIIii}{%
   \setlength{\ESKD@tmpdima}{\ESKDstampX+65mm}
   \setlength{\ESKD@tmpdimb}{\ESKDstampY+48mm}
   \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
@@ -677,36 +692,30 @@ m4_dnl графы 27, 28, 29 для формы 2
   \setlength{\ESKD@tmpdimb}{\ESKDstampY+40mm}%
   \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
     \usebox{\ESKD@column@xxx@box}}}
-
-m4_dnl графа 30
-\newsavebox{\ESKD@column@xxx@box}
-\newcommand{\ESKD@make@column@xxx@box}{%
-\savebox{\ESKD@column@xxx@box}{%
-\setlength{\unitlength}{1mm}%
-\begin{picture}(0,0)(0,0)
-\linethickness{\ESKDlineThick}
-\put(0,8){\line(1,0){120}}
-\put(0,0){\line(0,1){8}}
-\put(1,1){\parbox[b][6mm][c]{118mm}{\centering\ESKDfontV\ESKDtheColumnXXX}}
-\end{picture}}}
+\fi
 
 m4_dnl графа 31
-\newcommand{\ESKD@draw@column@xxxi}{%
+\ifESKD@enable@column@xxxi
+\newcommand{\ESKDdrawColumnXXXI}{%
   \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-120mm}%
   \setlength{\ESKD@tmpdimb}{\ESKDframeY-3.7mm}%
   \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
     \makebox[70mm][r]{\ESKDfontIII\ESKDcolumnXXXIname\hspace{4em}}}}
+\fi
 
 m4_dnl графа 32
-\newcommand{\ESKD@draw@column@xxxii}{%
+\ifESKD@enable@column@xxxii
+\newcommand{\ESKDdrawColumnXXXII}{%
   \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-50mm}%
   \setlength{\ESKD@tmpdimb}{\ESKDframeY-3.7mm}%
   \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
     \makebox[50mm][r]{\ESKDfontIII\ESKDtheColumnXXXII}}}
+\fi
 
 m4_dnl графа 33
+\ifESKD@enable@column@xxxiii
 \newsavebox{\ESKD@column@xxxiii@box}
-\newcommand{\ESKD@make@column@xxxiii@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@column@xxxiii@box}{%
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
@@ -719,15 +728,17 @@ m4_dnl графа 33
 \multiput(0,20)(0,-5){3}{\line(1,0){20}}
 \put(0,1.3){\makebox[20mm][c]{\ESKDfontIII\ESKDcolumnXXXIIIname}}
 \end{picture}}}
-\newcommand{\ESKD@draw@column@xxxiii}{%
+\newcommand{\ESKDdrawColumnXXXIII}{%
   \setlength{\ESKD@tmpdima}{\ESKDstampX-20mm}%
   \setlength{\ESKD@tmpdimb}{\ESKDstampY+30mm}%
   \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
     \usebox{\ESKD@column@xxxiii@box}}}
+\fi
 
 m4_dnl графа 34
+\ifESKD@enable@column@xxxiv
 \newsavebox{\ESKD@column@xxxiv@box}
-\newcommand{\ESKD@make@column@xxxiv@box}{%
+\AtBeginDocument{%
 \savebox{\ESKD@column@xxxiv@box}{%
 \setlength{\fboxrule}{\ESKDlineThick}%
 \setlength{\fboxsep}{1.3mm}%
@@ -735,7 +746,7 @@ m4_dnl графа 34
   \framebox{%
     \parbox{70mm-2\fboxsep-\fboxrule}{\centering\ESKDfontIII%
       \ESKDtheColumnXXXIV\rule{0mm}{7mm-2\fboxsep-\fboxrule}}}}}}
-\newcommand{\ESKD@draw@column@xxxiv}{%
+\newcommand{\ESKDdrawColumnXXXIV}{%
   \ifESKD@column@xxvi@portrait%
     \setlength{\ESKD@tmpdima}{%
       \ESKDframeX+\ESKDframeW-114mm-.5\ESKDlineThick}%
@@ -750,8 +761,10 @@ m4_dnl графа 34
     \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
       \usebox{\ESKD@column@xxxiv@box}}%
   \fi}
+\fi
 
 m4_dnl обозначения зон
+\ifESKD@zonelabels
 \newcommand{\ESKD@make@h@zonelabels}{
   \ESKD@tmpcnta = 1
   \ESKD@tmpdima = \paperwidth
@@ -802,8 +815,7 @@ m4_dnl обозначения зон
     \advance \ESKD@tmpcnta 1
   \repeat
 }
-\newcommand{\ESKD@zonelabels@i@var}{%
-\begin{picture}(0,0)(0,0)
+\newcommand{\ESKDdrawZoneLabelsI}{%
 \linethickness{\ESKDlineThick}
 \ESKD@make@h@zonelabels
 \ifESKD@enable@columns@xxiv
@@ -838,10 +850,8 @@ m4_dnl обозначения зон
   \advance \ESKD@tmpdima \ESKD@tmpdimc
   \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){%
     \line(1,0){5}}
-\fi
-\end{picture}}
-\newcommand{\ESKD@zonelabels@ii@var}{%
-\begin{picture}(0,0)(0,0)
+\fi}
+\newcommand{\ESKDdrawZoneLabelsII}{%
 \linethickness{\ESKDlineThick}
 \ESKD@make@h@zonelabels
 \ESKD@make@v@zonelabels{0}
@@ -862,39 +872,8 @@ m4_dnl обозначения зон
   \advance \ESKD@tmpdima \ESKD@tmpdimc
   \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){%
     \line(1,0){5}}
+\fi}
 \fi
-\end{picture}}
-
-m4_dnl записать боксы полсе начала документа
-\AtBeginDocument{%
-  \ESKD@make@frame@box%
-  \renewcommand{\ESKD@make@frame@box}{}%
-  \ESKD@make@stamp@i@box%
-  \renewcommand{\ESKD@make@stamp@i@box}{}%
-  \ESKD@make@stamp@ii@box%
-  \renewcommand{\ESKD@make@stamp@ii@box}{}%
-  \ESKD@make@stamp@ii@a@box%
-  \renewcommand{\ESKD@make@stamp@ii@a@box}{}%
-  \ESKD@make@stamp@ii@b@box%
-  \renewcommand{\ESKD@make@stamp@ii@b@box}{}%
-  \ifESKD@enable@columns@xix\ESKD@make@columns@xix@box\fi%
-  \renewcommand{\ESKD@make@columns@xix@box}{}%
-  \ifESKD@enable@columns@xxiv\ESKD@make@columns@xxiv@box\fi%
-  \renewcommand{\ESKD@make@columns@xxiv@box}{}%
-  \ifESKD@enable@column@xxvi\ESKD@make@column@xxvi@box\fi%
-  \renewcommand{\ESKD@make@column@xxvi@box}{}%
-  \ifESKD@enable@columns@xxvii%
-    \ESKD@make@columns@xxvii@i@box%
-    \ESKD@make@columns@xxvii@ii@box%
-    \ESKD@make@column@xxx@box%
-  \fi%
-  \renewcommand{\ESKD@make@columns@xxvii@i@box}{}%
-  \renewcommand{\ESKD@make@columns@xxvii@ii@box}{}%
-  \renewcommand{\ESKD@make@column@xxx@box}{}%
-  \ifESKD@enable@column@xxxiii\ESKD@make@column@xxxiii@box\fi%
-  \renewcommand{\ESKD@make@column@xxxiii@box}{}%
-  \ifESKD@enable@column@xxxiv\ESKD@make@column@xxxiv@box\fi%
-  \renewcommand{\ESKD@make@column@xxxiv@box}{}}
 
 \RequirePackage{eskdhash}
 
@@ -914,83 +893,83 @@ m4_dnl пустой стиль
 
 m4_dnl стиль титульной страницы
 \ESKDnewStyle{title}{0mm}
-\ESKDputOnStyle{title}{frame}{\ESKD@draw@frame}
+\ESKDputOnStyle{title}{frame}{\ESKDdrawFrame}
 \ifESKD@enable@columns@xix
-  \ESKDputOnStyle{title}{columnsxix}{\ESKD@draw@columns@xix}
+  \ESKDputOnStyle{title}{columnsxix}{\ESKDdrawColumnsXIX}
 \fi
 
 m4_dnl форма 1
 \ESKDnewStyle{formI}{\ifESKD@enable@columns@xxvii 63mm\else 55mm\fi}
-\ESKDputOnStyle{formI}{frame}{\ESKD@draw@frame}
-\ESKDputOnStyle{formI}{stamp}{\ESKD@draw@stamp@i}
+\ESKDputOnStyle{formI}{frame}{\ESKDdrawFrame}
+\ESKDputOnStyle{formI}{stamp}{\ESKDdrawStampI}
 \ifESKD@enable@columns@xix
-  \ESKDputOnStyle{formI}{columnsxix}{\ESKD@draw@columns@xix}
+  \ESKDputOnStyle{formI}{columnsxix}{\ESKDdrawColumnsXIX}
 \fi
 \ifESKD@enable@columns@xxiv
-  \ESKDputOnStyle{formI}{columnsxxiv}{\ESKD@draw@columns@xxiv}
+  \ESKDputOnStyle{formI}{columnsxxiv}{\ESKDdrawColumnsXXIV}
 \fi
 \ifESKD@enable@column@xxvi
-  \ESKDputOnStyle{formI}{columnxxvi}{\ESKD@draw@column@xxvi}
+  \ESKDputOnStyle{formI}{columnxxvi}{\ESKDdrawColumnXXVI}
 \fi
 \ifESKD@enable@columns@xxvii
-  \ESKDputOnStyle{formI}{columnsxxvii}{\ESKD@draw@columns@xxvii@i}
+  \ESKDputOnStyle{formI}{columnsxxvii}{\ESKDdrawColumnsXXVIIi}
 \fi
 \ifESKD@enable@column@xxxi
-  \ESKDputOnStyle{formI}{columnxxxi}{\ESKD@draw@column@xxxi}
+  \ESKDputOnStyle{formI}{columnxxxi}{\ESKDdrawColumnXXXI}
 \fi
 \ifESKD@enable@column@xxxii
-  \ESKDputOnStyle{formI}{columnxxxii}{\ESKD@draw@column@xxxii}
+  \ESKDputOnStyle{formI}{columnxxxii}{\ESKDdrawColumnXXXII}
 \fi
 \ifESKD@enable@column@xxxiii
-  \ESKDputOnStyle{formI}{columnxxxiii}{\ESKD@draw@column@xxxiii}
+  \ESKDputOnStyle{formI}{columnxxxiii}{\ESKDdrawColumnXXXIII}
 \fi
 \ifESKD@enable@column@xxxiv
-  \ESKDputOnStyle{formI}{columnxxxiv}{\ESKD@draw@column@xxxiv}
+  \ESKDputOnStyle{formI}{columnxxxiv}{\ESKDdrawColumnXXXIV}
 \fi
 \ifESKD@zonelabels%
-  \ESKDputOnStyle{formI}{zonelabels}{\put(0,0){\ESKD@zonelabels@i@var}}
+  \ESKDputOnStyle{formI}{zonelabels}{\ESKDdrawZoneLabelsI}
 \fi
 
 m4_dnl форма 2
 \ESKDnewStyle{formII}{\ifESKD@enable@columns@xxvii 55mm\else 40mm\fi}
-\ESKDputOnStyle{formII}{frame}{\ESKD@draw@frame}
-\ESKDputOnStyle{formII}{stamp}{\ESKD@draw@stamp@ii}
+\ESKDputOnStyle{formII}{frame}{\ESKDdrawFrame}
+\ESKDputOnStyle{formII}{stamp}{\ESKDdrawStampII}
 \ifESKD@enable@columns@xix
-  \ESKDputOnStyle{formII}{columnsxix}{\ESKD@draw@columns@xix}
+  \ESKDputOnStyle{formII}{columnsxix}{\ESKDdrawColumnsXIX}
 \fi
 \ifESKD@enable@columns@xxiv
-  \ESKDputOnStyle{formII}{columnsxxiv}{\ESKD@draw@columns@xxiv}
+  \ESKDputOnStyle{formII}{columnsxxiv}{\ESKDdrawColumnsXXIV}
 \fi
 \ifESKD@enable@columns@xxvii
-  \ESKDputOnStyle{formII}{columnsxxvii}{\ESKD@draw@columns@xxvii@ii}
+  \ESKDputOnStyle{formII}{columnsxxvii}{\ESKDdrawColumnsXXVIIii}
 \fi
 \ifESKD@enable@column@xxxi
-  \ESKDputOnStyle{formII}{columnxxxi}{\ESKD@draw@column@xxxi}
+  \ESKDputOnStyle{formII}{columnxxxi}{\ESKDdrawColumnXXXI}
 \fi
 \ifESKD@enable@column@xxxii
-  \ESKDputOnStyle{formII}{columnxxxii}{\ESKD@draw@column@xxxii}
+  \ESKDputOnStyle{formII}{columnxxxii}{\ESKDdrawColumnXXXII}
 \fi
 
 m4_dnl форма 2а и 2б
 \ESKDnewStyle{formIIab}{15mm}
-\ESKDputOnStyle{formIIab}{frame}{\ESKD@draw@frame}
+\ESKDputOnStyle{formIIab}{frame}{\ESKDdrawFrame}
 \ESKDputOnStyle{formIIab}{stamp}{%
   \ifESKD@twoside%
-    \ifodd\c@page\ESKD@draw@stamp@ii@a\else\ESKD@draw@stamp@ii@b\fi%
-  \else\ESKD@draw@stamp@ii@a\fi}
+    \ifodd\c@page\ESKDdrawStampIIa\else\ESKDdrawStampIIb\fi%
+  \else\ESKDdrawStampIIa\fi}
 \ifESKD@enable@columns@xix
   \ESKDputOnStyle{formIIab}{columnsxix}{%
-    \ifESKD@twoside\ifodd\c@page\ESKD@draw@columns@xix\fi%
-    \else\ESKD@draw@columns@xix\fi}
+    \ifESKD@twoside\ifodd\c@page\ESKDdrawColumnsXIX\fi%
+    \else\ESKDdrawColumnsXIX\fi}
 \fi
 \ifESKD@enable@column@xxxi
-  \ESKDputOnStyle{formIIab}{columnxxxi}{\ESKD@draw@column@xxxi}
+  \ESKDputOnStyle{formIIab}{columnxxxi}{\ESKDdrawColumnXXXI}
 \fi
 \ifESKD@enable@column@xxxii
-  \ESKDputOnStyle{formIIab}{columnxxxii}{\ESKD@draw@column@xxxii}
+  \ESKDputOnStyle{formIIab}{columnxxxii}{\ESKDdrawColumnXXXII}
 \fi
 \ifESKD@zonelabels
-  \ESKDputOnStyle{formIIab}{zonelabels}{\put(0,0){\ESKD@zonelabels@ii@var}}
+  \ESKDputOnStyle{formIIab}{zonelabels}{\ESKDdrawZoneLabelsII}
 \fi
 
 m4_dnl текущее расстояние от текса до рамки
