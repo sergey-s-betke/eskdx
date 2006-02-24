@@ -1,6 +1,7 @@
 manual/eskdx.tex
 source/eskdafterpkg.sty.in
 source/eskdappsheet.sty.in
+source/eskdbiblist.sty.in
 source/eskdcap.sty.in
 source/eskdchngsheet.sty.in
 source/eskdexplan.sty.in
