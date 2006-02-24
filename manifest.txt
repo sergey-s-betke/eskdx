@@ -5,6 +5,7 @@ source/eskdcap.sty.in
 source/eskdchngsheet.sty.in
 source/eskdexplan.sty.in
 source/eskdfont.sty.in
+source/eskdfootnote.sty.in
 source/eskdgraph.cls.in
 source/eskdhash.sty.in
 source/eskdindent.sty.in
