@@ -54,6 +54,7 @@ m4_FILE_ID([[$Date$]]) Textual Documentation]
 \RequirePackage{eskdsect}
 \RequirePackage{eskdcap}
 \RequirePackage{eskdfootnote}
+\RequirePackage{eskdbiblist}
 \RequirePackage{eskdexplan}
 \RequirePackage{eskdtitle}
 \RequirePackage{eskdinfo}

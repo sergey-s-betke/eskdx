@@ -14,34 +14,31 @@
 %
 % This work consists of all files listed in manifest.txt.
 %
-% The author of original code of this file is Alexander I. Rozhenko.
-% The code is taken from ncc.cls from ncclatex bundle.
-%
 m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdbiblist}[m4_dnl
 m4_FILE_ID([[$Date$]]) Bibliography List]
 
-\newcommand{\ESKDbiblabel}[1]{#1.}
+\renewcommand{\@biblabel}[1]{#1.}
 
-\newenvironment*{ESKDbiblist}[2][0]{
-  \list{\ESKDbiblabel{\@arabic\c@enumiv}}{%
-    \settowidth\labelwidth{\ESKDbiblabel{#2}}%
-    \leftmargin\labelwidth \advance\leftmargin\labelsep \itemsep\parsep
-    \usecounter{enumiv}\let\p@enumiv\@empty
-    \renewcommand\theenumiv{\@arabic\c@enumiv}%
-  }%
-  \setcounter{enumiv}{#1}%
-   \sloppy \widowpenalty 4000
-   \clubpenalty 4000 \@clubpenalty \clubpenalty
-   \sfcode`\.\@m
-}{\def\@noitemerr{\@latex@warning{Empty `ESKDbiblist' environment}}%
-  \endlist
-}
-
-\newenvironment{ESKDbibliography}{%
-  \section*{\bibname}\addcontentsline{toc}{section}{\bibname}
-  \ESKDbiblist[0]}{\endESKDbiblist}
+\def\thebibliography#1{%
+     \section*{\bibname}\addcontentsline{toc}{section}{\bibname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+\def\endthebibliography{\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
 
 m4_dnl vim:ft=tex:sw=2:ai
