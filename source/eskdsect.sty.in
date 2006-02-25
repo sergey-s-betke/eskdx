@@ -52,6 +52,13 @@ m4_dnl выравнивание заголовков рубрикации
 \newcommand{\ESKDsectAlignLeft}{%
   \let\\\@centercr\@rightskip\@flushglue \rightskip\@rightskip%
   \leftskip\z@skip}
+\newcommand{\ESKDsectAlignRight}{%
+  \let\\\@centercr\rightskip\z@skip\leftskip\@flushglue
+  \parindent\z@\parfillskip\z@skip}
+\newcommand{\ESKDsectAlignCenter}{%
+  \let\\\@centercr
+  \rightskip\@flushglue\leftskip\@flushglue
+  \parindent\z@\parfillskip\z@skip}
 
 \newcommand{\ESKDsectionAlign}{\ESKDsectAlignLeft}
 \newcommand{\ESKDsubsectionAlign}{\ESKDsectAlignLeft}
@@ -86,8 +93,8 @@ m4_dnl вертикальные отступы заголовков рубрикации
 \setlength{\ESKDsubsubsectionSkipAfter}{15mm \@plus 1mm \@minus 2mm}
 
 m4_dnl которкий способ установки отступов
-\newcommand{\plus}{\@plus}
-\newcommand{\minus}{\@minus}
+\providecommand{\plus}{\@plus}
+\providecommand{\minus}{\@minus}
 
 \newcommand{\ESKDsectSkip}[3]{%
   \expandafter\setlength\csname\string ESKD#1SkipBefore\endcsname{#2}%
