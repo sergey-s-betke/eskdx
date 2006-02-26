@@ -25,8 +25,8 @@ m4_FILE_INIT
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{listings}
-\lstset{columns=fixed,language=[LaTeX]TeX,%
-basicstyle=\small,breaklines=true,xleftmargin=10mm}
+\lstset{columns=fixed,%language=[LaTeX]TeX,%
+basicstyle=\normalsize\tt,breaklines=true,xleftmargin=15mm}
 \renewcommand{\lstlistingname}{Листинг}
 \captionsetup[lstlisting]{labelsep=dash}
 
@@ -42,16 +42,22 @@ basicstyle=\small,breaklines=true,xleftmargin=10mm}
 
 \newcommand{\gost}[1]{\mbox{ГОСТ}\ \mbox{#1}}
 \newcommand{\pkg}[1]{\mbox{\textsf{#1}}}
-\newcommand{\cmd}[1]{\mbox{$\backslash$\texttt{#1}}}
+\newcommand{\cmd}[1]{\mbox{\texttt{\textbackslash#1}}}
+\newcommand{\env}[1]{\mbox{\texttt{#1}}}
 \newcommand{\opt}[1]{\mbox{\texttt{#1}}}
 \newcommand{\optarg}[1]{\mbox{\textit{#1}}}
 \newcommand{\val}[1]{\mbox{\texttt{#1}}}
 \newenvironment{defs}{\begin{itemize}}{\end{itemize}}
-\newcommand{\cmddef}[2]{\item[]\mbox{\textbackslash\texttt{#1#2}}}
+\newcommand{\cmddef}[2]{\item[]\texttt{\textbackslash#1#2}}
+\newcommand{\envdef}[3]{\item[]%
+  \texttt{\textbackslash begin\{#1\}#2}
+  \par\textit{\quad #3}%
+  \par\texttt{\textbackslash end\{#1\}}}
 \newcommand{\cmdarg}[1]{\mbox{\textrm{\textit{#1}}}}
 
 \begin{document}
 \maketitle
+\enlargethispage{\baselineskip}
 \tableofcontents
 \newpage
 \section{Общие сведения}
@@ -80,18 +86,23 @@ basicstyle=\small,breaklines=true,xleftmargin=10mm}
 украинский).
 \end{itemize}
 
-\section{Использование}
-Для использования коллекции \pkg{eskdx} вам необходимо иметь как
+\newpage
+\section{Базовые принципы использования}
+Для использования коллекции \pkg{eskdx} необходимо иметь как
 минимум базовые знания системы \LaTeXe.
 
 Основа коллекции "--- классы \pkg{eskdtext} и \pkg{eskdgraph}. Для
-текстовых документов используется класс \pkg{eskdtext}, для чертежей и
+текстовых документов используют класс \pkg{eskdtext}, для чертежей и
 схем "--- \pkg{eskdgraph}.
+
+Примечание "--- в большинстве случаев для получения правильного
+выходного файла необходимо выполнить как минимум два прохода
+интерпретатора.
 
 \subsection{Пример простого документа}
 Пример простого текста документа приведен в
 листинге~\ref{l:simpleexpmple}.
-\begin{lstlisting}[float=bh,numbers=left,%
+\begin{lstlisting}[numbers=left,%
 caption=Пример текстового документа,%
 label=l:simpleexpmple]
 \documentclass[russian,koi8-r]{eskdtext}
@@ -102,10 +113,14 @@ label=l:simpleexpmple]
 \ESKDdocName{Технические условия}
 \ESKDsignature{АБВГД ХХХХХХХХ}
 \ESKDauthor{Петров~И.~И.}
-\ESKDtitleApprovedBy{Руководитель ОКБА}{Гусев~И.~И.}
-\ESKDtitleAgreedBy{Директор АМО ЗИЛ}{Иванов~И.~И.}
-\ESKDtitleDesignedBy{Главный инженер АМО ЗИЛ}{Петров~И.~И}
-\ESKDtitleDesignedBy{Руководитель разработки}{Лист~А.~А}
+\ESKDtitleApprovedBy{%
+Руководитель ОКБА}{Гусев~И.~И.}
+\ESKDtitleAgreedBy{%
+Директор АМО ЗИЛ}{Иванов~И.~И.}
+\ESKDtitleDesignedBy{%
+Главный инженер АМО ЗИЛ}{Петров~И.~И}
+\ESKDtitleDesignedBy{%
+Руководитель разработки}{Лист~А.~А}
 
 \begin{document}
 \maketitle
@@ -117,9 +132,9 @@ label=l:simpleexpmple]
 \end{lstlisting}
 
 Опции \opt{russian} и \opt{koi8-r}, на строке 1, задают,
-соответственно язык и кодировку документа. Команды на строках 2 по 12
+соответственно язык и кодировку документа. Команды на строках 2 по 16
 задают информацию о документе, которая используется в титульном листе
-и в основной надписи. Строки 15 по 19 "--- тело документа.
+и в основной надписи. Строки 19 по 23 "--- тело документа.
 
 \subsection{Опции классов}
 \subsubsection{Общие опции обоих классов}
@@ -362,8 +377,11 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 \fussy
 
 \subsection{Титульный лист}
-В классе \pkg{eskdtext} титульный лист печатает команда
-\cmd{maketitle}, которую размещают в теле документа.
+Титульный лист печатает команда
+\begin{defs}
+\cmddef{maketitle}{}
+\end{defs}
+которую размещают в теле документа.
 
 Согласно \gost{2.105-95} титульный лист разбит на 10 полей. По
 умолчанию большинство полей уже содержат необходимые данные, заданные
@@ -393,7 +411,7 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 правой части поля 8.
 
 При утверждении документа листом утверждения его обозначение указывают
-в левой части поля 3. Для этого используется команда
+в левой части поля 3. Для этого используют команду
 \begin{defs}
 \cmddef{ESKDtitleApprovingSheet}{\{\cmdarg{обозначение}\}}
 \end{defs}
@@ -408,6 +426,387 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 \renewcommand{\ESKDtheTitleFieldX}{какой-нибудь текст}
 \end{lstlisting}
 
+\subsection{Заполнение граф основной надписи и дополнительных граф}
+По умолчанию большинство граф основной надписи и некоторые
+дополнительные графы содержат данные, заданные командами, описанными в
+разделе \ref{docinfo}. Для принудительного заполнения граф
+предназначены \cmd{ESKDcolumn}-команды, которые размещают в преамбуле
+документа.
+
+Графу 1 (наименование изделия/документа) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnI}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 2 (обозначение документа) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 3 (обозначение материала детали) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnIII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 4 (литера) задают команды
+\begin{defs}
+\cmddef{ESKDcolumnIVfI}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnIVfII}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnIVfIII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 5 (масса изделия) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnV}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 6 (масштаб) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnVI}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 9 (наименование или различительный индекс предприятия) задает
+команда
+\begin{defs}
+\cmddef{ESKDcolumnIX}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 11 (фамилии лиц, подписывающих документ) задают команды
+\begin{defs}
+\cmddef{ESKDcolumnXIfI}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfII}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfIII}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfIV}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfV}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfVI}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 19 (инвентарный номер подлинника) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXIX}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 21 (инвентарный номер подлинника, взамен которого выпущен данный
+подлинник) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXI}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 22 (инвентарный номер дубликата) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 24 (обозначение документа, взамен или на основании которого
+выпущен документ) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXIV}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 25 (обозначение соответствующего документа, в котором впервые
+записан документ) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXV}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 27 (знак, установленный заказчиком) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXVII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 28 (номер решения и год утверждения документации соответствующей
+литеры) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXVIII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 29 (номер решения и год утверждения документации) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXIX}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 30 (индекс заказчика) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXX}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 32 (обозначение формата листа) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXXII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 34 (номера авторских свидетельств на изобретения) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXXIV}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Описанные выше команды сохраняют значения своих аргументов в
+соответствующие \cmd{ESKDthe}-команды. Например, команда
+\cmd{ESKDtheColumnI} печатает содержимое графы 1.
+
+\subsection{Рубрикация}
+Разделы, подразделы, подподразделы, пункты, подпункты, подподпункты
+создаются соответственно командами:
+\begin{defs}
+\cmddef{section}{\{\cmdarg{заголовок}\}}
+\cmddef{subsection}{\{\cmdarg{заголовок}\}}
+\cmddef{subsubsection}{\{\cmdarg{заголовок}\}}
+\cmddef{point}{}
+\cmddef{subpoint}{}
+\cmddef{subsubpoint}{}
+\end{defs}
+
+По умолчанию пункты нумеруются в пределах всего документа. Чтобы
+включить нумерацию пунктов в пределах раздела или подраздела
+используют опцию \opt{pointsection} или \opt{pointsubsection} класса
+\pkg{eskdtext} соответственно.
+
+Приложение создает команда
+\begin{defs}
+\cmddef{ESKDappendix}{\{\cmdarg{тип}\}\{\cmdarg{заголовок}\}}
+\end{defs}
+Первый аргумент "--- тип приложения (обязательное, рекомендуемое или
+справочное). Второй аргумент "--- заголовок приложения.
+
+\subsection{Пояснения символов, входящих в формулу}
+\sloppy
+Командные скобки
+\begin{defs}
+\envdef{ESKDexplanation}{}{пояснения}
+\end{defs}
+создают список пояснений символов. Перед первым пояснением ставят
+\cmd{item[где ]}. Перед последующими пояснениями ставят \cmd{item}.
+
+\fussy
+
+\subsection{Лист регистрации изменений}
+Пакет \pkg{eskdchngsheet} предоставляет командные скобки
+\begin{defs}
+\envdef{ESKDchangeSheet}{}{строки}
+\end{defs}
+которые создают лист регистрации изменений. По сути это таблица из
+десяти колонок, которую заполняют как обычную таблицу, разделяя данные
+ячеек символом \val{\&}, а строки "--- \cmd{\textbackslash}.
+
+\subsection{Чертежи и схемы}
+Для чертежей и схем используют класс \pkg{eskdgraph}. Команды включения
+графики размещают внутри командных скобок
+\begin{defs}
+\envdef{ESKDdrawing}{}{графика}
+\end{defs}
+Для каждой страницы используют свое окружение \env{ESKDdrawing}.
+
+\subsection{Спецификация}
+Пакет \pkg{eskdspec} предоставляет командные скобки
+\begin{defs}
+\envdef{ESKDspecification}{}{строки}
+\end{defs}
+которые создают спецификацию. По сути это таблица из семи колонок,
+которую заполняют как обычную таблицу, разделяя данные ячеек символом
+\val{\&}, а строки "--- \cmd{\textbackslash}.
+
+\subsection{Лист утверждения}
+Лист утверждения создают как отдельный документ с подключением пакета
+\pkg{eskdappsheet}. Заполняют лист утверждения таким же образом как и
+титульный лист.
+
+Команда
+\begin{defs}
+\cmddef{ESKDapprovingDoc}{\{\cmdarg{обозначение}\}}
+\end{defs}
+размещает в нижней части поля 8 обозначение документа, на который
+распространяется данный лист утверждения. Если таких документов
+несколько, команду повторяют для каждого документа.
+
+Печатает лист утверждения команда
+\begin{defs}
+\cmddef{maketitle}{}
+\end{defs}
+или команда
+\begin{defs}
+\cmddef{ESKDmakeApprovingSheet}{}
+\end{defs}
+
+\newpage
+\section{Тонкая настройка}
+\subsection{Управление стилями страниц}
+Каждая страница оформляется в соответствии с определенным стилем
+страницы. Существуют такие предопределенные стили страниц:
+\val{empty}, \val{title}, \val{formI}, \val{formII}, \val{formIIab}.
+Стиль \val{empty} "--- это пустой стиль, в нем нет ни рамки, ни
+основной надписи, ни дополнительных граф. Стиль \val{title}
+предназначен для титульного листа, в нем есть рамка и дополнительные
+графы 19 по 23. Стили \val{formI} и \val{formII} соответствуют форме~1
+и форме~2 по \gost{2.104} соответственно, имеют рамку, основную
+надпись и дополнительные графы.  Стиль \val{formIIab} соответствует
+форме 2б на четной странице при двусторонней печати, и форме 2а в
+остальных случаях.
+
+Менять стиль страницы можно используя команды
+\begin{defs}
+\cmddef{ESKDstyle}{\{стиль\}}
+\cmddef{ESKDthisStyle}{\{стиль\}}
+\end{defs}
+Первая меняет стиль текущей и последующих страниц, вторая меняет стиль
+только текущей страницы.
+
+Также можно изменять существующие стили и добавлять собственные.
+
+Новый стиль создает команда
+\begin{defs}
+\cmddef{ESKDnewStyle}{\{\cmdarg{стиль}\}\{\cmdarg{высота}\}}
+\end{defs}
+Первый аргумент задает имя стиля, второй "--- высоту основной надписи.
+
+Команда
+\begin{defs}
+\cmddef{ESKDputOnStyle}{\{\cmdarg{стиль}\}\{\cmdarg{элемент}\}%
+\{\cmdarg{команды}\}}
+\end{defs}
+заменяет или добавляет в существующий \cmdarg{стиль} \cmdarg{элемент},
+для верстки которого используются \cmdarg{команды}. Первый аргумент
+"--- имя существующего стиля. Второй аргумент "--- имя элемента,
+который нужно добавить или заменить. Третий аргумент "--- команды,
+рисующие данный элемент (допустимы только команды окружения
+\env{picture}).
+m4_dnl рассказать как рисовать.
+
+Для удаления элементов из стиля используется команда
+\begin{defs}
+\cmddef{ESKDremoveFromStyle}{\{\cmdarg{стиль}\}\{\cmdarg{элемент}\}}
+\end{defs}
+
+В предопределенных стилях рамку формы рисует элемент \val{frame}, а
+основную надпись "--- \val{stamp}. Например, для того чтобы удалить
+основную надпись в стиле \val{formI} можно воспользоваться командой
+\begin{lstlisting}
+\ESKDremoveFromStyle{formI}{stamp}
+\end{lstlisting}
+
+\subsection{Настройка базовых шрифтов}
+Команды
+\begin{defs}
+\cmddef{ESKDfontII}{}
+\cmddef{ESKDfontIII}{}
+\cmddef{ESKDfontV}{}
+\cmddef{ESKDfontVII}{}
+\cmddef{ESKDfontX}{}
+\end{defs}
+определяют шрифты, соответственно размером $2{,}5$, $3{,}5$, $5$, $7$
+и $10~\text{мм}$. Шрифты, заданные этими командами, используются в
+основной надписи и в дополнительных графах, а также по умолчанию в
+других элементах, таких как титульный лист, спецификация и лист
+регистрации изменений. Каждую из этих команд можно переопределить
+посредством \cmd{renewcommand}.
+
+По умолчанию эти команды устанавливают
+\cmd{baselinestretch} в
+\begin{defs}
+\cmddef{ESKDfontBaseLineStretch}{}
+\end{defs}
+Устанавливают размер используя соответственно команды 
+\begin{defs}
+\cmddef{ESKDfontIIsize}{}
+\cmddef{ESKDfontIIIsize}{}
+\cmddef{ESKDfontVsize}{}
+\cmddef{ESKDfontVIIsize}{}
+\cmddef{ESKDfontXsize}{}
+\end{defs}
+Выполняют \cmd{selectfont} и устанавливают начертание используя
+команду
+\begin{defs}
+\cmddef{ESKDfontShape}{}
+\end{defs}
+
+Приведенные выше команды также можно переопределять при помощи
+\cmd{renewcommand}.
+
+\subsection{Настройка титульного листа}
+Команды
+\begin{defs}
+\cmddef{ESKDtitleFontI}{}
+\cmddef{ESKDtitleFontII}{}
+\cmddef{ESKDtitleFontIII}{}
+\cmddef{ESKDtitleFontIV}{}
+\cmddef{ESKDtitleFontV}{}
+\cmddef{ESKDtitleFontVI}{}
+\cmddef{ESKDtitleFontVII}{}
+\cmddef{ESKDtitleFontVIII}{}
+\cmddef{ESKDtitleFontX}{}
+\end{defs}
+определяют шрифты полей титульного листа. Их можно переопределить
+посредством \cmd{renewcommand}.
+
+\subsection{Управление заголовками рубрикации}
+Заголовки разделов, подразделов и подподразделов можно выравнивать
+влево, вправо, по центру, а также можно задавать стиль отображения и
+вертикальные отступы.
+
+Команда
+\begin{defs}
+\cmddef{ESKDsectAlign}{\{\cmdarg{элемент}\}\{\cmdarg{выравнивание}\}}
+\end{defs}
+устанавливает выравнивание элемента. Первый аргумент "--- одно
+из значений: \val{section}, \val{subsection}, \val{subsubsection};
+соответственно для разделов, подразделов, подподразделов. Второй
+аргумент "--- одно из значений: \val{Left}, \val{Right}, \val{Center};
+соответственно для выравнивания по левому краю, по правому краю, по
+центру.
+
+\sloppy
+Стиль, в котором будут верстаться заголовки, задает команда
+\begin{defs}
+\cmddef{ESKDsectStyle}{\{\cmdarg{элемент}\}\{\cmdarg{стиль}\}}
+\end{defs}
+Первый аргумент "--- одно из значений: \val{section},
+\val{subsection}, \val{subsubsection}; соответственно для разделов,
+подразделов, подподразделов. Второй аргумент "--- стиль, который может
+содержать в себе такие команды как \cmd{Large}, \cmd{bfseries}, и т.п.
+
+Вертикальные отступы задает команда
+\begin{defs}
+\cmddef{ESKDsectSkip}{\{\cmdarg{элемент}\}\{\cmdarg{отступ перед}\}%
+\{\cmdarg{отступ после}\}}
+\end{defs}
+Первый аргумент "--- одно из значений: \val{section},
+\val{subsection}, \val{subsubsection}; соответственно для разделов,
+подразделов, подподразделов. Второй аргумент "--- отступ перед
+заголовком. Третий аргумент "--- отступ после заголовка.
+
+\fussy
+
+\subsection{Настройка листа регистрации изменений}
+Шрифт заголовка и тела таблицы определяют команды
+\begin{defs}
+\cmddef{ESKDchngFontHead}{}
+\cmddef{ESKDchngFontBody}{}
+\end{defs}
+Их можно переопределить посредством \cmd{renewcommand}.
+
+Ширину колонок таблицы определяют команды
+\begin{defs}
+\cmddef{ESKDchngColumnIwidth}{}
+\cmddef{ESKDchngColumnIIwidth}{}
+\cmddef{ESKDchngColumnIIIwidth}{}
+\cmddef{ESKDchngColumnIVwidth}{}
+\cmddef{ESKDchngColumnVwidth}{}
+\cmddef{ESKDchngColumnVIwidth}{}
+\cmddef{ESKDchngColumnVIIwidth}{}
+\cmddef{ESKDchngColumnVIIIwidth}{}
+\cmddef{ESKDchngColumnIXwidth}{}
+\cmddef{ESKDchngColumnXwidth}{}
+\end{defs}
+Их также можно переопределить посредством \cmd{renewcommand}.
+
+\subsection{Настройка спецификации}
+Шрифт заголовка и тела таблицы определяют команды
+\begin{defs}
+\cmddef{ESKDspecFontHead}{}
+\cmddef{ESKDspecFontBody}{}
+\end{defs}
+Их можно переопределить посредством \cmd{renewcommand}.
+
+\newpage
 \section{Благодарности}
 \sloppy
 Спасибо всем участникам почтовой рассылки \mbox{CyrTeX-ru}
