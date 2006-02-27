@@ -1,4 +1,44 @@
-2006-02-23  Konstantin Korikov  <lostclus@ua.fm>
+2006-02-27  Konstantin Korikov  <lostclus@ua.fm>
+
+	* include.mak: Changed version to 0.92.
+
+	* NEWS.in: NEWS updated.
+
+	* manual/.latex2html-init, manual/eskdx.tex.in: Manual updated.
+
+	* manual/.latex2html-init, manual/Makefile, manual/eskdx.tex.in,
+	manual/example.tex: latex2html support.
+
+2006-02-26  Konstantin Korikov	<lostclus@ua.fm>
+
+	* manual/eskdx.tex.in: Manual updated.
+
+2006-02-25  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdsect.sty.in: Support for right and center alignment.
+
+	* test/general.tex: Move bibliography to end of appendixes.
+
+2006-02-24  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdbiblist.sty.in: Use \refname instead of \bibname.
+
+	* source/eskdchngsheet.sty.in: Fixed identification line.
+
+	* source/eskdbiblist.sty.in, source/eskdtext.cls.in,
+	test/general.tex: Redefine standard thebibliography environment
+	instead of providing separate ESKDbibliography.
+
+	* manifest.txt, source/eskdbiblist.sty.in, test/general.tex:
+	New package: eskdbiblist.
+
+	* manifest.txt, source/eskdfootnote.sty.in,
+	source/eskdtext.cls.in, test/general.tex: Footnotes to fit
+	GOST 2.105.95.
+
+2006-02-23  Konstantin Korikov	<lostclus@ua.fm>
+
+	* ChangeLog: ChangeLog updated.
 
 	* include.mak: Changed version to 0.91.
 
