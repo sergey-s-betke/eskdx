@@ -97,8 +97,7 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 интерпретатора.
 
 \subsection{Пример простого документа}
-Пример простого текстового документа приведен в
-листинге.
+Пример простого текстового документа:
 \begin{quote}
 \verbatimlisting{example.tex}
 \end{quote}
@@ -264,8 +263,9 @@ m4_END_OPTTBL
 \begin{defs}
 \cmddef{ESKDunitName}{\{\cmdarg{текст}\}}
 \cmddef{ESKDtitle}{\{\cmdarg{текст}\}}
+\cmddef{title}{\{\cmdarg{текст}\}}
 \end{defs}
-обе команды действуют одинаково (команды близнецы).
+все три команды действуют одинаково (команды близнецы).
 
 Наименование документа задает команда
 \begin{defs}
@@ -303,9 +303,10 @@ m4_END_OPTTBL
 \cmddef{ESKDgroup}{\{\cmdarg{текст}\}}
 \end{defs}
 
-Фамилию автора задает команда
+Фамилию автора задают команды
 \begin{defs}
 \cmddef{ESKDauthor}{\{\cmdarg{текст}\}}
+\cmddef{author}{\{\cmdarg{текст}\}}
 \end{defs}
 
 Фамилию проверяющего задает команда
@@ -323,9 +324,10 @@ m4_END_OPTTBL
 \cmddef{ESKDapprovedBy}{\{\cmdarg{текст}\}}
 \end{defs}
 
-Дату документа задает команда
+Дату документа задают команды
 \begin{defs}
 \cmddef{ESKDdate}{\{\cmdarg{год/месяц/число}\}}
+\cmddef{date}{\{\cmdarg{год/месяц/число}\}}
 \end{defs}
 
 Описанные выше команды сохраняют значения своих аргументов в
