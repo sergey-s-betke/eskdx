@@ -16,24 +16,21 @@
 %
 m4_ESKDX_INIT
 m4_FILE_INIT
-\documentclass[russian,koi8-r,simple]{eskdtext}
+\documentclass[russian,koi8-r,simple%
+m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 \usepackage[T2A]{fontenc}
 \usepackage{pscyr}
 \usepackage{amstext}
 \usepackage{amsmath}
+\usepackage{verbatimfiles}
 \usepackage{calc}
 \usepackage{array}
 \usepackage{longtable}
-\usepackage{listings}
-\lstset{columns=fixed,%language=[LaTeX]TeX,%
-basicstyle=\normalsize\tt,breaklines=true,xleftmargin=15mm}
-\renewcommand{\lstlistingname}{Листинг}
-\captionsetup[lstlisting]{labelsep=dash}
 
-\ESKDtitle{Коллекция eskdx v[[]]m4_ESKDX_VERSION}
+\title{Коллекция eskdx v[[]]m4_ESKDX_VERSION}
 \ESKDdocName{Руководство пользователя}
-\ESKDauthor{Кориков~К.~В.}
-\ESKDdate{m4_FILE_DATE([[$Date$]])}
+\author{Кориков~К.~В.}
+\date{m4_FILE_DATE([[$Date$]])}
 \renewcommand{\ESKDtheTitleFieldVIIIr}{%
 \copyright 2006 Константин Кориков}
 
@@ -42,7 +39,7 @@ basicstyle=\normalsize\tt,breaklines=true,xleftmargin=15mm}
 
 \newcommand{\gost}[1]{\mbox{ГОСТ}\ \mbox{#1}}
 \newcommand{\pkg}[1]{\mbox{\textsf{#1}}}
-\newcommand{\cmd}[1]{\mbox{\texttt{\textbackslash#1}}}
+\newcommand{\cmd}[1]{\texttt{\textbackslash\mbox{#1}}}
 \newcommand{\env}[1]{\mbox{\texttt{#1}}}
 \newcommand{\opt}[1]{\mbox{\texttt{#1}}}
 \newcommand{\optarg}[1]{\mbox{\textit{#1}}}
@@ -100,36 +97,11 @@ basicstyle=\normalsize\tt,breaklines=true,xleftmargin=15mm}
 интерпретатора.
 
 \subsection{Пример простого документа}
-Пример простого текста документа приведен в
-листинге~\ref{l:simpleexpmple}.
-\begin{lstlisting}[numbers=left,%
-caption=Пример текстового документа,%
-label=l:simpleexpmple]
-\documentclass[russian,koi8-r]{eskdtext}
-\ESKDdepartment{Акционерное Московское общество}
-\ESKDcompany{завод имени И.~А.~Лихачева}
-\ESKDclassCode{31 1398}
-\ESKDtitle{Форсунка Ф-750}
-\ESKDdocName{Технические условия}
-\ESKDsignature{АБВГД ХХХХХХХХ}
-\ESKDauthor{Петров~И.~И.}
-\ESKDtitleApprovedBy{%
-Руководитель ОКБА}{Гусев~И.~И.}
-\ESKDtitleAgreedBy{%
-Директор АМО ЗИЛ}{Иванов~И.~И.}
-\ESKDtitleDesignedBy{%
-Главный инженер АМО ЗИЛ}{Петров~И.~И}
-\ESKDtitleDesignedBy{%
-Руководитель разработки}{Лист~А.~А}
-
-\begin{document}
-\maketitle
-\tableofcontents
-\newpage
-\section{Раздел 1}
-Текст текст текст.
-\end{document}
-\end{lstlisting}
+Пример простого текстового документа приведен в
+листинге.
+\begin{quote}
+\verbatimlisting{example.tex}
+\end{quote}
 
 Опции \opt{russian} и \opt{koi8-r}, на строке 1, задают,
 соответственно язык и кодировку документа. Команды на строках 2 по 16
@@ -137,14 +109,17 @@ label=l:simpleexpmple]
 и в основной надписи. Строки 19 по 23 "--- тело документа.
 
 \subsection{Опции классов}
-\subsubsection{Общие опции обоих классов}
-Опции, воспринимаемые классами \pkg{eskdtext} и \pkg{eskdgraph}
-приведены в таблице~\ref{t:common:opts}.
+m4_define([[m4_BEGIN_OPTTBL]], [[m4_dnl
+m4_ifdef([[m4_HTML]], [[m4_dnl
+\begin{longtable}{|p{.30\textwidth}|p{.70\textwidth}|}
+$1\\m4_dnl$
+\hline
+\multicolumn{1}{|c|}{Опция}&
+\multicolumn{1}{c|}{Описание}\\\hline]], [[m4_dnl
 \begin{longtable}{|%
 p{.30\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
 p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
-\caption{Общие опции классов \pkg{eskdtext} и
-\pkg{eskdgraph}\label{t:common:opts}}\\
+$1\\m4_dnl$
 \hline
 \multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
 \endfirsthead
@@ -152,6 +127,14 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 \hline
 \multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
 \endhead
+]])]])
+m4_define([[m4_END_OPTTBL]], [[\end{longtable}]])
+\subsubsection{Общие опции обоих классов}
+Опции, воспринимаемые классами \pkg{eskdtext} и \pkg{eskdgraph}
+приведены в таблице~\ref{t:common:opts}.
+m4_BEGIN_OPTTBL([[m4_dnl
+\caption{Общие опции классов \pkg{eskdtext} и
+\pkg{eskdgraph}\label{t:common:opts}}]])
 \opt{russian}\par\opt{ukrainian}&
 Выбирает язык документа, соответственно русский, украинский. По
 умолчанию русский.\\\hline
@@ -204,22 +187,13 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 \opt{hpadding=}&
 Устанавливает расстояние от верхней или нижней строки текста до
 верхней или нижней рамки. По умолчанию \val{10mm}.\\\hline
-\end{longtable}
+m4_END_OPTTBL
 
 \subsubsection{Опции класса \pkg{eskdtext}}
 Опции, воспринимаемые классом \pkg{eskdtext} приведены в
 таблице~\ref{t:eskdtext:opts}.
-\begin{longtable}{|%
-p{.30\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
-p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
-\caption{Опции класса \pkg{eskdtext}\label{t:eskdtext:opts}}\\
-\hline
-\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
-\endfirsthead
-\caption*{Продолжение таблицы}\\
-\hline
-\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
-\endhead
+m4_BEGIN_OPTTBL([[m4_dnl
+\caption{Опции класса \pkg{eskdtext}\label{t:eskdtext:opts}}]])
 \opt{12pt}\par\opt{14pt}&
 Устанавливает размер шрифта документа, соответственно \val{12pt},
 \val{14pt}. По умолчанию \val{14pt}.\\\hline
@@ -231,22 +205,13 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 Включает двустороннюю печать.\\\hline
 \opt{draft}&
 Включает черновой режим.\\\hline
-\end{longtable}
+m4_END_OPTTBL
 
 \subsubsection{Опции класса \pkg{eskdgraph}}
 Опции, воспринимаемые классом \pkg{eskdgraph} приведены в
 таблице~\ref{t:eskdgraph:opts}.
-\begin{longtable}{|%
-p{.30\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
-p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
-\caption{Опции класса \pkg{eskdgraph}\label{t:eskdgraph:opts}}\\
-\hline
-\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
-\endfirsthead
-\caption*{Продолжение таблицы}\\
-\hline
-\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
-\endhead
+m4_BEGIN_OPTTBL([[m4_dnl
+\caption{Опции класса \pkg{eskdgraph}\label{t:eskdgraph:opts}}]])
 \opt{a0paper}\par\opt{a1paper}\par\opt{a2paper}\par\opt{a3paper}\par
 \opt{a4paper}&
 Устанавливает формат (размер) листа, соответственно А0, А1, А2, А3,
@@ -272,7 +237,7 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 выключена.\\\hline
 \opt{zonelabels}\par\opt{nozonelabels}&
 Включает/выключает отметки зон. По умолчанию отметки выключены.\\\hline
-\end{longtable}
+m4_END_OPTTBL
 
 \subsection{Информация о документе}
 \label{docinfo}
@@ -422,9 +387,12 @@ p{.70\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
 \cmd{ESKDtheTitleField}-команд. Например, для того чтобы в поле 10
 разместить какой-нибудь текст (по умолчанию поле содержит год) в
 преамбулу документа нужно поместить
-\begin{lstlisting}
-\renewcommand{\ESKDtheTitleFieldX}{какой-нибудь текст}
-\end{lstlisting}
+\begin{quote}
+\begin{verbatim}
+\renewcommand{\ESKDtheTitleFieldX}{%
+какой-нибудь текст}
+\end{verbatim}
+\end{quote}
 
 \subsection{Заполнение граф основной надписи и дополнительных граф}
 По умолчанию большинство граф основной надписи и некоторые
@@ -679,9 +647,9 @@ m4_dnl рассказать как рисовать.
 В предопределенных стилях рамку формы рисует элемент \val{frame}, а
 основную надпись "--- \val{stamp}. Например, для того чтобы удалить
 основную надпись в стиле \val{formI} можно воспользоваться командой
-\begin{lstlisting}
-\ESKDremoveFromStyle{formI}{stamp}
-\end{lstlisting}
+\begin{quote}
+\verb|\ESKDremoveFromStyle{formI}{stamp}|
+\end{quote}
 
 \subsection{Настройка базовых шрифтов}
 Команды

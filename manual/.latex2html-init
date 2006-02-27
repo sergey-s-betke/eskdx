@@ -1,0 +1,8 @@
+$LATEX2HTMLSTYLES .= ":$ENV{HOME}/.latex2html/styles";
+#$default_language = 'russian';
+#$TITLES_LANGUAGE = 'russian';
+#$CHARSET = 'koi8-r';
+$MAX_SPLIT_DEPTH = -1;
+$FONT_SIZE = '12pt';
+$LOCAL_ICONS = 1;
+$BOTTOM_NAVIGATION = 1;
