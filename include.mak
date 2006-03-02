@@ -43,8 +43,15 @@ dist-bzip2: dist
 	rm -rf $(DIST_DIR)
 
 dist-zip: dist
-	rm -f $(PACKAGE)-$(VERSION).zip
-	cd $(DIST_DIR) && zip -r ../$(PACKAGE)-$(VERSION).zip *
+	zipfile=`pwd`/$(PACKAGE)-$(VERSION).zip; \
+	rm -f "$$zipfile"; \
+	cd $(DIST_DIR) && zip -r "$$zipfile" *
+	rm -rf $(DIST_DIR)
+
+dist-ctan: dist
+	zipfile=`pwd`/$(PACKAGE)-$(VERSION)-ctan.zip; \
+	rm -f "$$zipfile"; \
+	cd $(DIST_DIR)$(DIST_PREFIX) && zip -r "$$zipfile" *
 	rm -rf $(DIST_DIR)
 
 .PHONY: all all-recursive clean clean-recursive \
