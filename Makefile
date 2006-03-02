@@ -22,7 +22,7 @@ NEWS: NEWS.in $(M4DEPS)
 README: README.in $(M4DEPS)
 	m4 $(M4FLAGS) $< >$@
 
-unpacked-dist-zip:
+unpacked-dist-zip: NEWS
 	$(MAKE) -C source
 	$(MAKE) -C manual
 	rm -rf .dist
@@ -32,6 +32,7 @@ unpacked-dist-zip:
 	cp -a test/*.tex .dist/examples/
 	cd .dist && find eskdx -type f >manifest.txt
 	m4 $(M4FLAGS) -Dm4_UNPACKED=1 README.in >.dist/README
+	cp -a NEWS .dist/
 	rm -f $(PACKAGE)-$(VERSION)-unpacked.zip
 	cd .dist && zip -r ../$(PACKAGE)-$(VERSION)-unpacked.zip *
 	rm -rf .dist
