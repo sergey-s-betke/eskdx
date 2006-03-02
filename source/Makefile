@@ -1,7 +1,7 @@
 # Process this file with GNU make
 TOP_DIR = ..
-SOURCES = $(wildcard *.in)
-UNPACKED = $(patsubst %.in, %, $(SOURCES))
+SOURCES = $(notdir $(shell grep ^source $(TOP_DIR)/manifest.txt))
+UNPACKED = $(patsubst %.in, %, $(filter %.in, $(SOURCES)))
 
 DIST_FILES = \
 	     Makefile \

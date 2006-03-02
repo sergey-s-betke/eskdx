@@ -43,6 +43,7 @@ dist-bzip2: dist
 	rm -rf $(DIST_DIR)
 
 dist-zip: dist
+	rm -f $(PACKAGE)-$(VERSION).zip
 	cd $(DIST_DIR) && zip -r ../$(PACKAGE)-$(VERSION).zip *
 	rm -rf $(DIST_DIR)
 

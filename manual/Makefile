@@ -2,7 +2,8 @@
 TOP_DIR = ..
 
 DIST_FILES = \
-	     .latex2html-init \
+	     latex2html-init \
+	     eskdx.pdf \
 	     eskdx.tex.in \
 	     example.tex \
 	     Makefile
@@ -23,7 +24,7 @@ html.aux: html.tex
 	latex $<
 
 html: html.tex html.aux example.tex
-	latex2html -iso_language RU $<
+	latex2html -init_file latex2html-init -iso_language RU $<
 
 clean:
 	rm -f {eskdx,html}.{aux,out,log,toc}
