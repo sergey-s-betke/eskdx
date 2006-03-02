@@ -1099,7 +1099,7 @@ m4_dnl графа 3 -- обозначение материала детали
 \newcommand{\ESKDcolumnIII}[1]{\renewcommand{\ESKDtheColumnIII}{#1}}
 m4_dnl графа 4 -- литера
 m4_dnl поле 1
-\newcommand{\ESKDtheColumnIVfI}{\ESKDtheLetter}
+\newcommand{\ESKDtheColumnIVfI}{\ESKDtheLetterI}
 \newcommand{\ESKDcolumnIVfI}[1]{\renewcommand{\ESKDtheColumnIVfI}{#1}}
 m4_dnl поле 2
 \newcommand{\ESKDtheColumnIVfII}{\ESKDtheLetterII}
