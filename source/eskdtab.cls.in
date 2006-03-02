@@ -39,7 +39,7 @@ m4_FILE_ID([[$Date$]]) Tabular Documentation]
 
 \ProcessOptions\relax
 
-\LoadClass[\ESKD@docfont]{article}
+\LoadClass{article}
 \RequirePackage{eskdlang}
 \RequirePackage[a4paper,formII]{eskdstamp}
 \RequirePackage{eskdinfo}
