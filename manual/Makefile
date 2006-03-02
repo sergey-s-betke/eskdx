@@ -3,7 +3,6 @@ TOP_DIR = ..
 
 DIST_FILES = \
 	     .latex2html-init \
-	     eskdx.tex \
 	     eskdx.tex.in \
 	     example.tex \
 	     Makefile
