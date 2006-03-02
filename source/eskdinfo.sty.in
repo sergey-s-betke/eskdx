@@ -109,20 +109,6 @@ m4_dnl дата
   \renewcommand{\@date}{#1}}
 \renewcommand{\date}[1]{\ESKDdate{#1}}
 
-\ESKDcolumnI{\ESKDtheTitle\par\ESKDtheDocName}
-\ESKDcolumnII{\ESKDtheSignature}
-\ESKDcolumnIII{\ESKDtheMaterial}
-\ESKDcolumnIVfI{\ESKDtheLetterI}
-\ESKDcolumnIVfII{\ESKDtheLetterII}
-\ESKDcolumnIVfIII{\ESKDtheLetterIII}
-\ESKDcolumnV{\ESKDtheMass}
-\ESKDcolumnVI{\ESKDtheScale}
-\ESKDcolumnIX{\ESKDtheGroup}
-\ESKDcolumnXIfI{\ESKDtheAuthor}
-\ESKDcolumnXIfII{\ESKDtheChecker}
-\ESKDcolumnXIfV{\ESKDtheNormContr}
-\ESKDcolumnXIfVI{\ESKDtheApprovedBy}
-
 \RequirePackage{eskdafterpkg}
 m4_dnl настройки пакета hyperref
 \ESKD@after@package{hyperref}{%

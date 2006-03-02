@@ -1086,40 +1086,42 @@ m4_dnl определение стиля страницы по умолчанию
 \newenvironment{ESKDzeroPadding}{%
   \begin{ESKDpadding}{0mm}{0mm}}{\end{ESKDpadding}}
 
+\RequirePackage{eskdinfo}
+
 m4_dnl графа 1 -- наименование изделия/документа
-\newcommand{\ESKDtheColumnI}{}
+\newcommand{\ESKDtheColumnI}{\ESKDtheTitle\par\ESKDtheDocName}
 \newcommand{\ESKDcolumnI}[1]{\renewcommand{\ESKDtheColumnI}{#1}}
 m4_dnl графа 2 -- обозначение документа
-\newcommand{\ESKDtheColumnII}{}
+\newcommand{\ESKDtheColumnII}{\ESKDtheSignature}
 \newcommand{\ESKDcolumnII}[1]{\renewcommand{\ESKDtheColumnII}{#1}}
 m4_dnl графа 3 -- обозначение материала детали
-\newcommand{\ESKDtheColumnIII}{}
+\newcommand{\ESKDtheColumnIII}{\ESKDtheMaterial}
 \newcommand{\ESKDcolumnIII}[1]{\renewcommand{\ESKDtheColumnIII}{#1}}
 m4_dnl графа 4 -- литера
 m4_dnl поле 1
-\newcommand{\ESKDtheColumnIVfI}{}
+\newcommand{\ESKDtheColumnIVfI}{\ESKDtheLetter}
 \newcommand{\ESKDcolumnIVfI}[1]{\renewcommand{\ESKDtheColumnIVfI}{#1}}
 m4_dnl поле 2
-\newcommand{\ESKDtheColumnIVfII}{}
+\newcommand{\ESKDtheColumnIVfII}{\ESKDtheLetterII}
 \newcommand{\ESKDcolumnIVfII}[1]{\renewcommand{\ESKDtheColumnIVfII}{#1}}
 m4_dnl поле 3
-\newcommand{\ESKDtheColumnIVfIII}{}
+\newcommand{\ESKDtheColumnIVfIII}{\ESKDtheLetterIII}
 \newcommand{\ESKDcolumnIVfIII}[1]{\renewcommand{\ESKDtheColumnIVfIII}{#1}}
 m4_dnl графа 5 -- масса изделия
-\newcommand{\ESKDtheColumnV}{}
+\newcommand{\ESKDtheColumnV}{\ESKDtheMass}
 \newcommand{\ESKDcolumnV}[1]{\renewcommand{\ESKDtheColumnV}{#1}}
 m4_dnl графа 6 -- масштаб
-\newcommand{\ESKDtheColumnVI}{}
+\newcommand{\ESKDtheColumnVI}{\ESKDtheScale}
 \newcommand{\ESKDcolumnVI}[1]{\renewcommand{\ESKDtheColumnVI}{#1}}
 m4_dnl графа 9 -- наименование или различительный индекс предприятия
-\newcommand{\ESKDtheColumnIX}{}
+\newcommand{\ESKDtheColumnIX}{\ESKDtheGroup}
 \newcommand{\ESKDcolumnIX}[1]{\renewcommand{\ESKDtheColumnIX}{#1}}
 m4_dnl графа 11 -- фамилии лиц, подписывающих документ
 m4_dnl поле 1 -- разработал
-\newcommand{\ESKDtheColumnXIfI}{\@author}
+\newcommand{\ESKDtheColumnXIfI}{\ESKDtheAuthor}
 \newcommand{\ESKDcolumnXIfI}[1]{\renewcommand{\ESKDtheColumnXIfI}{#1}}
 m4_dnl поле 2 -- проверил
-\newcommand{\ESKDtheColumnXIfII}{}
+\newcommand{\ESKDtheColumnXIfII}{\ESKDtheChecker}
 \newcommand{\ESKDcolumnXIfII}[1]{\renewcommand{\ESKDtheColumnXIfII}{#1}}
 m4_dnl поле 3 -- Т.контр
 \newcommand{\ESKDtheColumnXIfIII}{}
@@ -1128,10 +1130,10 @@ m4_dnl поле 4 -- неизвестный
 \newcommand{\ESKDtheColumnXIfIV}{}
 \newcommand{\ESKDcolumnXIfIV}[1]{\renewcommand{\ESKDtheColumnXIfIV}{#1}}
 m4_dnl поле 5 -- нормист
-\newcommand{\ESKDtheColumnXIfV}{}
+\newcommand{\ESKDtheColumnXIfV}{\ESKDtheNormContr}
 \newcommand{\ESKDcolumnXIfV}[1]{\renewcommand{\ESKDtheColumnXIfV}{#1}}
 m4_dnl поле 6 -- утвердил
-\newcommand{\ESKDtheColumnXIfVI}{}
+\newcommand{\ESKDtheColumnXIfVI}{\ESKDtheApprovedBy}
 \newcommand{\ESKDcolumnXIfVI}[1]{\renewcommand{\ESKDtheColumnXIfVI}{#1}}
 m4_dnl графа 19 -- инвентарный номер подлинника по ГОСТ 2.501 68
 \newcommand{\ESKDtheColumnXIX}{}
