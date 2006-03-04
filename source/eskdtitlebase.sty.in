@@ -80,7 +80,6 @@ m4_dnl поля титульного листа
 
 \def\ESKD@title@after@page{%
   \ESKDclearDoublePage
-  \setcounter{page}{1}
   \ESKDstyle{\ESKD@default@style@sec}
   \ESKDthisStyle{\ESKD@default@style}}
 
