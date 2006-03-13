@@ -31,12 +31,12 @@ m4_dnl ориентация страницы
 \newif\ifESKD@given@landscape
 \ESKD@given@landscapefalse
 
-m4_dnl стиль по умолчанию
-\newcommand{\ESKD@default@style}{}
-m4_dnl стиль по умолчанию для последующих страниц
-\newcommand{\ESKD@default@style@sec}{}
 m4_dnl стиль по умолчанию для титульного листа
-\newcommand{\ESKD@default@style@title}{}
+\newcommand{\ESKD@default@style@title}{title}
+m4_dnl стиль по умолчанию для певрой станицы (не считая титульной)
+\newcommand{\ESKD@default@style@first}{formII}
+m4_dnl стиль по умолчанию для остальных страниц
+\newcommand{\ESKD@default@style@other}{formIIab}
 
 m4_dnl поля
 \newlength{\ESKD@margin@si}
@@ -117,16 +117,16 @@ m4_dnl определение опций
   \ESKD@given@landscapetrue}
 \define@key{eskd}{reduceheight}{\addtolength{\ESKD@margin@b}{#1}}
 \DeclareOption{formI}{%
-  \renewcommand{\ESKD@default@style}{formI}
-  \renewcommand{\ESKD@default@style@sec}{formIIab}
+  \renewcommand{\ESKD@default@style@first}{formI}
+  \renewcommand{\ESKD@default@style@other}{formIIab}
   \renewcommand{\ESKD@default@style@title}{title}}
 \DeclareOption{formII}{%
-  \renewcommand{\ESKD@default@style}{formII}
-  \renewcommand{\ESKD@default@style@sec}{formIIab}
+  \renewcommand{\ESKD@default@style@first}{formII}
+  \renewcommand{\ESKD@default@style@other}{formIIab}
   \renewcommand{\ESKD@default@style@title}{title}}
 \DeclareOption{emptystyle}{%
-  \renewcommand{\ESKD@default@style}{empty}
-  \renewcommand{\ESKD@default@style@sec}{empty}
+  \renewcommand{\ESKD@default@style@first}{empty}
+  \renewcommand{\ESKD@default@style@other}{empty}
   \renewcommand{\ESKD@default@style@title}{empty}}
 \DeclareOption{stitching}{\setlength{\ESKD@margin@si}{20mm}}
 \DeclareOption{nostitching}{%
@@ -198,17 +198,6 @@ bmargin=\ESKD@margin@b+\ESKD@padding@v,%
 inner=\ESKD@margin@si+\ESKD@padding@h,%
 outer=\ESKD@margin@so+\ESKD@padding@h,%
 headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
-
-m4_dnl оперделение стилей по умолчанию
-\ifx\ESKD@default@style\ESKD@cmp@empty%
-  \ifx\ESKD@paper\ESKD@cmp@aIVpaper%
-    \renewcommand{\ESKD@default@style}{formII}%
-    \else
-    \renewcommand{\ESKD@default@style}{formI}%
-  \fi
-  \renewcommand{\ESKD@default@style@sec}{formIIab}
-  \renewcommand{\ESKD@default@style@title}{title}
-\fi
 
 \RequirePackage{lastpage}
 
@@ -1062,11 +1051,22 @@ m4_dnl
     \ifodd\c@page\else\ESKDthisStyle{empty}\rule{0mm}{0mm}\newpage\fi%
   \else\clearpage\fi}
 
-\ESKDstyle{\ESKD@default@style@sec}
+\ESKDstyle{\ESKD@default@style@other}
 \AtBeginDocument{%
-  \ifx\ESKD@default@style\ESKD@default@style@sec\else
-    \ESKDthisStyle{\ESKD@default@style}%
+  \ifx\ESKD@default@style@first\ESKD@default@style@other\else
+    \ESKDthisStyle{\ESKD@default@style@first}%
   \fi}
+
+m4_dnl устанавливает стиль по умолчанию для титульного листа
+\newcommand{\ESKDdefaultTitleStyle}[1]{%
+  \renewcommand{\ESKD@default@style@title}{#1}}
+m4_dnl устанавливает стиль по умолчанию первой страницы
+\newcommand{\ESKDdefaultFirstStyle}[1]{%
+  \renewcommand{\ESKD@default@style@first}{#1}}
+m4_dnl устанавливает стиль по умолчанию остальных страниц
+\newcommand{\ESKDdefaultStyle}[1]{%
+  \renewcommand{\ESKD@default@style@other}{#1}%
+  \ESKDstyle{#1}}
 
 \newcommand{\ESKDsetPadding}[2]{%
   \changepage{%

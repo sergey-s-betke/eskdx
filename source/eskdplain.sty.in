@@ -54,9 +54,8 @@ m4_FILE_ID([[$Date$]]) Plain Page Style]
 \ESKDnewStyle{plain}{0mm}
 \ESKDputOnStyle{plain}{pagenumber}{\ESKDdrawPlainPageNumber}
 
-\renewcommand{\ESKD@default@style}{plain}
-\renewcommand{\ESKD@default@style@sec}{plain}
-\renewcommand{\ESKD@default@style@title}{empty}
-\ESKDstyle{plain}
+\ESKDdefaultTitleStyle{empty}
+\ESKDdefaultFirstStyle{plain}
+\ESKDdefaultStyle{plain}
 
 m4_dnl vim:ft=tex:sw=2:ai

@@ -80,8 +80,8 @@ m4_dnl поля титульного листа
 
 \def\ESKD@title@after@page{%
   \ESKDclearDoublePage
-  \ESKDstyle{\ESKD@default@style@sec}
-  \ESKDthisStyle{\ESKD@default@style}}
+  \ESKDstyle{\ESKD@default@style@other}
+  \ESKDthisStyle{\ESKD@default@style@first}}
 
 m4_dnl базовый шаблон для любого титульного листа
 \newenvironment{ESKDtitlePage}{%

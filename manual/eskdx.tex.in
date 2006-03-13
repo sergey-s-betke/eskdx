@@ -54,7 +54,6 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 
 \begin{document}
 \maketitle
-\enlargethispage{\baselineskip}
 \tableofcontents
 \newpage
 \section{Общие сведения}
@@ -625,6 +624,7 @@ m4_END_OPTTBL
 \newpage
 \section{Тонкая настройка}
 \subsection{Управление стилями страниц}
+\label{s:pagestyles}
 Каждая страница оформляется в соответствии с определенным стилем
 страницы. Существуют такие предопределенные стили страниц:
 \val{empty}, \val{title}, \val{formI}, \val{formII}, \val{formIIab}.
@@ -677,6 +677,16 @@ m4_dnl рассказать как рисовать.
 \begin{quote}
 \verb|\ESKDremoveFromStyle{formI}{stamp}|
 \end{quote}
+
+Команды
+\begin{defs}
+\cmddef{ESKDdefaultTitleStyle}{\{\cmdarg{стиль}\}}
+\cmddef{ESKDdefaultFirstStyle}{\{\cmdarg{стиль}\}}
+\cmddef{ESKDdefaultStyle}{\{\cmdarg{стиль}\}}
+\end{defs}
+задают стиль по умолчанию для титульного листа, первой страницы (не
+считая титульный лист) и остальных страниц соответственно. Нет смысла
+использовать эти команды вне преамбулы документа.
 
 \subsection{Настройка шрифтов}
 Команды
@@ -815,6 +825,33 @@ $5$, $7$ и $10~\text{мм}$. Шрифты, заданные этими командами,
 версиях \pkg{eskdx}.
 
 \fussy
+
+\subsection{Текстовые документы без рамок формы и основной надписи}
+Опция \opt{emptystyle} класса \pkg{eskdtext} позволяет получить
+документ без таких элементов как рамка формы, основная надпись и
+дополнительные графы. По сути эта опция устанавливает для всех страниц
+стиль \val{empty}. Этот стиль не рекомендуется модифицировать, так что
+если необходимо добавить на страницу произвольные элементы, нужно
+создать и установить новый стиль, как это описано в разделе
+\ref{s:pagestyles}.
+
+Пакет \pkg{eskdplain} создает новый стиль страницы \val{plain},
+который не содержит никаких элементов, кроме элемента
+\val{pagenumber}, который печатает по центру в нижней части страницы ее
+номер. Расположение номера на странице можно контролировать опциями
+пакета, которые приведены в таблице \ref{t:eskdplain:opts}.
+
+m4_BEGIN_OPTTBL([[m4_dnl
+\caption{Опции пакета \pkg{eskdplain}\label{t:eskdplain:opts}}]])
+\opt{numbertop}\par\opt{numberbottom}&
+Располагает номер в верхней или в нижней части страницы
+соответственно.\\\hline
+\opt{numberleft}\par\opt{numbercenter}\par\opt{numberright}&
+Располагает номер слева, по центру или справа соответственно.\\\hline
+m4_END_OPTTBL
+
+Пакет \pkg{eskdplain} устанавливает стиль \val{empty} в качестве стиля
+титульного листа и стиль \val{plain} для всех остальных страниц.
 
 \newpage
 \section{Благодарности}
