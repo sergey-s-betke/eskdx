@@ -25,8 +25,8 @@ m4_FILE_ID([[$Date$]]) Sheet of Changes GOST 2.503-90]
 \RequirePackage{array}
 \RequirePackage{longtable}
 
-\newcommand{\ESKDchngFontHead}{\ESKDfontIII}
-\newcommand{\ESKDchngFontBody}{\ESKDfontIII}
+\newcommand{\ESKDchngFontHead}{\ESKDfontTabHead}
+\newcommand{\ESKDchngFontBody}{\ESKDfontTabBody}
 \newcommand{\ESKDchngColumnIwidth}{.08\textwidth}
 \newcommand{\ESKDchngColumnIIwidth}{.08\textwidth}
 \newcommand{\ESKDchngColumnIIIwidth}{.08\textwidth}
