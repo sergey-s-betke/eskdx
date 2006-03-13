@@ -86,9 +86,7 @@ m4_dnl поля титульного листа
 m4_dnl базовый шаблон для любого титульного листа
 \newenvironment{ESKDtitlePage}{%
   \begin{ESKDpadding}{5mm}{5mm}
-  \ifx\ESKD@default@style\ESKD@cmp@emptystyle\else
-    \ESKDstyle{title}
-  \fi}{%
+  \ESKDstyle{\ESKD@default@style@title}}{%
   \end{ESKDpadding}
   \aftergroup\ESKD@title@after@page}
 
