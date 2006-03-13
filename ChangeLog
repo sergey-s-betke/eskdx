@@ -1,4 +1,71 @@
-2006-02-27  Konstantin Korikov  <lostclus@ua.fm>
+2006-03-13  Konstantin Korikov  <lostclus@ua.fm>
+
+	* include.mak: Changed version to 0.93.
+
+	* NEWS.in: NEWS updated.
+
+	* manual/eskdx.tex.in, source/eskdplain.sty.in,
+	source/eskdstamp.sty.in, source/eskdtitlebase.sty.in: New
+	commands \ESKDdefaultTitleStyle, \ESKDdefaultFirstStyle and
+	\ESKDdefaultStyle.
+
+	* manifest.txt, source/eskdplain.sty.in, source/eskdstamp.sty.in,
+	source/eskdtitlebase.sty.in: \ESKD@default@style@title controls
+	page style of title page. New package eskdplain.
+
+	* source/eskdchngsheet.sty.in, source/eskdfont.sty.in,
+	source/eskdspec.sty.in: New commands \ESKDfontTabHead
+	\ESKDfontTabBod. Make calculation of specification grid
+	parameters.
+
+2006-03-04  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdtitlebase.sty.in: Number title page.
+
+2006-03-03  Konstantin Korikov	<lostclus@ua.fm>
+
+	* manual/eskdx.tex.in: Manual updated.
+
+2006-03-02  Konstantin Korikov	<lostclus@ua.fm>
+
+	* include.mak: Added dist-ctan target.
+
+	* manifest.txt, manual/.latex2html-init, manual/Makefile,
+	manual/latex2html-init, source/Makefile, unpacked/Makefile,
+	Makefile, README.in, include.mak: Return back to one full
+	distribution. eskdx.pdf in distribution again. Rename
+	.latex2html-init to latex2html-init. Fixed manifest.txt and
+	Makefile's.
+
+	* test/spec.tex: Use new eskdtab class.
+
+	* source/eskdtab.cls.in: Fixed article options.
+
+	* source/eskdstamp.sty.in: Fixed typo.
+
+	* source/eskdstamp.sty.in, source/eskdinfo.sty.in: Removed
+	implicit dependance of eskdinfo on eskdstamp. Added explicit
+	dependance of eskdstamp on eskdinfo.
+
+	* source/eskdtab.cls.in: New class eskdtab for tabular
+	documentation.
+
+	* source/eskdtext.cls.in: Removed duplicate loading of eskdtitle.
+
+	* manual/Makefile: eskdx.tex removed from source distribution.
+
+	* Makefile: Added NEWS to unpacked distribution.
+
+	* unpacked/Makefile, Makefile, README.in: Split to two
+	distributions: source and unpacked.
+
+2006-03-01  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdtext.cls.in: Fixed 12pt and 14pt options.
+
+2006-02-27  Konstantin Korikov	<lostclus@ua.fm>
+
+	* ChangeLog: ChangeLog updated.
 
 	* include.mak: Changed version to 0.92.
 
