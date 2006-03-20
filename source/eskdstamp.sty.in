@@ -416,12 +416,17 @@ m4_dnl штамп форма 2
 \put(145,15){\line(0,1){5}}
 \put(150,15){\line(0,1){10}}
 \put(165,15){\line(0,1){10}}
+\put(67, 1){\parbox[b][23mm][c]{66mm}{\centering\ESKDfontV\ESKDtheColumnI}}
 \put(67, 26){\parbox[b][13mm][c]{106mm}{\centering\ESKDfontVII\ESKDtheColumnII}}
 \put(135, 21.3){\makebox[15mm]{\ESKDfontIII\ESKDcolumnIVname}}
+\put(135, 16.3){\makebox[5mm][c]{\ESKDfontIII\ESKDtheColumnIVfI}}
+\put(140, 16.3){\makebox[5mm][c]{\ESKDfontIII\ESKDtheColumnIVfII}}
+\put(145, 16.3){\makebox[5mm][c]{\ESKDfontIII\ESKDtheColumnIVfIII}}
 \put(150, 21.3){\makebox[15mm]{\ESKDfontIII%
   \ifESKD@twoside\ESKDcolumnVIItwosideName\else\ESKDcolumnVIIname\fi}}
 \put(165, 21.3){\makebox[20mm]{\ESKDfontIII%
   \ifESKD@twoside\ESKDcolumnVIIItwosideName\else\ESKDcolumnVIIIname\fi}}
+\put(137, 1){\parbox[b][13mm][c]{46mm}{\centering\ESKDfontV\ESKDtheColumnIX}}
 \put(0.5, 21.3){\makebox[16mm][l]{\ESKDfontIII\ESKDcolumnXfIname}}
 \put(0.5, 16.3){\makebox[16mm][l]{\ESKDfontIII\ESKDcolumnXfIIname}}
 \put(0.5, 11.3){\makebox[16mm][l]{\ESKDfontIII\ESKDcolumnXfIVname}}
@@ -440,13 +445,6 @@ m4_dnl штамп форма 2
 \end{picture}}}
 \newcommand{\ESKD@stamp@ii@var}{%
 \begin{picture}(0,0)(0,0)
-\ifnum \c@page = 1
-  \put(67, 1){\parbox[b][23mm][c]{66mm}{\centering\ESKDfontV\ESKDtheColumnI}}
-  \put(135, 16.3){\makebox[5mm][c]{\ESKDfontIII\ESKDtheColumnIVfI}}
-  \put(140, 16.3){\makebox[5mm][c]{\ESKDfontIII\ESKDtheColumnIVfII}}
-  \put(145, 16.3){\makebox[5mm][c]{\ESKDfontIII\ESKDtheColumnIVfIII}}
-  \put(137, 1){\parbox[b][13mm][c]{46mm}{\centering\ESKDfontV\ESKDtheColumnIX}}
-\fi
 \ifESKD@enable@column@vii
   \put(150, 16.3){\makebox[15mm]{\ESKDfontIII\thepage}}
 \fi
