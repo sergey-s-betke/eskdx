@@ -116,6 +116,18 @@ m4_FILE_ID([[$Date$]]) Language File]
 \newcommand{\ESKDspecColumnVIIname}{%
   \cyr\CYRP\cyrr\cyri\cyrm\cyre\cyrch\cyra\cyrn\cyri\cyre}
 
+\newcommand{\ESKDspecIIcolumnIname}{\ESKDspecColumnIname}
+\newcommand{\ESKDspecIIcolumnIIname}{\ESKDspecColumnIIname}
+\newcommand{\ESKDspecIIcolumnIIIname}{\ESKDspecColumnIIIname}
+\newcommand{\ESKDspecIIcolumnIVname}{\ESKDspecColumnIVname}
+\newcommand{\ESKDspecIIcolumnVname}{\ESKDspecColumnVname}
+\newcommand{\ESKDspecIIcolumnVIname}{\ESKDspecColumnVIname}
+\newcommand{\ESKDspecIIcolumnVIIname}{%
+  \cyr\CYRM\cyra\cyrs\cyrs\cyra}
+\newcommand{\ESKDspecIIcolumnVIIIname}{%
+  \cyr\CYRM\cyra\cyrt\cyre\cyrr\cyri\cyra\cyrl}
+\newcommand{\ESKDspecIIcolumnIXname}{\ESKDspecColumnVIIname}
+
 \newcommand{\ESKDchangeSheetName}{%
   \cyr\CYRL\cyri\cyrs\cyrt\ %
   \cyrr\cyre\cyrg\cyri\cyrs\cyrt\cyrr\cyra\cyrc\cyri\cyri\ %

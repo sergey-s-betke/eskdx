@@ -17,6 +17,7 @@ source/eskdplain.sty.in
 source/eskdrussian.def.in
 source/eskdsect.sty.in
 source/eskdspec.sty.in
+source/eskdspecii.sty.in
 source/eskdstamp.sty.in
 source/eskdtab.cls.in
 source/eskdtext.cls.in
