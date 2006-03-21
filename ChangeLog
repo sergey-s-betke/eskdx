@@ -1,4 +1,22 @@
-2006-03-13  Konstantin Korikov  <lostclus@ua.fm>
+2006-03-21  Konstantin Korikov  <lostclus@ua.fm>
+
+	* include.mak: Changed version to 0.94.
+
+	* NEWS.in: NEWS updated.
+
+	* source/eskdspecii.sty.in, source/eskdukrainian.def.in,
+	test/specii.tex, manifest.txt, manual/eskdx.tex.in,
+	source/eskdrussian.def.in: New package eskdspecii. Fixed ukrainian
+	translation in change sheet.
+
+2006-03-20  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdstamp.sty.in: Fixed bug when columns 1, 4 and 9 in
+	form 2 not shown if document has title page.
+
+2006-03-13  Konstantin Korikov	<lostclus@ua.fm>
+
+	* ChangeLog: ChangeLog updated.
 
 	* include.mak: Changed version to 0.93.
 
