@@ -13,6 +13,7 @@ source/eskdindent.sty.in
 source/eskdinfo.sty.in
 source/eskdlang.sty.in
 source/eskdlist.sty.in
+source/eskdpara.sty.in
 source/eskdplain.sty.in
 source/eskdrussian.def.in
 source/eskdsect.sty.in
