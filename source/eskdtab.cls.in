@@ -27,6 +27,7 @@ m4_FILE_ID([[$Date$]]) Tabular Documentation]
 \DeclareOption{cp1251}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{iso8859-5}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{cp866}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
+\DeclareOption{utf-8}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{twoside}{%
   \PassOptionsToClass{\CurrentOption}{article}%
   \PassOptionsToPackage{\CurrentOption}{eskdstamp}}
