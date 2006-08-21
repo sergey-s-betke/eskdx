@@ -99,7 +99,8 @@ m4_FILE_ID([[$Date$]]) Language File]
 \addto\captionsukrainian{%
   \def\tablename{{\cyr\CYRT\cyra\cyrb\cyrl\cyri\cyrc\cyrya}}%
   \def\figurename{{\cyr\CYRR\cyri\cyrs\cyru\cyrn\cyro\cyrk}}%
-}
+  \def\refname{{\cyr\CYRP\cyre\cyrr\cyre\cyrl\cyrii\cyrk\ 
+    \CYRP\cyro\cyrs\cyri\cyrl\cyra\cyrn\cyrsftsn}}}
 
 \newcommand{\ESKDspecColumnIname}{%
   \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt}
