@@ -1,0 +1,57 @@
+\documentclass[russian,koi8-r,pointsection,%
+floatsection,equationsection]{eskdtext}
+\usepackage[T2A]{fontenc}
+\usepackage{pscyr}
+\usepackage{amsmath}
+
+\ESKDtitle{eskdx}
+\ESKDdocName{Проверка коллекции. Проверка несквозного стиля нумерации}
+\ESKDdate{2006/08/21}
+
+\usepackage[unicode]{hyperref}
+
+\begin{document}
+\maketitle
+\section{Первый раздел}
+\begin{table}[h!]
+\caption{Первая таблица}
+\begin{tabular}{|c|c|c|}
+\hline
+1&2&3\\\hline
+2&4&6\\\hline
+3&6&9\\\hline
+\end{tabular}
+\end{table}
+
+Тут формулы:
+\begin{eqnarray}
+\label{efirst}
+1 \cdot 1 & = & 1\\
+2 \cdot 1 & = & 2\\
+3 \cdot 1 & = & 3\\
+1 \cdot 2 & = & 2\\
+2 \cdot 2 & = & 4\\
+3 \cdot 2 & = & 6\\
+1 \cdot 3 & = & 3\\
+2 \cdot 3 & = & 6\\
+3 \cdot 3 & = & 9
+\end{eqnarray}
+
+Формула \eqref{efirst} выглядит банально.
+
+\newpage
+\section{Второй раздел}
+В таблице \ref{tsecond} приведен пример игры в крестики нолики.
+\begin{table}[h!]
+\caption{Вторая таблица}
+\label{tsecond}
+\begin{tabular}{|c|c|c|}
+\hline
+o& &x\\\hline
+ &x& \\\hline
+x& &o\\\hline
+\end{tabular}
+\end{table}
+
+\end{document}
+% vim:tw=70

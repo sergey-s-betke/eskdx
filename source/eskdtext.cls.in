@@ -21,6 +21,8 @@ m4_FILE_INIT
 m4_FILE_ID([[$Date$]]) Textual Documentation]
 
 \newcommand{\ESKD@docfont}{14pt}
+\newcommand{\ESKD@float@style}{single}
+\newcommand{\ESKD@equation@style}{single}
 
 \DeclareOption{russian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{ukrainian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
@@ -35,6 +37,12 @@ m4_FILE_ID([[$Date$]]) Textual Documentation]
 \DeclareOption{pointsingle}{\PassOptionsToPackage{\CurrentOption}{eskdsect}}
 \DeclareOption{pointsection}{\PassOptionsToPackage{\CurrentOption}{eskdsect}}
 \DeclareOption{pointsubsection}{\PassOptionsToPackage{\CurrentOption}{eskdsect}}
+\DeclareOption{floatsingle}{\renewcommand{\ESKD@float@style}{single}}
+\DeclareOption{floatsection}{\renewcommand{\ESKD@float@style}{section}}
+\DeclareOption{floatsubsection}{\renewcommand{\ESKD@float@style}{subsection}}
+\DeclareOption{equationsingle}{\renewcommand{\ESKD@equation@style}{single}}
+\DeclareOption{equationsection}{\renewcommand{\ESKD@equation@style}{section}}
+\DeclareOption{equationsubsection}{\renewcommand{\ESKD@equation@style}{subsection}}
 \DeclareOption{twoside}{%
   \PassOptionsToClass{\CurrentOption}{extarticle}%
   \PassOptionsToPackage{\CurrentOption}{eskdstamp}}
@@ -63,5 +71,41 @@ m4_FILE_ID([[$Date$]]) Textual Documentation]
 
 m4_dnl межстрочный интервал
 \linespread{1.25}
+
+m4_dnl стиль нумерации плавающих объектов
+\newcommand{\ESKD@float@style@single}{}
+
+\newcommand{\ESKD@float@style@section}{
+  \@addtoreset{figure}{section}
+  \@addtoreset{table}{section}
+  \renewcommand{\thefigure}{%
+    \ifnum \c@section>\z@ \thesection.\fi \arabic{figure}}
+  \renewcommand{\thetable}{%
+    \ifnum \c@section>\z@ \thesection.\fi \arabic{table}}}
+
+\newcommand{\ESKD@float@style@subsection}{
+  \@addtoreset{figure}{subsection}
+  \@addtoreset{table}{subsection}
+  \renewcommand{\thefigure}{%
+    \ifnum \c@subsection>\z@ \thesubsection.\fi \arabic{figure}}
+  \renewcommand{\thetable}{%
+    \ifnum \c@subsection>\z@ \thesubsection.\fi \arabic{table}}}
+
+\@nameuse{ESKD@float@style@\ESKD@float@style}
+
+m4_dnl стиль нумерации формул
+\newcommand{\ESKD@equation@style@single}{}
+
+\newcommand{\ESKD@equation@style@section}{
+  \@addtoreset{equation}{section}
+  \renewcommand{\theequation}{%
+    \ifnum \c@section>\z@ \thesection.\fi \arabic{equation}}}
+
+\newcommand{\ESKD@equation@style@subsection}{
+  \@addtoreset{equation}{subsection}
+  \renewcommand{\theequation}{%
+    \ifnum \c@subsection>\z@ \thesubsection.\fi \arabic{equation}}}
+
+\@nameuse{ESKD@equation@style@\ESKD@equation@style}
 
 m4_dnl vim:ft=tex:ai:sw=2
