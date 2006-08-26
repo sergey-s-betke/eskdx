@@ -170,7 +170,7 @@ m4_dnl приложения
     \setlength{\partopsep}{0mm}%
     \setlength{\itemsep}{0mm}%
     \setlength{\parsep}{0mm}}
-    \item\raggedleft\appendixname\ \theappendix
+    \item\centering\appendixname\ \theappendix
     \ifx#1\@empty\else\\(#1)\fi\\
     \item\centering\bf #2
   \end{list}%
