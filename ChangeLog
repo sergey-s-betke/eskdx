@@ -1,4 +1,51 @@
-2006-03-21  Konstantin Korikov  <lostclus@ua.fm>
+2006-08-26  Konstantin Korikov  <lostclus@ua.fm>
+
+	* include.mak: Changed version to 0.95.
+
+	* NEWS.in: NEWS updated.
+
+	* source/eskdsect.sty.in: Fixed appendix caption aligment to
+	fit GOST GOST 2.105-95.
+
+2006-08-22  Konstantin Korikov	<lostclus@ua.fm>
+
+	* manifest.txt, source/eskddstu.sty.in: New package eskddstu to
+	implement Ukrainian DSTU standards.
+
+2006-08-21  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdukrainian.def.in: \refname in Ukrainian translation
+	to fit DSTU 3008-95.
+
+	* manual/eskdx.tex.in: Manual updated.
+
+	* test/general.tex, test/numbering.tex, source/eskdtext.cls.in:
+	New options floatsingle, floatsection, floatsubsection,
+	equationsingle, equationsection and equationsubsection of eskdtext
+	class. New example to test numbering.
+
+2006-08-20  Konstantin Korikov	<lostclus@ua.fm>
+
+	* manual/eskdx.tex.in: Fixed descriptions of vpadding and hpadding
+	in the manual.
+
+	* NEWS.in: Fixed typos in dates.
+
+2006-08-08  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdgraph.cls.in, source/eskdtab.cls.in,
+	source/eskdtext.cls.in: utf-8 encoding support.
+
+2006-06-02  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdpara.sty.in, manifest.txt: New package eskdpara
+	to use a heading style for paragraphs and subparagraphs like
+	eskdsect package do for subsubsection. Thanks to Sergey Semionov
+	for contribution.
+
+2006-03-21  Konstantin Korikov	<lostclus@ua.fm>
+
+	* ChangeLog: ChangeLog updated.
 
 	* include.mak: Changed version to 0.94.
 
