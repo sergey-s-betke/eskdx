@@ -1,5 +1,5 @@
 PACKAGE = eskdx
-VERSION = 0.94
+VERSION = 0.95
 RELEASE_DATE = 2006/03/21
 M4DEPS = $(TOP_DIR)/include.m4 $(TOP_DIR)/include.mak
 M4FLAGS = -P -Dm4_ESKDX_INIT="m4_include($(TOP_DIR)/include.m4)" \
