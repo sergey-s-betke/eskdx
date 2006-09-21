@@ -120,11 +120,11 @@ $1\\m4_dnl$
 \begin{longtable}{|%
 p{.32\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
 p{.68\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
-$1\\m4_dnl$
+$1\label{$2}\\
 \hline
 \multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
 \endfirsthead
-\caption*{Продолжение таблицы}\\
+\caption*{Продолжение таблицы \ref{$2}}\\m4_dnl$
 \hline
 \multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
 \endhead
@@ -136,7 +136,7 @@ m4_define([[m4_END_OPTTBL]], [[\end{longtable}]])
 приведены в таблице~\ref{t:common:opts}.
 m4_BEGIN_OPTTBL([[m4_dnl
 \caption{Общие опции классов \pkg{eskdtext} и
-\pkg{eskdgraph}\label{t:common:opts}}]])
+\pkg{eskdgraph}}]], [[t:common:opts]])
 \opt{russian}\par\opt{ukrainian}&
 Выбирает язык документа, соответственно русский, украинский. По
 умолчанию русский.\\\hline
@@ -195,7 +195,7 @@ m4_END_OPTTBL
 Опции, воспринимаемые классом \pkg{eskdtext} приведены в
 таблице~\ref{t:eskdtext:opts}.
 m4_BEGIN_OPTTBL([[m4_dnl
-\caption{Опции класса \pkg{eskdtext}\label{t:eskdtext:opts}}]])
+\caption{Опции класса \pkg{eskdtext}}]], [[t:eskdtext:opts]])
 \opt{12pt}\par\opt{14pt}&
 Устанавливает размер шрифта документа, соответственно \val{12pt},
 \val{14pt}. По умолчанию \val{14pt}.\\\hline
@@ -224,7 +224,7 @@ m4_END_OPTTBL
 Опции, воспринимаемые классом \pkg{eskdgraph} приведены в
 таблице~\ref{t:eskdgraph:opts}.
 m4_BEGIN_OPTTBL([[m4_dnl
-\caption{Опции класса \pkg{eskdgraph}\label{t:eskdgraph:opts}}]])
+\caption{Опции класса \pkg{eskdgraph}}]], [[t:eskdgraph:opts]])
 \opt{a0paper}\par\opt{a1paper}\par\opt{a2paper}\par\opt{a3paper}\par
 \opt{a4paper}&
 Устанавливает формат (размер) листа, соответственно А0, А1, А2, А3,
@@ -256,7 +256,7 @@ m4_END_OPTTBL
 Опции, воспринимаемые классом \pkg{eskdtab} приведены в
 таблице~\ref{t:eskdtab:opts}.
 m4_BEGIN_OPTTBL([[m4_dnl
-\caption{Опции класса \pkg{eskdtab}\label{t:eskdtab:opts}}]])
+\caption{Опции класса \pkg{eskdtab}}]], [[t:eskdtab:opts]])
 \opt{a3paper}\par\opt{a4paper}&
 Устанавливает формат (размер) листа, соответственно А3, А4. По
 умолчанию А4.\\\hline
@@ -864,7 +864,7 @@ $5$, $7$ и $10~\text{мм}$. Шрифты, заданные этими командами,
 пакета, которые приведены в таблице \ref{t:eskdplain:opts}.
 
 m4_BEGIN_OPTTBL([[m4_dnl
-\caption{Опции пакета \pkg{eskdplain}\label{t:eskdplain:opts}}]])
+\caption{Опции пакета \pkg{eskdplain}}]], [[t:eskdplain:opts]])
 \opt{numbertop}\par\opt{numberbottom}&
 Располагает номер в верхней или в нижней части страницы
 соответственно.\\\hline
