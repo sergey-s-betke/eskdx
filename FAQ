@@ -1,0 +1,122 @@
+Q: Где можно скачать свежую версию eskdx?
+A: Домашняя страничка проекта тут:
+   http://lostclus.linux.kiev.ua/eskdx/
+
+   Директория на CTAN'е здесь:
+   http://ctan.org/tex-archive/macros/latex/contrib/eskdx/
+
+Q: Как утсановить eskdx? Истользуется Linux и дистрибутив TeTeX.
+A: Пример установки в системный каталог (для всех пользователей):
+
+     # unzip eskdx-0.96.zip
+     # cp -a eskdx-0.96/unpacked /usr/share/texmf/tex/latex/eskdx
+     # texhash
+
+   Пример установки в домашний каталог пользователя:
+
+     $ unzip eskdx-0.96.zip
+     $ mkdir -p ~/texmf/tex/latex
+     $ cp -a eskdx-0.96/unpacked ~/texmf/tex/latex/eskdx
+     $ texhash
+
+Q: После обработки исходника командой latex получил DVI-файл. Но когда
+   пытаюсь просмотреть его в программе xdvi надписи в основной надписи
+   и заголовки таблиц, которые должны быть повернуты на 90 градусов,
+   остаются не повернутыми. В чем проблема?
+A: Даже не знаю почему это происходит. Но если этот DVI преобразовать
+   в PostScript при помощи dvips, а потом смотреть его в какой-нибудь
+   программе просмотра файлов PostScript или печатать его на принтере,
+   то проблема исчезает. Эта проблема также не наблюдается при
+   компилировании исходника сразу в PDF при помощи pdflatex.
+
+Q: А можно ли задавать свои надписи вместо жестко установленных
+   в графе 10 основной надписи, т.е. там где: "Разраб.", "Пров.",
+   "Н.контр.", "Утв."?
+
+A: Можно. Для примера в преамбуле написать:
+
+     \renewcommand{\ESKDcolumnXfIname}{Автор}
+     \renewcommand{\ESKDcolumnXfVname}{Рецензент}
+
+Q: Как можно убрать в штампе формы 2а графы 2, 14-18, т.е. оставить
+   только графу 7 (Лист)
+A: Только путем определения нового стиля страницы, который будет
+   рисовать только графу 7. Что-то вроде:
+
+    \ESKDnewStyle{formIIabCustom}{15mm}
+    \ESKDputOnStyle{formIIabCustom}{frame}{\ESKDdrawFrame}
+    \ESKDputOnStyle{formIIabCustom}{stamp}{%
+      Тут команды рисования (команды окружения picture)}
+
+   Затем этот стиль включить как описано в руководстве в разделе
+   "Управление стилями страниц".
+
+Q: Как можно задать в основной надписи для спецификации (она находится
+   в конце документа) другой текст для граф 1 и 2, который бы отличался
+   от текста основного штампа первой страницы?
+A: Спецификация должна выполнятся отдельным документом. В целях
+   оптимизации некоторые вещи нельзя менять в теле документа. Например
+   каждый вид штампа в выходном файле записан только один раз, а на
+   каждой странице указывается ссылка на него. Так экономится место и
+   повышается скорость обработки.
+
+Q: Не могли бы Вы привести несколько примеров по настройке шрифтов
+   для надписей титульного листа и штампа -- изменение размеров и их
+   начертания?
+A: Например нужно изменить размер шрифта только в поле 1 титульного
+   листа.  Вместо шрифта 5 (по умолчанию) нужно использовать 3. Пишем
+   в преамбуле:
+
+     \renewcommand{\ESKDtitleFontI}{\ESKDfontIII}
+
+   Тоже самое, но с указанием размера в пунктах:
+
+     \renewcommand{\ESKDtitleFontI}{%
+     \ESKDfontSetBaseLineStretch
+     \fontsize{11pt}{14pt}\selectfont\ESKDfontShape}
+
+   Например нужно глобально (в смысле все, кроме основного текста) сделать
+   прямое начертание:
+
+     \newcommand{\ESKDfontShape}{\upshape}
+
+   Чтобы лучше понять как настраиваются шрифты загляните в файлы
+   eskdfont.sty и eskdtitle.sty.
+
+Q: Жаль только, что нельзя в штампе, например, в графе 9 - вместо
+   ESKDfontV уменьшить хотя бы на ESKDfontIII...
+A: И это можно настроить. В преамбуле:
+
+     \renewcommand{\ESKDtheColumnIX}{\ESKDfontIII\ESKDtheGroup}
+
+Q: Как на титульном листе можно задать прямой шрифт (а не используемый
+   по умолчания наклонный)?
+A: В преамбуле:
+
+     \renewcommand{\ESKDtitleFontI}{\ESKDfontV\upshape}
+     \renewcommand{\ESKDtitleFontII}{\ESKDfontIII\upshape}
+     \renewcommand{\ESKDtitleFontIII}{%
+       \ESKDfontIII\renewcommand{\baselinestretch}{1.50}\selectfont\upshape}
+     \renewcommand{\ESKDtitleFontIV}{\ESKDfontV\upshape}
+     \renewcommand{\ESKDtitleFontV}{\ESKDfontV\upshape}
+     \renewcommand{\ESKDtitleFontVI}{\ESKDfontV\upshape}
+     \renewcommand{\ESKDtitleFontVII}{\ESKDfontIII\upshape}
+     \renewcommand{\ESKDtitleFontVIII}{%
+       \ESKDfontIII\renewcommand{\baselinestretch}{1.25}\selectfont\upshape}
+     \renewcommand{\ESKDtitleFontX}{\ESKDfontV\upshape}
+
+Q: По ДСТУ (для Украины) первая строка пояснения к формуле должна
+   начинаться с абзацного отступа.
+A: Пока не знаю как переопределить окружение ESKDexplanation чтобы
+   этого достичь. Выход -- вместо ESKDexplanation использовать обычные
+   абзацы.
+
+Q: Внизу от края страницы до рамки расстояние оказалось менее 5 мм. На
+   экране все в порядке. Какая причина? Померил бумагу -- по высоте
+   вместо 297мм -оказалось 296 (295.5)!!!
+A: Специально для этих случаев предусмотрена опция reduceheight
+   (уменьшает высоту рамки за счет увеличения нижнего поля на заданную
+   высоту). Пример:
+
+     \documentclass[reduceheight=1mm]{eskdtext}
+
