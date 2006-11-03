@@ -114,7 +114,7 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 m4_define([[m4_BEGIN_OPTTBL]], [[m4_dnl
 m4_ifdef([[m4_HTML]], [[m4_dnl
 \begin{longtable}{|p{.32\textwidth}|p{.68\textwidth}|}
-$1\\m4_dnl$
+$1\label{$2}\\m4_dnl$
 \hline
 \multicolumn{1}{|c|}{Опция}&
 \multicolumn{1}{c|}{Описание}\\\hline]], [[m4_dnl
@@ -921,23 +921,23 @@ m4_ifdef([[m4_HTML]],
 \begin{center}
 \includegraphics[scale=0.6]{img-form1}
 \end{center}
-\caption{Основная надпись для чертежей и схем. Форма~1}
+\caption{Основная надпись для чертежей и схем. Форма~1}
 \end{figure}
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.6]{img-form2}
 \end{center}
-\caption{Основная надпись для текстовых конструкторских документов
-(первый или заглавный лист). Форма~2}
+\caption{Основная надпись для текстовых конструкторских документов
+(первый или заглавный лист). Форма~2}
 \end{figure}
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.6]{img-form2a}
 \end{center}
-\caption{Основная надпись для чертежей (схем)
-и текстовых конструкторских документов (последующие листы). Форма~2а}
+\caption{Основная надпись для чертежей (схем)
+и текстовых конструкторских документов (последующие листы). Форма~2а}
 \end{figure}
 
 \end{document}
