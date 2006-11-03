@@ -153,4 +153,23 @@ m4_FILE_ID([[$Date$]]) Language File]
   \cyrn\cyro\cyrg\cyro\ \cyrd\cyro\cyrk\cyru\cyrm. \cyri\ %
   \cyrd\cyra\cyrt\cyra}
 
+\def\@Asbuk#1{\ifcase#1\or
+  \CYRA\or\CYRB\or\CYRV\or\CYRG\or\CYRD\or\CYRE\or\CYRZH\or
+  \CYRI\or\CYRK\or\CYRL\or\CYRM\or\CYRN\or
+  \CYRP\or\CYRR\or\CYRS\or\CYRT\or\CYRU\or\CYRF\or\CYRH\or
+  \CYRC\or\CYRSH\or\CYRSHCH\or\CYREREV\or\CYRYU\or
+  \CYRYA\else{\@tempcnta \number #1\relax
+      \advance\@tempcnta -25\relax
+      \protect\number\@tempcnta}
+  \fi}
+\def\@asbuk#1{\ifcase#1\or
+  \cyra\or\cyrb\or\cyrv\or\cyrg\or\cyrd\or\cyre\or\cyrzh\or
+  \cyri\or\cyrk\or\cyrl\or\cyrm\or\cyrn\or
+  \cyrp\or\cyrr\or\cyrs\or\cyrt\or\cyru\or\cyrf\or\cyrh\or
+  \cyrc\or\cyrsh\or\cyrshch\or\cyrerev\or\cyryu\or
+  \cyrya\else{\@tempcnta \number #1\relax
+      \advance\@tempcnta -25\relax
+      \protect\number\@tempcnta}
+  \fi}
+
 m4_dnl vim:ft=tex:ai:sw=2
