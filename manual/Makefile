@@ -6,6 +6,10 @@ DIST_FILES = \
 	     eskdx.pdf \
 	     eskdx.tex.in \
 	     example.tex \
+	     img-form1.svg \
+	     img-form2.svg \
+	     img-form2a.svg \
+	     img-title.svg \
 	     Makefile
 
 include $(TOP_DIR)/include.mak
