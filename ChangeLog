@@ -1,4 +1,44 @@
-2006-08-26  Konstantin Korikov  <lostclus@ua.fm>
+2006-11-03  Konstantin Korikov  <lostclus@ua.fm>
+
+	* include.mak: Changed version to 0.96.
+
+	* NEWS.in: NEWS updated.
+
+	* manual/latex2html-init: Enable anti-aliasing.
+
+	* manual/eskdx.tex.in: Manual updated.
+
+	* manual/Makefile: Fixed clean rule.
+
+	* source/eskdrussian.def.in, source/eskdukrainian.def.in: Fixed
+	\Asbuk and \asbuk (e.g. removed invalid letters).
+
+	* FAQ: FAQ updated.
+
+	* manual/Makefile: Fixed DIST_FILES.
+
+2006-11-02  Konstantin Korikov	<lostclus@ua.fm>
+
+	* manual/eskdx.tex.in: Manual updated.
+
+	* FAQ, INSTALL, Makefile: Added FAQ and INSTALL.
+
+	* manual/Makefile, manual/eskdx.tex.in, manual/img-form1.svg,
+	manual/img-form2.svg, manual/img-form2a.svg, manual/img-title.svg:
+	New appendix with column layout was added to the manual. New
+	appendix with title page field layout was added to the manual.
+
+2006-09-21  Konstantin Korikov	<lostclus@ua.fm>
+
+	* manual/eskdx.tex.in: Manual updated.
+
+2006-08-31  Konstantin Korikov	<lostclus@ua.fm>
+
+	* source/eskdukrainian.def.in: Fixed typo in ukrainian \refname.
+
+2006-08-26  Konstantin Korikov	<lostclus@ua.fm>
+
+	* ChangeLog: ChangeLog updated.
 
 	* include.mak: Changed version to 0.95.
 
