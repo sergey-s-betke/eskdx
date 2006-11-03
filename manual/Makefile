@@ -44,5 +44,6 @@ clean:
 	rm -f {eskdx,html}.{aux,out,log,toc}
 	rm -f html.{tex,dvi} WARNINGS
 	rm -rf html
+	rm -f img-{form1,form2,form2a,title}.{eps,pdf}
 
 .PHONY: html
