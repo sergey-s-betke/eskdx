@@ -151,6 +151,7 @@ m4_dnl приложения
 \newcommand{\ESKDappendix}[2]{%
   \ESKDclearDoublePage%
   \refstepcounter{appendix}%
+  \setcounter{point}{0}%
   \setcounter{section}{0}%
   \renewcommand{\thesection}{\theappendix.\arabic{section}}%
   \setcounter{equation}{0}%
