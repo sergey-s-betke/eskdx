@@ -142,7 +142,7 @@ m4_BEGIN_OPTTBL([[m4_dnl
 Выбирает язык документа, соответственно русский, украинский. По
 умолчанию русский.\\\hline
 \opt{koi8-r}\par\opt{koi8-u}\par\opt{cp1251}\par\opt{iso8859-5}\par
-\opt{cp866}\par\opt{utf-8}&
+\opt{cp866}\par\opt{utf8}\par\opt{utf-8}&
 Задает кодировку текста, соответственно \mbox{KOI8-R}, \mbox{KOI8-U},
 \mbox{CP1251}, \mbox{ISO8859-5}, \mbox{CP866}, \mbox{UTF-8}.\\\hline
 \opt{reduceheight=}&
