@@ -28,6 +28,7 @@ m4_FILE_ID([[$Date$]]) Graphical Documentation]
 \DeclareOption{iso8859-5}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{cp866}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{utf-8}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
+\DeclareOption{utf8}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{twoside}{%
   \ClassError{eskdgraph}{Two side printing is not allowed for

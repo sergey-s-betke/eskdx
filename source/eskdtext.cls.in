@@ -32,6 +32,7 @@ m4_FILE_ID([[$Date$]]) Textual Documentation]
 \DeclareOption{iso8859-5}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{cp866}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{utf-8}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
+\DeclareOption{utf8}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{12pt}{\renewcommand{\ESKD@docfont}{12pt}}
 \DeclareOption{14pt}{\renewcommand{\ESKD@docfont}{14pt}}
 \DeclareOption{pointsingle}{\PassOptionsToPackage{\CurrentOption}{eskdsect}}
