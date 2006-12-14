@@ -177,4 +177,14 @@ m4_dnl приложения
   \end{list}%
   \par\nobreak\addvspace{\ESKDappendixSkip}}
 
+m4_dnl содержание
+\renewcommand\tableofcontents{%
+  \begingroup
+  \ESKDsectAlign{section}{Center}
+  \section*{\contentsname
+    \@mkboth{%
+      \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+  \endgroup
+  \@starttoc{toc}}
+
 m4_dnl vim:ft=tex:sw=2:ai
