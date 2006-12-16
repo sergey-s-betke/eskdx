@@ -116,10 +116,13 @@ m4_dnl которкий способ установки отступов
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\newif\ifESKD@point@style@single
+\ESKD@point@style@singlefalse
 
 \newcommand{\ESKD@point@style@single}{
   \newcounter{point}
-  \renewcommand{\thepoint}{\arabic{point}}}
+  \renewcommand{\thepoint}{\arabic{point}}
+  \ESKD@point@style@singletrue}
 
 \newcommand{\ESKD@point@style@section}{
   \newcounter{point}[section]
@@ -152,6 +155,9 @@ m4_dnl приложения
   \ESKDclearDoublePage%
   \refstepcounter{appendix}%
   \setcounter{point}{0}%
+  \ifESKD@point@style@single%
+    \renewcommand{\thepoint}{\theappendix.\arabic{point}}%
+  \fi
   \setcounter{section}{0}%
   \renewcommand{\thesection}{\theappendix.\arabic{section}}%
   \setcounter{equation}{0}%
