@@ -25,4 +25,5 @@ source/eskdtab.cls.in
 source/eskdtext.cls.in
 source/eskdtitlebase.sty.in
 source/eskdtitle.sty.in
+source/eskdtotal.sty.in
 source/eskdukrainian.def.in
