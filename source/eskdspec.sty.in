@@ -26,9 +26,6 @@ m4_FILE_ID([[$Date$]]) Specification GOST 2.106.95]
 \RequirePackage{array}
 \RequirePackage{longtable}
 
-\newcommand{\ESKDspecFontHead}{\ESKDfontTabHead}
-\newcommand{\ESKDspecFontBody}{\ESKDfontTabBody}
-
 \newcommand{\ESKDdrawSpecification}{
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
     \begin{picture}(0,0)
@@ -69,24 +66,24 @@ m4_dnl спецификация
 \setlength{\LTpost}{0mm}%
 \setlength{\LTleft}{0mm}%
 \setlength{\LTright}{\fill}%
-\newcolumntype{s}{>{\ESKDspecFontBody}c}%
+\newcolumntype{s}{>{\ESKDfontTabBody}c}%
 \newcolumntype{n}{>{\parbox[c][8mm][c]{1mm}{%
-  \rule{0mm}{0mm}}\ESKDspecFontBody}l}%
+  \rule{0mm}{0mm}}\ESKDfontTabBody}l}%
 \noindent%
 \begin{longtable}{ssssnss}
-\parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDspecFontHead%
+\parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDfontTabHead%
 \ESKDspecColumnIname\end{sideways}}&
-\parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDspecFontHead%
+\parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDfontTabHead%
 \ESKDspecColumnIIname\end{sideways}}&
-\parbox[c][15mm][c]{7mm}{\centering\begin{sideways}\ESKDspecFontHead%
+\parbox[c][15mm][c]{7mm}{\centering\begin{sideways}\ESKDfontTabHead%
 \ESKDspecColumnIIIname\end{sideways}}&
-\parbox[c][15mm][c]{69mm}{\centering\ESKDspecFontHead%
+\parbox[c][15mm][c]{69mm}{\centering\ESKDfontTabHead%
 \ESKDspecColumnIVname}&
-\parbox[c][15mm][c]{61mm}{\centering\ESKDspecFontHead%
+\parbox[c][15mm][c]{61mm}{\centering\ESKDfontTabHead%
 \ESKDspecColumnVname}&
-\parbox[c][15mm][c]{9mm}{\centering\begin{sideways}\ESKDspecFontHead%
+\parbox[c][15mm][c]{9mm}{\centering\begin{sideways}\ESKDfontTabHead%
 \ESKDspecColumnVIname\end{sideways}}&
-\parbox[c][15mm][c]{21mm}{\centering\ESKDspecFontHead%
+\parbox[c][15mm][c]{21mm}{\centering\ESKDfontTabHead%
 \ESKDspecColumnVIIname}\endhead}{%
 \end{longtable}%
 \end{ESKDzeroPadding}%

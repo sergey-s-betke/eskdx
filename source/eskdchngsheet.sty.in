@@ -25,8 +25,6 @@ m4_FILE_ID([[$Date$]]) Sheet of Changes GOST 2.503-90]
 \RequirePackage{array}
 \RequirePackage{longtable}
 
-\newcommand{\ESKDchngFontHead}{\ESKDfontTabHead}
-\newcommand{\ESKDchngFontBody}{\ESKDfontTabBody}
 \newcommand{\ESKDchngColumnIwidth}{.08\textwidth}
 \newcommand{\ESKDchngColumnIIwidth}{.08\textwidth}
 \newcommand{\ESKDchngColumnIIIwidth}{.08\textwidth}
@@ -41,56 +39,56 @@ m4_FILE_ID([[$Date$]]) Sheet of Changes GOST 2.503-90]
 \newenvironment{ESKDchangeSheet}{%
 \ESKDclearDoublePage
 \setlength{\tabcolsep}{0.5mm}
-\newcolumntype{s}{>{\ESKDchngFontBody}c}
-\newcolumntype{S}{>{\ESKDchngFontHead}c}
+\newcolumntype{s}{>{\ESKDfontTabBody}c}
+\newcolumntype{S}{>{\ESKDfontTabHead}c}
 \noindent
 \begin{longtable}{|*{10}{s|}}
 \hline
 \multicolumn{10}{|S|}{\ESKDchangeSheetName}\\\hline
 &\multicolumn{4}{S|}{\ESKDchngColumnsIIhName}&&&&&\\\cline{2-5}
 \parbox[c]{\ESKDchngColumnIwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDcolumnXIVname}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXIVname}&
 \parbox[c]{\ESKDchngColumnIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDchngFontHead\ESKDchngColumnIIname}&
+  \centering\ESKDfontTabHead\ESKDchngColumnIIname}&
 \parbox[c]{\ESKDchngColumnIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDchngFontHead\ESKDchngColumnIIIname}&
+  \centering\ESKDfontTabHead\ESKDchngColumnIIIname}&
 \parbox[c]{\ESKDchngColumnIVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDchngFontHead\ESKDchngColumnIVname}&
+  \centering\ESKDfontTabHead\ESKDchngColumnIVname}&
 \parbox[c]{\ESKDchngColumnVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDchngFontHead\ESKDchngColumnVname}&
+  \centering\ESKDfontTabHead\ESKDchngColumnVname}&
 \parbox[c]{\ESKDchngColumnVIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDchngColumnVIname}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIname}&
 \parbox[c]{\ESKDchngColumnVIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDcolumnXVIname}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIname}&
 \parbox[c]{\ESKDchngColumnVIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDchngColumnVIIIname\vspace{1mm}}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIIIname\vspace{1mm}}&
 \parbox[c]{\ESKDchngColumnIXwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDcolumnXVIIname}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIname}&
 \parbox[c]{\ESKDchngColumnXwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDcolumnXVIIIname}\\\hline
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIIname}\\\hline
 \endfirsthead
 \hline
 &\multicolumn{4}{S|}{\ESKDchngColumnsIIhName}&&&&&\\\cline{2-5}
 \parbox[c]{\ESKDchngColumnIwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDcolumnXIVname}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXIVname}&
 \parbox[c]{\ESKDchngColumnIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDchngFontHead\ESKDchngColumnIIname}&
+  \centering\ESKDfontTabHead\ESKDchngColumnIIname}&
 \parbox[c]{\ESKDchngColumnIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDchngFontHead\ESKDchngColumnIIIname}&
+  \centering\ESKDfontTabHead\ESKDchngColumnIIIname}&
 \parbox[c]{\ESKDchngColumnIVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDchngFontHead\ESKDchngColumnIVname}&
+  \centering\ESKDfontTabHead\ESKDchngColumnIVname}&
 \parbox[c]{\ESKDchngColumnVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDchngFontHead\ESKDchngColumnVname}&
+  \centering\ESKDfontTabHead\ESKDchngColumnVname}&
 \parbox[c]{\ESKDchngColumnVIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDchngColumnVIname}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIname}&
 \parbox[c]{\ESKDchngColumnVIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDcolumnXVIname}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIname}&
 \parbox[c]{\ESKDchngColumnVIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDchngColumnVIIIname\vspace{1mm}}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIIIname\vspace{1mm}}&
 \parbox[c]{\ESKDchngColumnIXwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDcolumnXVIIname}&
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIname}&
 \parbox[c]{\ESKDchngColumnXwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDchngFontHead\ESKDcolumnXVIIIname}\\\hline
+  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIIname}\\\hline
 \endhead
 \hline
 \endfoot}{\end{longtable}}
