@@ -49,7 +49,9 @@ m4_FILE_ID([[$Date$]]) Plain Page Style]
   \setlength{\ESKD@tmpdimb}{\ESKDframeW-2\ESKD@padding@h}
   \ESKD@plain@va
   \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimc}){%
-    \parbox[b][15mm][c]{\ESKD@tmpdimb}{\ESKD@plain@ha\thepage}}}
+    \parbox[b][15mm][c]{\ESKD@tmpdimb}{%
+      \reset@font\normalsize\normalsfcodes
+      \ESKD@plain@ha\thepage}}}
 
 \ESKDnewStyle{plain}{0mm}
 \ESKDputOnStyle{plain}{pagenumber}{\ESKDdrawPlainPageNumber}
