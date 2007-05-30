@@ -138,3 +138,23 @@ A: Специально для этих случаев предусмотрена опция reduceheight
 
      \documentclass[reduceheight=1mm]{eskdtext}
 
+Q: Можно ли не нумеровать раздел, но включать в оглавление?
+A: Можно, например:
+
+     \section*{Вступление}
+     \addcontentsline{toc}{section}{Вступление}
+
+Q: При попытке включить графику при помощи команды:
+
+     \includegraphics[360,290]{image.bmp}
+   
+   LaTeX выдает ошибку: Package keyval Error: 360 undefined.
+A: Необходимо использовать синтаксис пакета graphicx (расширенный
+   graphics). Например:
+
+     \includegraphics[bb=0 0 360 290]{image.bmp}
+
+   На данный момент совместно с eskdx можно использовать только graphicx.
+   eskdx использует пакет rotating, а тот в свою очередь загружает
+   graphicx, и получается так, что graphics с его простым синтаксисом
+   использовать уже нельзя.
