@@ -122,21 +122,26 @@ m4_dnl которкий способ установки отступов
 \newcommand{\ESKD@point@style@single}{
   \newcounter{point}
   \renewcommand{\thepoint}{\arabic{point}}
+  \newcommand{\theHpoint}{\arabic{point}}
   \ESKD@point@style@singletrue}
 
 \newcommand{\ESKD@point@style@section}{
   \newcounter{point}[section]
-  \renewcommand{\thepoint}{\thesection.\arabic{point}}}
+  \renewcommand{\thepoint}{\thesection.\arabic{point}}
+  \newcommand{\theHpoint}{\theHsection.\arabic{point}}}
 
 \newcommand{\ESKD@point@style@subsection}{
   \newcounter{point}[subsection]
-  \renewcommand{\thepoint}{\thesubsection.\arabic{point}}}
+  \renewcommand{\thepoint}{\thesubsection.\arabic{point}}
+  \newcommand{\theHpoint}{\theHsubsection.\arabic{point}}}
 
 \@nameuse{ESKD@point@style@\ESKD@point@style}
 \newcounter{subpoint}[point]
 \newcounter{subsubpoint}[subpoint]
 \renewcommand{\thesubpoint}{\thepoint.\arabic{subpoint}}
+\newcommand{\theHsubpoint}{\theHpoint.\arabic{subpoint}}
 \renewcommand{\thesubsubpoint}{\thesubpoint.\arabic{subsubpoint}}
+\newcommand{\theHsubsubpoint}{\theHsubpoint.\arabic{subsubpoint}}
 
 \newcommand{\point}{%
   \par\refstepcounter{point}\thepoint\quad}
