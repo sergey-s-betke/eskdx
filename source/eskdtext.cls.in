@@ -44,6 +44,8 @@ m4_FILE_ID([[$Date$]]) Textual Documentation]
 \DeclareOption{equationsingle}{\renewcommand{\ESKD@equation@style}{single}}
 \DeclareOption{equationsection}{\renewcommand{\ESKD@equation@style}{section}}
 \DeclareOption{equationsubsection}{\renewcommand{\ESKD@equation@style}{subsection}}
+\DeclareOption{footnotearabic}{\PassOptionsToPackage{\CurrentOption}{eskdfootnote}}
+\DeclareOption{footnoteasterisk}{\PassOptionsToPackage{\CurrentOption}{eskdfootnote}}
 \DeclareOption{twoside}{%
   \PassOptionsToClass{\CurrentOption}{extarticle}%
   \PassOptionsToPackage{\CurrentOption}{eskdstamp}}

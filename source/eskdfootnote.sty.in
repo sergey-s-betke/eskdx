@@ -20,12 +20,62 @@ m4_FILE_INIT
 \ProvidesPackage{eskdfootnote}[m4_dnl
 m4_FILE_ID([[$Date$]]) Footnote Settings]
 
+% Нумероваться сноски должны в пределах одной страницы.
+% Самое очевидное решение - переподчинить счетчик footnote счетчику page,
+% но такой метод будет давать сбои, если сноска вставлена
+% близко к концу страницы.
+% Эту проблему решил Обердайк в своем пакете zref
+
+% пакет amsmath должен быть загружен ПЕРЕД zref
+% возможно стоит загружать его в классе eskdtext
+% а не здесь 
+\RequirePackage{amsmath}
+\RequirePackage{zref-perpage}
+
+% привязываем сброс счетчика сносок к границам страниц
+\zmakeperpage{footnote} 
+
 \let\footnotesize\small
 
-m4_dnl сноски в тексте располагают с абзацного отступа в конце страницы
+% Нижеследующая строка была взята из eskddstu.sty.
+% Согласно ГОСT 2.105-95 после метки сноски должна быть закрывающая скобка.
+% Стандарт межгосударственный и данная строка будет более 
+% уместно смотреться здесь
+\renewcommand{\thefootnote}{\arabic{footnote})}
+
+% Помимо арабских цифр с закрывающей скобкой
+% стандарт допускает использование звездочек.
+% Более четырех использовать <<не рекомендуется>>.
+% Сложно сказать, что это значит. Наверное,
+% на усмотрение нормоконтроля.
+% Для удобства определим команду \fnasterisk
+% по аналогии с \fnsymbol
+\def\fnasterisk#1{\expandafter\@fnasterisk\csname c@#1\endcsname}
+\def\@fnasterisk#1{%
+	\ifcase#1%
+		% empty for zero value
+		\or*%
+		\or**% 
+		\or***% 
+		\or****%
+		\else\errmessage{Too many asterisks.		
+			GOST 2.105-95 does not recommend to use
+			more then 4 asterisks in footnotes.
+			Use 'footnotearabic' option in documentclass instead}%
+	\fi%
+}
+
+% Принимаемые опции
+\DeclareOption{footnotearabic}{\renewcommand{\thefootnote}{\arabic{footnote})}}
+\DeclareOption{footnoteasterisk}{\renewcommand{\thefootnote}{\fnasterisk{footnote}}}
+\ProcessOptions\relax
+
+% Метка сноски должна находиться по срезу абзацного отступа.
+% Для этого вставляем пустой бокс шириной в абзацный отступ,
+% после него бокс с меткой сноски, а за ним, собственно, текст.
 \renewcommand\@makefntext[1]{%
-  \parindent 15mm%
-  \noindent
-  \hb@xt@15mm{\hss\@makefnmark}#1}
+	\parindent 15mm%
+	\noindent%
+	\hbox to \parindent{}\hbox{\hss\@makefnmark} #1}
 
 m4_dnl vim:ft=tex:sw=2:ai
