@@ -20,8 +20,6 @@ m4_FILE_INIT
 \ProvidesPackage{eskddstu}[m4_dnl
 m4_FILE_ID([[$Date$]]) Ukrainian DSTU implementation]
 
-m4_dnl установки сносок
-\renewcommand{\thefootnote}{\arabic{footnote})}
 
 
 m4_dnl vim:ft=tex:sw=2:ai

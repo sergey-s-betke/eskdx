@@ -52,17 +52,17 @@ m4_FILE_ID([[$Date$]]) Footnote Settings]
 % по аналогии с \fnsymbol
 \def\fnasterisk#1{\expandafter\@fnasterisk\csname c@#1\endcsname}
 \def\@fnasterisk#1{%
-	\ifcase#1%
-		% empty for zero value
-		\or*%
-		\or**% 
-		\or***% 
-		\or****%
-		\else\errmessage{Too many asterisks.		
-			GOST 2.105-95 does not recommend to use
-			more then 4 asterisks in footnotes.
-			Use 'footnotearabic' option in documentclass instead}%
-	\fi%
+  \ifcase#1%
+    % empty for zero value
+    \or*%
+    \or**% 
+    \or***% 
+    \or****%
+    \else\PackageError{eskdfootnote}{Too many asterisks}%
+      {GOST 2.105-95 does not recommend to use\MessageBreak
+      more then 4 asterisks in footnotes.\MessageBreak
+      Use 'footnotearabic' option in documentclass instead}%
+  \fi%
 }
 
 % Принимаемые опции
@@ -74,8 +74,8 @@ m4_FILE_ID([[$Date$]]) Footnote Settings]
 % Для этого вставляем пустой бокс шириной в абзацный отступ,
 % после него бокс с меткой сноски, а за ним, собственно, текст.
 \renewcommand\@makefntext[1]{%
-	\parindent 15mm%
-	\noindent%
-	\hbox to \parindent{}\hbox{\hss\@makefnmark} #1}
+  \parindent 15mm%
+  \noindent%
+  \hbox to \parindent{}\hbox{\hss\@makefnmark} #1}
 
 m4_dnl vim:ft=tex:sw=2:ai
