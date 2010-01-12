@@ -1,0 +1,171 @@
+\documentclass[
+  14pt,
+  russian,
+  koi8-r,
+  pointsubsection,
+  floatsingle,
+  ]
+{eskdtext}
+
+\usepackage{eskdfreesize} % тестируемый пакет
+\usepackage{longtable,array}
+\usepackage{calc}
+
+\ESKDclassCode{ОКП 42 2230\\ОКП РБ 30.02.12.039}
+\ESKDtitle{Гравицапа электрон-позитронная}
+\ESKDdocName{Руководство по эксплуатации}
+\ESKDsignature{ХХХХ.123456.789 РЭ}
+
+% макрос, который будет за нас писать много текста
+\newcounter{printalotfirst}
+\newcounter{printalotsecond}
+\newcommand{\printalot}[2]{
+  \setcounter{printalotfirst}{0}
+  \setcounter{printalotsecond}{#1}
+  \whiledo{\value{printalotfirst}<\value{printalotsecond}}
+  {#2 \stepcounter{printalotfirst}}
+}
+  
+\begin{document}
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+\section {Техническое обслуживание}
+  \subsection {Общие указания}
+    \printalot{200}{текст}
+\section{Утилизация}
+  \subsection{Меры безопасности}
+    \printalot{200}{текст}
+  \subsection{Перечень утилизируемых составных частей}
+    \printalot{200}{текст}
+  \subsection{Методы утилизации}
+    \printalot{200}{текст}
+
+\athreelandscape{
+\section{Текущий ремонт изделия}
+  \subsection{Текущий ремонт составных частей изделия}
+    \point \printalot{100}{Текущий ремонт составных частей изделия}
+    \point \printalot{100}{Текущий ремонт составных частей изделия}
+    \point \printalot{100}{Текущий ремонт составных частей изделия}
+
+
+
+\newpage
+\section{Tаблица}
+
+\begin{longtable}{|>{Содержимое первого столбца}c|c|c|c|c|c|c|c|c|c|c|}
+\caption{Датчики}
+\endfirsthead
+\endhead
+  \hline
+    &текст\hspace{16cm}\quad&текст&текст&текст&текст&текст&текст&текст&текст&текст\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+    &&&&&&&&&&\\\hline
+  \end{longtable} 
+}
+
+
+\newsavebox{\crossedsquare}
+\savebox{\crossedsquare}{%
+\setlength{\unitlength}{10mm}
+\begin{picture}(1,1)
+  \linethickness{\ESKDlineThin}
+  \put(0,0){\line(1,0){1}}
+  \put(1,0){\line(0,1){1}}
+  \put(0,1){\line(1,0){1}}
+  \put(0,0){\line(0,1){1}}
+  \put(0,0){\line(1,1){1}}
+  \put(1,0){\line(-1,1){1}}
+\end{picture}
+}
+
+
+\atwoportrait{
+  \begin{figure}
+    \centering
+    \scalebox{30}[50]{\usebox{\crossedsquare}}
+    \bigskip
+    \caption{Схема электрическая функциональная}
+    \label{fig:uvvu_func_diagram}
+  \end{figure}
+}
+
+\newpage
+\point  \printalot{1000}{текст}
+
+\ESKDfreeSize{4500mm}{297mm}{
+  \printalot{500}{очень длинная страница}
+
+  \savebox{\crossedsquare}{%
+    \setlength{\unitlength}{\textwidth}
+    \begin{picture}(1,1)
+      \linethickness{\ESKDlineThin}
+      \put(0,0){\line(1,0){1}}
+      \put(1,0){\line(0,1){1}}
+      \put(0,1){\line(1,0){1}}
+      \put(0,0){\line(0,1){1}}
+      \put(0,0){\line(1,1){1}}
+      \put(1,0){\line(-1,1){1}}
+    \end{picture}
+  }
+
+  \begin{figure}[h]
+    \centering
+    \scalebox{1}[0.03]{\usebox{\crossedsquare}}
+    \caption{Схема дороги}
+  \end{figure}
+    
+  \printalot{1500}{очень длинная страница}
+}
+
+
+\ESKDappendix{обязательное}{Прочая полезная информация}
+  \printalot{20}{\point приложение\par}
+
+\end{document}
+
+
+
+

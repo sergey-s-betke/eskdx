@@ -17,7 +17,7 @@
 m4_ESKDX_INIT
 m4_FILE_INIT
 \ProvidesFile{eskdrussian.def}[m4_dnl
-m4_FILE_ID([[$Date$]]) Language File]
+m4_FILE_ID([[$Date: 2010-01-12$]]) Language File]
 
 \newcommand{\ESKDcolumnIVname}{%
   \cyr\CYRL\cyri\cyrt.}
@@ -80,6 +80,8 @@ m4_FILE_ID([[$Date$]]) Language File]
   \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt\ \CYRA{}3}
 \@namedef{ESKDa4FormatName}{%
   \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt\ \CYRA{}4}
+\@namedef{ESKDemptyFormatName}{%
+  \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt\ \ \ \ }
 \newcommand{\ESKDcolumnXXXIIIname}{%
   \cyr\CYRZ\cyro\cyrn\cyra}
 

@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdfootnote}[m4_dnl
-m4_FILE_ID([[$Date$]]) Footnote Settings]
+m4_FILE_ID([[$Date: 2009-12-01$]]) Footnote Settings]
 
 % Нумероваться сноски должны в пределах одной страницы.
 % Самое очевидное решение - переподчинить счетчик footnote счетчику page,
@@ -34,8 +34,6 @@ m4_FILE_ID([[$Date$]]) Footnote Settings]
 
 % привязываем сброс счетчика сносок к границам страниц
 \zmakeperpage{footnote} 
-
-\let\footnotesize\small
 
 % Нижеследующая строка была взята из eskddstu.sty.
 % Согласно ГОСT 2.105-95 после метки сноски должна быть закрывающая скобка.

@@ -18,8 +18,24 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdlist}[m4_dnl
-m4_FILE_ID([[$Date$]]) List]
+m4_FILE_ID([[$Date: 2010-01-12$]]) List]
 \RequirePackage{calc}
+
+% согласно ГОСTу маркированные (нумерованные) списки должны
+% выглядеть как обычный абзац, только с маркером (номером)
+% в начале абзаца.
+% Воспользуемся существующим пакетом paralist
+\RequirePackage{paralist}
+
+% просто переопределим окружения itemize и enumerate
+% по умолчанию будут использоваться стандартные
+% латеховые списки
+\DeclareOption{stdlist}{}
+\DeclareOption{listlikepar}{
+  \renewenvironment{itemize}{\begin{asparaitem}}{\end{asparaitem}}
+  \renewenvironment{enumerate}{\begin{asparaenum}}{\end{asparaenum}}
+}
+\ProcessOptions\relax
 
 m4_dnl установки нумерованных списков
 \renewcommand{\theenumi}{\asbuk{enumi}}

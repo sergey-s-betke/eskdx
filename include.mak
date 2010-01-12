@@ -7,6 +7,8 @@ M4FLAGS = -P -Dm4_ESKDX_INIT="m4_include($(TOP_DIR)/include.m4)" \
 PASS=1
 DIST_DIR = $(TOP_DIR)/.dist
 DIST_PREFIX = /$(PACKAGE)-$(VERSION)
+PDFTEXIFY = texify --tex-option="--max-print-line=65000 --time-statistics" -p
+TEXIFY = texify --tex-option="--max-print-line=65000 --time-statistics"
 
 all: all-recursive
 
@@ -14,10 +16,10 @@ all: all-recursive
 	epstopdf --outfile $@ $<
 
 %.pdf: %.tex
-	for i in `seq 1 $(PASS)`; do pdflatex $<; done
+	$(PDFTEXIFY) $<
 	
 %.dvi: %.tex
-	for i in `seq 1 $(PASS)`; do latex $<; done
+	$(TEXIFY) $<
 	
 %.ps: %.dvi
 	dvips $(DVIPS_FLAGS) -o $@ $<

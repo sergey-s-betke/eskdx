@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{eskdtext}[m4_dnl
-m4_FILE_ID([[$Date$]]) Textual Documentation]
+m4_FILE_ID([[$Date: 2010-01-12$]]) Textual Documentation]
 
 \newcommand{\ESKD@docfont}{14pt}
 \newcommand{\ESKD@float@style}{single}
@@ -46,6 +46,8 @@ m4_FILE_ID([[$Date$]]) Textual Documentation]
 \DeclareOption{equationsubsection}{\renewcommand{\ESKD@equation@style}{subsection}}
 \DeclareOption{footnotearabic}{\PassOptionsToPackage{\CurrentOption}{eskdfootnote}}
 \DeclareOption{footnoteasterisk}{\PassOptionsToPackage{\CurrentOption}{eskdfootnote}}
+\DeclareOption{listlikepar}{\PassOptionsToPackage{\CurrentOption}{eskdlist}}
+\DeclareOption{stdlist}{\PassOptionsToPackage{\CurrentOption}{eskdlist}}
 \DeclareOption{twoside}{%
   \PassOptionsToClass{\CurrentOption}{extarticle}%
   \PassOptionsToPackage{\CurrentOption}{eskdstamp}}

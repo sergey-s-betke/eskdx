@@ -14,6 +14,18 @@ DIST_FILES = \
 
 include $(TOP_DIR)/include.mak
 
+ifeq ($(shell uname -o),Cygwin)
+	svgtoeps = inkscape --without-gui --export-text-to-path \
+			   --export-eps=`cygpath -aw $@` `cygpath -aw $<`
+	svgtopdf = inkscape --without-gui --export-text-to-path \
+			   --export-pdf=`cygpath -aw $@` `cygpath -aw $<`
+else
+	svgtoeps = inkscape --without-gui --export-text-to-path \
+			   --export-eps=$@ $<
+	svgtopdf = inkscape --without-gui --export-text-to-path \
+			   --export-pdf=$@ $<
+endif
+
 all: eskdx.pdf
 
 eskdx.tex: eskdx.tex.in $(M4DEPS)
@@ -33,12 +45,10 @@ html: html.tex html.aux example.tex \
 	latex2html -init_file latex2html-init -iso_language RU $<
 
 %.eps: %.svg
-	inkscape --without-gui --export-text-to-path \
-	    --export-eps=$@ $<
+	$(svgtoeps)
 
 %.pdf: %.svg
-	inkscape --without-gui --export-text-to-path \
-	    --export-pdf=$@ $<
+	$(svgtopdf)
 
 clean:
 	rm -f {eskdx,html}.{aux,out,log,toc}
