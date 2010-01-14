@@ -24,7 +24,7 @@ m4_FILE_INIT
 m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
 
 \RequirePackage{eskdstamp}
-
+ 
 % переключение размера возможно только в pdflatex.
 % Tем не менее, latex тоже сможет собрать такой документ, 
 % но все большие страницы
