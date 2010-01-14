@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{eskdtab}[m4_dnl
-m4_FILE_ID([[$Date$]]) Tabular Documentation]
+m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 
 \DeclareOption{russian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{ukrainian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}

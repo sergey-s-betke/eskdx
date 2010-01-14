@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdinfo}[m4_dnl
-m4_FILE_ID([[$Date$]]) Document Information]
+m4_FILE_ID([[$Date::                            $]]) Document Information]
 
 m4_dnl ведомство
 \newcommand{\ESKDtheDepartment}{}

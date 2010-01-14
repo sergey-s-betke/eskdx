@@ -17,7 +17,7 @@
 m4_ESKDX_INIT
 m4_FILE_INIT
 \ProvidesFile{eskdukrainian.def}[m4_dnl
-m4_FILE_ID([[$Date: 2010-01-12$]]) Language File]
+m4_FILE_ID([[$Date::                            $]]) Language File]
 
 \newcommand{\ESKDcolumnIVname}{%
   \cyr\CYRL\cyri\cyrt.}

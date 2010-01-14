@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdcap}[m4_dnl
-m4_FILE_ID([[$Date$]]) Captions]
+m4_FILE_ID([[$Date::                            $]]) Captions]
 
 \RequirePackage{caption}
 \DeclareCaptionLabelSeparator{dash}{ -- }
