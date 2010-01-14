@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdtotal}[m4_dnl
-m4_FILE_ID([[$Date$]]) Total number of tables, figures, etc]
+m4_FILE_ID([[$Date::            $]]) Total number of tables, figures, etc]
 
 \RequirePackage{eskdsect}
 

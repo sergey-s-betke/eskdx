@@ -21,7 +21,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdafterpkg}[m4_dnl
-m4_FILE_ID([[$Date$]]) Apply Commands After Package]
+m4_FILE_ID([[$Date::            $]]) Apply Commands After Package]
 
 \newcommand*\ESKD@after@package[1]{%
   \expandafter\ifx\csname ver@#1.\@pkgextension\endcsname\relax

@@ -31,7 +31,7 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 \title{Коллекция eskdx v[[]]m4_ESKDX_VERSION}
 \ESKDdocName{Руководство пользователя}
 \author{Кориков~К.~В.}
-\date{m4_FILE_DATE([[$Date$]])}
+\date{m4_FILE_DATE([[$Date::            $]])}
 \renewcommand{\ESKDtheTitleFieldVIIIr}{%
 \copyright 2006 Константин Кориков}
 

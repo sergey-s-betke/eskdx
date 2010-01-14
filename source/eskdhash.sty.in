@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdhash}[m4_dnl
-m4_FILE_ID([[$Date$]]) Hash Routines]
+m4_FILE_ID([[$Date::            $]]) Hash Routines]
 
 \newcommand{\ESKD@hash@new}[1]{%
   \global\expandafter\newcount\csname ESKD@hash@c@#1\endcsname

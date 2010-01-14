@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdtitle}[m4_dnl
-m4_FILE_ID([[$Date$]]) Title GOST 2.105]
+m4_FILE_ID([[$Date::            $]]) Title GOST 2.105]
 
 \RequirePackage{eskdstamp}
 \RequirePackage{eskdlang}

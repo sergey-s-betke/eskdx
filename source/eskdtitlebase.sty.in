@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdtitlebase}[m4_dnl
-m4_FILE_ID([[$Date$]]) Base Title Commands]
+m4_FILE_ID([[$Date::            $]]) Base Title Commands]
 
 m4_dnl должность и фамилия утверждающего
 \newcommand{\ESKDtitleApprovedBy}[2]{%

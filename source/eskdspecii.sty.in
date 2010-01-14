@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdspecii}[m4_dnl
-m4_FILE_ID([[$Date$]]) Specification GOST 2.106.95 Form 2]
+m4_FILE_ID([[$Date::            $]]) Specification GOST 2.106.95 Form 2]
 
 \RequirePackage{eskdlang}
 \RequirePackage{eskdstamp}

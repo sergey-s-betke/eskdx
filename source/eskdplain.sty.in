@@ -18,7 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdplain}[m4_dnl
-m4_FILE_ID([[$Date$]]) Plain Page Style]
+m4_FILE_ID([[$Date::            $]]) Plain Page Style]
 
 \RequirePackage{eskdstamp}
 \RequirePackage{calc}
