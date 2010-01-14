@@ -21,7 +21,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdfreesize}[m4_dnl
-m4_FILE_ID([[$Date: 2010-01-12$]]) Inserting Free Size Sheets]
+m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
 
 \RequirePackage{eskdstamp}
 
