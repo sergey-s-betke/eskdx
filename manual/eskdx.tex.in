@@ -969,7 +969,7 @@ m4_END_OPTTBL
       \cmddef{renewcommand\textbackslash 
         ESKDtheColumnXXXIIfree\{\cmdarg{Формат А3}\}}{}
     \end{defs}
-    Переопределять ее необходимо внутри \cmd{ESKDfreeSize}.
+    Переопределять ее необходимо перед вызовом \cmd{ESKDfreeSize}.
 
     Для удобства, а так же в качестве примеров в конце \pkg{eskdfreesize.sty}
     были определены следующие команды:

@@ -1024,23 +1024,28 @@ m4_dnl текущее расстояние от текста до рамки
 \RequirePackage{chngpage}
 \RequirePackage{ifpdf}
 
-\newlength{\free@paperwidth}
-\newlength{\free@paperheight}
+%\newlength{\free@paperwidth}
+%\newlength{\free@paperheight}
+
+
+
 
 m4_dnl устанавливает стиль текущей и последующих страниц
+% \ESKD@tmpdima --- width
+% \ESKD@tmpdimb --- height
 \newcommand{\ESKDstyle}[1]{%
 \pagestyle{empty}%
 \def\ESKD@curstyle{#1}%
 \ifpdf%
-  \setlength{\free@paperheight}{\pdfpageheight}%
-  \setlength{\free@paperwidth}{\pdfpagewidth}%
+  \setlength{\ESKD@tmpdimb}{\pdfpageheight}%
+  \setlength{\ESKD@tmpdima}{\pdfpagewidth}%
 \else%
-  \setlength{\free@paperwidth}{\paperwidth}%
-  \setlength{\free@paperheight}{\paperheight}%
+  \setlength{\ESKD@tmpdima}{\paperwidth}%
+  \setlength{\ESKD@tmpdimb}{\paperheight}%
 \fi%
-\changetext{\free@paperheight-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
+\changetext{\ESKD@tmpdimb-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
   \expandafter-\@nameuse{ESKD@style@sh@\ifESKD@ignstamp empty\else #1\fi}-\textheight}%
-  {\free@paperwidth-\ESKD@margin@si-\ESKD@margin@so-2\ESKD@padding@h-\textwidth}{}{}{}%
+  {\ESKD@tmpdima-\ESKD@margin@si-\ESKD@margin@so-2\ESKD@padding@h-\textwidth}{}{}{}%
 \let\ESKD@thisstyle\@empty}
 
 m4_dnl устанавливает стиль текущей страницы
@@ -1048,11 +1053,11 @@ m4_dnl устанавливает стиль текущей страницы
 \thispagestyle{empty}%
 \def\ESKD@thisstyle{#1}%
 \ifpdf%
-  \setlength{\free@paperheight}{\pdfpageheight}%
+  \setlength{\ESKD@tmpdimb}{\pdfpageheight}%
 \else%
-  \setlength{\free@paperheight}{\paperheight}%
+  \setlength{\ESKD@tmpdimb}{\paperheight}%
 \fi%
-\setlength{\vsize}{\free@paperheight-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
+\setlength{\vsize}{\ESKD@tmpdimb-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
   \expandafter-\@nameuse{ESKD@style@sh@\ifESKD@ignstamp empty\else #1\fi}}%
 \setlength{\@colht}{\vsize}\setlength{\@colroom}{\vsize}}
 
