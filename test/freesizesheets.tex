@@ -1,0 +1,105 @@
+\documentclass[
+  14pt,
+  russian,
+  koi8-r,
+  pointsubsection,
+  floatsingle,
+  ]
+{eskdtext}
+
+\usepackage[T2A]{fontenc}
+\usepackage{eskdfreesize} % тестируемый пакет
+\usepackage{longtable,array}
+\usepackage{calc}
+
+\ESKDtitle{eskdtext}
+\ESKDdocName{Проверка коллекции. Проверка смены размера бумаги на лету}
+\ESKDsignature{Обозначение документа}
+\ESKDauthor{Автор~И.~О.}
+\ESKDtitleApprovedBy{Должность утверждающего}{Фам. утвер.}
+
+% макрос, который будет за нас писать много текста
+\newcounter{printalotfirst}
+\newcounter{printalotsecond}
+\newcommand{\printalot}[2]{
+  \setcounter{printalotfirst}{0}
+  \setcounter{printalotsecond}{#1}
+  \whiledo{\value{printalotfirst}<\value{printalotsecond}}
+  {#2 \stepcounter{printalotfirst}}
+}
+
+\newcommand{\printcnt}{180} % примерно столько надо на 0.7 страницы А4
+
+\begin{document}
+  \section*{А4 портретная ориентация}
+  \printalot{\printcnt}{А4 портрет}\par
+  \printalot{\printcnt}{А4 портрет}
+
+% A3
+\ESKDportraitAIII{
+  \section*{А3 портретная ориентация}
+  \printalot{\printcnt*2}{А3 портрет}\par
+  \printalot{\printcnt*2}{А3 портрет}
+}
+\ESKDlandscapeAIII{
+  \section*{А3 ландшафтная ориентация}
+  \printalot{\printcnt*2}{А3 ландшафт}\par
+  \printalot{\printcnt*2}{А3 ландшафт}
+}
+
+% A2
+\ESKDportraitAII{
+  \section*{А2 портретная ориентация}
+  \printalot{\printcnt*4}{А2 портрет}\par
+  \printalot{\printcnt*4}{А2 портрет}
+}
+\ESKDlandscapeAII{
+  \section*{А2 ландшафтная ориентация}
+  \printalot{\printcnt*4}{А2 ландшафт}\par
+  \printalot{\printcnt*4}{А2 ландшафт}
+}
+
+% A1
+\ESKDportraitAI{
+  \section*{А1 портретная ориентация}
+  \printalot{\printcnt*8}{А1 портрет}\par
+  \printalot{\printcnt*8}{А1 портрет}
+}
+\ESKDlandscapeAI{
+  \section*{А1 ландшафтная ориентация}
+  \printalot{\printcnt*8}{А1 ландшафт}\par
+  \printalot{\printcnt*8}{А1 ландшафт}
+}
+
+% A0
+\ESKDportraitAZERO{
+  \section*{А0 портретная ориентация}
+  \printalot{\printcnt*16}{А0 портрет}\par
+  \printalot{\printcnt*16}{А0 портрет}
+}
+\ESKDlandscapeAZERO{
+  \section*{А0 ландшафтная ориентация}
+  \printalot{\printcnt*16}{А0 ландшафт}\par
+  \printalot{\printcnt*16}{А0 ландшафт}
+}
+
+% Нестандартные листы
+\renewcommand\ESKDtheColumnXXXIIfree{Формат <<шарфик>>}
+\ESKDfreeSize{5000mm}{297mm}{
+  \printalot{\printcnt*16}{Формат <<шарфик>>}\par
+  \printalot{\printcnt*16}{Формат <<шарфик>>}
+}
+
+\renewcommand\ESKDtheColumnXXXIIfree{Нев\'едомый формат}
+\ESKDfreeSize{500mm}{500mm}{
+  \printalot{\printcnt*4}{Нев\'едомый формат}\par
+  \printalot{\printcnt*4}{Нев\'едомый формат}
+}
+
+% Возврат к А4
+\newpage
+\section*{Возврат к А4}
+  \printalot{\printcnt}{А4 портрет}\par
+  \printalot{\printcnt}{А4 портрет}
+
+\end{document}

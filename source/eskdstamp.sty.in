@@ -969,7 +969,7 @@ m4_dnl форма 2а и 2б
   \ESKDputOnStyle{formIIab}{zonelabels}{\ESKDdrawZoneLabelsII}
 \fi
 
-m4_dnl текущее расстояние от текса до рамки
+m4_dnl текущее расстояние от текста до рамки
 \newlength{\ESKD@curpad@h}
 \newlength{\ESKD@curpad@v}
 \setlength{\ESKD@curpad@h}{\ESKD@padding@h}
@@ -1021,20 +1021,36 @@ m4_dnl текущее расстояние от текса до рамки
 \EveryShipout{\ESKD@ShipoutPicture}
 
 \RequirePackage{chngpage}
+\RequirePackage{ifpdf}
 
 m4_dnl устанавливает стиль текущей и последующих страниц
+% \ESKD@tmpdima --- width
+% \ESKD@tmpdimb --- height
 \newcommand{\ESKDstyle}[1]{%
 \pagestyle{empty}%
 \def\ESKD@curstyle{#1}%
-\changetext{\paperheight-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
-  \expandafter-\@nameuse{ESKD@style@sh@\ifESKD@ignstamp empty\else #1\fi}-\textheight}{}{}{}{}%
+\ifpdf%
+  \setlength{\ESKD@tmpdimb}{\pdfpageheight}%
+  \setlength{\ESKD@tmpdima}{\pdfpagewidth}%
+\else%
+  \setlength{\ESKD@tmpdima}{\paperwidth}%
+  \setlength{\ESKD@tmpdimb}{\paperheight}%
+\fi%
+\changetext{\ESKD@tmpdimb-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
+  \expandafter-\@nameuse{ESKD@style@sh@\ifESKD@ignstamp empty\else #1\fi}-\textheight}%
+  {\ESKD@tmpdima-\ESKD@margin@si-\ESKD@margin@so-2\ESKD@padding@h-\textwidth}{}{}{}%
 \let\ESKD@thisstyle\@empty}
 
 m4_dnl устанавливает стиль текущей страницы
 \newcommand{\ESKDthisStyle}[1]{%
 \thispagestyle{empty}%
 \def\ESKD@thisstyle{#1}%
-\setlength{\vsize}{\paperheight-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
+\ifpdf%
+  \setlength{\ESKD@tmpdimb}{\pdfpageheight}%
+\else%
+  \setlength{\ESKD@tmpdimb}{\paperheight}%
+\fi%
+\setlength{\vsize}{\ESKD@tmpdimb-\ESKD@margin@t-\ESKD@margin@b-2\ESKD@curpad@v%
   \expandafter-\@nameuse{ESKD@style@sh@\ifESKD@ignstamp empty\else #1\fi}}%
 \setlength{\@colht}{\vsize}\setlength{\@colroom}{\vsize}}
 

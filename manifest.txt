@@ -8,6 +8,7 @@ source/eskddstu.sty.in
 source/eskdexplan.sty.in
 source/eskdfont.sty.in
 source/eskdfootnote.sty.in
+source/eskdfreesize.sty.in
 source/eskdgraph.cls.in
 source/eskdhash.sty.in
 source/eskdindent.sty.in
