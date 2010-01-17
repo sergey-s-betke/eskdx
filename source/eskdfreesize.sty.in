@@ -139,39 +139,39 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
 
 
 % Определим несколько готовых к употреблению форматов
-\newcommand{\athreelandscape}[1]{%
+\newcommand{\ESKDlandscapeAIII}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa3FormatName}}%
   \ESKDfreeSize{420mm}{297mm}{#1}}
 
-\newcommand{\athreeportrait}[1]{%
+\newcommand{\ESKDportraitAIII}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa3FormatName}}%
   \ESKDfreeSize{297mm}{420mm}{#1}}
 
-\newcommand{\atwolandscape}[1]{%
+\newcommand{\ESKDlandscapeAII}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa2FormatName}}%
   \ESKDfreeSize{594mm}{420mm}{#1}}
 
-\newcommand{\atwoportrait}[1]{%
+\newcommand{\ESKDportraitAII}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa2FormatName}}%
   \ESKDfreeSize{420mm}{594mm}{#1}}
 
-\newcommand{\aonelandscape}[1]{%
+\newcommand{\ESKDlandscapeAI}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa1FormatName}}%
   \ESKDfreeSize{841mm}{594mm}{#1}}
 
-\newcommand{\aoneportrait}[1]{%
+\newcommand{\ESKDportraitAI}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa1FormatName}}%
   \ESKDfreeSize{594mm}{841mm}{#1}}
 
-\newcommand{\azerolandscape}[1]{%
+\newcommand{\ESKDlandscapeAZERO}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa0FormatName}}%
   \ESKDfreeSize{1189mm}{841mm}{#1}}
 
-\newcommand{\azeroportrait}[1]{%
+\newcommand{\ESKDportraitAZERO}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa0FormatName}}%
   \ESKDfreeSize{841mm}{1189mm}{#1}}
   
-\newcommand{\bannerlandscape}[1]{%
+\newcommand{\ESKDlandscapeBanner}[1]{%
   % Пятиметровое полотно для подшивки гармошкой в обычную папку А4.
   % Просто для демонстрации
   \ESKDfreeSize{5000mm}{297mm}{#1}}
