@@ -4,10 +4,8 @@ SUBDIRS = source unpacked manual test
 
 DIST_FILES = \
 	     ChangeLog \
-	     FAQ \
 	     include.m4 \
 	     include.mak \
-	     INSTALL \
 	     Makefile \
 	     manifest.txt \
 	     NEWS \
