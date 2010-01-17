@@ -102,13 +102,13 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
 
 
 % вспомогательные счетчики для записей в лог
-\newcounter{free@sizepagebegin}
-\newcounter{free@sizepageend}
+\newcounter{ESKD@free@sizepagebegin}
+\newcounter{ESKD@free@sizepageend}
 
 % теперь самое сложное - сам переключатель
 \newcommand{\ESKDfreeSize}[3]{%
   \ESKDclearDoublePage%
-  \setcounter{free@sizepagebegin}{\value{page}}% запомним текущую страницу
+  \setcounter{ESKD@free@sizepagebegin}{\value{page}}% запомним текущую страницу
   \pdfpagewidth=#1%
   \pdfpageheight=#2%
   \setlength{\ESKD@origin@y}{#2-1in}%
@@ -119,14 +119,14 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
   % зафиксируем факт вставки листа в \jobname.log
   \ESKDclearDoublePage%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDemptyFormatName}}% сброс графы 32
-  \setcounter{free@sizepageend}{\value{page}}%
-  \addtocounter{free@sizepageend}{-1}%
-  \ifthenelse{\value{free@sizepagebegin}<\value{free@sizepageend}}% латех начал новую страницу
+  \setcounter{ESKD@free@sizepageend}{\value{page}}%
+  \addtocounter{ESKD@free@sizepageend}{-1}%
+  \ifthenelse{\value{ESKD@free@sizepagebegin}<\value{ESKD@free@sizepageend}}% латех начал новую страницу
     {\immediate\write0{eskdfreesize: sheet(s) with size (#1 x #2) inserted 
-      at page(s) \noexpand[\arabic{free@sizepagebegin}%
-      -\arabic{free@sizepageend}\noexpand]}}
+      at page(s) \noexpand[\arabic{ESKD@free@sizepagebegin}%
+      -\arabic{ESKD@free@sizepageend}\noexpand]}}
     {\immediate\write0{eskdfreesize: sheet(s) with size (#1 x #2) inserted 
-      at page(s) \noexpand[\arabic{free@sizepageend}\noexpand]}}
+      at page(s) \noexpand[\arabic{ESKD@free@sizepageend}\noexpand]}}
   % теперь вернем всё как было до нас
   \setlength{\ESKD@origin@y}{\paperheight-1in}%
   \pdfpageheight=\paperheight%
