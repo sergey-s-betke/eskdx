@@ -22,13 +22,19 @@ m4_FILE_ID([[$Date::            $]]) ESKD Explanation]
 
 \RequirePackage{eskdlang}
 
+\newlength{\ESKDexplanIndent} 
+% По умолчанию пояснения к формулам прижимаются левому к краю страницы
+% и не имеют отступа, так как ГОСТ 2.105-95 четко не говорит нужно ли
+% ставить отступ перед пояснениями или нет.
+\setlength{\ESKDexplanIndent}{0pt}
+
 \newenvironment{ESKDexplanation}[1][\ESKDexplanWidth]{%
   \begin{list}{}{\setlength{\parsep}{0pt}%
   \setlength{\topsep}{0pt}%
   \setlength{\itemsep}{0pt}%
   \setlength{\labelsep}{0pt}%
   \setlength{\labelwidth}{#1}%
-  \setlength{\leftmargin}{#1}}}{%
+  \setlength{\leftmargin}{\labelwidth+\ESKDexplanIndent}}}{%
   \end{list}}
 
 m4_dnl vim:ft=tex:sw=2:ai
