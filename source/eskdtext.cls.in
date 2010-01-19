@@ -48,6 +48,8 @@ m4_FILE_ID([[$Date::                            $]]) Textual Documentation]
 \DeclareOption{footnoteasterisk}{\PassOptionsToPackage{\CurrentOption}{eskdfootnote}}
 \DeclareOption{listlikepar}{\PassOptionsToPackage{\CurrentOption}{eskdlist}}
 \DeclareOption{stdlist}{\PassOptionsToPackage{\CurrentOption}{eskdlist}}
+\DeclareOption{indentexplanation}{\PassOptionsToPackage{\CurrentOption}{eskdexplan}}
+\DeclareOption{noindentexplanation}{\PassOptionsToPackage{\CurrentOption}{eskdexplan}}
 \DeclareOption{twoside}{%
   \PassOptionsToClass{\CurrentOption}{extarticle}%
   \PassOptionsToPackage{\CurrentOption}{eskdstamp}}

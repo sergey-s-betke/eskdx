@@ -22,13 +22,22 @@ m4_FILE_ID([[$Date::                            $]]) ESKD Explanation]
 
 \RequirePackage{eskdlang}
 
+\newlength{\ESKD@expl@indent}
+\setlength{\ESKD@expl@indent}{0pt} % по умолчанию будет без абзацного отступа
+
+\DeclareOption{noindentexplanation}{\setlength{\ESKD@expl@indent}{0pt}}
+\DeclareOption{indentexplanation}{\setlength{\ESKD@expl@indent}{\parindent}}
+\ProcessOptions\relax
+
+
+
 \newenvironment{ESKDexplanation}[1][\ESKDexplanWidth]{%
   \begin{list}{}{\setlength{\parsep}{0pt}%
   \setlength{\topsep}{0pt}%
   \setlength{\itemsep}{0pt}%
   \setlength{\labelsep}{0pt}%
   \setlength{\labelwidth}{#1}%
-  \setlength{\leftmargin}{\labelwidth+\parindent}}}{%
+  \setlength{\leftmargin}{\labelwidth+\ESKD@expl@indent}}}{%
   \end{list}}
 
 m4_dnl vim:ft=tex:sw=2:ai
