@@ -18,18 +18,15 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eskdexplan}[m4_dnl
-m4_FILE_ID([[$Date::                            $]]) ESKD Explanation]
+m4_FILE_ID([[$Date::            $]]) ESKD Explanation]
 
 \RequirePackage{eskdlang}
 
-\newlength{\ESKD@expl@indent}
-\setlength{\ESKD@expl@indent}{0pt} % по умолчанию будет без абзацного отступа
-
-\DeclareOption{noindentexplanation}{\setlength{\ESKD@expl@indent}{0pt}}
-\DeclareOption{indentexplanation}{\setlength{\ESKD@expl@indent}{\parindent}}
-\ProcessOptions\relax
-
-
+\newlength{\ESKDexplanIndent} 
+% По умолчанию пояснения к формулам прижимаются левому к краю страницы
+% и не имеют отступа, так как ГОСТ 2.105-95 четко не говорит нужно ли
+% ставить отступ перед пояснениями или нет.
+\setlength{\ESKDexplanIndent}{0pt}
 
 \newenvironment{ESKDexplanation}[1][\ESKDexplanWidth]{%
   \begin{list}{}{\setlength{\parsep}{0pt}%
@@ -37,7 +34,7 @@ m4_FILE_ID([[$Date::                            $]]) ESKD Explanation]
   \setlength{\itemsep}{0pt}%
   \setlength{\labelsep}{0pt}%
   \setlength{\labelwidth}{#1}%
-  \setlength{\leftmargin}{\labelwidth+\ESKD@expl@indent}}}{%
+  \setlength{\leftmargin}{\labelwidth+\ESKDexplanIndent}}}{%
   \end{list}}
 
 m4_dnl vim:ft=tex:sw=2:ai
