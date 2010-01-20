@@ -20,32 +20,29 @@ m4_FILE_INIT
 \ProvidesPackage{eskddstu}[m4_dnl
 m4_FILE_ID([[$Date::            $]]) Ukrainian DSTU implementation]
 
-% Вносимые пакетом изменения можно выборочно включать/выключать
-% с помощью передаваемых опций
 
+% Настройка пояснений к формулам согласно ДСТУ 3008, п. 7.10.3
 
+% временная длина для передачи внутрь окружения {list}
+% величины абзацного отступа
 \setlength{\ESKDexplanIndent}{\parindent}
 
-% Согласно ДСТУ 3008, п. 7.10.3 пояснения к формулам должны выглядеть так
-\DeclareOption{explanation}{
-  \newcommand{\ESKD@dstu@expl@label}[1]{%
-    \ifthenelse{\equal{}{#1}}
-    {}
-    {\hspace{\ESKDexplanIndent}#1}%
-  }
-  \renewenvironment{ESKDexplanation}[1][\ESKDexplanWidth]{%
-    \begin{list}{}{\setlength{\parsep}{0pt}%
-    \setlength{\topsep}{0pt}%
-    \setlength{\itemsep}{0pt}%
-    \setlength{\labelsep}{0pt}%
-    \setlength{\labelwidth}{0pt}%
-    \setlength{\leftmargin}{0pt}%
-    \let\makelabel\ESKD@dstu@expl@label}}{%
-    \end{list}}
+% определим нашу собственную команду для замены \makelabel
+\newcommand{\ESKD@dstu@expl@label}[1]{%
+  \ifthenelse{\equal{}{#1}}
+  {}
+  {\hspace{\ESKDexplanIndent}#1}%
 }
 
-\DeclareOption*{} 
+\renewenvironment{ESKDexplanation}[1][\ESKDexplanWidth]{%
+  \begin{list}{}{\setlength{\parsep}{0pt}%
+  \setlength{\topsep}{0pt}%
+  \setlength{\itemsep}{0pt}%
+  \setlength{\labelsep}{0pt}%
+  \setlength{\labelwidth}{0pt}%
+  \setlength{\leftmargin}{0pt}%
+  \let\makelabel\ESKD@dstu@expl@label}}{%
+  \end{list}}
 
-\ProcessOptions\relax
 
 m4_dnl vim:ft=tex:sw=2:ai
