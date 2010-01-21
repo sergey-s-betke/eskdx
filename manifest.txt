@@ -15,6 +15,7 @@ source/eskdindent.sty.in
 source/eskdinfo.sty.in
 source/eskdlang.sty.in
 source/eskdlist.sty.in
+source/eskdlongtable.sty.in
 source/eskdpara.sty.in
 source/eskdplain.sty.in
 source/eskdrussian.def.in
