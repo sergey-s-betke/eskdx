@@ -74,9 +74,6 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
 \ifESKD@enable@columns@xix
   \ESKDputOnStyle{freesize}{columnsxix}{\ESKDdrawColumnsXIX}
 \fi
-\ifESKD@enable@columns@xxiv
-  \ESKDputOnStyle{freesize}{columnsxxiv}{\ESKDdrawColumnsXXIV}
-\fi
 \ifESKD@enable@column@xxvi
   \ESKDputOnStyle{freesize}{columnxxvi}{\ESKDdrawColumnXXVI}
 \fi
