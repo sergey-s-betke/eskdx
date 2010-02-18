@@ -26,12 +26,17 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
 \RequirePackage{array}
 \RequirePackage{longtable}
 
-\newcommand{\ESKDdrawSpecification}{
+\newcommand{\ESKDdrawSpecification}[1]{%
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
     \begin{picture}(0,0)
-    \ESKD@tmpdimb=\ESKDframeH
-    \ESKD@tmpdima=\ESKD@style@sh@formII
     \ESKD@tmpdimc=8mm
+    \ESKD@tmpdimb=\ESKDframeH
+    \if 1#1 % настройки для второго и последующего листов 
+      \ESKD@tmpdima=\ESKD@style@sh@formIIab
+      \advance\ESKD@tmpdima 2\ESKD@tmpdimc
+    \else
+      \ESKD@tmpdima=\ESKD@style@sh@formII
+    \fi
     \advance\ESKD@tmpdimb -\ESKD@tmpdima
     \advance\ESKD@tmpdimb -15mm
     \divide\ESKD@tmpdimb by \ESKD@tmpdimc
@@ -58,8 +63,8 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
 
 m4_dnl спецификация
 \newenvironment{ESKDspecification}{%
-\ESKDputOnStyle{formII}{specification}{\ESKDdrawSpecification}
-\ESKDputOnStyle{formIIab}{specification}{\ESKDdrawSpecification}
+\ESKDputOnStyle{formII}{specification}{\ESKDdrawSpecification{}}
+\ESKDputOnStyle{formIIab}{specification}{\ESKDdrawSpecification{1}}
 \begin{ESKDzeroPadding}%
 \setlength{\tabcolsep}{0.5mm}%
 \setlength{\LTpre}{0mm}%
@@ -71,6 +76,18 @@ m4_dnl спецификация
   \rule{0mm}{0mm}}\ESKDfontTabBody}l}%
 \noindent%
 \begin{longtable}{ssssnss}
+
+
+\ESKD@tmpdimc=8mm
+\advance\ESKD@tmpdima 6\ESKD@tmpdimc
+\global\@colht\ESKD@tmpdima
+\global\@colroom\ESKD@tmpdima
+
+
+&&&&&&% последние строки листов
+\endfoot
+
+
 \parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDfontTabHead%
 \ESKDspecColumnIname\end{sideways}}&
 \parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDfontTabHead%
@@ -84,7 +101,9 @@ m4_dnl спецификация
 \parbox[c][15mm][c]{9mm}{\centering\begin{sideways}\ESKDfontTabHead%
 \ESKDspecColumnVIname\end{sideways}}&
 \parbox[c][15mm][c]{21mm}{\centering\ESKDfontTabHead%
-\ESKDspecColumnVIIname}\endhead}{%
+\ESKDspecColumnVIIname}\\
+&&&&&&% первые строки листов
+\endhead}{%
 \end{longtable}%
 \end{ESKDzeroPadding}%
 \ESKDremoveFromStyle{formII}{spec}%
