@@ -1,12 +1,10 @@
-\documentclass[
-	12pt,
-	russian,
-	koi8-r,
-	]
-{eskdtext}
+%\documentclass[12pt,russian,koi8-r,]{eskdtext}
+\documentclass{extarticle}
 
 \usepackage[T2A]{fontenc}
-\usepackage{eskdlongtable}
+\usepackage[koi8-r]{inputenc}
+%\usepackage{eskdlongtable}
+\usepackage{longtable}
 
 \begin{document}
 
@@ -38,6 +36,7 @@
     \lthead
     \endhead
     % концевики
+    %\multicolumn{3}{c}{\hidehline}
     \endfoot
     \endlastfoot
       %============ содержимое таблицы==============================
@@ -114,7 +113,7 @@
         4&
           Крепление ВК к корпусу шасси \\\hline
 \end{longtable}
-
+%\mbox{}
 
 
 \subsection*{Синтетический тест}
@@ -123,7 +122,7 @@
 текст текст текст текст текст текст текст текст текст текст 
 текст текст текст текст текст текст текст текст текст текст
 
-
+{
 \renewcommand{\lthead}{%
   \hline
   \multicolumn{1}{|c|}{1}&
@@ -143,6 +142,7 @@
     \lthead
     \endhead
     % концевики
+    %\multicolumn{3}{c}{\hidehline}
     \endfoot
     \endlastfoot
       %============ содержимое таблицы==============================
@@ -179,6 +179,7 @@
       первый&второй&третий&четвертый&пятый\\\hline
 
 \end{longtable}
+}
 
 
 текст текст текст текст текст текст текст текст текст текст 
