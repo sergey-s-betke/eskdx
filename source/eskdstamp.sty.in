@@ -101,6 +101,14 @@ m4_dnl расстояние между рамкой и текстом
 \newif\ifESKD@zonelabels
 \ESKD@zonelabelsfalse
 
+% этот флаг устанавливается в "true" при загрузке пакета eskdfreesize
+\newif\ifESKD@use@freesize
+\ESKD@use@freesizefalse
+
+% этот флаг устанавливается в "true" при загрузке пакета eskdplain
+\newif\ifESKD@use@plain
+\ESKD@use@plainfalse
+
 \RequirePackage{keyval}
 
 m4_dnl определение опций
@@ -1022,15 +1030,8 @@ m4_dnl текущее расстояние от текста до рамки
 }
 \EveryShipout{\ESKD@ShipoutPicture}
 
-
 \RequirePackage{chngpage}
 \RequirePackage{ifpdf}
-
-%\newlength{\free@paperwidth}
-%\newlength{\free@paperheight}
-
-
-
 
 m4_dnl устанавливает стиль текущей и последующих страниц
 % \ESKD@tmpdima --- width

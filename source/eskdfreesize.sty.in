@@ -36,7 +36,9 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
   In DVI you will get only part of the inserted big sheet}}
 \fi
 
-
+% взведем флаг для проверки факта загрузки пакета eskdfreesize
+% этот флаг определен в eskdstamp
+\ESKD@use@freesizetrue
 
 % в eskdstamp для ускорения отрисовки рамки применен \savebox
 % в нашем случае это неудобно, будем рисовать персонально
@@ -69,34 +71,38 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
 % или заглянуть в eskdstamp.sty,
 % кусок оттуда был использован как основа для стиля freesize
 \ESKDnewStyle{freesize}{8mm}
-\ESKDputOnStyle{freesize}{frame}{\ESKDdrawFrameFree}
-\ESKDputOnStyle{freesize}{stamp}{\ESKDdrawStampIIa}
-\ifESKD@enable@columns@xix
-  \ESKDputOnStyle{freesize}{columnsxix}{\ESKDdrawColumnsXIX}
+% проверим, загружен-ли пакет eskdplain
+\ifESKD@use@plain
+  \ESKDputOnStyle{freesize}{pagenumber}{\ESKDdrawPlainPageNumber}
+\else
+  \ESKDputOnStyle{freesize}{frame}{\ESKDdrawFrameFree}
+  \ESKDputOnStyle{freesize}{stamp}{\ESKDdrawStampIIa}
+  \ifESKD@enable@columns@xix
+    \ESKDputOnStyle{freesize}{columnsxix}{\ESKDdrawColumnsXIX}
+  \fi
+  \ifESKD@enable@column@xxvi
+    \ESKDputOnStyle{freesize}{columnxxvi}{\ESKDdrawColumnXXVI}
+  \fi
+  \ifESKD@enable@columns@xxvii
+    \ESKDputOnStyle{freesize}{columnsxxvii}{\ESKDdrawColumnsXXVIIi}
+  \fi
+  \ifESKD@enable@column@xxxi
+    \ESKDputOnStyle{freesize}{columnxxxi}{\ESKDdrawColumnXXXI}
+  \fi
+  \ifESKD@enable@column@xxxii
+    % наша новая графа 32
+    \ESKDputOnStyle{freesize}{columnxxxii}{\ESKDdrawColumnXXXIIfree}
+  \fi
+  \ifESKD@enable@column@xxxiii
+    \ESKDputOnStyle{freesize}{columnxxxiii}{\ESKDdrawColumnXXXIII}
+  \fi
+  \ifESKD@enable@column@xxxiv
+    \ESKDputOnStyle{freesize}{columnxxxiv}{\ESKDdrawColumnXXXIV}
+  \fi
+  \ifESKD@zonelabels%
+    \ESKDputOnStyle{freesize}{zonelabels}{\ESKDdrawZoneLabelsI}
+  \fi
 \fi
-\ifESKD@enable@column@xxvi
-  \ESKDputOnStyle{freesize}{columnxxvi}{\ESKDdrawColumnXXVI}
-\fi
-\ifESKD@enable@columns@xxvii
-  \ESKDputOnStyle{freesize}{columnsxxvii}{\ESKDdrawColumnsXXVIIi}
-\fi
-\ifESKD@enable@column@xxxi
-  \ESKDputOnStyle{freesize}{columnxxxi}{\ESKDdrawColumnXXXI}
-\fi
-\ifESKD@enable@column@xxxii
-  % наша новая графа 32
-  \ESKDputOnStyle{freesize}{columnxxxii}{\ESKDdrawColumnXXXIIfree}
-\fi
-\ifESKD@enable@column@xxxiii
-  \ESKDputOnStyle{freesize}{columnxxxiii}{\ESKDdrawColumnXXXIII}
-\fi
-\ifESKD@enable@column@xxxiv
-  \ESKDputOnStyle{freesize}{columnxxxiv}{\ESKDdrawColumnXXXIV}
-\fi
-\ifESKD@zonelabels%
-  \ESKDputOnStyle{freesize}{zonelabels}{\ESKDdrawZoneLabelsI}
-\fi
-
 
 % вспомогательные счетчики для записей в лог
 \newcounter{ESKD@free@sizepagebegin}
