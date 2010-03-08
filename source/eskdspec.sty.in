@@ -26,27 +26,32 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
 \RequirePackage{array}
 \RequirePackage{longtable}
 
+% сначала разлинуем лист
 \newcommand{\ESKDdrawSpecification}[1]{%
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
     \begin{picture}(0,0)
-    \ESKD@tmpdimc=8mm
-    \ESKD@tmpdimb=\ESKDframeH
+    \ESKD@tmpdimc=8mm % расстояние между строками
+    \ESKD@tmpdimb=\ESKDframeH % высота рамки
     \if 1#1 % настройки для второго и последующего листов 
-      \ESKD@tmpdima=\ESKD@style@sh@formIIab
-      \advance\ESKD@tmpdima 2\ESKD@tmpdimc
+      \ESKD@tmpdima=\ESKD@style@sh@formIIab % высота рамки минус высота штампа.
+      % Для второго и последующих листов сделаем пустое пространство на 2 строки
+      % это требование ГОСТа. Так сделано для возможности руками дорисовывать
+      % штамп вверх, когда для фиксации изменений будет не хватать граф.
+      \advance\ESKD@tmpdima 2\ESKD@tmpdimc 
     \else
       \ESKD@tmpdima=\ESKD@style@sh@formII
     \fi
-    \advance\ESKD@tmpdimb -\ESKD@tmpdima
-    \advance\ESKD@tmpdimb -15mm
-    \divide\ESKD@tmpdimb by \ESKD@tmpdimc
-    \ESKD@tmpcnta=\ESKD@tmpdimb
-    \ESKD@tmpdimb=\ESKD@tmpdimc
-    \multiply\ESKD@tmpdimb by \ESKD@tmpcnta
-    \advance\ESKD@tmpdimb 15mm
-    \ESKD@tmpdima=\ESKDframeH
-    \advance\ESKD@tmpdima -\ESKD@tmpdimb
+    \advance\ESKD@tmpdimb -\ESKD@tmpdima % вычтем из высоты рамки высоту штампа
+    \advance\ESKD@tmpdimb -15mm % вычтем еще 15 мм на шапку таблицы спецификации
+    \divide\ESKD@tmpdimb by \ESKD@tmpdimc % посчитаем, сколько строк укладывается на лист
+    \ESKD@tmpcnta=\ESKD@tmpdimb % в этом счетчике будет храниться количество строк
+    \ESKD@tmpdimb=\ESKD@tmpdimc % теперь "b" хранит высоту строки
+    \multiply\ESKD@tmpdimb by \ESKD@tmpcnta 
+    \advance\ESKD@tmpdimb 15mm % теперь "b" хранит высоту таблицы
+    \ESKD@tmpdima=\ESKDframeH % "a" хранит высоту рамки
+    \advance\ESKD@tmpdima -\ESKD@tmpdimb % теперь "а" хранит расстояние между нижним краем рамки и нижним краем таблицы
     \linethickness{\ESKDlineThick}
+    % рисуем вертикальные линии на высоте "а" от нижнего края рамки длинной "b"
     \put(6,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
     \put(12,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
     \put(20,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
@@ -54,14 +59,22 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
     \put(153,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
     \put(163,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
     \ESKD@tmpdimb=\ESKDframeH
-    \advance\ESKD@tmpdimb -15mm
+    \advance\ESKD@tmpdimb -15mm % "b" хранит расстояние от нижнего края рамки до нижнего края шапки таблицы
+    % отчеркнем нижний край шапки
     \put(0,\ESKDltu{\ESKD@tmpdimb}){\line(1,0){\ESKDltu{\ESKDframeW}}}
     \linethickness{\ESKDlineThin}
+    % нарисуем рассчитанное количество горизонтальных линий начиная снизу ("а")
     \multiput(0,\ESKDltu{\ESKD@tmpdima})(0, 8){\the\ESKD@tmpcnta}{%
       \line(1,0){\ESKDltu{\ESKDframeW}}}
     \end{picture}}}
 
-m4_dnl спецификация
+% на случай, если запись в спецификации не влезет в одну строку
+% и произойдет перенос на следующую, вручную зададим интерлиньяж равный 8мм
+% Возможно есть смысл задать такой интерлиньяж в eskdfont,
+% для всех табличных документов, а не переопределять здесь.
+\renewcommand{\ESKDfontTabBody}{\fontsize{10pt}{8mm}\selectfont\ESKDfontShape}
+
+% создадим окружение "спецификация"
 \newenvironment{ESKDspecification}{%
 \ESKDputOnStyle{formII}{specification}{\ESKDdrawSpecification{}}
 \ESKDputOnStyle{formIIab}{specification}{\ESKDdrawSpecification{1}}
@@ -72,22 +85,23 @@ m4_dnl спецификация
 \setlength{\LTleft}{0mm}%
 \setlength{\LTright}{\fill}%
 \newcolumntype{s}{>{\ESKDfontTabBody}c}%
-\newcolumntype{n}{>{\parbox[c][8mm][c]{1mm}{%
-  \rule{0mm}{0mm}}\ESKDfontTabBody}l}%
+\newcolumntype{n}{% вставим с двух сторон подпорки по 8мм
+  >{\ESKDfontTabBody\raggedright\parbox[c][8mm][c]{0mm}{\rule{0mm}{0mm}}}%
+  p{60mm}%
+  <{\parbox[c][8mm][c]{0mm}{\rule{0mm}{0mm}}}}%
 \noindent%
-\begin{longtable}{ssssnss}
 
+% с помощью @-выражения зададим небольшой отступ для содержимого графы "наименование"
+\begin{longtable}{ssss@{\hspace{2mm}}n@{\hspace{2mm}}ss}
 
+% изменим некоторые константы longtable для того, чтобы
+% таблица занимала всё свободное место
 \ESKD@tmpdimc=8mm
 \advance\ESKD@tmpdima 6\ESKD@tmpdimc
 \global\@colht\ESKD@tmpdima
 \global\@colroom\ESKD@tmpdima
 
-
-&&&&&&% последние строки листов
-\endfoot
-
-
+% заполним шапку таблицы
 \parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDfontTabHead%
 \ESKDspecColumnIname\end{sideways}}&
 \parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDfontTabHead%
@@ -102,8 +116,12 @@ m4_dnl спецификация
 \ESKDspecColumnVIname\end{sideways}}&
 \parbox[c][15mm][c]{21mm}{\centering\ESKDfontTabHead%
 \ESKDspecColumnVIIname}\\
-&&&&&&% первые строки листов
-\endhead}{%
+% первые и последние строки листов сделаем пустыми
+% для эстетичности 
+&&&&&&%
+\endhead
+&&&&&&%
+\endfoot}{%
 \end{longtable}%
 \end{ESKDzeroPadding}%
 \ESKDremoveFromStyle{formII}{spec}%
