@@ -18,6 +18,7 @@ m4_ESKDX_INIT
 m4_FILE_INIT
 \documentclass[russian,koi8-r,simple%
 m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
+\usepackage{cmap}
 \usepackage[T2A]{fontenc}
 \usepackage{pscyr}
 \usepackage{amstext}
@@ -25,7 +26,7 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 \usepackage{verbatimfiles}
 \usepackage{calc}
 \usepackage{array}
-\usepackage{longtable}
+\usepackage{eskdlongtable}
 \usepackage{graphics}
 
 \title{Коллекция eskdx v[[]]m4_ESKDX_VERSION}
@@ -35,8 +36,8 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 \renewcommand{\ESKDtheTitleFieldVIIIr}{%
 \copyright 2006 Константин Кориков}
 
-% \usepackage[unicode]{hyperref}
-% \hypersetup{pdfkeywords=ЕСКД ГОСТ LaTeX класс пакет}
+\usepackage[unicode]{hyperref}
+\hypersetup{pdfkeywords=ЕСКД ГОСТ LaTeX класс пакет}
 
 \newcommand{\gost}[1]{\mbox{ГОСТ}\ \mbox{#1}}
 \newcommand{\pkg}[1]{\mbox{\textsf{#1}}}
@@ -635,7 +636,7 @@ m4_END_OPTTBL
 разрывами страниц. Например, \verb|\\*| запрещает
 разрывать страницу после строки, а \verb|\newpage|
 принудительно разрывает страницу. Подробности можно найти
-в документации на \pkg{longtbale}.
+в документации на \pkg{longtable}.
 
 \subsection{Чертежи и схемы}
 Для чертежей и схем используют класс \pkg{eskdgraph}. Команды включения
@@ -730,8 +731,8 @@ m4_END_OPTTBL
 
 Менять стиль страницы можно используя команды
 \begin{defs}
-\cmddef{ESKDstyle}{\{стиль\}}
-\cmddef{ESKDthisStyle}{\{стиль\}}
+\cmddef{ESKDstyle}{\{\cmdarg{стиль}\}}
+\cmddef{ESKDthisStyle}{\{\cmdarg{стиль}\}}
 \end{defs}
 Первая меняет стиль текущей и последующих страниц, вторая меняет стиль
 только текущей страницы.
@@ -848,6 +849,20 @@ $5$, $7$ и $10~\text{мм}$. Шрифты, заданные этими командами,
 предпочтениями или требованиями нормоконтроля.
 Подробности см. в документации на пакет \pkg{caption}.
 
+\subsection{Особенности использования пакета longtable}
+Если для верстки длинных таблиц используется пакет \pkg{longtable},
+рекомендуется заменить его на \pkg{eskdlongtable}.
+
+Согласно \gost{2.105-95}, если таблица не умещается на 
+странице, ее можно разорвать.
+На месте разрыва закрывающая линия должна отсутствовать.
+Средствами \pkg{longtable} этого сделать невозможно,
+поскольку закрывающая линия рисуется принудительно.
+Одно из исправлений в \pkg{eskdlongtable} отключает
+принудительное рисование этой линии.
+Если закрывающая линия
+по каким-то причинам нужна "--- ее можно нарисовать
+с помощью footer'a стандартными средствами \pkg{longtable}.
 
 \subsection{Управление заголовками рубрикации}
 Заголовки разделов, подразделов и подподразделов можно выравнивать
@@ -937,7 +952,8 @@ $5$, $7$ и $10~\text{мм}$. Шрифты, заданные этими командами,
 
 Пакет \pkg{eskdplain} создает новый стиль страницы \val{plain},
 который не содержит никаких элементов, кроме элемента
-\val{pagenumber}, который печатает по центру в нижней части страницы ее
+\val{pagenumber}, который по умолчанию печатает 
+по центру в нижней части страницы ее
 номер. Расположение номера на странице можно контролировать опциями
 пакета, которые приведены в таблице~\ref{t:eskdplain:opts}.
 
@@ -1004,16 +1020,17 @@ m4_END_OPTTBL
 (опция \opt{nocolumnxxxii}), можно удалить из стиля \val{freesize}
 с помощью команды:
 
-\begin{defs}
-  \cmddef{ESKDremoveFromStyle\{\cmdarg{freesize}\}\{\cmdarg{columnxxxii}\}}{,}
-\end{defs}
-
+% \begin{defs}
+%   \cmddef{ESKDremoveFromStyle\{\cmdarg{freesize}\}\{\cmdarg{columnxxxii}\}}{,}
+% \end{defs}
+\begin{quote} 
+\verb|\ESKDremoveFromStyle{freesize}{columnxxxii}|,
+\end{quote}
 наконец, можно вручную переопределить ее содержимое, например:
 
-\begin{defs}
-  \cmddef{renewcommand\textbackslash 
-    ESKDtheColumnXXXIIfree\{\cmdarg{Формат А3}\}}{}
-\end{defs}
+\begin{quote}
+  \verb|\renewcommand{\ESKDtheColumnXXXIIfree}{Формат А3}|.
+\end{quote}
 
 Переопределять ее необходимо перед вызовом \cmd{ESKDfreeSize}.
 

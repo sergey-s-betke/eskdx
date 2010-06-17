@@ -21,7 +21,8 @@ m4_FILE_INIT
 m4_FILE_ID([[$Date:: 2010-01-14#$]]) Patches for Longtable]
 
 % Фактически, данный файл представляет собой набор исправлений,
-% возможно некрасивых, для пакета longtable.
+% возможно, некрасивых хаков, для пакета longtable.
+
 
 \RequirePackage{longtable}
 
@@ -54,6 +55,7 @@ m4_FILE_ID([[$Date:: 2010-01-14#$]]) Patches for Longtable]
 % без "свободного" текста, отбивка между последней строкой
 % таблицы и новой (sub)section имеет размер \LTpost, по
 % умочанию \baselineskip (см. документацию longtable)
+% Фактически, мы просто переведем latex в вертикальный режим
 \renewcommand\endlongtable{%
   \crcr
   \noalign{%
