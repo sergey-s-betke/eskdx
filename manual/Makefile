@@ -59,5 +59,7 @@ clean:
 	rm -f html.{tex,dvi} WARNINGS
 	rm -rf html
 	rm -f img-{form1,form2,form2a,title}.{eps,pdf,svg_isocpeur}
+	rm -f *.origin
+	rm -f *~
 
 .PHONY: html

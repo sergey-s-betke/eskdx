@@ -12,4 +12,5 @@ include $(TOP_DIR)/include.mak
 all: $(patsubst %.tex, %.pdf, $(TESTS))
 
 clean:
-	rm -f *.{aux,out,log,toc,pdf}
+	rm -f *.{aux,out,log,toc,pdf,origin}
+	rm -f *~
