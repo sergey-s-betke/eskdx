@@ -4,6 +4,7 @@ source/eskdappsheet.sty.in
 source/eskdbiblist.sty.in
 source/eskdcap.sty.in
 source/eskdchngsheet.sty.in
+source/eskdcmplist.sty.in
 source/eskddstu.sty.in
 source/eskdexplan.sty.in
 source/eskdfont.sty.in

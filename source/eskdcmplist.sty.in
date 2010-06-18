@@ -1,0 +1,118 @@
+% Copyright 2006 Konstantin Korikov <lostclus@ua.fm>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+% 
+% This Current Maintainer of this work is Konstantin Korikov.
+%
+% This work consists of all files listed in manifest.txt.
+%
+m4_ESKDX_INIT
+m4_FILE_INIT
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eskdcmplist}[m4_dnl
+m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-84]
+
+
+\RequirePackage{eskdlang}
+\RequirePackage{eskdstamp}
+\RequirePackage{rotating}
+\RequirePackage{array}
+\RequirePackage{longtable}
+
+% сначала разлинуем лист
+\newcommand{\ESKDdrawComponentList}[1]{%
+  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
+    \begin{picture}(0,0)
+    \ESKD@tmpdimc=8mm % расстояние между строками
+    \ESKD@tmpdimb=\ESKDframeH % высота рамки
+    \if 1#1 % настройки для второго и последующего листов 
+      \ESKD@tmpdima=\ESKD@style@sh@formIIab % высота рамки минус высота штампа.
+      % Для второго и последующих листов сделаем пустое пространство на 2 строки
+      % это требование ГОСТа. Так сделано для возможности руками дорисовывать
+      % штамп вверх, когда для фиксации изменений будет не хватать граф.
+      \advance\ESKD@tmpdima 2\ESKD@tmpdimc 
+    \else
+      \ESKD@tmpdima=\ESKD@style@sh@formII
+    \fi
+    \advance\ESKD@tmpdimb -\ESKD@tmpdima % вычтем из высоты рамки высоту штампа
+    \advance\ESKD@tmpdimb -15mm % вычтем еще 15 мм на шапку таблицы спецификации
+    \divide\ESKD@tmpdimb by \ESKD@tmpdimc % посчитаем, сколько строк укладывается на лист
+    \ESKD@tmpcnta=\ESKD@tmpdimb % в этом счетчике будет храниться количество строк
+    \ESKD@tmpdimb=\ESKD@tmpdimc % теперь "b" хранит высоту строки
+    \multiply\ESKD@tmpdimb by \ESKD@tmpcnta 
+    \advance\ESKD@tmpdimb 15mm % теперь "b" хранит высоту таблицы
+    \ESKD@tmpdima=\ESKDframeH % "a" хранит высоту рамки
+    \advance\ESKD@tmpdima -\ESKD@tmpdimb % теперь "а" хранит расстояние между нижним краем рамки и нижним краем таблицы
+    \linethickness{\ESKDlineThick}
+    % рисуем вертикальные линии на высоте "а" от нижнего края рамки длинной "b"
+    \put(20,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
+    \put(130,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
+    \put(140,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
+    \ESKD@tmpdimb=\ESKDframeH
+    \advance\ESKD@tmpdimb -15mm % "b" хранит расстояние от нижнего края рамки до нижнего края шапки таблицы
+    % отчеркнем нижний край шапки
+    \put(0,\ESKDltu{\ESKD@tmpdimb}){\line(1,0){\ESKDltu{\ESKDframeW}}}
+    \linethickness{\ESKDlineThin}
+    % нарисуем рассчитанное количество горизонтальных линий начиная снизу ("а")
+    \multiput(0,\ESKDltu{\ESKD@tmpdima})(0, 8){\the\ESKD@tmpcnta}{%
+      \line(1,0){\ESKDltu{\ESKDframeW}}}
+    \end{picture}}}
+
+% на случай, если запись в спецификации не влезет в одну строку
+% и произойдет перенос на следующую, вручную зададим интерлиньяж равный 8мм
+% Возможно есть смысл задать такой интерлиньяж в eskdfont,
+% для всех табличных документов, а не переопределять здесь.
+\renewcommand{\ESKDfontTabBody}{\fontsize{10pt}{8mm}\selectfont\ESKDfontShape}
+
+% создадим окружение "спецификация"
+\newenvironment{ESKDcomponentList}{%
+\ESKDputOnStyle{formII}{componentlist}{\ESKDdrawComponentList{}}
+\ESKDputOnStyle{formIIab}{componentlist}{\ESKDdrawComponentList{1}}
+\begin{ESKDzeroPadding}%
+\setlength{\tabcolsep}{0.5mm}%
+\setlength{\LTpre}{0mm}%
+\setlength{\LTpost}{0mm}%
+\setlength{\LTleft}{0mm}%
+\setlength{\LTright}{\fill}%
+\newcolumntype{s}{>{\ESKDfontTabBody}c}%
+\newcolumntype{n}{% вставим с двух сторон подпорки по 8мм
+  >{\ESKDfontTabBody\raggedright\parbox[c][8mm][c]{0mm}{\rule{0mm}{0mm}}}%
+  p{107mm}%
+  <{\parbox[c][8mm][c]{0mm}{\rule{0mm}{0mm}}}}%
+\noindent % 
+% с помощью @-выражения зададим небольшой отступ для содержимого графы "наименование"
+\begin{longtable}{s@{\hspace{2mm}}n@{\hspace{2mm}}ss}
+% изменим некоторые константы longtable для того, чтобы
+% таблица занимала всё свободное место
+\ESKD@tmpdimc=8mm
+\advance\ESKD@tmpdima 6\ESKD@tmpdimc
+\global\@colht\ESKD@tmpdima
+\global\@colroom\ESKD@tmpdima
+% заполним шапку таблицы
+\parbox[c][15mm][c]{19mm}{\centering\ESKDfontTabHead%
+\ESKDcmplistColumnIname}&
+\parbox[c][15mm][c]{108mm}{\centering\ESKDfontTabHead%
+\ESKDcmplistColumnIIname}&
+\parbox[c][15mm][c]{9mm}{\centering\ESKDfontTabHead%
+\ESKDcmplistColumnIIIname}&
+\parbox[c][15mm][c]{44mm}{\centering\ESKDfontTabHead%
+\ESKDcmplistColumnIVname}\\
+% первые и последние строки листов сделаем пустыми
+% для эстетичности 
+&&&\\%
+\endhead
+&&&\\%
+\endfoot}{%
+\end{longtable}%
+\end{ESKDzeroPadding}%
+\ESKDremoveFromStyle{formII}{componentlist}%
+\ESKDremoveFromStyle{formIIab}{componentlist}}
+

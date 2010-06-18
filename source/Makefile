@@ -19,7 +19,7 @@ include $(TOP_DIR)/include.mak
 all: $(UNPACKED)
 
 testinstall: all
-	cp -a $(UNPACKED) $(TOP_DIR)/../local_latex_files/tex/latex/eskdx
+	cp -a *.{sty,cls,def} $(TOP_DIR)/../local_latex_files/tex/latex/eskdx
 
 clean:
 	rm -f $(UNPACKED)
