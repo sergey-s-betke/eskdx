@@ -72,7 +72,7 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
 % для всех табличных документов, а не переопределять здесь.
 \renewcommand{\ESKDfontTabBody}{\fontsize{10pt}{8mm}\selectfont\ESKDfontShape}
 
-% создадим окружение "спецификация"
+% создадим окружение "перечень элементов"
 \newenvironment{ESKDcomponentList}{%
 \ESKDputOnStyle{formII}{componentlist}{\ESKDdrawComponentList{}}
 \ESKDputOnStyle{formIIab}{componentlist}{\ESKDdrawComponentList{1}}
