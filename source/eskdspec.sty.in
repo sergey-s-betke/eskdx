@@ -89,10 +89,11 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
   >{\ESKDfontTabBody\raggedright\parbox[c][8mm][c]{0mm}{\rule{0mm}{0mm}}}%
   p{60mm}%
   <{\parbox[c][8mm][c]{0mm}{\rule{0mm}{0mm}}}}%
+\newcolumntype{a}{>{\ESKDfontTabBody}p{21mm}}%
 \noindent%
 
 % с помощью @-выражения зададим небольшой отступ для содержимого графы "наименование"
-\begin{longtable}{ssss@{\hspace{2mm}}n@{\hspace{2mm}}ss}
+\begin{longtable}{ssss@{\hspace{2mm}}n@{\hspace{2mm}}sa}
 
 % изменим некоторые константы longtable для того, чтобы
 % таблица занимала всё свободное место
