@@ -109,7 +109,7 @@ m4_dnl расстояние между рамкой и текстом
 \newif\ifESKD@use@plain
 \ESKD@use@plainfalse
 
-\RequirePackage{keyval}
+\RequirePackage{xkeyval}
 
 m4_dnl определение опций
 \DeclareOption{a0paper}{\renewcommand{\ESKD@paper}{a0}}
