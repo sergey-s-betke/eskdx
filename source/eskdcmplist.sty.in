@@ -28,7 +28,8 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
 \RequirePackage{longtable}
 
 % сначала разлинуем лист
-\newcommand{\ESKDdrawComponentList}[1]{%
+\newcommand{\ESKDdrawComponentList}[1]{% принимает один необязательный
+% параметр, чтобы рисовать другую таблицу для второго и последующих листов
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
     \begin{picture}(0,0)
     \ESKD@tmpdimc=8mm % расстояние между строками
@@ -37,7 +38,7 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
       \ESKD@tmpdima=\ESKD@style@sh@formIIab % высота рамки минус высота штампа.
       % Для второго и последующих листов сделаем пустое пространство на 2 строки
       % это требование ГОСТа. Так сделано для возможности руками дорисовывать
-      % штамп вверх, когда для фиксации изменений будет не хватать граф.
+      % штамп вверх, когда для фиксации изменений не будет хватать граф.
       \advance\ESKD@tmpdima 2\ESKD@tmpdimc 
     \else
       \ESKD@tmpdima=\ESKD@style@sh@formII
