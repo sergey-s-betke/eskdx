@@ -25,53 +25,84 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
 \RequirePackage{eskdstamp}
 \RequirePackage{rotating}
 \RequirePackage{array}
+\RequirePackage{calc}
 \RequirePackage{longtable}
 
-% сначала разлинуем лист
+
+% несколько служебных длин. Сразу же зададим умолчания
+\newlength{\ESKDtabBodieH} % высота тела таблицы
+\newlength{\ESKDtabHeadH} % высота заголовка таблицы
+\newlength{\ESKDtabLineSpace} % расстояние между строками
+\newlength{\ESKDtabFootH} % высота подвала таблицы 
+\ESKDtabHeadH=15mm
+\ESKDtabLineSpace=8mm
+
+% дадим осмысленно название счетчику
+\let\ESKDlineCount=\ESKD@tmpcnta
+
+
+
+% функция разлиновки листа
 \newcommand{\ESKDdrawComponentList}[1]{% принимает один необязательный
 % параметр, чтобы рисовать другую таблицу для второго и последующих листов
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
     \begin{picture}(0,0)
-    \ESKD@tmpdimc=8mm % расстояние между строками
-    \ESKD@tmpdimb=\ESKDframeH % высота рамки
-    \if 1#1 % настройки для второго и последующего листов 
-      \ESKD@tmpdima=\ESKD@style@sh@formIIab % высота рамки минус высота штампа.
-      % Для второго и последующих листов сделаем пустое пространство на 2 строки
-      % это требование ГОСТа. Так сделано для возможности руками дорисовывать
-      % штамп вверх, когда для фиксации изменений не будет хватать граф.
-      \advance\ESKD@tmpdima 2\ESKD@tmpdimc 
-    \else
-      \ESKD@tmpdima=\ESKD@style@sh@formII
-    \fi
-    \advance\ESKD@tmpdimb -\ESKD@tmpdima % вычтем из высоты рамки высоту штампа
-    \advance\ESKD@tmpdimb -15mm % вычтем еще 15 мм на шапку таблицы спецификации
-    \divide\ESKD@tmpdimb by \ESKD@tmpdimc % посчитаем, сколько строк укладывается на лист
-    \ESKD@tmpcnta=\ESKD@tmpdimb % в этом счетчике будет храниться количество строк
-    \ESKD@tmpdimb=\ESKD@tmpdimc % теперь "b" хранит высоту строки
-    \multiply\ESKD@tmpdimb by \ESKD@tmpcnta 
-    \advance\ESKD@tmpdimb 15mm % теперь "b" хранит высоту таблицы
-    \ESKD@tmpdima=\ESKDframeH % "a" хранит высоту рамки
-    \advance\ESKD@tmpdima -\ESKD@tmpdimb % теперь "а" хранит расстояние между нижним краем рамки и нижним краем таблицы
-    \linethickness{\ESKDlineThick}
-    % рисуем вертикальные линии на высоте "а" от нижнего края рамки длинной "b"
-    \put(20,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(130,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(140,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKD@tmpdimb}}}
-    \ESKD@tmpdimb=\ESKDframeH
-    \advance\ESKD@tmpdimb -15mm % "b" хранит расстояние от нижнего края рамки до нижнего края шапки таблицы
-    % отчеркнем нижний край шапки
-    \put(0,\ESKDltu{\ESKD@tmpdimb}){\line(1,0){\ESKDltu{\ESKDframeW}}}
-    \linethickness{\ESKDlineThin}
-    % нарисуем рассчитанное количество горизонтальных линий начиная снизу ("а")
-    \multiput(0,\ESKDltu{\ESKD@tmpdima})(0, 8){\the\ESKD@tmpcnta}{%
-      \line(1,0){\ESKDltu{\ESKDframeW}}}
+      \if 1#1 % настройки для второго и последующего листов 
+        \ESKD@tmpdima=\ESKD@style@sh@formIIab % высота рамки минус высота штампа.
+        % Для второго и последующих листов сделаем пустое пространство на 2 строки
+        % это требование ГОСТа. Так сделано для возможности руками дорисовывать
+        % штамп вверх, когда для фиксации изменений не будет хватать граф.
+        \setlength{\ESKD@tmpdima}{\ESKD@tmpdima + 2\ESKDtabLineSpace}
+      \else
+        \ESKD@tmpdima=\ESKD@style@sh@formII
+      \fi
+      % чтобы получить высоту тела таблицы, вычтем из высоты рамки
+      % высоту шапки и скорректированную (если надо) высоту штампа
+      \setlength{\ESKDtabBodieH}{\ESKDframeH - \ESKD@tmpdima - \ESKDtabHeadH}
+      % посчитаем, сколько строк укладывается на лист
+      \setlength{\ESKD@tmpdima}{\ESKDtabBodieH / \ESKDtabLineSpace}
+      \ESKDlineCount=\ESKD@tmpdima % в этот счетчик сохраним рассчитанное количество строк
+      % скорректируем высоту таблицы с учетом того, что в нее укладывается не целое количество строк
+      \setlength{\ESKDtabBodieH}{\ESKDtabLineSpace * \ESKDlineCount}
+      % сохраним в "а" расстояние между нижним краем рамки и нижним краем таблицы
+      \setlength{\ESKD@tmpdima}{\ESKDframeH - \ESKDtabHeadH - \ESKDtabBodieH}
+
+      % рисуем вертикальные линии на высоте "а" от нижнего края рамки длинной в высоту таблицы
+      \linethickness{\ESKDlineThick}
+      \put(20,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabBodieH}}}
+      \put(130,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabBodieH}}}
+      \put(140,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabBodieH}}}
+
+      % рисуем рассчитанное количество горизонтальных линий начиная снизу ("а")
+      \linethickness{\ESKDlineThin}
+      \multiput(0,\ESKDltu{\ESKD@tmpdima})(0,\ESKDltu{\ESKDtabLineSpace}){\the\ESKDlineCount}{%
+        \line(1,0){\ESKDltu{\ESKDframeW}}}
+
+
+
+      % нарисуем и заполним шапку таблицы
+      %
+      % вычислим расстояние от нижнего края рамки до нижнего края шапки таблицы
+      \setlength{\ESKD@tmpdima}{\ESKDframeH - \ESKDtabHeadH} 
+      % отчеркнем нижний край шапки
+      \linethickness{\ESKDlineThick}
+      \put(0,\ESKDltu{\ESKD@tmpdima}){\line(1,0){\ESKDltu{\ESKDframeW}}}
+      % нарисуем вертикальные линии шапки
+      \put(20,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \put(130,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \put(140,\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+
+
     \end{picture}}}
 
-% на случай, если запись в спецификации не влезет в одну строку
-% и произойдет перенос на следующую, вручную зададим интерлиньяж равный 8мм
-% Возможно есть смысл задать такой интерлиньяж в eskdfont,
-% для всех табличных документов, а не переопределять здесь.
-\renewcommand{\ESKDfontTabBody}{\fontsize{10pt}{8mm}\selectfont\ESKDfontShape}
+
+
+
+% на случай, если запись не влезет в одну строку и произойдет перенос на
+% следующую, вручную зададим интерлиньяж равный \ESKDtabLineSpace Возможно
+% есть смысл задать такой интерлиньяж в eskdfont, для всех табличных
+% документов, а не переопределять здесь.
+\renewcommand{\ESKDfontTabBody}{\fontsize{10pt}{\ESKDtabLineSpace}\selectfont\ESKDfontShape}
 
 % создадим окружение "перечень элементов"
 \newenvironment{ESKDcomponentList}{%
@@ -90,13 +121,12 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
   <{\parbox[c][8mm][c]{0mm}{\rule{0mm}{0mm}}}}%
 \noindent % 
 % с помощью @-выражения зададим небольшой отступ для содержимого графы "наименование"
-\begin{longtable}{s@{\hspace{2mm}}n@{\hspace{2mm}}ss}
+\begin{longtable}{s@{\hspace{2mm}}n@{\hspace{2mm}}ss}%
 % изменим некоторые константы longtable для того, чтобы
 % таблица занимала всё свободное место
-\ESKD@tmpdimc=8mm
-\advance\ESKD@tmpdima 6\ESKD@tmpdimc
-\global\@colht\ESKD@tmpdima
-\global\@colroom\ESKD@tmpdima
+\setlength{\ESKD@tmpdima}{\ESKDframeH - \ESKD@style@sh@formIIab - 2\ESKDtabLineSpace}%
+\global\@colht\ESKD@tmpdima%
+\global\@colroom\ESKD@tmpdima%
 % заполним шапку таблицы
 \parbox[c][15mm][c]{19mm}{\centering\ESKDfontTabHead%
 \ESKDcmplistColumnIname}&
@@ -117,3 +147,6 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
 \ESKDremoveFromStyle{formII}{componentlist}%
 \ESKDremoveFromStyle{formIIab}{componentlist}}
 
+
+
+\let\ESKD@tmpcnta=\ESKDlineCount
