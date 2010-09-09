@@ -45,6 +45,11 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 \DeclareOption{emptylinetop}{\renewcommand{\ESKD@tabEmptyLineTop}{&&&\tabularnewline}}
 \DeclareOption{emptylinebottom}{\renewcommand{\ESKD@tabEmptyLineBottom}{&&&\tabularnewline}}
 
+\newcommand{\ESKD@tabfont}{10pt}
+\DeclareOption{10pt}{\renewcommand{\ESKD@tabfont}{10pt}}
+\DeclareOption{12pt}{\renewcommand{\ESKD@tabfont}{12pt}}
+\DeclareOption{14pt}{\renewcommand{\ESKD@tabfont}{14pt}}
+
 \ProcessOptions\relax
 
 
@@ -52,7 +57,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 \RequirePackage{eskdlang}
 \RequirePackage[a4paper,formII]{eskdstamp}
 \RequirePackage{eskdinfo}
-
+\RequirePackage{calc}
 
 % несколько служебных длин
 \newlength{\ESKDtabBodyH} % высота тела таблицы
@@ -66,7 +71,13 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 % на случай, если запись не влезет в одну строку и произойдет перенос на
 % следующую, вручную зададим интерлиньяж равный \ESKDtabLineSpace. Возможно,
 % логичнее задать такой интерлиньяж в eskdfont.
-\renewcommand{\ESKDfontTabBody}{\fontsize{10pt}{\ESKDtabLineSpace}\selectfont\ESKDfontShape}
+\renewcommand{\ESKDfontTabBody}{%
+  \fontsize{\ESKD@tabfont}{\ESKDtabLineSpace}%
+  \selectfont\ESKDfontShape}
+\renewcommand{\ESKDfontTabHead}{%
+  \fontsize{\ESKD@tabfont}{\ESKD@tabfont + 2pt}%
+  \selectfont\ESKDfontShape}
+
 
 
 % ------------------------------------------------------------------------
