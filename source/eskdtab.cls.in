@@ -40,6 +40,11 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
   \ClassError{eskdtext}{Zone labels is not allowed for tabular documentaion}{}}
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{eskdstamp}}
 
+\newcommand{\ESKD@tabEmptyLineTop}{}
+\newcommand{\ESKD@tabEmptyLineBottom}{}
+\DeclareOption{emptylinetop}{\renewcommand{\ESKD@tabEmptyLineTop}{&&&\tabularnewline}}
+\DeclareOption{emptylinebottom}{\renewcommand{\ESKD@tabEmptyLineBottom}{&&&\tabularnewline}}
+
 \ProcessOptions\relax
 
 
@@ -197,9 +202,9 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
   % заполним шапку таблицы
   #2
   % первые и последние строки листов сделаем пустыми для эстетичности 
-  &&&\tabularnewline%
+  \ESKD@tabEmptyLineBottom%
   \endhead
-  &&&\tabularnewline%
+  \ESKD@tabEmptyLineTop%
   \endfoot}
 % закрывающий макрос
 \newcommand{\ESKDtabLTAmble}
