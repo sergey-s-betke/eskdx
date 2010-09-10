@@ -32,8 +32,12 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
 % зададим размеры колонок таблицы
 % ширину последней колонки указывать обязательно !
 \ESKDtabArgparse{20mm 110mm 10mm 45mm}
-
 \ESKDtabHeadH=15mm
+
+% дополнительные горизонтальный промежуток
+% для эстетичности
+\newlength{\ESKDcmplistAddHspace}
+\setlength{\ESKDcmplistAddHspace}{2mm}
 
 % создадим окружение "перечень элементов"
 % длины \argi и т.д. - это полученные в результате работы макроса \ESKDtabArgparse длины
@@ -44,15 +48,21 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
   % - все столбцы верстаются с модификатором p{...}, если необходимо выравнивание -
   % применять декларации, напр. \centering
   % - если в столбце предполагается перенос строк - с двух сторон вставлять \ESKDtabStrut
-  >{\ESKDfontTabBody\centering}               p{\argi -2\tabcolsep}
-  >{\ESKDfontTabBody\raggedright\ESKDtabStrut}p{\argii -2\tabcolsep}<{\ESKDtabStrut}
-  >{\ESKDfontTabBody\centering}               p{\argiii -2\tabcolsep}
-  >{\ESKDfontTabBody\centering}               p{\argiv -2\tabcolsep}}%
+  >{\ESKDfontTabBody\centering}
+    p{\argi -2\tabcolsep}
+  @{\hspace{\ESKDcmplistAddHspace}}
+    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argii -\ESKDcmplistAddHspace}
+    <{\ESKDtabStrut}
+  >{\ESKDfontTabBody\centering}
+    p{\argiii -2\tabcolsep}
+  >{\ESKDfontTabBody\centering}
+    p{\argiv -2\tabcolsep}}
   %
   {% это второй аргумент - шапка таблицы, по факту - это просто первая строка
   \parbox[c][\ESKDtabHeadH][c]{\argi -2\tabcolsep}{\centering\ESKDfontTabHead%
     \ESKDcmplistColumnIname}&
-  \parbox[c][\ESKDtabHeadH][c]{\argii -2\tabcolsep}{\centering\ESKDfontTabHead%
+  \parbox[c][\ESKDtabHeadH][c]{\argii -\ESKDcmplistAddHspace}{\centering\ESKDfontTabHead%
     \ESKDcmplistColumnIIname}&
   \parbox[c][\ESKDtabHeadH][c]{\argiii -2\tabcolsep}{\centering\ESKDfontTabHead%
     \ESKDcmplistColumnIIIname}&

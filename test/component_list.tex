@@ -1,10 +1,24 @@
-\documentclass[russian,koi8-r,columnsxxvii,emptylinetop,emptylinebottom]{eskdtab}
+\documentclass[12pt,russian,koi8-r,columnsxxvii,emptylinetop,emptylinebottom]{eskdtab}
 \usepackage{eskdcmplist}
 \usepackage[T2A]{fontenc}
 \usepackage{textcomp}
 \renewcommand{\ESKDfontShape}{\upshape}
 \begin{document}
-\makeatletter
+
+% подгонка содержимого под заданный размер
+\newlength{\tmpdima}
+\newlength{\tmpdimb}
+\newcommand{\smartscalebox}[2]{
+  \settowidth{\tmpdima}{#2}%
+  \setlength{\tmpdimb}{#1}%
+  \ifthenelse{\lengthtest{\tmpdima > \tmpdimb}}
+    {\ifthenelse{\lengthtest{0.75\tmpdima > \tmpdimb}}
+      {\scalebox{0.45}[1]{\bfseries#2}}
+      {\scalebox{0.75}[1]{#2}}
+    }
+    {#2}
+}
+
 \begin{ESKDcomponentList}
   % Плохая читабельность этого перечня элементов обусловлена тем, что он был
   % автоматически сгенерирован. Он предназначен исключительно для проверки
@@ -12,32 +26,31 @@
 
   &\centering{Конденсаторы}&&\tabularnewline*
   &&&\tabularnewline*
-  \parbox[t]{20mm-2\tabcolsep}{\ESKDtabStrut\centering 222222222222222222222\ESKDtabStrut}&\mbox{МЧ2012М} \mbox{27",pF {\textpm}",10",\% 50",V} \mbox{ТУ РБ 07612048.001-94}&2&\parbox{19mm}{\centering примечание}\tabularnewline*
-
-  \scalebox{0.75}[1]{C3...C5}&\mbox{C0805}\mbox{C105K9RAC} \mbox{1",uF {\textpm}",10",\% 6",V}  \mbox{<<Kemet>>}&3&\centering\mbox{smd 0805}\tabularnewline*
-  \scalebox{0.75}[1]{C6...C8}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&3&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{C9, C10}&\mbox{C0805}\mbox{C105K9RAC} \mbox{1",uF {\textpm}",10",\% 6",V}  \mbox{<<Kemet>>}&2&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{C11...C13}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&3&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C1, C2}&\mbox{МЧ2012М} \mbox{27",pF {\textpm}",10",\% 50",V} \mbox{ТУ РБ 07612048.001-94}&2&\tabularnewline*
+  \smartscalebox{\argi -2\tabcolsep}{C3...C5}&\mbox{C0805}\mbox{C105K9RAC} \mbox{1",uF {\textpm}",10",\% 6",V}  \mbox{<<Kemet>>}&3&\centering\mbox{smd 0805}\tabularnewline*
+  \smartscalebox{\argi -2\tabcolsep}{C6...C8}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&3&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C9, C10}&\mbox{C0805}\mbox{C105K9RAC} \mbox{1",uF {\textpm}",10",\% 6",V}  \mbox{<<Kemet>>}&2&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C11...C13}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&3&\mbox{smd 0805}\tabularnewline
   C14&\mbox{C0805}\mbox{C105K9RAC} \mbox{1",uF {\textpm}",10",\% 6",V}  \mbox{<<Kemet>>}&1&\mbox{smd 0805}\tabularnewline
   C15&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&1&\mbox{smd 0805}\tabularnewline
   C16&\mbox{C0805}\mbox{C105K9RAC} \mbox{1",uF {\textpm}",10",\% 6",V}  \mbox{<<Kemet>>}&1&\mbox{smd 0805}\tabularnewline
   C17&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&1&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{C18, C19}&\mbox{50CE}\mbox{22AX} \mbox{22",uF {\textpm}",20",\% 50",V}  \mbox{<<Sanyo>>}&2&\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C18, C19}&\mbox{50CE}\mbox{22AX} \mbox{22",uF {\textpm}",20",\% 50",V}  \mbox{<<Sanyo>>}&2&\tabularnewline
   C20&\mbox{50CE1000AXT} \mbox{1000",uF {\textpm}",20",\% 50",V}  \mbox{<<Sanyo>>}&1&\tabularnewline
-  \scalebox{0.75}[1]{C21...C25}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&5&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C21...C25}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&5&\mbox{smd 0805}\tabularnewline
   C26&\mbox{50CE}\mbox{22AX} \mbox{22",uF {\textpm}",20",\% 50",V}  \mbox{<<Sanyo>>}&1&\tabularnewline
-  \scalebox{0.75}[1]{C27...C29}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&3&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C27...C29}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&3&\mbox{smd 0805}\tabularnewline
   C30&\mbox{C0805}\mbox{C102J3GAC} \mbox{1000",pF {\textpm}",5",\% 25",V}  \mbox{<<Kemet>>}&1&\mbox{smd 0805}\tabularnewline
   C31&\mbox{35CE}\mbox{68AX} \mbox{68",uF 35",V}  \mbox{<<Sanyo>>}&1&\tabularnewline
   C32&\mbox{EEVFC1}\mbox{A471Р} \mbox{470",uF 10",V}  \mbox{<<Panasonic>>}&1&\tabularnewline
-  \scalebox{0.75}[1]{C33, C34}&\mbox{35CE}\mbox{68AX} \mbox{68",uF 35",V}  \mbox{<<Sanyo>>}&2&\tabularnewline
-  \scalebox{0.75}[1]{C35, C36}&\mbox{EEVFC1}\mbox{A471Р} \mbox{470",uF 10",V}  \mbox{<<Panasonic>>}&2&\tabularnewline
-  \scalebox{0.75}[1]{C37...C47}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&11&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{C48, C49}&\mbox{C1206}\mbox{C562J3GAC} \mbox{5600",pF {\textpm}",5",\%}  \mbox{<<Kemet>>}&2&\mbox{smd 1206}\tabularnewline
-  \scalebox{0.75}[1]{C50...C54}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&5&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{C55...C60}&\mbox{C0805}\mbox{C102J3GAC} \mbox{1000",pF {\textpm}",5",\% 25",V}  \mbox{<<Kemet>>}&6&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C33, C34}&\mbox{35CE}\mbox{68AX} \mbox{68",uF 35",V}  \mbox{<<Sanyo>>}&2&\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C35, C36}&\mbox{EEVFC1}\mbox{A471Р} \mbox{470",uF 10",V}  \mbox{<<Panasonic>>}&2&\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C37...C47}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&11&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C48, C49}&\mbox{C1206}\mbox{C562J3GAC} \mbox{5600",pF {\textpm}",5",\%}  \mbox{<<Kemet>>}&2&\mbox{smd 1206}\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C50...C54}&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&5&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{C55...C60}&\mbox{C0805}\mbox{C102J3GAC} \mbox{1000",pF {\textpm}",5",\% 25",V}  \mbox{<<Kemet>>}&6&\mbox{smd 0805}\tabularnewline
   C61&\mbox{C0805}\mbox{C104K5RAC} \mbox{0,1",uF {\textpm}",10",\% 50",V}  \mbox{<<Kemet>>}&1&\mbox{smd 0805}\tabularnewline*
-  \scalebox{0.75}[1]{C62...C73}&\mbox{C0805}\mbox{C105K9RAC} \mbox{1",uF {\textpm}",10",\% 6",V}  \mbox{<<Kemet>>}&12&\mbox{smd 0805}\tabularnewline*
+  \smartscalebox{\argi -2\tabcolsep}{C62...C73}&\mbox{C0805}\mbox{C105K9RAC} \mbox{1",uF {\textpm}",10",\% 6",V}  \mbox{<<Kemet>>}&12&\mbox{smd 0805}\tabularnewline*
   &&&\tabularnewline*
   &&&\tabularnewline
   D1&Микросхема \mbox{TES2N-2421}   \mbox{<<Tracopower>>}&1&\tabularnewline*
@@ -47,60 +60,60 @@
   &&&\tabularnewline*
   DA1&\mbox{LM2596}\mbox{-ADJ}   \mbox{<<National Semiconductor>>}&1&\tabularnewline*
   DA2&\mbox{LM2596}\mbox{-3,3}   \mbox{<<National Semiconductor>>}&1&\tabularnewline
-  \scalebox{0.75}[1]{DA3...DA5}&\mbox{LM2904M}   \mbox{<<ST Microelectronics>>}&3&\mbox{SO8}\tabularnewline*
-  \scalebox{0.75}[1]{DA6...DA8}&\mbox{IL311AD}  \mbox{бК0.348.279-02 ТУ/02} \mbox{<<Интеграл>>}&3&\mbox{SO-8}\tabularnewline*
+  \smartscalebox{\argi -2\tabcolsep}{DA3...DA5}&\mbox{LM2904M}   \mbox{<<ST Microelectronics>>}&3&\mbox{SO8}\tabularnewline*
+  \smartscalebox{\argi -2\tabcolsep}{DA6...DA8}&\mbox{IL311AD}  \mbox{бК0.348.279-02 ТУ/02} \mbox{<<Интеграл>>}&3&\mbox{SO-8}\tabularnewline*
   &&&\tabularnewline*
   &&&\tabularnewline
   &\centering{Микросхемы}&&\tabularnewline*
   &&&\tabularnewline*
   DD1&\mbox{C8051F005}   \mbox{<<Cygnal>>}&1&\mbox{TQFP-64}\tabularnewline*
   DD2&\mbox{MAX3232}\mbox{EUE}   \mbox{<<Maxim>>}&1&\mbox{TSSOP-16}\tabularnewline
-  \scalebox{0.75}[1]{DD3...DD5}&\mbox{IN74HC123AD}  \mbox{ТУ РБ 14513714.004-16-96} \mbox{<<Интеграл>>}&3&\tabularnewline
+  \smartscalebox{\argi -2\tabcolsep}{DD3...DD5}&\mbox{IN74HC123AD}  \mbox{ТУ РБ 14513714.004-16-96} \mbox{<<Интеграл>>}&3&\tabularnewline
   DD6&\mbox{IL207}\mbox{AT}   \mbox{<<Vishay>>}&1&\mbox{SO8}\tabularnewline
   DD7&\mbox{ICM7555ID}   \mbox{<<NXP>>}&1&\mbox{SO8}\tabularnewline*
   DD8&\mbox{IN74ACT11D}  \mbox{ТУ РБ 14513714.006-06-97} \mbox{<<Интеграл>>}&1&\mbox{SO14}\tabularnewline*
   &&&\tabularnewline*
   &&&\tabularnewline
-  \scalebox{0.75}[1]{E1...E5}&Перемычка \mbox{Проволока ММ-0.5}  \mbox{ГОСТ 2112-79} &5&\tabularnewline*
+  \smartscalebox{19mm}{E1...E5}&Перемычка \mbox{Проволока ММ-0.5}  \mbox{ГОСТ 2112-79} &5&\tabularnewline*
   &&&\tabularnewline*
   &&&\tabularnewline
   &\centering{Дроссели}&&\tabularnewline*
   &&&\tabularnewline*
-  \scalebox{0.75}[1]{L1...L3}&\mbox{DR74}\mbox{-680-R} \mbox{68",uH 1",A}  \mbox{<<Bussman>>}&3&\tabularnewline*
+  \smartscalebox{19mm}{L1...L3}&\mbox{DR74}\mbox{-680-R} \mbox{68",uH 1",A}  \mbox{<<Bussman>>}&3&\tabularnewline*
   L4&\mbox{DR74}\mbox{-151-R} \mbox{150",uH 0,7",A}  \mbox{<<Bussman>>}&1&\tabularnewline
   L5&\mbox{DR127}\mbox{-680-R} \mbox{68",uH 2,4",A}  \mbox{<<Bussman>>}&1&\tabularnewline
-  \scalebox{0.75}[1]{L6...L8}&\mbox{DR74}\mbox{-680-R} \mbox{68",uH 1",A}  \mbox{<<Bussman>>}&3&\tabularnewline*
+  \smartscalebox{19mm}{L6...L8}&\mbox{DR74}\mbox{-680-R} \mbox{68",uH 1",A}  \mbox{<<Bussman>>}&3&\tabularnewline*
   L9&\mbox{DR127}\mbox{-680-R} \mbox{68",uH 2,4",A}  \mbox{<<Bussman>>}&1&\tabularnewline*
   &&&\tabularnewline*
   &&&\tabularnewline
   &\centering{Резисторы}&&\tabularnewline*
   &&&\tabularnewline*
   R1&\mbox{RC01} \mbox{2",Ohm}  \mbox{<<Phycomp>>}&1&\mbox{1206}\tabularnewline*
-  \scalebox{0.75}[1]{R2...R4}&\mbox{RC01} \mbox{10",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&3&\mbox{smd 1206}\tabularnewline
+  \smartscalebox{19mm}{R2...R4}&\mbox{RC01} \mbox{10",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&3&\mbox{smd 1206}\tabularnewline
   R5&\mbox{RC12} \mbox{1",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&1&\mbox{smd 0805}\tabularnewline
   R6&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&1&\mbox{smd 0805}\tabularnewline
   R7&\mbox{RC01} \mbox{1",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&1&\mbox{smd 1206}\tabularnewline
-  \scalebox{0.75}[1]{R8...R10}&\mbox{RC11} \mbox{1,2",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&3&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R11...R16}&\mbox{RC12} \mbox{5,1",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R17...R19}&\mbox{RC12} \mbox{100",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&3&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R8...R10}&\mbox{RC11} \mbox{1,2",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&3&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R11...R16}&\mbox{RC12} \mbox{5,1",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R17...R19}&\mbox{RC12} \mbox{100",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&3&\mbox{smd 0805}\tabularnewline
   R20&\mbox{RC11} \mbox{2,2",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&1&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R21...R24}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&4&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R21...R24}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&4&\mbox{smd 0805}\tabularnewline
   R25&\mbox{RC11} \mbox{2,2",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&1&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R26...R29}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&4&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R26...R29}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&4&\mbox{smd 0805}\tabularnewline
   R30&\mbox{RC11} \mbox{2,2",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&1&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R31...R34}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&4&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R35...R40}&\mbox{RC11} \mbox{1,2",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R41...R46}&\mbox{RC11} \mbox{22",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R47...R49}&\mbox{RC11} \mbox{1,2",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&3&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R31...R34}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&4&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R35...R40}&\mbox{RC11} \mbox{1,2",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R41...R46}&\mbox{RC11} \mbox{22",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R47...R49}&\mbox{RC11} \mbox{1,2",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&3&\mbox{smd 0805}\tabularnewline
   R50&\mbox{RC11} \mbox{51",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&1&\mbox{smd 0805}\tabularnewline
   R51&\mbox{RC11} \mbox{300",Ohm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&1&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R52...R58}&\mbox{RC11} \mbox{51",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&7&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R59...R64}&\mbox{CRCW}\mbox{121801K0F100RT1} \mbox{1",kOhm {\textpm}",1",\%}  \mbox{<<Vishay>>}&6&\mbox{smd 1218}\tabularnewline
-  \scalebox{0.75}[1]{R65...R70}&\mbox{RC12} \mbox{120",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R71...R76}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
-  \scalebox{0.75}[1]{R77...R82}&\mbox{CRCW}\mbox{121801K0F100RT1} \mbox{1",kOhm {\textpm}",1",\%}  \mbox{<<Vishay>>}&6&\mbox{smd 1218}\tabularnewline
-  \scalebox{0.75}[1]{R83...R88}&\mbox{RC12} \mbox{22",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline*
-  \scalebox{0.75}[1]{R89...R95}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&7&\mbox{smd 0805}\tabularnewline*
+  \smartscalebox{19mm}{R52...R58}&\mbox{RC11} \mbox{51",kOhm {\textpm}",5",\%}  \mbox{<<Phycomp>>}&7&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R59...R64}&\mbox{CRCW}\mbox{121801K0F100RT1} \mbox{1",kOhm {\textpm}",1",\%}  \mbox{<<Vishay>>}&6&\mbox{smd 1218}\tabularnewline
+  \smartscalebox{19mm}{R65...R70}&\mbox{RC12} \mbox{120",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R71...R76}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline
+  \smartscalebox{19mm}{R77...R82}&\mbox{CRCW}\mbox{121801K0F100RT1} \mbox{1",kOhm {\textpm}",1",\%}  \mbox{<<Vishay>>}&6&\mbox{smd 1218}\tabularnewline
+  \smartscalebox{19mm}{R83...R88}&\mbox{RC12} \mbox{22",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&6&\mbox{smd 0805}\tabularnewline*
+  \smartscalebox{19mm}{R89...R95}&\mbox{RC12} \mbox{10",kOhm {\textpm}",1",\%}  \mbox{<<Phycomp>>}&7&\mbox{smd 0805}\tabularnewline*
   &&&\tabularnewline*
   &&&\tabularnewline
   RK1&Терморезистор \mbox{SMD 050}   &1&\tabularnewline*
@@ -112,13 +125,13 @@
   &\centering{Диоды}&&\tabularnewline*
   &&&\tabularnewline*
   VD1&\mbox{SMBJ30CA}   \mbox{<<Fairchild Semiconductor>>}&1&\mbox{SMB}\tabularnewline*
-  \scalebox{0.75}[1]{VD2...VD5}&\mbox{30BQ040}   \mbox{<<Philips>>}&4&\tabularnewline
+  \smartscalebox{19mm}{VD2...VD5}&\mbox{30BQ040}   \mbox{<<Philips>>}&4&\tabularnewline
   VD6&\mbox{SMBJ30CA}   \mbox{<<Fairchild Semiconductor>>}&1&\mbox{SMB}\tabularnewline
-  \scalebox{0.75}[1]{VD7...VD18}&\mbox{BZX284-C3V3}   &12&\tabularnewline
-  \scalebox{0.75}[1]{VD19...VD24}&\mbox{BAS8}\mbox{5}   \mbox{<<Vishay>>}&6&\tabularnewline
-  \scalebox{0.75}[1]{VD25...VD30}&\mbox{SM6T}\mbox{30A}   \mbox{<<ST Microelectronics>>}&6&\tabularnewline
-  \scalebox{0.75}[1]{VD31...VD35}&\mbox{BAS8}\mbox{5}   \mbox{<<Vishay>>}&5&\tabularnewline*
-  \scalebox{0.75}[1]{VD36...VD41}&\mbox{SM6T}\mbox{30A}   \mbox{<<ST Microelectronics>>}&6&\tabularnewline*
+  \smartscalebox{19mm}{VD7...VD18}&\mbox{BZX284-C3V3}   &12&\tabularnewline
+  \smartscalebox{19mm}{VD19...VD24}&\mbox{BAS8}\mbox{5}   \mbox{<<Vishay>>}&6&\tabularnewline
+  \smartscalebox{19mm}{VD25...VD30}&\mbox{SM6T}\mbox{30A}   \mbox{<<ST Microelectronics>>}&6&\tabularnewline
+  \smartscalebox{19mm}{VD31...VD35}&\mbox{BAS8}\mbox{5}   \mbox{<<Vishay>>}&5&\tabularnewline*
+  \smartscalebox{19mm}{VD36...VD41}&\mbox{SM6T}\mbox{30A}   \mbox{<<ST Microelectronics>>}&6&\tabularnewline*
   &&&\tabularnewline*
   &&&\tabularnewline
   &\centering{Вилки}&&\tabularnewline*
@@ -126,10 +139,10 @@
   XP1&\mbox{PLD-40}   &1&\mbox{2x20}\tabularnewline*
   XP2&\mbox{PLD-10}   &1&\tabularnewline
   XP3&\mbox{M80-5300642}   \mbox{<<Harwin>>}&1&\mbox{2x6}\tabularnewline*
-  \scalebox{0.75}[1]{XP4, XP5}&\mbox{M80-5303442}   \mbox{<<Harwin>>}&2&\mbox{2x17}\tabularnewline*
+  \smartscalebox{19mm}{XP4, XP5}&\mbox{M80-5303442}   \mbox{<<Harwin>>}&2&\mbox{2x17}\tabularnewline*
   &&&\tabularnewline*
   &&&\tabularnewline
-  \scalebox{0.75}[1]{Z1, Z2}&Фильтр радиочастотный \mbox{4701-001LF}   \mbox{<<Tusonix>>}&2&\tabularnewline*
+  \smartscalebox{19mm}{Z1, Z2}&Фильтр радиочастотный \mbox{4701-001LF}   \mbox{<<Tusonix>>}&2&\tabularnewline*
   &&&\tabularnewline*
   &&&\tabularnewline
   ZQ1&Резонатор кварцевый \mbox{РК415}\mbox{-6VС} \mbox{22,1184",MHz} \mbox{ТУ 6321-002-13279149-94} &1&\mbox{HС-49/US}\tabularnewline*
