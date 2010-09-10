@@ -29,6 +29,8 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 \usepackage{eskdlongtable}
 \usepackage{graphics}
 
+\setlength{\ESKDexplanIndent}{\parindent}
+
 \title{Коллекция eskdx v[[]]m4_ESKDX_VERSION}
 \ESKDdocName{Руководство пользователя}
 \author{Кориков~К.~В.}
@@ -1165,10 +1167,12 @@ eskdukrainian.def
 разного формата по разным файлам (например, с помощью
 утилиты \pkg{pdftk}) факт вставки нестандартных листов фиксируется в 
 \opt{jobname.log} в следующем формате:
+
 \small
   \begin{verbatim}
     eskdfreesize: sheet(s) with size (W x H) inserted at page(s) [RANGE]\end{verbatim}
 \normalsize
+
 \begin{ESKDexplanation} 
 \item [где ] W --- ширина;
 \item H --- высота;
@@ -1180,7 +1184,8 @@ eskdukrainian.def
 запись будет следующей:
 \small
   \begin{verbatim}
-    eskdfreesize: sheet(s) with size (420mm x 297mm) inserted at page(s) [20]\end{verbatim}
+    eskdfreesize: sheet(s) with size (420mm x 297mm) inserted at ...
+                                                    ...page(s) [20]\end{verbatim}
 \normalsize
 
 \subsubsection{Ограничения и недостатки}
@@ -1194,7 +1199,7 @@ eskdukrainian.def
 в *.pdf c помощью pdflatex. Не смотря на то, что latex тоже
 сможет обработать такой документ, все листы,
 размер которых больше заданного в \cmd{documentclass}
-будут обрезаны.
+будут обрезаны по заданному размеру.
 
 
 \newpage
