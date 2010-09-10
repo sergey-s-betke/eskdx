@@ -103,7 +103,7 @@ m4_FILE_ID([[$Date::                            $]]) Language File]
   \def\figurename{{\cyr\CYRR\cyri\cyrs\cyru\cyrn\cyro\cyrk}}%
 }
 
-% спецификация
+% УРЕГЙЖЙЛБГЙС
 \newcommand{\ESKDspecColumnIname}{%
   \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt}
 \newcommand{\ESKDspecColumnIIname}{%
@@ -119,7 +119,7 @@ m4_FILE_ID([[$Date::                            $]]) Language File]
 \newcommand{\ESKDspecColumnVIIname}{%
   \cyr\CYRP\cyrr\cyri\cyrm\cyre\cyrch\cyra\cyrn\cyri\cyre}
 
-% спецификация в плазовом исполнении
+% УРЕГЙЖЙЛБГЙС Ч РМБЪПЧПН ЙУРПМОЕОЙЙ
 \newcommand{\ESKDspecIIcolumnIname}{\ESKDspecColumnIname}
 \newcommand{\ESKDspecIIcolumnIIname}{\ESKDspecColumnIIname}
 \newcommand{\ESKDspecIIcolumnIIIname}{\ESKDspecColumnIIIname}
@@ -132,9 +132,9 @@ m4_FILE_ID([[$Date::                            $]]) Language File]
   \cyr\CYRM\cyra\cyrt\cyre\cyrr\cyri\cyra\cyrl}
 \newcommand{\ESKDspecIIcolumnIXname}{\ESKDspecColumnVIIname}
 
-% перечень элементов
+% РЕТЕЮЕОШ ЬМЕНЕОФПЧ
 \newcommand{\ESKDcmplistColumnIname}{%
-  \cyr\CYRP\cyro\cyrz.\par \cyro\cyrb\cyro\cyrz\cyrn\cyra\cyrch\cyre - \cyrn\cyri\cyre}
+  \cyr\CYRP\cyro\cyrz.\par \cyro\cyrb\cyro\cyrz\cyrn\cyra\-\cyrch\cyre\-\cyrn\cyri\cyre}
 \newcommand{\ESKDcmplistColumnIIname}{%
   \cyr\CYRN\cyra\cyri\cyrm\cyre\cyrn\cyro\cyrv\cyra\cyrn\cyri\cyre}
 \newcommand{\ESKDcmplistColumnIIIname}{%
@@ -142,7 +142,7 @@ m4_FILE_ID([[$Date::                            $]]) Language File]
 \newcommand{\ESKDcmplistColumnIVname}{%
   \cyr\CYRP\cyrr\cyri\cyrm\cyre\cyrch\cyra\cyrn\cyri\cyre}
 
-% лист регистрации изменений
+% МЙУФ ТЕЗЙУФТБГЙЙ ЙЪНЕОЕОЙК
 \newcommand{\ESKDchangeSheetName}{%
   \cyr\CYRL\cyri\cyrs\cyrt\ %
   \cyrr\cyre\cyrg\cyri\cyrs\cyrt\cyrr\cyra\cyrc\cyri\cyri\ %
