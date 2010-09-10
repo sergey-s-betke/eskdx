@@ -225,5 +225,20 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
   \ESKDremoveFromStyle{formIIab}{componentlist}}
 
 
+% ----------------------------------------------------------------------
+% макрос уменьшает содержимое под заданный размер в случае необходимости
+% ----------------------------------------------------------------------
+\newcommand{\ESKDsmartscalebox}[2]{
+  \settowidth{\ESKD@tmpdima}{#2}%
+  \setlength{\ESKD@tmpdimb}{#1}%
+  \ifthenelse{\lengthtest{\ESKD@tmpdima > \ESKD@tmpdimb}}
+    {\ifthenelse{\lengthtest{0.75\ESKD@tmpdima > \ESKD@tmpdimb}}
+      {\scalebox{0.45}[1]{\bfseries#2}}
+      {\scalebox{0.75}[1]{#2}}
+    }
+    {#2}
+}
+
+
 
 m4_dnl vim:ft=tex:ai:sw=2
