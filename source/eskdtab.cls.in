@@ -69,7 +69,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 \newcommand{\ESKDtabStrut}{\parbox[c][\ESKDtabLineSpace][c]{0mm}{\rule{0mm}{0mm}}}
 
 % на случай, если запись не влезет в одну строку и произойдет перенос на
-% следующую, вручную зададим интерлиньяж равный \ESKDtabLineSpace. Возможно,
+% следующую, следует задать интерлиньяж равный \ESKDtabLineSpace. Возможно,
 % логичнее задать такой интерлиньяж в eskdfont.
 \renewcommand{\ESKDfontTabBody}{%
   \fontsize{\ESKD@tabfont}{\ESKDtabLineSpace}%
@@ -114,7 +114,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
     \StrLen{\@arglist}[\@arglistwidth]
     \edef\narg{\arabic{@iargc}}}}
 
-% завернем в более благородное название
+% завернем в более благозвучное название
 \newcommand{\ESKDtabArgparse}[1]{\ESKD@argparse{#1}}
 
 
