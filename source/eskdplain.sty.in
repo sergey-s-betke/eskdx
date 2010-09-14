@@ -66,8 +66,7 @@ m4_FILE_ID([[$Date::                            $]]) Plain Page Style]
 \ESKDnewStyle{plain}{0mm}
 \ESKDputOnStyle{plain}{pagenumber}{\ESKDdrawPlainPageNumber}
 
-% проверим, загружен-ли пакет freesize 
-\expandafter\ifx \csname ver@freesize.\@pkgextension\endcsname\relax
+\@ifpackageloaded{eskdfreesize}{
   \ESKDputOnStyle{freesize}{pagenumber}{\ESKDdrawPlainPageNumber}
   \ESKDremoveFromStyle{freesize}{stamp}
   \ESKDremoveFromStyle{freesize}{frame}
@@ -77,9 +76,8 @@ m4_FILE_ID([[$Date::                            $]]) Plain Page Style]
   \ESKDremoveFromStyle{freesize}{columnxxxi}
   \ESKDremoveFromStyle{freesize}{columnxxxii}
   \ESKDremoveFromStyle{freesize}{columnxxxiii}
-  \ESKDremoveFromStyle{freesize}{columnxxxiv}
-\else
-\fi
+  \ESKDremoveFromStyle{freesize}{columnxxxiv}}
+  {}
 
 \ESKDdefaultTitleStyle{empty}
 \ESKDdefaultFirstStyle{plain}
