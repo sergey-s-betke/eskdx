@@ -213,9 +213,9 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
   % заполним шапку таблицы
   #2
   % первые и последние строки листов сделаем пустыми для эстетичности 
-  \ESKD@tabEmptyLineBottom%
-  \endhead
   \ESKD@tabEmptyLineTop%
+  \endhead
+  \ESKD@tabEmptyLineBottom%
   \endfoot}
 % закрывающий макрос
 \newcommand{\ESKDtabLTAmble}
@@ -231,12 +231,12 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 \newcommand{\ESKDsmartscalebox}[2]{
   \settowidth{\ESKD@tmpdima}{#2}%
   \setlength{\ESKD@tmpdimb}{#1}%
-  \ifthenelse{\lengthtest{\ESKD@tmpdima > \ESKD@tmpdimb}}
-    {\ifthenelse{\lengthtest{0.75\ESKD@tmpdima > \ESKD@tmpdimb}}
-      {\scalebox{0.45}[1]{\bfseries#2}}
-      {\scalebox{0.75}[1]{#2}}
-    }
-    {#2}
+  \ifthenelse{\lengthtest{\ESKD@tmpdima > \ESKD@tmpdimb}}%
+    {\ifthenelse{\lengthtest{0.75\ESKD@tmpdima > \ESKD@tmpdimb}}%
+      {\scalebox{0.45}[1]{\bfseries#2}}%
+      {\scalebox{0.75}[1]{#2}}%
+    }%
+    {#2}%
 }
 
 
