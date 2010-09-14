@@ -23,10 +23,6 @@ m4_FILE_ID([[$Date::                            $]]) Plain Page Style]
 \RequirePackage{eskdstamp}
 \RequirePackage{calc}
 
-% взведем флаг для проверки факта загрузки пакета eskdplain
-% этот флаг определен в eskdstamp
-\ESKD@use@plaintrue
-
 \def\ESKD@plain@vt{%
   \setlength{\ESKD@tmpdimc}{%
     \ESKDframeY+\ESKDframeH-\ESKD@padding@v}}
@@ -70,7 +66,8 @@ m4_FILE_ID([[$Date::                            $]]) Plain Page Style]
 \ESKDnewStyle{plain}{0mm}
 \ESKDputOnStyle{plain}{pagenumber}{\ESKDdrawPlainPageNumber}
 
-\ifESKD@use@freesize
+% проверим, загружен-ли пакет freesize 
+\expandafter\ifx \csname ver@freesize.\@pkgextension\endcsname\relax
   \ESKDputOnStyle{freesize}{pagenumber}{\ESKDdrawPlainPageNumber}
   \ESKDremoveFromStyle{freesize}{stamp}
   \ESKDremoveFromStyle{freesize}{frame}
@@ -81,6 +78,7 @@ m4_FILE_ID([[$Date::                            $]]) Plain Page Style]
   \ESKDremoveFromStyle{freesize}{columnxxxii}
   \ESKDremoveFromStyle{freesize}{columnxxxiii}
   \ESKDremoveFromStyle{freesize}{columnxxxiv}
+\else
 \fi
 
 \ESKDdefaultTitleStyle{empty}
