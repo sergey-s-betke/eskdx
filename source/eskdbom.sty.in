@@ -1,0 +1,79 @@
+% Copyright 2006 Konstantin Korikov <lostclus@ua.fm>
+%           2010 Uladzimir Pylinsky <barthess at yandex dot ru>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+% 
+% This Current Maintainer of this work is Konstantin Korikov.
+%
+% This work consists of all files listed in manifest.txt.
+%
+m4_ESKDX_INIT
+m4_FILE_INIT
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eskdbom}[m4_dnl
+m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Bill of materials GOST 2.106-96]
+
+
+\RequirePackage{eskdlang}
+\RequirePackage{eskdstamp}
+\RequirePackage{rotating}
+\RequirePackage{array}
+\RequirePackage{longtable}
+
+
+% зададим размеры колонок таблицы.
+\ESKDtabArgparse{20mm 110mm 10mm 45mm}
+% высота шапки таблицы
+\setlength{\ESKDtabHeadH}{15mm}
+
+% дополнительные горизонтальный промежуток
+% для эстетичности
+\newlength{\ESKDbomAddHspace}
+\setlength{\ESKDbomAddHspace}{2mm}
+
+% создадим окружение "перечень элементов"
+% длины \argi и т.д. - это полученные в результате работы макроса \ESKDtabArgparse длины
+\newenvironment{ESKDbillOfMaterials}
+{\ESKDtabLTPreamble{%
+  % это преамбула таблицы (longtable), которая используется в качестве основы документа
+  % Правила заполнения:
+  % - все столбцы верстаются с модификатором p{...}, если необходимо выравнивание -
+  % применять декларации, напр. \centering
+  % - если в столбце предполагается перенос строк - с двух сторон вставлять \ESKDtabStrut
+  >{\ESKDfontTabBody\centering}
+    p{\argi -2\tabcolsep}
+  @{\hspace{\ESKDbomAddHspace}}
+    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argii -\ESKDbomAddHspace}
+    <{\ESKDtabStrut}
+  >{\ESKDfontTabBody\centering}
+    p{\argiii -2\tabcolsep}
+  >{\ESKDfontTabBody\centering}
+    p{\argiv -2\tabcolsep}}
+  %
+  {% это второй аргумент - шапка таблицы, по факту - это просто первая строка
+  \parbox[c][\ESKDtabHeadH][c]{\argi -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \ESKDcmplistColumnIname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argii -\ESKDbomAddHspace}{\centering\ESKDfontTabHead%
+    \ESKDcmplistColumnIIname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argiii -2\tabcolsep}{\centering%
+    \ESKDsmartscalebox{\argiii -2\tabcolsep}{\ESKDfontTabHead\ESKDcmplistColumnIIIname}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argiv -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \ESKDcmplistColumnIVname}\tabularnewline%
+  }
+}
+%
+% прямо сюда вставится содержимое таблицы
+% 
+{\ESKDtabLTAmble}
+
+
+
