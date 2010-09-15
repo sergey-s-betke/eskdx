@@ -64,8 +64,8 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
     \ESKDcmplistColumnIname}&
   \parbox[c][\ESKDtabHeadH][c]{\argii -\ESKDcmplistAddHspace}{\centering\ESKDfontTabHead%
     \ESKDcmplistColumnIIname}&
-  \parbox[c][\ESKDtabHeadH][c]{\argiii -2\tabcolsep}{\centering\ESKDfontTabHead%
-    \ESKDcmplistColumnIIIname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argiii -2\tabcolsep}{\centering%
+    \ESKDsmartscalebox{\argiii -2\tabcolsep}{\ESKDfontTabHead\ESKDcmplistColumnIIIname}}&
   \parbox[c][\ESKDtabHeadH][c]{\argiv -2\tabcolsep}{\centering\ESKDfontTabHead%
     \ESKDcmplistColumnIVname}\tabularnewline%
   }
