@@ -43,7 +43,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 \newcommand{\ESKD@tabEmptyLineTop}{}
 \newcommand{\ESKD@tabEmptyLineBottom}{}
 \DeclareOption{emptylinetop}{\renewcommand{\ESKD@tabEmptyLineTop}{\ESKDtabStrut\tabularnewline}}
-\DeclareOption{emptylinebottom}{\renewcommand{\ESKD@tabEmptyLineBottom}{\ESKDtabStru\tabularnewline}}
+\DeclareOption{emptylinebottom}{\renewcommand{\ESKD@tabEmptyLineBottom}{\ESKDtabStrut\tabularnewline}}
 
 \newcommand{\ESKD@tabfont}{10pt}
 \DeclareOption{10pt}{\renewcommand{\ESKD@tabfont}{10pt}}
