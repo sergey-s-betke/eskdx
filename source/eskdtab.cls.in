@@ -55,7 +55,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 
 \LoadClass{article}
 \RequirePackage{eskdlang}
-\RequirePackage[a4paper,formII]{eskdstamp}
+\RequirePackage[formII]{eskdstamp}
 \RequirePackage{eskdinfo}
 \RequirePackage{calc}
 
