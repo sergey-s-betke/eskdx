@@ -21,6 +21,8 @@ m4_FILE_INIT
 \ProvidesClass{eskdtab}[m4_dnl
 m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 
+\RequirePackage{xkeyval}
+
 \DeclareOption{russian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{ukrainian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{koi8-r}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
@@ -50,6 +52,16 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 \DeclareOption{12pt}{\renewcommand{\ESKD@tabfont}{12pt}}
 \DeclareOption{14pt}{\renewcommand{\ESKD@tabfont}{14pt}}
 
+% расстояние между строками
+\newlength{\ESKDtabLineSpace}
+  \setlength{\ESKDtabLineSpace}{8mm}
+\define@key{eskd}{linespace}{\setlength{\ESKDtabLineSpace}{#1}}
+
+% пустое место внизу страницы, единицами измерения являются строки
+\newcounter{footwhitespace}
+  \setcounter{footwhitespace}{2}
+\define@key{eskd}{footwhitespace}{\setcounter{footwhitespace}{#1}}
+                                              
 \ProcessOptions\relax
 
 
@@ -62,8 +74,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 % несколько служебных длин
 \newlength{\ESKDtabBodyH} % высота тела таблицы
 \newlength{\ESKDtabHeadH} % высота заголовка таблицы
-\newlength{\ESKDtabLineSpace} % расстояние между строками
-  \setlength{\ESKDtabLineSpace}{8mm} % умолчание для ГОСТовых документов
+
 
 % макрос-подпорка для строк таблицы
 \newcommand{\ESKDtabStrut}{\parbox[c][\ESKDtabLineSpace][c]{0mm}{\rule{0mm}{0mm}}}
@@ -136,7 +147,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
         % Для второго и последующих листов сделаем пустое пространство на 2 строки
         % это требование ГОСТа. Так сделано для возможности руками дорисовывать
         % штамп вверх, когда для фиксации изменений не будет хватать граф.
-        \setlength{\ESKD@tmpdima}{\ESKD@tmpdima + 2\ESKDtabLineSpace}
+        \setlength{\ESKD@tmpdima}{\ESKD@tmpdima + \value{footwhitespace}\ESKDtabLineSpace}
       \else
         \ESKD@tmpdima=\ESKD@style@sh@formII
       \fi
@@ -207,7 +218,8 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
   \begin{longtable}{#1}
   % изменим некоторые константы longtable для того, чтобы
   % таблица занимала всё свободное место
-  \setlength{\ESKD@tmpdima}{\ESKDframeH - \ESKD@style@sh@formIIab - 2\ESKDtabLineSpace}%
+  \setlength{\ESKD@tmpdima}%
+    {\ESKDframeH - \ESKD@style@sh@formIIab - \value{footwhitespace}\ESKDtabLineSpace}%
   \global\@colht\ESKD@tmpdima%
   \global\@colroom\ESKD@tmpdima%
   % заполним шапку таблицы

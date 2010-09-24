@@ -24,7 +24,6 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Bill of materials GOST 2.10
 
 \RequirePackage{eskdlang}
 \RequirePackage{eskdstamp}
-\RequirePackage{rotating}
 \RequirePackage{array}
 \RequirePackage{longtable}
 
