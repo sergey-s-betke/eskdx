@@ -39,8 +39,8 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
 % (штам и графы 19-23 размещаются параллельно на длинных сторонах листа)
 % придется изменить рамку и перенести некоторые графы
 
-\setlength{\ESKDframeW}{287mm}
-\setlength{\ESKDframeH}{190mm}
+\advance\ESKDframeW 15mm
+\advance\ESKDframeH -10mm
 
 \setlength{\ESKD@margin@si}{5mm}
 \setlength{\ESKD@margin@so}{5mm}
@@ -153,7 +153,7 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
   \parbox[c][\ESKDtabHeadH][c]{\argviii -2\tabcolsep}{\centering\ESKDfontTabHead%
     \ESKDspecIIcolumnVIIIname}&
   \parbox[c][\ESKDtabHeadH][c]{\argix -2\tabcolsep}{\centering\ESKDfontTabHead%
-    \ESKDspecIIcolumnIXname}\tabularnewline\hline%
+    \ESKDspecIIcolumnIXname}\tabularnewline%
   }
 }
 {\ESKDtabLTAmble}
