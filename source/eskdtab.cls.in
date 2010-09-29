@@ -198,7 +198,6 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
         \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}}
     \end{picture}}}
 
-\let\ESKD@tmpdimc=\ESKDlineCount
 
 
 % ------------------------------------------------------------------------
@@ -207,8 +206,8 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 % эти 2 макроса должны быть использованы
 % в стилевом файле разрабатываемого документа
 \newcommand{\ESKDtabLTPreamble}[2]{
-  \ESKDputOnStyle{formII}{componentlist}{\ESKDtabDrawBody\ESKDtabDrawHead}
-  \ESKDputOnStyle{formIIab}{componentlist}{\ESKDtabDrawBody[1]\ESKDtabDrawHead}
+  \ESKDputOnStyle{formII}{grid}{\ESKDtabDrawBody\ESKDtabDrawHead}
+  \ESKDputOnStyle{formIIab}{grid}{\ESKDtabDrawBody[1]\ESKDtabDrawHead}
   \begin{ESKDzeroPadding}
   \setlength{\tabcolsep}{0.5mm}
   \setlength{\LTpre}{0mm}
@@ -233,8 +232,8 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 \newcommand{\ESKDtabLTAmble}
   {\end{longtable}
   \end{ESKDzeroPadding}
-  \ESKDremoveFromStyle{formII}{componentlist}
-  \ESKDremoveFromStyle{formIIab}{componentlist}}
+  \ESKDremoveFromStyle{formII}{grid}
+  \ESKDremoveFromStyle{formIIab}{grid}}
 
 
 % ----------------------------------------------------------------------
@@ -251,6 +250,8 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
     {#2}%
 }
 
+
+\let\ESKD@tmpdimc=\ESKDlineCount
 
 
 m4_dnl vim:ft=tex:ai:sw=2
