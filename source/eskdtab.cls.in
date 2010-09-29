@@ -64,6 +64,8 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
                                               
 \ProcessOptions\relax
 
+\newif\ifESKD@tab@first@column@enum
+\ESKD@tab@first@column@enumfalse
 
 \LoadClass{article}
 \RequirePackage{eskdlang}
@@ -134,6 +136,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 % ------------------------------------------------------------------------
 \RequirePackage{calc}
 \newcounter{narg@tmp}
+\newcounter{ESKD@tmpcnt}
 \let\ESKDlineCount=\ESKD@tmpdimc
 
 % отрисовка тела таблицы
@@ -156,7 +159,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
       \setlength{\ESKDtabBodyH}{\ESKDframeH - \ESKD@tmpdima - \ESKDtabHeadH}
       % посчитаем, сколько строк укладывается на лист
       \setlength{\ESKD@tmpdima}{\ESKDtabBodyH / \ESKDtabLineSpace}
-      \ESKDlineCount=\ESKD@tmpdima % в этот счетчик сохраним рассчитанное количество строк
+      \ESKDlineCount=\ESKD@tmpdima % сохраним рассчитанное количество строк
       % скорректируем высоту таблицы с учетом того, что в нее укладывается не целое количество строк
       \setlength{\ESKDtabBodyH}{\ESKDtabLineSpace * \ESKDlineCount}
       % сохраним в "а" расстояние между нижним краем рамки и нижним краем таблицы
@@ -175,7 +178,20 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
       \linethickness{\ESKDlineThin}
       \multiput(0,\ESKDltu{\ESKD@tmpdima})(0,\ESKDltu{\ESKDtabLineSpace}){\ESKDlineCount}{%
         \line(1,0){\ESKDltu{\ESKDframeW}}}
+
+      % нумерация строк
+      \ifESKD@tab@first@column@enum
+        \setlength{\ESKD@tmpdimb}{\ESKDframeH - \ESKDtabHeadH}
+        \setcounter{ESKD@tmpcnt}{0}
+        \whiledo{\lengthtest{\ESKD@tmpdimb > \ESKD@tmpdima}}{%
+          \addtolength{\ESKD@tmpdimb}{-\ESKDtabLineSpace}%
+          \stepcounter{ESKD@tmpcnt}%
+          \put(0,\ESKDltu{\ESKD@tmpdimb}){\parbox[b][\ESKDtabLineSpace][c]{\argi}
+            {\ESKDfontTabBody\centering\ESKDtabStrut \arabic{ESKD@tmpcnt}}}}
+      \fi
+
     \end{picture}}}
+
 
 % отрисовка шапки таблицы
 \newcommand{\ESKDtabDrawHead}{

@@ -39,6 +39,49 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Bill of materials GOST 2.10
 \newlength{\ESKDbomAddHspace}
 \setlength{\ESKDbomAddHspace}{2mm}
 
+% включим автоматическую нумерацию строк
+\ESKD@tab@first@column@enumtrue
+
+% переопределим команду отрисовки шапки
+\renewcommand{\ESKDtabDrawHead}{
+  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
+    \begin{picture}(0,0)
+      \setlength{\ESKD@tmpdima}{\ESKDframeH - \ESKDtabHeadH} 
+
+      \linethickness{\ESKDlineThick}
+      \put(0,\ESKDltu{\ESKD@tmpdima}){\line(1,0){\ESKDltu{\ESKDframeW}}}
+
+      \ESKD@tmpdimb=0mm
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argi}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argii}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argiii}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argiv}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argv}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argvi}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argvii}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{18mm}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argviii}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{18mm}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argix}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{18mm}}}
+
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argx}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+
+      \setlength{\ESKD@tmpdimb}{\argi + \argii + \argiii + \argvi + \argv + \argiv}
+      \setlength{\ESKD@tmpdima}{\ESKD@tmpdima+18mm}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(1,0){\ESKDltu{64mm}}}
+
+    \end{picture}}}
+
+
 
 
 
@@ -82,7 +125,7 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Bill of materials GOST 2.10
   %
   {% это второй аргумент - шапка таблицы, по факту - это просто первая строка
   \parbox[c][\ESKDtabHeadH][c]{\argi -2\tabcolsep}{\centering\ESKDfontTabHead%
-    \ESKDcmplistColumnIname}&
+    ()}&
   &&&&&&&&&\tabularnewline%
   }
 }
