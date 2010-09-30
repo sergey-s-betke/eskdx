@@ -82,10 +82,7 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Bill of materials GOST 2.10
     \end{picture}}}
 
 
-
-
-
-
+% окружение
 \newenvironment{ESKDbillOfMaterials}
 {\ESKDtabLTPreamble{%
   >{\ESKDfontTabBody\centering}
@@ -94,21 +91,17 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Bill of materials GOST 2.10
     >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
     p{\argii -\ESKDbomAddHspace}
     <{\ESKDtabStrut}
-  @{\hspace{\ESKDbomAddHspace}}
-    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
-    p{\argiii -\ESKDbomAddHspace}
+  >{\ESKDfontTabBody\centering}
+    p{\argiii -2\tabcolsep}
     <{\ESKDtabStrut}
-  @{\hspace{\ESKDbomAddHspace}}
-    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
-    p{\argiv -\ESKDbomAddHspace}
+  >{\ESKDfontTabBody\centering}
+    p{\argiv -2\tabcolsep}
     <{\ESKDtabStrut}
-  @{\hspace{\ESKDbomAddHspace}}
-    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
-    p{\argv -\ESKDbomAddHspace}
+  >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argv -2\tabcolsep}
     <{\ESKDtabStrut}
-  @{\hspace{\ESKDbomAddHspace}}
-    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
-    p{\argvi -\ESKDbomAddHspace}
+  >{\ESKDfontTabBody\centering}
+    p{\argvi -2\tabcolsep}
     <{\ESKDtabStrut}
   >{\ESKDfontTabBody\centering}
     p{\argvii -2\tabcolsep}
@@ -118,15 +111,39 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Bill of materials GOST 2.10
     p{\argix -2\tabcolsep}
   >{\ESKDfontTabBody\centering}
     p{\argx -2\tabcolsep}
-  @{\hspace{\ESKDbomAddHspace}}
-    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
-    p{\argxi -\ESKDbomAddHspace}
+  >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argxi -2\tabcolsep}
     <{\ESKDtabStrut}}
   %
-  {% это второй аргумент - шапка таблицы, по факту - это просто первая строка
-  \parbox[c][\ESKDtabHeadH][c]{\argi -2\tabcolsep}{\centering\ESKDfontTabHead%
-    ()}&
-  &&&&&&&&&\tabularnewline%
+  {%
+  \parbox[c][\ESKDtabHeadH][c]{\argi -2\tabcolsep}{\centering\begin{sideways}\ESKDfontTabHead%
+    \ESKDbomColumnIname\end{sideways}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argii -\ESKDbomAddHspace}{\centering\ESKDfontTabHead%
+    \hspace{-\ESKDbomAddHspace}%
+    \strut\ESKDbomColumnIIname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argiii -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnIIIname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argiv -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnIVname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argv -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnVname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argvi -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnVIname}&
+  \multicolumn{4}{c}{%
+    \parbox{64mm -2\tabcolsep}{%
+      \parbox[c][8mm][c]{64mm -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \strut\ESKDbomColumnsVIIhname}
+      \parbox[c][17mm][c]{\argvii -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \ESKDbomColumnVIIname\strut}\hspace{2\tabcolsep}%
+      \parbox[c][17mm][c]{\argviii -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \ESKDbomColumnVIIIname\strut}\hspace{2\tabcolsep}%
+      \parbox[c][17mm][c]{\argix -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \ESKDbomColumnIXname\strut}\hspace{2\tabcolsep}%
+      \parbox[c][17mm][c]{\argx -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \ESKDbomColumnXname\strut}}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argxi -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnXIname}
+  \tabularnewline%
   }
 }
 %

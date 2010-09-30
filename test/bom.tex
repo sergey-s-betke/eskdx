@@ -1,98 +1,100 @@
-\documentclass[14pt,a3paper,russian,koi8-r,footwhitespace=0]{eskdtab}
+\documentclass[14pt,a3paper,russian,koi8-r,footwhitespace=0,emptylinebottom,emptylinetop]{eskdtab}
 \usepackage{eskdbom}
+\usepackage{eskdchngsheet}
+\usepackage{eskdfreesize}
+\usepackage{textcomp}
 \usepackage[T2A]{fontenc}
 
 
 \ESKDtitle{Проверка коллекции eskdx. Перечень покупных изделий}
 
 
+\ESKDtabComment{\Large
+В графе <<Обозначение документа на поставку>> для комплектующих изделий
+импортного производства, не имеющих данных о технических условиях, приведён
+код и наименование каталога, по которому производится поставка. 
+}
+
+
 \begin{document}
 \begin{ESKDbillOfMaterials}
-&(123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
-&123&&&&&&&&&\tabularnewline
+&Устройства&&Лист \pageref{p:devices}&&&&&&&\tabularnewline
+&&&&&&&&&&\tabularnewline
+&Конденсаторы&&Лист \pageref{p:capacitors}&&&&&&&\tabularnewline
+&&&&&&&&&&\tabularnewline
+\newpage
+
+
+&\label{p:devices}\centering\underline{Устройства}&&&&&&&&&\tabularnewline
+&&&&&&&&&&\tabularnewline*
+&
+Модуль приемоизмерительный \mbox{\small К-161Н-А-С-SMB-03-01-05}&&
+ШВЕА.468157.014 ТУ&
+ОАО <<РИРВ>>,191124, РФ г.Санкт-Петербург, пл. Растрелли, д. 2 тел. (812) 274-14-88&
+КСАУ.464349.005&&&&\tabularnewline*
+&&&&&&&&&&\tabularnewline
+\newpage
+
+&\label{p:capacitors}\centering\underline{Конденсаторы}&&&&&&&&&\tabularnewline
+&&&&&&&&&&\tabularnewline*
+&
+CV-AX-50 V-100 F 20 \%&&
+67-134-99 ELFA&
+УП <<Хартинг>>,220039, РБ г.Минск, ул.Чкалова,12-308 тел. (017) 219-76-79&
+КСАУ.469335.018&
+3&&&
+3\tabularnewline
+&&&&&&&&&&\tabularnewline
+
+&
+МЧ3216М 2F3 0,22 мкФ +80/-20 \% 50 В N&&
+ТУ РБ 07612048.001-94&
+ПО <<Монолит>>,210604,РБ г.Витебск, ул.Горького,145 тел. (0212) 33-31-76&
+КСАУ.469335.018&
+4&&&
+4\tabularnewline
+&&&&&&&&&&\tabularnewline
+
+&
+МЧ3216М 2F3 0,1 мкФ +80/-20 \% 50 В N&&
+ТУ РБ 07612048.001-94&
+ПО <<Монолит>>,210604,РБ г.Витебск, ул.Горького,145 тел. (0212) 33-31-76&
+КСАУ.469335.018&
+8&&&
+8\tabularnewline
+&&&&&&&&&&\tabularnewline
+
+&
+МЧ2012M 2C1 3300 пФ \textpm10 \% 25 В N&&
+ТУ РБ 07612048.001-94&
+ПО <<Монолит>>,210604,РБ г.Витебск, ул.Горького,145 тел. (0212) 33-31-76&
+КСАУ.469335.018&
+4&&&
+4\tabularnewline
+
+
+
+
+
+
+
+
+&&&&&&&&&&\tabularnewline
+
+
+
+
+
+
 \end{ESKDbillOfMaterials}
+
+
+
+
+
+\ESKDfreeSize{210mm}{297mm}{
+\begin{ESKDchangeSheet}
+&&&&&&&&&\\
+\end{ESKDchangeSheet}}
+
 \end{document}

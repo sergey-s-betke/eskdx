@@ -212,8 +212,35 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
         \addtocounter{narg@tmp}{1}
         \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \csname arg\roman{narg@tmp}\endcsname}
         \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}}
-    \end{picture}}}
+    \end{picture}}%
+}
 
+
+% ------------------------------------------------------------------------
+% Комментарий слева от штампа для листов А3 и более
+% ------------------------------------------------------------------------
+%
+\newlength{\ESKDtabCommentPaddingV}
+\newlength{\ESKDtabCommentPaddingH}
+\setlength{\ESKDtabCommentPaddingV}{5mm}
+\setlength{\ESKDtabCommentPaddingH}{5mm}
+
+\newcommand{\ESKDtheTabComment}{}
+\newcommand{\ESKDtabComment}[1]{\renewcommand{\ESKDtheTabComment}{#1}}
+
+\newcommand{\ESKDtabDrawComment}{
+  % тут 185мм - длина штампа, 40мм - высота штампа
+  \setlength{\ESKD@tmpdima}{\ESKDframeW -185mm -2\ESKDtabCommentPaddingH}
+  \ifthenelse{\lengthtest{\ESKD@tmpdima > 30mm}}{% true
+    \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
+      \begin{picture}(0,0)
+        \put(\ESKDltu{\ESKDtabCommentPaddingH},\ESKDltu{\ESKDtabCommentPaddingV}){%
+          \parbox[b][40mm -2\ESKDtabCommentPaddingV][c]{\ESKD@tmpdima}{%
+          \setlength{\parindent}{15mm}%
+          \ESKDtheTabComment}}
+      \end{picture}}}%
+    {}% false
+}
 
 
 % ------------------------------------------------------------------------
@@ -224,6 +251,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 \newcommand{\ESKDtabLTPreamble}[2]{
   \ESKDputOnStyle{formII}{grid}{\ESKDtabDrawBody\ESKDtabDrawHead}
   \ESKDputOnStyle{formIIab}{grid}{\ESKDtabDrawBody[1]\ESKDtabDrawHead}
+  \ESKDputOnStyle{formII}{comment}{\ESKDtabDrawComment}
   \begin{ESKDzeroPadding}
   \setlength{\tabcolsep}{0.5mm}
   \setlength{\LTpre}{0mm}

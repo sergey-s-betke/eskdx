@@ -99,6 +99,8 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
   \ESKDputOnStyle{specIIa}{columnxxxii}{\ESKDdrawColumnXXXII}
 \fi
 
+\ESKDputOnStyle{specII}{comment}{\ESKDtabDrawComment}
+
 \ESKDdefaultFirstStyle{specII}
 \ESKDdefaultStyle{specIIa}
 

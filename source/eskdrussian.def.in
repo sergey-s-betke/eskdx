@@ -142,6 +142,37 @@ m4_FILE_ID([[$Date::                            $]]) Language File]
 \newcommand{\ESKDcmplistColumnIVname}{%
   \cyr\CYRP\cyrr\cyri\cyrm\cyre\cyrch\cyra\cyrn\cyri\cyre}
 
+% ведомость покупных изделий
+\newcommand{\ESKDbomColumnIname}{%
+  \No\ \cyr\cyrs\cyrt\cyrr\cyro\cyrk\cyri}
+\newcommand{\ESKDbomColumnIIname}{%
+  \cyr\CYRN\cyra\cyri\cyrm\cyre\cyrn\cyro\cyrv\cyra\cyrn\cyri\cyre}
+\newcommand{\ESKDbomColumnIIIname}{%
+  \cyr\CYRK\cyro\cyrd\ \cyrp\cyrr\cyro\cyrd\cyru\cyrk\cyrc\cyri\cyri}
+\newcommand{\ESKDbomColumnIVname}{%
+  \cyr\CYRO\cyrb\cyro\cyrz\cyrn\cyra\cyrch\cyre\cyrn\cyri\cyre\ 
+  \cyrd\cyro\cyrk\cyru\cyrm\cyre\cyrn\cyrt\cyra\par
+  \cyrn\cyra\ 
+  \cyrp\cyro\cyrs\cyrt\cyra\cyrv\cyrk\cyru}
+\newcommand{\ESKDbomColumnVname}{%
+  \cyr\CYRP\cyro\cyrs\cyrt\cyra\cyrv\cyrshch\cyri\cyrk}
+\newcommand{\ESKDbomColumnVIname}{%
+  \cyr\CYRK\cyru\cyrd\cyra\ 
+  \cyrv\cyrh\cyro\cyrd\cyri\cyrt\
+  (\cyr\cyro\cyrb\cyro\cyrz\cyrn\cyra\cyrch\cyre\cyrn\cyri\cyre)}
+\newcommand{\ESKDbomColumnsVIIhname}{%
+  \cyr\CYRK\cyro\cyrl\cyri\cyrch\cyre\cyrs\cyrt\cyrv\cyro}
+\newcommand{\ESKDbomColumnVIIname}{%
+  \cyr\CYRN\cyra\ \cyri\cyrz\-\cyrd\cyre\cyrl\cyri\cyre}
+\newcommand{\ESKDbomColumnVIIIname}{%
+  \cyr\CYRV\ \cyrk\cyro\cyrm\-\cyrp\cyrl\cyre\cyrk\-\cyrt\cyrery}
+\newcommand{\ESKDbomColumnIXname}{%
+  \cyr\CYRN\cyra\ \cyrr\cyre\-\cyrg\cyru\cyrl\cyri\cyrr.}
+\newcommand{\ESKDbomColumnXname}{%
+  \cyr\CYRV\cyrs\cyre\cyrg\cyro}
+\newcommand{\ESKDbomColumnXIname}{%
+  \cyr\CYRP\cyrr\cyri\-\cyrm\cyre\-\cyrch\cyra\-\cyrn\cyri\cyre}
+
 % лист регистрации изменений
 \newcommand{\ESKDchangeSheetName}{%
   \cyr\CYRL\cyri\cyrs\cyrt\ %
