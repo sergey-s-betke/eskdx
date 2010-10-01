@@ -138,7 +138,7 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
   %
   {%
   \parbox[c][\ESKDtabHeadH][c]{\argi -2\tabcolsep}{\centering\begin{sideways}%
-    \ESKDsmartscalebox{\ESKDtabHeadH}{\ESKDfontTabHead\ESKDspecIIcolumnIname}%
+    \ESKDsmartScaleBox{\ESKDtabHeadH}{\ESKDfontTabHead\ESKDspecIIcolumnIname}%
     \end{sideways}}&
   \parbox[c][\ESKDtabHeadH][c]{\argii -2\tabcolsep}{\centering\begin{sideways}\ESKDfontTabHead%
     \ESKDspecIIcolumnIIname\end{sideways}}&

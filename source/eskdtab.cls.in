@@ -285,7 +285,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 % ----------------------------------------------------------------------
 % макрос уменьшает содержимое под заданный размер в случае необходимости
 % ----------------------------------------------------------------------
-\newcommand{\ESKDsmartscalebox}[2]{
+\newcommand{\ESKDsmartScaleBox}[2]{
   \settowidth{\ESKD@tmpdima}{#2}%
   \setlength{\ESKD@tmpdimb}{#1}%
   \ifthenelse{\lengthtest{\ESKD@tmpdima > \ESKD@tmpdimb}}%

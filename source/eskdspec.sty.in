@@ -56,7 +56,7 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
   %
   {%
   \parbox[c][\ESKDtabHeadH][c]{\argi -2\tabcolsep}{\centering\begin{sideways}%
-    \ESKDsmartscalebox{\ESKDtabHeadH}{\ESKDfontTabHead\ESKDspecColumnIname}%
+    \ESKDsmartScaleBox{\ESKDtabHeadH}{\ESKDfontTabHead\ESKDspecColumnIname}%
     \end{sideways}}&
   \parbox[c][\ESKDtabHeadH][c]{\argii -2\tabcolsep}{\centering\begin{sideways}\ESKDfontTabHead%
     \ESKDspecColumnIIname\end{sideways}}&
@@ -70,7 +70,7 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
   \parbox[c][\ESKDtabHeadH][c]{\argvi -2\tabcolsep}{\centering\begin{sideways}\ESKDfontTabHead%
     \ESKDspecColumnVIname\end{sideways}}&
   \parbox[c][\ESKDtabHeadH][c]{\argvii -2\tabcolsep}{\centering%
-    \ESKDsmartscalebox{\argvii -2\tabcolsep}{\ESKDfontTabHead\ESKDspecColumnVIIname}}%
+    \ESKDsmartScaleBox{\argvii -2\tabcolsep}{\ESKDfontTabHead\ESKDspecColumnVIIname}}%
     \tabularnewline%
   }
 }
