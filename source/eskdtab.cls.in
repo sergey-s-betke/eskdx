@@ -225,13 +225,12 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 \setlength{\ESKDtabCommentPaddingV}{5mm}
 \setlength{\ESKDtabCommentPaddingH}{5mm}
 
-\newcommand{\ESKDtheTabComment}{}
-\newcommand{\ESKDtabComment}[1]{\renewcommand{\ESKDtheTabComment}{#1}}
+\newcommand{\ESKDtabComment}[1]{\def\ESKDtheTabComment{#1}}
 
 \newcommand{\ESKDtabDrawComment}{
   % тут 185мм - длина штампа, 40мм - высота штампа
   \setlength{\ESKD@tmpdima}{\ESKDframeW -185mm -2\ESKDtabCommentPaddingH}
-  \ifthenelse{\lengthtest{\ESKD@tmpdima > 30mm}}{% true
+  \ifthenelse{\lengthtest{\ESKD@tmpdima > 10mm}}{% true
     \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
       \begin{picture}(0,0)
         \put(\ESKDltu{\ESKDtabCommentPaddingH},\ESKDltu{\ESKDtabCommentPaddingV}){%
@@ -239,8 +238,11 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
           \setlength{\parindent}{15mm}%
           \ESKDtheTabComment}}
       \end{picture}}}%
-    {}% false
+    {\@ifundefined{ESKDtheTabComment}{}{%
+      \ClassWarning{eskdtab}{%
+        Not anough space to place comment message}}}% false
 }
+
 
 
 % ------------------------------------------------------------------------
