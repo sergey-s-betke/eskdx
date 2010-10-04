@@ -24,6 +24,9 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \RequirePackage{eskdstamp}
 \RequirePackage{array}
 \RequirePackage{longtable}
+\RequirePackage{multirow}
+
+\renewcommand{\arraystretch}{0}
 
 \newcommand{\ESKDchngColumnIwidth}{.08\textwidth}
 \newcommand{\ESKDchngColumnIIwidth}{.08\textwidth}
@@ -37,60 +40,21 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \newcommand{\ESKDchngColumnXwidth}{.10\textwidth}
 
 \newenvironment{ESKDchangeSheet}{%
+\begin{ESKDzeroPadding}
 \ESKDclearDoublePage
 \setlength{\tabcolsep}{0.5mm}
-\newcolumntype{s}{>{\ESKDfontTabBody}c}
-\newcolumntype{S}{>{\ESKDfontTabHead}c}
+\newcolumntype{s}{>{\rule{0mm}{5mm}\ESKDfontTabBody}c}
+\newcolumntype{S}{>{\rule{0mm}{5mm}\ESKDfontTabHead}c}
 \noindent
-\begin{longtable}{|*{10}{s|}}
+\begin{longtable}{|p{7mm}|p{19mm}|p{19mm}|p{19mm}|p{19mm}|p{19mm}|p{24mm}|p{24mm}|p{14mm}|p{11mm}}
 \hline
-\multicolumn{10}{|S|}{\ESKDchangeSheetName}\\\hline
-&\multicolumn{4}{S|}{\ESKDchngColumnsIIhName}&&&&&\\\cline{2-5}
-\parbox[c]{\ESKDchngColumnIwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXIVname}&
-\parbox[c]{\ESKDchngColumnIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIIname}&
-\parbox[c]{\ESKDchngColumnIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIIIname}&
-\parbox[c]{\ESKDchngColumnIVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIVname}&
-\parbox[c]{\ESKDchngColumnVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnVname}&
-\parbox[c]{\ESKDchngColumnVIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIname}&
-\parbox[c]{\ESKDchngColumnVIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIname}&
-\parbox[c]{\ESKDchngColumnVIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIIIname\vspace{1mm}}&
-\parbox[c]{\ESKDchngColumnIXwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIname}&
-\parbox[c]{\ESKDchngColumnXwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIIname}\\\hline
+\multicolumn{10}{|S}{\parbox[c][10mm][c]{\textwidth -2\tabcolsep}{\centering\ESKDchangeSheetName}}\\\hline
+
+\multirow{2}{*}{Izm.}&\multicolumn{4}{S|}{Nomera listov (stranits)}&\multirow{2}{*}{7}&\multirow{2}{*}{8}&\multirow{2}{*}{9}&\multirow{2}{*}{10}&\multirow{2}{*}{10}\\\cline{2-5}
+                  &\parbox[c]{0mm}{\rule{0mm}{20mm}}2&3&4&5&&&&\\
 \endfirsthead
-\hline
-&\multicolumn{4}{S|}{\ESKDchngColumnsIIhName}&&&&&\\\cline{2-5}
-\parbox[c]{\ESKDchngColumnIwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXIVname}&
-\parbox[c]{\ESKDchngColumnIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIIname}&
-\parbox[c]{\ESKDchngColumnIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIIIname}&
-\parbox[c]{\ESKDchngColumnIVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIVname}&
-\parbox[c]{\ESKDchngColumnVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnVname}&
-\parbox[c]{\ESKDchngColumnVIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIname}&
-\parbox[c]{\ESKDchngColumnVIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIname}&
-\parbox[c]{\ESKDchngColumnVIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIIIname\vspace{1mm}}&
-\parbox[c]{\ESKDchngColumnIXwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIname}&
-\parbox[c]{\ESKDchngColumnXwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIIname}\\\hline
 \endhead
 \hline
-\endfoot}{\end{longtable}}
+\endfoot}{\end{longtable}\end{ESKDzeroPadding}}
 
 m4_dnl vim:ft=tex:sw=2:ai
