@@ -1076,7 +1076,7 @@ m4_END_OPTTBL
   \cmddef{ESKDtabCommentPaddingH}{}
 \end{defs}
 Они задаются относительно прямоугольных границ, образованных
-рамкой и штампом. По умолчанию обе равны 5",mm. 
+рамкой и штампом. По умолчанию обе равны \val{5",mm}. 
 
 Примечание "--- команды \cmd{ESKDspecFontHead} и
 \cmd{ESKDspecFontBody} являются устаревшими и удалены из \pkg{eskdx}.
