@@ -137,6 +137,14 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
 
 
 % Определим несколько готовых к употреблению форматов
+\newcommand{\ESKDlandscapeAIV}[1]{%
+  \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa4FormatName}}%
+  \ESKDfreeSize{297mm}{210mm}{#1}}
+
+\newcommand{\ESKDportraitAIV}[1]{%
+  \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa4FormatName}}%
+  \ESKDfreeSize{210mm}{297mm}{#1}}
+
 \newcommand{\ESKDlandscapeAIII}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa3FormatName}}%
   \ESKDfreeSize{420mm}{297mm}{#1}}

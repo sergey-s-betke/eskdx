@@ -1221,6 +1221,8 @@ eskdrussian.def и eskdukrainian.def. Это позволит избежать проблем при
 были определены следующие команды:
 
 \begin{defs}
+  \cmddef{ESKDlandscapeAIV}{}
+  \cmddef{ESKDportraitAIV}{}
   \cmddef{ESKDlandscapeAIII}{}
   \cmddef{ESKDportraitAIII}{}
   \cmddef{ESKDlandscapeAII}{}
