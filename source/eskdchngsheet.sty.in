@@ -26,8 +26,6 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \RequirePackage{longtable}
 \RequirePackage{multirow}
 
-\renewcommand{\arraystretch}{0}
-
 \newcommand{\ESKDchngColumnIwidth}{.08\textwidth}
 \newcommand{\ESKDchngColumnIIwidth}{.08\textwidth}
 \newcommand{\ESKDchngColumnIIIwidth}{.08\textwidth}
@@ -40,6 +38,7 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \newcommand{\ESKDchngColumnXwidth}{.10\textwidth}
 
 \newenvironment{ESKDchangeSheet}{%
+\renewcommand{\arraystretch}{0}
 \begin{ESKDzeroPadding}
 \ESKDclearDoublePage
 \setlength{\tabcolsep}{0.5mm}
@@ -55,6 +54,8 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \endfirsthead
 \endhead
 \hline
-\endfoot}{\end{longtable}\end{ESKDzeroPadding}}
+\endfoot}%
+{\end{longtable}\end{ESKDzeroPadding}
+\renewcommand{\arraystretch}{1}}
 
 m4_dnl vim:ft=tex:sw=2:ai
