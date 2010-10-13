@@ -178,6 +178,8 @@ m4_FILE_ID([[$Date::                            $]]) Language File]
   \cyr\CYRL\cyri\cyrs\cyrt\ %
   \cyrr\cyre\cyrg\cyri\cyrs\cyrt\cyrr\cyra\cyrc\cyri\cyri\ %
   \cyri\cyrz\cyrm\cyre\cyrn\cyre\cyrn\cyri\cyrishrt}
+\newcommand{\ESKDchngColumnIname}{%
+  \cyr\CYRI\cyrz\cyrm.}
 \newcommand{\ESKDchngColumnsIIhName}{%
   \cyr\CYRN\cyro\cyrm\cyre\cyrr\cyra\ \cyrl\cyri\cyrs\cyrt\cyro\cyrv\ %
   (\cyrs\cyrt\cyrr\cyra\cyrn\cyri\cyrc)}
@@ -193,11 +195,18 @@ m4_FILE_ID([[$Date::                            $]]) Language File]
 \newcommand{\ESKDchngColumnVIname}{%
   \cyr\CYRV\cyrs\cyre\cyrg\cyro\ \cyrl\cyri\cyrs\cyrt\cyro\cyrv\ %
   (\cyrs\cyrt\cyrr\cyra\cyrn\cyri\cyrc) \cyrv\ \cyrd\cyro\cyrk\cyru\cyrm.}
+\newcommand{\ESKDchngColumnVIIname}{%
+  \No\ \cyr\cyrd\cyro\cyrk\cyru\cyrm\cyre\cyrn\cyrt\cyra}
 \newcommand{\ESKDchngColumnVIIIname}{%
   \cyr\CYRV\cyrh\cyro\cyrd\cyrya\cyrshch\cyri\cyrishrt\ \No\ %
   \cyrs\cyro\cyrp\cyrr\cyro\cyrv\cyro\cyrd\cyri\cyrt\cyre\cyrl\cyrsftsn
   \cyrn\cyro\cyrg\cyro\ \cyrd\cyro\cyrk\cyru\cyrm. \cyri\ %
   \cyrd\cyra\cyrt\cyra}
+\newcommand{\ESKDchngColumnIXname}{%
+  \cyr\CYRP\cyr\cyro\cyrd\cyrp.}
+\newcommand{\ESKDchngColumnXname}{%
+  \cyr\CYRD\cyra\cyrt\cyra}
+
 
 \def\@Asbuk#1{\ifcase#1\or
   \CYRA\or\CYRB\or\CYRV\or\CYRG\or\CYRD\or\CYRE\or\CYRZH\or

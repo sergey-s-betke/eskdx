@@ -26,31 +26,91 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \RequirePackage{longtable}
 \RequirePackage{multirow}
 
-\newcommand{\ESKDchngColumnIwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnIIwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnIIIwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnIVwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnVwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnVIwidth}{.15\textwidth}
-\newcommand{\ESKDchngColumnVIIwidth}{.10\textwidth}
-\newcommand{\ESKDchngColumnVIIIwidth}{.15\textwidth}
-\newcommand{\ESKDchngColumnIXwidth}{.10\textwidth}
-\newcommand{\ESKDchngColumnXwidth}{.10\textwidth}
+%TODO подогнать размер \arraystretch под 5мм
+% совершенно не понятно, почему надо вычитать 3\tabcolsep
+% сделать размер ячеек таблицы независимым от текущего шрифта
 
 \newenvironment{ESKDchangeSheet}{%
-\renewcommand{\arraystretch}{0}
+\renewcommand{\arraystretch}{0.6}
 \begin{ESKDzeroPadding}
 \ESKDclearDoublePage
 \setlength{\tabcolsep}{0.5mm}
-\newcolumntype{s}{>{\rule{0mm}{5mm}\ESKDfontTabBody}c}
-\newcolumntype{S}{>{\rule{0mm}{5mm}\ESKDfontTabHead}c}
-\noindent
-\begin{longtable}{|p{7mm}|p{19mm}|p{19mm}|p{19mm}|p{19mm}|p{19mm}|p{24mm}|p{24mm}|p{14mm}|p{11mm}}
-\hline
-\multicolumn{10}{|S}{\parbox[c][10mm][c]{\textwidth -2\tabcolsep}{\centering\ESKDchangeSheetName}}\\\hline
 
-\multirow{2}{*}{Izm.}&\multicolumn{4}{S|}{Nomera listov (stranits)}&\multirow{2}{*}{7}&\multirow{2}{*}{8}&\multirow{2}{*}{9}&\multirow{2}{*}{10}&\multirow{2}{*}{10}\\\cline{2-5}
-                  &\parbox[c]{0mm}{\rule{0mm}{20mm}}2&3&4&5&&&&\\
+\newlength{\ESKDchngColumnIwidth}
+  \setlength{\ESKDchngColumnIwidth}{8mm}
+\newlength{\ESKDchngColumnIIwidth}
+  \setlength{\ESKDchngColumnIIwidth}{20mm}
+\newlength{\ESKDchngColumnIIIwidth}
+  \setlength{\ESKDchngColumnIIIwidth}{20mm}
+\newlength{\ESKDchngColumnIVwidth}
+  \setlength{\ESKDchngColumnIVwidth}{20mm}
+\newlength{\ESKDchngColumnVwidth}
+  \setlength{\ESKDchngColumnVwidth}{20mm}
+\newlength{\ESKDchngColumnVIwidth}
+  \setlength{\ESKDchngColumnVIwidth}{20mm}
+\newlength{\ESKDchngColumnVIIwidth}
+  \setlength{\ESKDchngColumnVIIwidth}{20mm}
+\newlength{\ESKDchngColumnVIIIwidth}
+  \setlength{\ESKDchngColumnVIIIwidth}{20mm}
+\newlength{\ESKDchngColumnIXwidth}
+  \setlength{\ESKDchngColumnIXwidth}{15mm}
+\newlength{\ESKDchngColumnXwidth}
+  \setlength{\ESKDchngColumnXwidth}{10mm}
+
+\noindent
+\begin{longtable}{%
+  |p{\ESKDchngColumnIwidth}
+  |p{\ESKDchngColumnIIwidth}
+  |p{\ESKDchngColumnIIIwidth}
+  |p{\ESKDchngColumnIVwidth}
+  |p{\ESKDchngColumnVwidth}
+  |p{\ESKDchngColumnVIwidth}
+  |p{\ESKDchngColumnVIIwidth}
+  |p{\ESKDchngColumnVIIIwidth}
+  |p{\ESKDchngColumnIXwidth}
+  |p{\ESKDchngColumnXwidth}}
+\hline
+\multicolumn{10}{|c}
+  {\parbox[c][10mm][c]{\textwidth -8\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchangeSheetName}}\\\hline
+
+\multirow{5}{*}
+  {\parbox[c]{\ESKDchngColumnIwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIname}}&
+\multicolumn{4}{c|}
+  {\ESKDfontTabHead\ESKDchngColumnsIIhName}&
+\multirow{5}{*}
+  {\parbox[c]{\ESKDchngColumnVIwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnVIname}}&
+\multirow{5}{*}
+  {\parbox[c]{\ESKDchngColumnVIIwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnVIIname}}&
+\multirow{5}{*}
+  {\parbox[c]{\ESKDchngColumnVIIIwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnVIIIname}}&
+\multirow{5}{*}
+  {\parbox[c]{\ESKDchngColumnIXwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIXname}}&
+\multirow{5}{*}
+  {\parbox[c]{\ESKDchngColumnXwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnXname}}\\\cline{2-5}
+
+&\multirow{4}{*}
+  {\parbox[c]{\ESKDchngColumnIIwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIIname}}&
+\multirow{4}{*}
+  {\parbox[c]{\ESKDchngColumnIIIwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIIIname}}&
+\multirow{4}{*}
+  {\parbox[c]{\ESKDchngColumnIVwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIVname}}&
+\multirow{4}{*}
+  {\parbox[c]{\ESKDchngColumnVwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnVname}}&&&&\\
+
+&&&&&&&&\\
+&&&&&&&&\\
+&&&&&&&&\\\hline
 \endfirsthead
 \endhead
 \hline
