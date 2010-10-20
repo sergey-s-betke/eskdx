@@ -128,7 +128,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
     \edef\narg{\arabic{@iargc}}}}
 
 % завернем в более благозвучное название
-\newcommand{\ESKDtabArgparse}[1]{\ESKD@argparse{#1}}
+\newcommand{\ESKDtabColumnsWidth}[1]{\ESKD@argparse{#1}}
 
 
 % ------------------------------------------------------------------------

@@ -28,7 +28,7 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
 \RequirePackage{longtable}
 
 
-\ESKDtabArgparse{6mm 6mm 8mm 70mm 72mm 10mm 10mm 75mm 30mm}
+\ESKDtabColumnsWidth{6mm 6mm 8mm 70mm 72mm 10mm 10mm 75mm 30mm}
 \setlength{\ESKDtabHeadH}{15mm}
 
 \newlength{\ESKDspecIIaddHspace}

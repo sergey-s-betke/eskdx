@@ -29,7 +29,7 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Bill of materials GOST 2.10
 
 
 % зададим размеры колонок таблицы.
-\ESKDtabArgparse{7mm 45mm 60mm 70mm 55mm 70mm 16mm 16mm 16mm 16mm 24mm}
+\ESKDtabColumnsWidth{7mm 45mm 60mm 70mm 55mm 70mm 16mm 16mm 16mm 16mm 24mm}
 % высота шапки таблицы
 \setlength{\ESKDtabHeadH}{27mm}
 

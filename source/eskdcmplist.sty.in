@@ -30,7 +30,7 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
 
 
 % зададим размеры колонок таблицы.
-\ESKDtabArgparse{20mm 110mm 10mm 45mm}
+\ESKDtabColumnsWidth{20mm 110mm 10mm 45mm}
 % высота шапки таблицы
 \setlength{\ESKDtabHeadH}{15mm}
 
@@ -40,7 +40,7 @@ m4_FILE_ID([[$Date:: 2010-03-08 14:28:10 +0200 #$]]) Component List GOST 2.701-8
 \setlength{\ESKDcmplistAddHspace}{2mm}
 
 % создадим окружение "перечень элементов"
-% длины \argi и т.д. - это полученные в результате работы макроса \ESKDtabArgparse длины
+% длины \argi и т.д. - это полученные в результате работы макроса \ESKDtabColumnsWidth длины
 \newenvironment{ESKDcomponentList}
 {\ESKDtabLTPreamble{%
   % это преамбула таблицы (longtable), которая используется в качестве основы документа
