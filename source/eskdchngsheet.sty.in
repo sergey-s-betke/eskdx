@@ -26,12 +26,19 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \RequirePackage{longtable}
 \RequirePackage{multirow}
 
-%TODO подогнать размер \arraystretch под 5мм
-% совершенно не понятно, почему надо вычитать 3\tabcolsep
-% сделать размер ячеек таблицы независимым от текущего шрифта
+\newcommand{\ESKD@chnglist@tabfont}{10pt}
+\DeclareOption{10pt}{\renewcommand{\ESKD@chnglist@tabfont}{10pt}}
+\DeclareOption{12pt}{\renewcommand{\ESKD@chnglist@tabfont}{12pt}}
+\DeclareOption{14pt}{\renewcommand{\ESKD@chnglist@tabfont}{14pt}}
+\ProcessOptions\relax
+
+%TODO 
+% размеры почему-то плохо попадают в ГОСТ, похоже, что-то не влезает
+% надо бы разобраться
+
 
 \newenvironment{ESKDchangeSheet}{%
-\renewcommand{\arraystretch}{0.6}
+\fontsize{\ESKD@chnglist@tabfont}{5mm}\selectfont\ESKDfontShape
 \begin{ESKDzeroPadding}
 \ESKDclearDoublePage
 \setlength{\tabcolsep}{0.5mm}
@@ -74,48 +81,43 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
   {\parbox[c][10mm][c]{\textwidth -8\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchangeSheetName}}\\\hline
 
-\multirow{5}{*}
-  {\parbox[c]{\ESKDchngColumnIwidth}
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnIwidth}
     {\centering\ESKDfontTabHead\ESKDchngColumnIname}}&
 \multicolumn{4}{c|}
-  {\ESKDfontTabHead\ESKDchngColumnsIIhName}&
-\multirow{5}{*}
-  {\parbox[c]{\ESKDchngColumnVIwidth}
+  {\parbox[c][5mm][c]{80mm -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnsIIhName}}&
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnVIwidth}
     {\centering\ESKDfontTabHead\ESKDchngColumnVIname}}&
-\multirow{5}{*}
-  {\parbox[c]{\ESKDchngColumnVIIwidth}
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnVIIwidth}
     {\centering\ESKDfontTabHead\ESKDchngColumnVIIname}}&
-\multirow{5}{*}
-  {\parbox[c]{\ESKDchngColumnVIIIwidth}
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnVIIIwidth}
     {\centering\ESKDfontTabHead\ESKDchngColumnVIIIname}}&
-\multirow{5}{*}
-  {\parbox[c]{\ESKDchngColumnIXwidth}
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnIXwidth}
     {\centering\ESKDfontTabHead\ESKDchngColumnIXname}}&
-\multirow{5}{*}
-  {\parbox[c]{\ESKDchngColumnXwidth}
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnXwidth}
     {\centering\ESKDfontTabHead\ESKDchngColumnXname}}\\\cline{2-5}
 
-&\multirow{4}{*}
-  {\parbox[c]{\ESKDchngColumnIIwidth}
-    {\centering\ESKDfontTabHead\ESKDchngColumnIIname}}&
-\multirow{4}{*}
-  {\parbox[c]{\ESKDchngColumnIIIwidth}
-    {\centering\ESKDfontTabHead\ESKDchngColumnIIIname}}&
-\multirow{4}{*}
-  {\parbox[c]{\ESKDchngColumnIVwidth}
-    {\centering\ESKDfontTabHead\ESKDchngColumnIVname}}&
-\multirow{4}{*}
-  {\parbox[c]{\ESKDchngColumnVwidth}
-    {\centering\ESKDfontTabHead\ESKDchngColumnVname}}&&&&\\
-
-&&&&&&&&\\
-&&&&&&&&\\
-&&&&&&&&\\\hline
+&
+  \parbox[c][20mm][c]{\ESKDchngColumnIIwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIIname}&
+  \parbox[c][20mm][c]{\ESKDchngColumnIIIwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIIIname}&
+  \parbox[c][20mm][c]{\ESKDchngColumnIVwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIVname}&
+  \parbox[c][20mm][c]{\ESKDchngColumnVwidth}
+    {\centering\ESKDfontTabHead\ESKDchngColumnVname}&&&&\\\hline
 \endfirsthead
 \endhead
-\hline
-\endfoot}%
-{\end{longtable}\end{ESKDzeroPadding}
-\renewcommand{\arraystretch}{1}}
+\hline\endfoot
+\hline\endlastfoot}%
+{\end{longtable}\end{ESKDzeroPadding}%
+% \renewcommand{\arraystretch}{1}%
+}
 
 m4_dnl vim:ft=tex:sw=2:ai
