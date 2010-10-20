@@ -1115,7 +1115,7 @@ m4_END_OPTTBL
 
 Теперь подробнее. Команда
 \begin{defs}
-  \cmddef{ESKDtabArgparse}\{\cmdarg{длины}\}
+  \cmddef{ESKDtabColumnsWidth}\{\cmdarg{длины}\}
 \end{defs}
 принимает ширины колонок, разделенные \textbf{пробелами} и 
 сохраняет их в макросы \verb|\argi, \argii| и т.д., а количество 
@@ -1123,7 +1123,7 @@ m4_END_OPTTBL
 Единицы измерения следует писать \textbf{слитно} с номиналом,
 например:
 \begin{quote}
-  \verb|\ESKDtabArgparse{20mm 110mm 10mm 45mm}|
+  \verb|\ESKDtabColumnsWidth{20mm 110mm 10mm 45mm}|
 \end{quote}
 
 Длина \cmd{ESKDtabHeadH} хранит высоту шапки.
