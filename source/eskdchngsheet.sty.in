@@ -38,7 +38,6 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 
 
 \newenvironment{ESKDchangeSheet}{%
-\fontsize{\ESKD@chnglist@tabfont}{5mm}\selectfont\ESKDfontShape
 \begin{ESKDzeroPadding}
 \ESKDclearDoublePage
 \setlength{\tabcolsep}{0.5mm}
@@ -64,23 +63,12 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \newlength{\ESKDchngColumnXwidth}
   \setlength{\ESKDchngColumnXwidth}{12mm}
 
-\noindent
-\begin{longtable}{% дополнительно надо вычесть еще ширИны самих линеек таблицы
-  p{\ESKDchngColumnIwidth -2\tabcolsep -0.2mm}
-  |p{\ESKDchngColumnIIwidth -2\tabcolsep -0.1mm}
-  |p{\ESKDchngColumnIIIwidth -2\tabcolsep -0.1mm}
-  |p{\ESKDchngColumnIVwidth -2\tabcolsep -0.1mm}
-  |p{\ESKDchngColumnVwidth -2\tabcolsep -0.1mm}
-  |p{\ESKDchngColumnVIwidth -2\tabcolsep -0.1mm}
-  |p{\ESKDchngColumnVIIwidth -2\tabcolsep -0.1mm}
-  |p{\ESKDchngColumnVIIIwidth -2\tabcolsep -0.1mm}
-  |p{\ESKDchngColumnIXwidth -2\tabcolsep -0.1mm}
-  |p{\ESKDchngColumnXwidth -2\tabcolsep -0.2mm}}
-\hline
+\newcommand{\chngsheet@firsthead}{
 \multicolumn{10}{|c}
   {\parbox[c][10mm][c]{\textwidth -2\tabcolsep}
-    {\centering\ESKDfontTabHead\ESKDchangeSheetName}}\\\hline
+    {\centering\ESKDfontTabHead\ESKDchangeSheetName}}\\\hline}
 
+\newcommand{\chngsheet@secondhead}{%
 \multirow{2}{*}[-1mm]
   {\parbox[c][25mm][c]{\ESKDchngColumnIwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnIname}}&
@@ -102,7 +90,6 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \multirow{2}{*}[-1mm]
   {\parbox[c][25mm][c]{\ESKDchngColumnXwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnXname}}\\\cline{2-5}
-
 &
   \parbox[c][20mm][c]{\ESKDchngColumnIIwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnIIname}&
@@ -111,11 +98,28 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
   \parbox[c][20mm][c]{\ESKDchngColumnIVwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnIVname}&
   \parbox[c][20mm][c]{\ESKDchngColumnVwidth -2\tabcolsep}
-    {\centering\ESKDfontTabHead\ESKDchngColumnVname}&&&&\\\hline
-\endfirsthead
-\endhead
+    {\centering\ESKDfontTabHead\ESKDchngColumnVname}&&&&\\\hline}
+
+
+
+\noindent
+\begin{longtable}{% дополнительно надо вычесть еще ширИны самих линеек таблицы
+  p{\ESKDchngColumnIwidth -2\tabcolsep -0.2mm}
+  |p{\ESKDchngColumnIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnIIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnIVwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVIIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnIXwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnXwidth -2\tabcolsep -0.2mm}}
+\hline
+\chngsheet@firsthead\chngsheet@secondhead\endfirsthead
+\chngsheet@secondhead\endhead
 \hline\endfoot
-\hline\endlastfoot}%
+\hline\endlastfoot
+\fontsize{\ESKD@chnglist@tabfont}{5mm}\selectfont\ESKDfontShape}%
 {\end{longtable}\end{ESKDzeroPadding}%
 % \renewcommand{\arraystretch}{1}%
 }
