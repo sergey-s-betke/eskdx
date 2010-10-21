@@ -56,61 +56,61 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \newlength{\ESKDchngColumnVIwidth}
   \setlength{\ESKDchngColumnVIwidth}{20mm}
 \newlength{\ESKDchngColumnVIIwidth}
-  \setlength{\ESKDchngColumnVIIwidth}{20mm}
+  \setlength{\ESKDchngColumnVIIwidth}{25mm}
 \newlength{\ESKDchngColumnVIIIwidth}
-  \setlength{\ESKDchngColumnVIIIwidth}{20mm}
+  \setlength{\ESKDchngColumnVIIIwidth}{25mm}
 \newlength{\ESKDchngColumnIXwidth}
   \setlength{\ESKDchngColumnIXwidth}{15mm}
 \newlength{\ESKDchngColumnXwidth}
-  \setlength{\ESKDchngColumnXwidth}{10mm}
+  \setlength{\ESKDchngColumnXwidth}{12mm}
 
 \noindent
-\begin{longtable}{%
-  |p{\ESKDchngColumnIwidth}
-  |p{\ESKDchngColumnIIwidth}
-  |p{\ESKDchngColumnIIIwidth}
-  |p{\ESKDchngColumnIVwidth}
-  |p{\ESKDchngColumnVwidth}
-  |p{\ESKDchngColumnVIwidth}
-  |p{\ESKDchngColumnVIIwidth}
-  |p{\ESKDchngColumnVIIIwidth}
-  |p{\ESKDchngColumnIXwidth}
-  |p{\ESKDchngColumnXwidth}}
+\begin{longtable}{% дополнительно надо вычесть еще ширИны самих линеек таблицы
+  p{\ESKDchngColumnIwidth -2\tabcolsep -0.2mm}
+  |p{\ESKDchngColumnIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnIIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnIVwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVIIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnIXwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnXwidth -2\tabcolsep -0.2mm}}
 \hline
 \multicolumn{10}{|c}
-  {\parbox[c][10mm][c]{\textwidth -8\tabcolsep}
+  {\parbox[c][10mm][c]{\textwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchangeSheetName}}\\\hline
 
 \multirow{2}{*}[-1mm]
-  {\parbox[c][25mm][c]{\ESKDchngColumnIwidth}
+  {\parbox[c][25mm][c]{\ESKDchngColumnIwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnIname}}&
 \multicolumn{4}{c|}
   {\parbox[c][5mm][c]{80mm -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnsIIhName}}&
 \multirow{2}{*}[-1mm]
-  {\parbox[c][25mm][c]{\ESKDchngColumnVIwidth}
+  {\parbox[c][25mm][c]{\ESKDchngColumnVIwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnVIname}}&
 \multirow{2}{*}[-1mm]
-  {\parbox[c][25mm][c]{\ESKDchngColumnVIIwidth}
+  {\parbox[c][25mm][c]{\ESKDchngColumnVIIwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnVIIname}}&
 \multirow{2}{*}[-1mm]
-  {\parbox[c][25mm][c]{\ESKDchngColumnVIIIwidth}
+  {\parbox[c][25mm][c]{\ESKDchngColumnVIIIwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnVIIIname}}&
 \multirow{2}{*}[-1mm]
-  {\parbox[c][25mm][c]{\ESKDchngColumnIXwidth}
+  {\parbox[c][25mm][c]{\ESKDchngColumnIXwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnIXname}}&
 \multirow{2}{*}[-1mm]
-  {\parbox[c][25mm][c]{\ESKDchngColumnXwidth}
+  {\parbox[c][25mm][c]{\ESKDchngColumnXwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnXname}}\\\cline{2-5}
 
 &
-  \parbox[c][20mm][c]{\ESKDchngColumnIIwidth}
+  \parbox[c][20mm][c]{\ESKDchngColumnIIwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnIIname}&
-  \parbox[c][20mm][c]{\ESKDchngColumnIIIwidth}
+  \parbox[c][20mm][c]{\ESKDchngColumnIIIwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnIIIname}&
-  \parbox[c][20mm][c]{\ESKDchngColumnIVwidth}
+  \parbox[c][20mm][c]{\ESKDchngColumnIVwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnIVname}&
-  \parbox[c][20mm][c]{\ESKDchngColumnVwidth}
+  \parbox[c][20mm][c]{\ESKDchngColumnVwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnVname}&&&&\\\hline
 \endfirsthead
 \endhead
