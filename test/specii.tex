@@ -1,5 +1,7 @@
 \documentclass[landscape,russian,koi8-r,footwhitespace=0]{eskdtab}
 \usepackage{eskdspecii}
+\usepackage{eskdchngsheet}
+\usepackage{eskdfreesize}
 \usepackage[T2A]{fontenc}
 \usepackage{pscyr}
 
@@ -8,8 +10,6 @@
 \makeatletter
 
 \begin{document}
-% \makeatletter
-
 \begin{ESKDspecificationII}
 &&&&\the\ESKDframeW - \the\ESKDframeX - \the\ESKDframeY&&&&\tabularnewline
 &&&&\hfil\underline{Документация}\hfil&&&&\tabularnewline
@@ -37,4 +37,7 @@
 &&12&&М8.5&4&&&\tabularnewline
 &&13&&М10.5&1&&&\tabularnewline
 \end{ESKDspecificationII}
+\begin{ESKDchangeSheet}
+  \ESKDchangeSheetFill
+\end{ESKDchangeSheet}
 \end{document}

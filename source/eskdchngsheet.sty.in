@@ -26,18 +26,18 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \RequirePackage{longtable}
 \RequirePackage{multirow}
 
-\newcommand{\ESKD@chnglist@tabfont}{10pt}
-\DeclareOption{10pt}{\renewcommand{\ESKD@chnglist@tabfont}{10pt}}
-\DeclareOption{12pt}{\renewcommand{\ESKD@chnglist@tabfont}{12pt}}
-\DeclareOption{14pt}{\renewcommand{\ESKD@chnglist@tabfont}{14pt}}
-\ProcessOptions\relax
 
-%TODO 
-% размеры почему-то плохо попадают в ГОСТ, похоже, что-то не влезает
-% надо бы разобраться
+% Окружение принимает один необязательный аргумент - размер шрифта таблицы.
+% По умолчанию он будет равен 10pt
+\newenvironment{ESKDchangeSheet}[1][10pt]{%
 
+% Заголовок таблицы будет набран шрифтом 10pt
+\renewcommand{\ESKDfontTabHead}{%
+  \fontsize{10pt}{12pt}\selectfont\ESKDfontShape}
 
-\newenvironment{ESKDchangeSheet}{%
+% слегка растянем табличную подпорку для класса eskdtab
+\@ifundefined{ESKD@docfont}{\renewcommand{\arraystretch}{1.225}}{}%
+
 \begin{ESKDzeroPadding}
 \ESKDclearDoublePage
 \setlength{\tabcolsep}{0.5mm}
@@ -100,8 +100,7 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
   \parbox[c][20mm][c]{\ESKDchngColumnVwidth -2\tabcolsep}
     {\centering\ESKDfontTabHead\ESKDchngColumnVname}&&&&\\\hline}
 
-
-
+\fontsize{#1}{6mm}\ESKDfontShape\selectfont
 \noindent
 \begin{longtable}{% дополнительно надо вычесть еще ширИны самих линеек таблицы
   p{\ESKDchngColumnIwidth -2\tabcolsep -0.2mm}
@@ -118,10 +117,44 @@ m4_FILE_ID([[$Date::                            $]]) Sheet of Changes GOST 2.503
 \chngsheet@firsthead\chngsheet@secondhead\endfirsthead
 \chngsheet@secondhead\endhead
 \hline\endfoot
-\hline\endlastfoot
-\fontsize{\ESKD@chnglist@tabfont}{5mm}\selectfont\ESKDfontShape}%
+\endlastfoot}%
 {\end{longtable}\end{ESKDzeroPadding}%
-% \renewcommand{\arraystretch}{1}%
+\renewcommand{\arraystretch}{1}%
 }
+
+\newcommand{\ESKDchangeSheetFill}{%
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline%
+}
+
 
 m4_dnl vim:ft=tex:sw=2:ai
