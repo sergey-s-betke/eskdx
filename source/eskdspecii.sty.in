@@ -38,14 +38,29 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
 % поскольку плазовая спецификация имеет нестандартное размещение граф
 % (штам и графы 19-23 размещаются параллельно на длинных сторонах листа)
 % придется изменить рамку и перенести некоторые графы
+\newcommand{\ESKD@specii@sizes}{
+  \advance\ESKDframeW 15mm
+  \advance\ESKDframeH -10mm
+  \setlength{\ESKD@margin@si}{5mm}
+  \setlength{\ESKD@margin@so}{5mm}
+  \setlength{\ESKD@margin@t}{20mm}
+  \setlength{\ESKD@margin@b}{5mm}
+  % необходимо слегка поправить отступы
+  \changepage{}{}{}{-15mm}{}{10mm}{}{}{}}
 
-\advance\ESKDframeW 15mm
-\advance\ESKDframeH -10mm
+% макрос для переключения обратно
+\newcommand{\ESKD@no@specii@sizes}{
+  \changepage{}{}{}{15mm}{}{-10mm}{}{}{}
+  \setlength{\ESKD@margin@si}{20mm}
+  \setlength{\ESKD@margin@so}{5mm}
+  \setlength{\ESKD@margin@t}{5mm}
+  \setlength{\ESKD@margin@b}{5mm}
+  \advance\ESKDframeW -15mm
+  \advance\ESKDframeH 10mm}
 
-\setlength{\ESKD@margin@si}{5mm}
-\setlength{\ESKD@margin@so}{5mm}
-\setlength{\ESKD@margin@t}{20mm}
-\setlength{\ESKD@margin@b}{5mm}
+% переключаемся
+\ESKD@specii@sizes
+
 
 \ifESKD@enable@columns@xix
 \newcommand{\ESKDdrawSpecIIcolumnsXIX}{%
@@ -104,8 +119,6 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
 \ESKDdefaultFirstStyle{specII}
 \ESKDdefaultStyle{specIIa}
 
-% необходимо слегка поправить отступы
-\changepage{}{}{}{-15mm}{}{10mm}{}{}{}
 
 
 
@@ -159,6 +172,3 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
   }
 }
 {\ESKDtabLTAmble}
-
-
-

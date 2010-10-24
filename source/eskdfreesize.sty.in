@@ -105,6 +105,7 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
 
 % теперь самое сложное - сам переключатель
 \newcommand{\ESKDfreeSize}[3]{%
+  \@ifundefined{ESKD@no@specii@sizes}{}{\ESKD@no@specii@sizes}% для нормальной работы с плазовой спецификацией
   \ESKDclearDoublePage%
   \setcounter{ESKD@free@sizepagebegin}{\value{page}}% запомним текущую страницу
   \pdfpagewidth=#1%
