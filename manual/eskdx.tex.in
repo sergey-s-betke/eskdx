@@ -1,5 +1,4 @@
 % Copyright 2006 Konstantin Korikov <lostclus@ua.fm>
-%           2010 Uladzimir Pylinsky <barthess at yandex dot ru>
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
 % of this license or (at your option) any later version.
@@ -27,6 +26,7 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 \usepackage{calc}
 \usepackage{array}
 \usepackage{eskdlongtable}
+\usepackage{eskdchngsheet}
 \usepackage{graphics}
 
 \setlength{\ESKDexplanIndent}{\parindent}
@@ -36,8 +36,7 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 \author{Кориков~К.~В.}
 \date{m4_FILE_DATE([[$Date::                            $]])}
 \renewcommand{\ESKDtheTitleFieldVIIIr}{%
-\copyright 2006 Константин Кориков\\
-\copyright 2010 Владимир Пылинский}
+\copyright 2006 Константин Кориков}
 
 \usepackage[unicode]{hyperref}
 \hypersetup{pdfkeywords=ЕСКД ГОСТ LaTeX класс пакет}
@@ -1171,11 +1170,6 @@ eskdrussian.def и eskdukrainian.def. Это позволит избежать проблем при
 В случае <<многоэтажной>> шапки придется дополнительно переопределить функцию 
 \cmd{ESKDtabDrawHead}, как, например, в пакете \pkg{eskdbom}.
 
-Если Вы создали пакет, которого нету в коллекции \pkg{eskdx} и хотите
-поделиться своими трудом с другими "--- можете присылать его автору
-на адрес \emph{barthess at yandex dot ru}. Обязательное требование
-"--- соответствие ГОСТ.
-
 
 \subsection{Добавление листа нестандартного размера в документ}
 \label{s:freesize}
@@ -1350,6 +1344,10 @@ m4_ifdef([[m4_HTML]],
 \caption{Основная надпись для чертежей (схем)
 и текстовых конструкторских документов (последующие листы). Форма~2а}
 \end{figure}
+
+\begin{ESKDchangeSheet}
+  \ESKDchangeSheetFill
+\end{ESKDchangeSheet}
 
 \end{document}
 
