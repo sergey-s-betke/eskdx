@@ -646,14 +646,16 @@ m4_dnl графы 27, 28, 29, 30
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
 \linethickness{\ESKDlineThick}
-\put(0,7){\line(1,0){120}}
-\put(0,0){\line(0,1){7}}
-\put(14,0){\line(0,1){7}}
-\put(67,0){\line(0,1){7}}
-\put(0,0){\parbox[b][7mm][c]{14mm}{%
+\put(0,14){\line(1,0){120}}
+\put(0,0){\line(0,1){14}}
+\put(14,0){\line(0,1){14}}
+\put(67,0){\line(0,1){14}}
+\put(0,0){\parbox[b][14mm][c]{14mm}{%
   \centering\ESKDfontIII\ESKDtheColumnXXVII}}
-\put(14,2.3){\makebox[53mm][c]{\ESKDfontIII\ESKDtheColumnXXVIII}}
-\put(67,2.3){\makebox[53mm][c]{\ESKDfontIII\ESKDtheColumnXXIX}}
+\put(15,0){\parbox[b][14mm][c]{51mm}{%
+  \centering\ESKDfontIII\ESKDtheColumnXXVIII}}
+\put(68,0){\parbox[b][14mm][c]{51mm}{%
+  \centering\ESKDfontIII\ESKDtheColumnXXIX}}
 \end{picture}}}
 \newsavebox{\ESKD@column@xxx@box}
 \AtBeginDocument{%
@@ -928,7 +930,7 @@ m4_dnl форма 1
 \fi
 
 m4_dnl форма 2
-\ESKDnewStyle{formII}{\ifESKD@enable@columns@xxvii 55mm\else 40mm\fi}
+\ESKDnewStyle{formII}{\ifESKD@enable@columns@xxvii 62mm\else 40mm\fi}
 \ESKDputOnStyle{formII}{frame}{\ESKDdrawFrame}
 \ESKDputOnStyle{formII}{stamp}{\ESKDdrawStampII}
 \ifESKD@enable@columns@xix
