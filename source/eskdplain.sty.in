@@ -26,12 +26,22 @@ m4_FILE_ID([[$Date::            $]]) Plain Page Style]
 \def\ESKD@plain@vt{%
   \setlength{\ESKD@tmpdimc}{%
     \ESKDframeY+\ESKDframeH-\ESKD@padding@v}}
+
 \def\ESKD@plain@vb{%
   \setlength{\ESKD@tmpdimc}{%
     \ESKDframeY+\ESKD@padding@v-15mm}}
-\def\ESKD@plain@hl{\raggedright}
+
+\def\ESKD@plain@hl{%
+  \ifESKD@twoside 
+    \ifodd\c@page\raggedright\else\raggedleft\fi
+  \else\raggedright\fi}
+
+\def\ESKD@plain@hr{%
+  \ifESKD@twoside
+    \ifodd\c@page\raggedleft\else\raggedright\fi
+  \else\raggedleft\fi}
+
 \def\ESKD@plain@hc{\centering}
-\def\ESKD@plain@hr{\raggedleft}
 
 \let\ESKD@plain@ha\ESKD@plain@hc
 \let\ESKD@plain@va\ESKD@plain@vb
