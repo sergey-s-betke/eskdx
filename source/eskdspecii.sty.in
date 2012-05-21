@@ -96,7 +96,7 @@ m4_FILE_ID([[$Date::                            $]]) Specification GOST 2.106.95
   \ESKDputOnStyle{specII}{columnxxxii}{\ESKDdrawColumnXXXII}
 \fi
 
-\ESKDnewStyle{specIIa}{\ESKD@style@sh@formIIab}
+\ESKDnewStyle{specIIa}{\ESKD@style@sh@formIIb}
 \ESKDputOnStyle{specIIa}{frame}{\ESKDdrawFrame}
 \ESKDputOnStyle{specIIa}{stamp}{\ESKDdrawStampIIa}
 \ESKDputOnStyle{specIIa}{specii}{\ESKDtabDrawBody[1]\ESKDtabDrawHead}

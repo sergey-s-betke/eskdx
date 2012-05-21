@@ -62,8 +62,6 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
   \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
     \makebox[50mm][r]{\ESKDfontIII\ESKDtheColumnXXXIIfree}}}
 
-
-
 % Определим новый стиль. Подробнее про определение своих стилей
 % можно прочитать в руководстве пользователя eskdx,
 % или заглянуть в eskdstamp.sty,
@@ -79,13 +77,8 @@ m4_FILE_ID([[$Date::                            $]]) Inserting Free Size Sheets]
     \ESKDputOnStyle{freesize}{columnsxix}{\ESKDdrawColumnsXIX}
   \fi
   \ifESKD@enable@column@xxvi
-    \ESKDputOnStyle{freesize}{columnxxvi}{\ESKDdrawColumnXXVI}
-  \fi
-  \ifESKD@enable@columns@xxvii
-    \ESKDputOnStyle{freesize}{columnsxxvii}{\ESKDdrawColumnsXXVIIi}
-  \fi
-  \ifESKD@enable@column@xxxi
-    \ESKDputOnStyle{freesize}{columnxxxi}{\ESKDdrawColumnXXXI}
+    \@ifclassloaded{eskdgraph}{% графа 26 нужна только для чертежей
+      \ESKDputOnStyle{freesize}{columnxxvi}{\ESKDdrawColumnXXVI}}
   \fi
   \ifESKD@enable@column@xxxii
     % наша новая графа 32

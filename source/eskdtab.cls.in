@@ -145,7 +145,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
     \begin{picture}(0,0)
       \if 1#1 % настройки для второго и последующего листов 
-        \ESKD@tmpdima=\ESKD@style@sh@formIIab % высота рамки минус высота штампа.
+        \ESKD@tmpdima=\ESKD@style@sh@formIIb % высота рамки минус высота штампа.
         % Для второго и последующих листов сделаем пустое пространство на 2 строки
         % это требование ГОСТа. Так сделано для возможности руками дорисовывать
         % штамп вверх, когда для фиксации изменений не будет хватать граф.
@@ -252,7 +252,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
 % в стилевом файле разрабатываемого документа
 \newcommand{\ESKDtabLTPreamble}[2]{
   \ESKDputOnStyle{formII}{grid}{\ESKDtabDrawBody\ESKDtabDrawHead}
-  \ESKDputOnStyle{formIIab}{grid}{\ESKDtabDrawBody[1]\ESKDtabDrawHead}
+  \ESKDputOnStyle{formIIb}{grid}{\ESKDtabDrawBody[1]\ESKDtabDrawHead}
   \ESKDputOnStyle{formII}{comment}{\ESKDtabDrawComment}
   \begin{ESKDzeroPadding}
   \setlength{\tabcolsep}{0.5mm}
@@ -264,7 +264,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
   % изменим некоторые константы longtable для того, чтобы
   % таблица занимала всё свободное место
   \setlength{\ESKD@tmpdima}%
-    {\ESKDframeH - \ESKD@style@sh@formIIab - \value{footwhitespace}\ESKDtabLineSpace}%
+    {\ESKDframeH - \ESKD@style@sh@formIIb - \value{footwhitespace}\ESKDtabLineSpace}%
   \global\@colht\ESKD@tmpdima%
   \global\@colroom\ESKD@tmpdima%
   % заполним шапку таблицы
@@ -279,7 +279,7 @@ m4_FILE_ID([[$Date::                            $]]) Tabular Documentation]
   {\end{longtable}
   \end{ESKDzeroPadding}
   \ESKDremoveFromStyle{formII}{grid}
-  \ESKDremoveFromStyle{formIIab}{grid}}
+  \ESKDremoveFromStyle{formIIb}{grid}}
 
 
 % ----------------------------------------------------------------------

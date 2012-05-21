@@ -36,7 +36,7 @@ m4_dnl стиль по умолчанию для титульного листа
 m4_dnl стиль по умолчанию для певрой станицы (не считая титульной)
 \newcommand{\ESKD@default@style@first}{formII}
 m4_dnl стиль по умолчанию для остальных страниц
-\newcommand{\ESKD@default@style@other}{formIIab}
+\newcommand{\ESKD@default@style@other}{formIIb}
 
 m4_dnl поля
 \newlength{\ESKD@margin@si}
@@ -119,11 +119,11 @@ m4_dnl определение опций
 \define@key{eskd}{reduceheight}{\addtolength{\ESKD@margin@b}{#1}}
 \DeclareOption{formI}{%
   \renewcommand{\ESKD@default@style@first}{formI}
-  \renewcommand{\ESKD@default@style@other}{formIIab}
+  \renewcommand{\ESKD@default@style@other}{formIIa}
   \renewcommand{\ESKD@default@style@title}{title}}
 \DeclareOption{formII}{%
   \renewcommand{\ESKD@default@style@first}{formII}
-  \renewcommand{\ESKD@default@style@other}{formIIab}
+  \renewcommand{\ESKD@default@style@other}{formIIb}
   \renewcommand{\ESKD@default@style@title}{title}}
 \DeclareOption{emptystyle}{%
   \renewcommand{\ESKD@default@style@first}{empty}
@@ -381,7 +381,12 @@ m4_dnl штамп форма 1
 \fi
 \ifESKD@enable@column@vii
   \put(135, 16.3){\makebox[20mm]{\ESKDfontIII%
-    \ifESKD@twoside\ESKDcolumnVIItwosideName\else\ESKDcolumnVIIname\fi\ \thepage}}
+    \ifnum \ESKD@pagenum{LastPage} = 1
+      \ifESKD@twoside\ESKDcolumnVIItwosideName\else\ESKDcolumnVIIname\fi
+    \else
+      % единицу надо вставлять только если страниц больше одной
+      \ifESKD@twoside\ESKDcolumnVIItwosideName\else\ESKDcolumnVIIname\fi\ \thepage
+  \fi}}
 \fi
 \end{picture}}
 \newcommand{\ESKDdrawStampI}{%
@@ -609,17 +614,18 @@ m4_dnl графа 26
 \put(1,13){\begin{turn}{180}\parbox[b][12mm][c]{68mm}{%
   \centering\ESKDfontV\ESKDtheColumnII}\end{turn}}
 \end{picture}}}
-\newcommand{\ESKDdrawColumnXXVI}{%
-  \ifESKD@column@xxvi@portrait%
-    \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-14mm}%
+% Ориентацию листа определим исходя из величин ширины и высоты
+% Так сделано для нормальной работы eskdfreesize
+\newcommand{\ESKDdrawColumnXXVI}{
+  \ifthenelse{\lengthtest{\ESKDframeW<\ESKDframeH}}
+    {\setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-14mm}%
     \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH}%
     \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-      \begin{turn}{270}\usebox{\ESKD@column@xxvi@box}\end{turn}}%
-  \else%
-    \setlength{\ESKD@tmpdima}{\ESKDframeY+\ESKDframeH-14mm}%
+      \begin{turn}{270}\usebox{\ESKD@column@xxvi@box}\end{turn}}}
+    {\setlength{\ESKD@tmpdima}{\ESKDframeY+\ESKDframeH-14mm}%
     \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKD@tmpdima}){%
-      \usebox{\ESKD@column@xxvi@box}}%
-  \fi}
+      \usebox{\ESKD@column@xxvi@box}}}
+  }
 \fi
 
 \ifESKD@enable@columns@xxvii
@@ -950,26 +956,51 @@ m4_dnl форма 2
   \ESKDputOnStyle{formII}{columnxxxii}{\ESKDdrawColumnXXXII}
 \fi
 
-m4_dnl форма 2а и 2б
-\ESKDnewStyle{formIIab}{15mm}
-\ESKDputOnStyle{formIIab}{frame}{\ESKDdrawFrame}
-\ESKDputOnStyle{formIIab}{stamp}{%
+m4_dnl форма 2а (то же что и 2б, только с графой 26)
+\ESKDnewStyle{formIIa}{15mm}
+\ESKDputOnStyle{formIIa}{frame}{\ESKDdrawFrame}
+\ESKDputOnStyle{formIIa}{stamp}{%
   \ifESKD@twoside%
     \ifodd\c@page\ESKDdrawStampIIa\else\ESKDdrawStampIIb\fi%
   \else\ESKDdrawStampIIa\fi}
 \ifESKD@enable@columns@xix
-  \ESKDputOnStyle{formIIab}{columnsxix}{%
+  \ESKDputOnStyle{formIIa}{columnsxix}{%
+    \ifESKD@twoside\ifodd\c@page\ESKDdrawColumnsXIX\fi%
+    \else\ESKDdrawColumnsXIX\fi}
+\fi
+\ifESKD@enable@column@xxvi
+  \ESKDputOnStyle{formIIa}{columnxxvi}{\ESKDdrawColumnXXVI}
+\fi
+\ifESKD@enable@column@xxxi
+  \ESKDputOnStyle{formIIa}{columnxxxi}{\ESKDdrawColumnXXXI}
+\fi
+\ifESKD@enable@column@xxxii
+  \ESKDputOnStyle{formIIa}{columnxxxii}{\ESKDdrawColumnXXXII}
+\fi
+\ifESKD@zonelabels
+  \ESKDputOnStyle{formIIa}{zonelabels}{\ESKDdrawZoneLabelsII}
+\fi
+
+m4_dnl форма 2б
+\ESKDnewStyle{formIIb}{15mm}
+\ESKDputOnStyle{formIIb}{frame}{\ESKDdrawFrame}
+\ESKDputOnStyle{formIIb}{stamp}{%
+  \ifESKD@twoside%
+    \ifodd\c@page\ESKDdrawStampIIa\else\ESKDdrawStampIIb\fi%
+  \else\ESKDdrawStampIIa\fi}
+\ifESKD@enable@columns@xix
+  \ESKDputOnStyle{formIIb}{columnsxix}{%
     \ifESKD@twoside\ifodd\c@page\ESKDdrawColumnsXIX\fi%
     \else\ESKDdrawColumnsXIX\fi}
 \fi
 \ifESKD@enable@column@xxxi
-  \ESKDputOnStyle{formIIab}{columnxxxi}{\ESKDdrawColumnXXXI}
+  \ESKDputOnStyle{formIIb}{columnxxxi}{\ESKDdrawColumnXXXI}
 \fi
 \ifESKD@enable@column@xxxii
-  \ESKDputOnStyle{formIIab}{columnxxxii}{\ESKDdrawColumnXXXII}
+  \ESKDputOnStyle{formIIb}{columnxxxii}{\ESKDdrawColumnXXXII}
 \fi
 \ifESKD@zonelabels
-  \ESKDputOnStyle{formIIab}{zonelabels}{\ESKDdrawZoneLabelsII}
+  \ESKDputOnStyle{formIIb}{zonelabels}{\ESKDdrawZoneLabelsII}
 \fi
 
 m4_dnl текущее расстояние от текста до рамки

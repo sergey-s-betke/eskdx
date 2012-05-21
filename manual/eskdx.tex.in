@@ -22,7 +22,7 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 \usepackage{pscyr}
 \usepackage{amstext}
 \usepackage{amsmath}
-\usepackage{verbatimfiles}
+\usepackage{verbatim}
 \usepackage{calc}
 \usepackage{array}
 \usepackage{eskdlongtable}
@@ -107,7 +107,7 @@ m4_ifdef([[m4_HTML]], [[,emptystyle]])]{eskdtext}
 \subsection{Пример простого документа}
 Пример простого текстового документа:
 \begin{quote}
-\verbatimlisting{example.tex}
+\verbatiminput{example.tex}
 \end{quote}
 
 Опции \opt{russian} и \opt{koi8-r}, на строке 1, задают,
