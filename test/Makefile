@@ -1,15 +1,15 @@
 # Process this file with GNU make
-TOP_DIR = ..
+TOP_DIR 		:= ..
+RM				= del /f
+TESTS 			= $(wildcard *.tex)
 
-TESTS = $(wildcard *.tex)
+DIST_FILES 		= \
+				Makefile \
+				$(TESTS)
 
-DIST_FILES = \
-	     Makefile \
-	     $(TESTS)
+#include $(TOP_DIR)/include.mak
 
-include $(TOP_DIR)/include.mak
-
-all: $(patsubst %.tex, %.pdf, $(TESTS))
+#all: $(patsubst %.tex, %.pdf, $(TESTS))
 
 clean:
-	rm -f *.{aux,out,log,toc,pdf}
+	$(RM) *.aux,*.out,*.log,*.toc,*.pdf
