@@ -20,160 +20,156 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eskdspecii}[$Date::            $ v0.99 Specification GOST 2.106.95 Form 2]
+\ProvidesPackage{eskdspecii}[2012/05/21 v0.97 Specification GOST 2.106.95 Form 2]
+
 
 \RequirePackage{eskdlang}
 \RequirePackage{eskdstamp}
-\RequirePackage{rotating}
-\RequirePackage{chngpage}
-\RequirePackage{lscape}
 \RequirePackage{array}
 \RequirePackage{longtable}
 
-\newcommand{\ESKDdrawSpecificationII}{
-  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
-    \begin{picture}(0,0)
-    \ESKD@tmpdimb=\ESKDframeW
-    \ESKD@tmpdimc=8mm
-    \advance\ESKD@tmpdimb -70mm
-    \divide\ESKD@tmpdimb by \ESKD@tmpdimc
-    \ESKD@tmpcnta=\ESKD@tmpdimb
-    \ESKD@tmpdimb=\ESKD@tmpdimc
-    \multiply\ESKD@tmpdimb by \ESKD@tmpcnta
-    \advance\ESKD@tmpdimb 15mm
-    \linethickness{\ESKDlineThick}
-    \put(0,6){\line(1,0){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(0,12){\line(1,0){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(0,20){\line(1,0){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(0,90){\line(1,0){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(0,162){\line(1,0){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(0,172){\line(1,0){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(0,182){\line(1,0){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(0,257){\line(1,0){\ESKDltu{\ESKD@tmpdimb}}}
-    \put(15,0){\line(0,1){\ESKDltu{\ESKDframeH}}}
-    \linethickness{\ESKDlineThin}
-    \multiput(23,0)(8, 0){\the\ESKD@tmpcnta}{%
-      \line(0,1){\ESKDltu{\ESKDframeH}}}
-    \end{picture}}}
 
-\newcommand{\ESKDdrawSpecIIstampII}{%
-  \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW}
-  \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-185mm}
-  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-    \begin{sideways}\usebox{\ESKD@stamp@ii@box}\end{sideways}}
-  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-    \begin{sideways}\ESKD@stamp@ii@var\end{sideways}}}
+\ESKDtabColumnsWidth{6mm 6mm 8mm 70mm 72mm 10mm 10mm 75mm 30mm}
+\setlength{\ESKDtabHeadH}{15mm}
 
-\newcommand{\ESKDdrawSpecIIstampIIa}{%
-  \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW}
-  \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-185mm}
-  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-    \begin{sideways}\usebox{\ESKD@stamp@ii@a@box}\end{sideways}}
-  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-    \begin{sideways}\ESKD@stamp@ii@a@var\end{sideways}}}
+\newlength{\ESKDspecIIaddHspace}
+\setlength{\ESKDspecIIaddHspace}{2mm}
 
-\ifESKD@enable@columns@xxvii
-\newcommand{\ESKDdrawSpecIIcolumnsXXVII}{%
-  \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-48mm}
-  \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-120mm}
-  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-    \begin{sideways}\usebox{\ESKD@columns@xxvii@ii@box}\end{sideways}}%
-  \addtolength{\ESKD@tmpdima}{8mm}%
-  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-    \begin{sideways}\usebox{\ESKD@column@xxx@box}\end{sideways}}}
-\fi
 
-\ifESKD@enable@column@xxxi
-\newcommand{\ESKDdrawSpecIIcolumnXXXI}{%
-  \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW+1.2mm}%
-  \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-120mm}%
-  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-    \begin{sideways}%
-    \makebox[70mm][r]{\ESKDfontIII\ESKDcolumnXXXIname\hspace{4em}}%
-    \end{sideways}}}
-\fi
+% поскольку плазовая спецификация имеет нестандартное размещение граф
+% (штам и графы 19-23 размещаются параллельно на длинных сторонах листа)
+% придется изменить рамку и перенести некоторые графы
+\newcommand{\ESKD@specii@sizes}{
+  \advance\ESKDframeW 15mm
+  \advance\ESKDframeH -10mm
+  \setlength{\ESKD@margin@si}{5mm}
+  \setlength{\ESKD@margin@so}{5mm}
+  \setlength{\ESKD@margin@t}{20mm}
+  \setlength{\ESKD@margin@b}{5mm}
+  % необходимо слегка поправить отступы
+  \changepage{}{}{}{-15mm}{}{10mm}{}{}{}}
 
-\ifESKD@enable@column@xxxii
-\newcommand{\ESKDdrawSpecIIcolumnXXXII}{%
-  \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW+1.2mm}%
-  \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH-50mm}%
-  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
-    \begin{sideways}%
-    \makebox[50mm][r]{\ESKDfontIII\ESKDtheColumnXXXII}%
-    \end{sideways}}}
-\fi
+% макрос для переключения обратно
+\newcommand{\ESKD@no@specii@sizes}{
+  \changepage{}{}{}{15mm}{}{-10mm}{}{}{}
+  \setlength{\ESKD@margin@si}{20mm}
+  \setlength{\ESKD@margin@so}{5mm}
+  \setlength{\ESKD@margin@t}{5mm}
+  \setlength{\ESKD@margin@b}{5mm}
+  \advance\ESKDframeW -15mm
+  \advance\ESKDframeH 10mm}
 
-\ESKDnewStyle{specII}{0mm}
-\ESKDputOnStyle{specII}{frame}{\ESKDdrawFrame}
-\ESKDputOnStyle{specII}{stamp}{\ESKDdrawSpecIIstampII}
-\ESKDputOnStyle{specII}{specification}{\ESKDdrawSpecificationII}
+% переключаемся
+\ESKD@specii@sizes
+
+
 \ifESKD@enable@columns@xix
-  \ESKDputOnStyle{specII}{columnsxix}{\ESKDdrawColumnsXIX}
+\newcommand{\ESKDdrawSpecIIcolumnsXIX}{%
+  \setlength{\ESKD@tmpdima}{\ESKDframeY+\ESKDframeH}
+  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKD@tmpdima}){%
+    \usebox{\ESKD@columns@xix@box}}}
+\fi
+ 
+\ifESKD@enable@columns@xxiv
+\newcommand{\ESKDdrawSpecIIcolumnsXXIV}{%
+  \setlength{\ESKD@tmpdima}{\ESKDframeX+\ESKDframeW-120mm}
+  \setlength{\ESKD@tmpdimb}{\ESKDframeY+\ESKDframeH}
+  \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
+    \usebox{\ESKD@columns@xxiv@box}}}
+\fi
+
+\ESKDnewStyle{specII}{\ESKD@style@sh@formII}
+\ESKDputOnStyle{specII}{frame}{\ESKDdrawFrame}
+\ESKDputOnStyle{specII}{stamp}{\ESKDdrawStampII}
+\ESKDputOnStyle{specII}{specii}{\ESKDtabDrawBody\ESKDtabDrawHead}
+\ifESKD@enable@columns@xix
+  \ESKDputOnStyle{specII}{columnsxix}{\ESKDdrawSpecIIcolumnsXIX}
 \fi
 \ifESKD@enable@columns@xxiv
-  \ESKDputOnStyle{specII}{columnsxxiv}{\ESKDdrawColumnsXXIV}
+  \ESKDputOnStyle{specII}{columnsxxiv}{\ESKDdrawSpecIIcolumnsXXIV}
 \fi
 \ifESKD@enable@columns@xxvii
-  \ESKDputOnStyle{specII}{columnsxxvii}{\ESKDdrawSpecIIcolumnsXXVII}
+  \ESKDputOnStyle{specII}{columnsxxvii}{\ESKDdrawColumnsXXVIIii}
 \fi
 \ifESKD@enable@column@xxxi
-  \ESKDputOnStyle{specII}{columnxxxi}{\ESKDdrawSpecIIcolumnXXXI}
+  \ESKDputOnStyle{specII}{columnxxxi}{\ESKDdrawColumnXXXI}
 \fi
 \ifESKD@enable@column@xxxii
-  \ESKDputOnStyle{specII}{columnxxxii}{\ESKDdrawSpecIIcolumnXXXII}
+  \ESKDputOnStyle{specII}{columnxxxii}{\ESKDdrawColumnXXXII}
 \fi
 
-\ESKDnewStyle{specIIa}{0mm}
+\ESKDnewStyle{specIIa}{\ESKD@style@sh@formIIb}
 \ESKDputOnStyle{specIIa}{frame}{\ESKDdrawFrame}
-\ESKDputOnStyle{specIIa}{stamp}{\ESKDdrawSpecIIstampIIa}
-\ESKDputOnStyle{specIIa}{specification}{\ESKDdrawSpecificationII}
+\ESKDputOnStyle{specIIa}{stamp}{\ESKDdrawStampIIa}
+\ESKDputOnStyle{specIIa}{specii}{\ESKDtabDrawBody[1]\ESKDtabDrawHead}
 \ifESKD@enable@columns@xix
-  \ESKDputOnStyle{specIIa}{columnsxix}{\ESKDdrawColumnsXIX}
+  \ESKDputOnStyle{specIIa}{columnsxix}{\ESKDdrawSpecIIcolumnsXIX}
+\fi
+\ifESKD@enable@columns@xxiv
+  \ESKDputOnStyle{specIIa}{columnsxxiv}{\ESKDdrawSpecIIcolumnsXXIV}
 \fi
 \ifESKD@enable@column@xxxi
-  \ESKDputOnStyle{specIIa}{columnxxxi}{\ESKDdrawSpecIIcolumnXXXI}
+  \ESKDputOnStyle{specIIa}{columnxxxi}{\ESKDdrawColumnXXXI}
 \fi
 \ifESKD@enable@column@xxxii
-  \ESKDputOnStyle{specIIa}{columnxxxii}{\ESKDdrawSpecIIcolumnXXXII}
+  \ESKDputOnStyle{specIIa}{columnxxxii}{\ESKDdrawColumnXXXII}
 \fi
+
+\ESKDputOnStyle{specII}{comment}{\ESKDtabDrawComment}
 
 \ESKDdefaultFirstStyle{specII}
 \ESKDdefaultStyle{specIIa}
 
-\newenvironment{ESKDspecificationII}{%
-\begin{ESKDzeroPadding}%
-\changetext{}{-55mm}{}{}{}%
-\begin{landscape}
-\setlength{\tabcolsep}{0.5mm}%
-\setlength{\LTpre}{0mm}%
-\setlength{\LTpost}{0mm}%
-\setlength{\LTleft}{0mm}%
-\setlength{\LTright}{\fill}%
-\newcolumntype{s}{>{\ESKDfontTabBody}c}%
-\newcolumntype{n}{>{\parbox[c][8mm][c]{1mm}{%
-  \rule{0mm}{0mm}}\ESKDfontTabBody}l}%
-\noindent%
-\begin{longtable}{ssssnssss}
-\parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDfontTabHead%
-\ESKDspecIIcolumnIname\end{sideways}}&
-\parbox[c][15mm][c]{5mm}{\centering\begin{sideways}\ESKDfontTabHead%
-\ESKDspecIIcolumnIIname\end{sideways}}&
-\parbox[c][15mm][c]{7mm}{\centering\begin{sideways}\ESKDfontTabHead%
-\ESKDspecIIcolumnIIIname\end{sideways}}&
-\parbox[c][15mm][c]{69mm}{\centering\ESKDfontTabHead%
-\ESKDspecIIcolumnIVname}&
-\parbox[c][15mm][c]{71mm}{\centering\ESKDfontTabHead%
-\ESKDspecIIcolumnVname}&
-\parbox[c][15mm][c]{9mm}{\centering\begin{sideways}\ESKDfontTabHead%
-\ESKDspecIIcolumnVIname\end{sideways}}&
-\parbox[c][15mm][c]{9mm}{\centering\begin{sideways}\ESKDfontTabHead%
-\ESKDspecIIcolumnVIIname\end{sideways}}&
-\parbox[c][15mm][c]{74mm}{\centering\ESKDfontTabHead%
-\ESKDspecIIcolumnVIIIname}&
-\parbox[c][15mm][c]{29mm}{\centering\ESKDfontTabHead%
-\ESKDspecIIcolumnIXname}\endhead}{%
-\end{longtable}%
-\end{landscape}%
-\changetext{}{55mm}{}{}{}%
-\end{ESKDzeroPadding}}
 
+
+
+\newenvironment{ESKDspecificationII}
+{\ESKDtabLTPreamble{%
+  >{\ESKDfontTabBody\centering}
+    p{\argi -2\tabcolsep}
+  >{\ESKDfontTabBody\centering}
+    p{\argii -2\tabcolsep}
+  >{\ESKDfontTabBody\centering}
+    p{\argiii -2\tabcolsep}
+  >{\ESKDfontTabBody\centering}
+    p{\argiv -2\tabcolsep}
+  @{\hspace{\ESKDspecIIaddHspace}}
+    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argv -\ESKDspecIIaddHspace}
+    <{\ESKDtabStrut}
+  >{\ESKDfontTabBody\centering}
+    p{\argvi -2\tabcolsep}
+  >{\ESKDfontTabBody\centering}
+    p{\argvii -2\tabcolsep}
+  @{\hspace{\ESKDspecIIaddHspace}}
+    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argviii -\ESKDspecIIaddHspace}
+    <{\ESKDtabStrut}
+  >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argix -2\tabcolsep}
+    <{\ESKDtabStrut}
+  }
+  %
+  {%
+  \parbox[c][\ESKDtabHeadH][c]{\argi -2\tabcolsep}{\centering\begin{sideways}%
+    \ESKDsmartScaleBox{\ESKDtabHeadH}{\ESKDfontTabHead\ESKDspecIIcolumnIname}%
+    \end{sideways}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argii -2\tabcolsep}{\centering\begin{sideways}\ESKDfontTabHead%
+    \ESKDspecIIcolumnIIname\end{sideways}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argiii -2\tabcolsep}{\centering\begin{sideways}\ESKDfontTabHead%
+    \ESKDspecIIcolumnIIIname\end{sideways}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argiv -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \ESKDspecIIcolumnIVname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argv -\ESKDspecIIaddHspace}{\centering\ESKDfontTabHead%
+    \ESKDspecIIcolumnVname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argvi -2\tabcolsep}{\centering\begin{sideways}\ESKDfontTabHead%
+    \ESKDspecIIcolumnVIname\end{sideways}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argvii -2\tabcolsep}{\centering\begin{sideways}\ESKDfontTabHead%
+    \ESKDspecIIcolumnVIIname\end{sideways}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argviii -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \ESKDspecIIcolumnVIIIname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argix -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \ESKDspecIIcolumnIXname}\tabularnewline%
+  }
+}
+{\ESKDtabLTAmble}

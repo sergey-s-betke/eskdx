@@ -20,78 +20,141 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eskdchngsheet}[$Date::            $ v0.99 Sheet of Changes GOST 2.503-90]
+\ProvidesPackage{eskdchngsheet}[2012/05/18 v0.97 Sheet of Changes GOST 2.503-90]
 
 \RequirePackage{eskdlang}
 \RequirePackage{eskdstamp}
 \RequirePackage{array}
 \RequirePackage{longtable}
+\RequirePackage{multirow}
 
-\newcommand{\ESKDchngColumnIwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnIIwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnIIIwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnIVwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnVwidth}{.08\textwidth}
-\newcommand{\ESKDchngColumnVIwidth}{.15\textwidth}
-\newcommand{\ESKDchngColumnVIIwidth}{.10\textwidth}
-\newcommand{\ESKDchngColumnVIIIwidth}{.15\textwidth}
-\newcommand{\ESKDchngColumnIXwidth}{.10\textwidth}
-\newcommand{\ESKDchngColumnXwidth}{.10\textwidth}
 
-\newenvironment{ESKDchangeSheet}{%
+% Окружение принимает один необязательный аргумент - размер шрифта таблицы.
+% По умолчанию он будет равен 10pt
+\newenvironment{ESKDchangeSheet}[1][10pt]{%
+
+% Заголовок таблицы будет набран шрифтом 10pt
+\renewcommand{\ESKDfontTabHead}{%
+  \fontsize{10pt}{12pt}\selectfont\ESKDfontShape}
+
+% слегка растянем табличную подпорку для класса eskdtab
+\@ifundefined{ESKD@docfont}{\renewcommand{\arraystretch}{1.225}}{}%
+
+\begin{ESKDzeroPadding}
 \ESKDclearDoublePage
 \setlength{\tabcolsep}{0.5mm}
-\newcolumntype{s}{>{\ESKDfontTabBody}c}
-\newcolumntype{S}{>{\ESKDfontTabHead}c}
+
+\newlength{\ESKDchngColumnIwidth}
+  \setlength{\ESKDchngColumnIwidth}{8mm}
+\newlength{\ESKDchngColumnIIwidth}
+  \setlength{\ESKDchngColumnIIwidth}{20mm}
+\newlength{\ESKDchngColumnIIIwidth}
+  \setlength{\ESKDchngColumnIIIwidth}{20mm}
+\newlength{\ESKDchngColumnIVwidth}
+  \setlength{\ESKDchngColumnIVwidth}{20mm}
+\newlength{\ESKDchngColumnVwidth}
+  \setlength{\ESKDchngColumnVwidth}{20mm}
+\newlength{\ESKDchngColumnVIwidth}
+  \setlength{\ESKDchngColumnVIwidth}{20mm}
+\newlength{\ESKDchngColumnVIIwidth}
+  \setlength{\ESKDchngColumnVIIwidth}{25mm}
+\newlength{\ESKDchngColumnVIIIwidth}
+  \setlength{\ESKDchngColumnVIIIwidth}{25mm}
+\newlength{\ESKDchngColumnIXwidth}
+  \setlength{\ESKDchngColumnIXwidth}{15mm}
+\newlength{\ESKDchngColumnXwidth}
+  \setlength{\ESKDchngColumnXwidth}{12mm}
+
+\newcommand{\chngsheet@firsthead}{
+\multicolumn{10}{|c}
+  {\parbox[c][10mm][c]{\textwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchangeSheetName}}\\\hline}
+
+\newcommand{\chngsheet@secondhead}{%
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnIwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIname}}&
+\multicolumn{4}{c|}
+  {\parbox[c][5mm][c]{80mm -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnsIIhName}}&
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnVIwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnVIname}}&
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnVIIwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnVIIname}}&
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnVIIIwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnVIIIname}}&
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnIXwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIXname}}&
+\multirow{2}{*}[-1mm]
+  {\parbox[c][25mm][c]{\ESKDchngColumnXwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnXname}}\\\cline{2-5}
+&
+  \parbox[c][20mm][c]{\ESKDchngColumnIIwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIIname}&
+  \parbox[c][20mm][c]{\ESKDchngColumnIIIwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIIIname}&
+  \parbox[c][20mm][c]{\ESKDchngColumnIVwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnIVname}&
+  \parbox[c][20mm][c]{\ESKDchngColumnVwidth -2\tabcolsep}
+    {\centering\ESKDfontTabHead\ESKDchngColumnVname}&&&&\\\hline}
+
+\fontsize{#1}{6mm}\ESKDfontShape\selectfont
 \noindent
-\begin{longtable}{|*{10}{s|}}
+\begin{longtable}{% дополнительно надо вычесть еще ширИны самих линеек таблицы
+  p{\ESKDchngColumnIwidth -2\tabcolsep -0.2mm}
+  |p{\ESKDchngColumnIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnIIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnIVwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnVIIIwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnIXwidth -2\tabcolsep -0.1mm}
+  |p{\ESKDchngColumnXwidth -2\tabcolsep -0.2mm}}
 \hline
-\multicolumn{10}{|S|}{\ESKDchangeSheetName}\\\hline
-&\multicolumn{4}{S|}{\ESKDchngColumnsIIhName}&&&&&\\\cline{2-5}
-\parbox[c]{\ESKDchngColumnIwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXIVname}&
-\parbox[c]{\ESKDchngColumnIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIIname}&
-\parbox[c]{\ESKDchngColumnIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIIIname}&
-\parbox[c]{\ESKDchngColumnIVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIVname}&
-\parbox[c]{\ESKDchngColumnVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnVname}&
-\parbox[c]{\ESKDchngColumnVIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIname}&
-\parbox[c]{\ESKDchngColumnVIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIname}&
-\parbox[c]{\ESKDchngColumnVIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIIIname\vspace{1mm}}&
-\parbox[c]{\ESKDchngColumnIXwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIname}&
-\parbox[c]{\ESKDchngColumnXwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIIname}\\\hline
-\endfirsthead
-\hline
-&\multicolumn{4}{S|}{\ESKDchngColumnsIIhName}&&&&&\\\cline{2-5}
-\parbox[c]{\ESKDchngColumnIwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXIVname}&
-\parbox[c]{\ESKDchngColumnIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIIname}&
-\parbox[c]{\ESKDchngColumnIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIIIname}&
-\parbox[c]{\ESKDchngColumnIVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnIVname}&
-\parbox[c]{\ESKDchngColumnVwidth-2\tabcolsep-\arrayrulewidth}{%
-  \centering\ESKDfontTabHead\ESKDchngColumnVname}&
-\parbox[c]{\ESKDchngColumnVIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIname}&
-\parbox[c]{\ESKDchngColumnVIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIname}&
-\parbox[c]{\ESKDchngColumnVIIIwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDchngColumnVIIIname\vspace{1mm}}&
-\parbox[c]{\ESKDchngColumnIXwidth-2\tabcolsep-\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIname}&
-\parbox[c]{\ESKDchngColumnXwidth-2\tabcolsep-1.5\arrayrulewidth}{%
-  \vspace{-\baselineskip}\centering\ESKDfontTabHead\ESKDcolumnXVIIIname}\\\hline
-\endhead
-\hline
-\endfoot}{\end{longtable}}
+\chngsheet@firsthead\chngsheet@secondhead\endfirsthead
+\chngsheet@secondhead\endhead
+\hline\endfoot
+\endlastfoot}%
+{\end{longtable}\end{ESKDzeroPadding}%
+\renewcommand{\arraystretch}{1}%
+}
+
+\newcommand{\ESKDchangeSheetFill}{%
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline
+  &&&&&&&&&\\\hline%
+}
+
 

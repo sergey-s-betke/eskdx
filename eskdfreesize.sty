@@ -1,3 +1,5 @@
+% Copyright 2006 Konstantin Korikov <lostclus@ua.fm>
+%
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
 % of this license or (at your option) any later version.
@@ -23,7 +25,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eskdfreesize}[$Date::            $ v0.99 Inserting Free Size Sheets]
+\ProvidesPackage{eskdfreesize}[2012/05/21 v0.97 Inserting Free Size Sheets]
 
 \RequirePackage{eskdstamp}
  
@@ -37,8 +39,6 @@
   {It's better to compile this document with pdflatex.\MessageBreak
   In DVI you will get only part of the inserted big sheet}}
 \fi
-
-
 
 % в eskdstamp для ускорения отрисовки рамки применен \savebox
 % в нашем случае это неудобно, будем рисовать персонально
@@ -64,41 +64,37 @@
   \put(\ESKDltu{\ESKD@tmpdima},\ESKDltu{\ESKD@tmpdimb}){%
     \makebox[50mm][r]{\ESKDfontIII\ESKDtheColumnXXXIIfree}}}
 
-
-
 % Определим новый стиль. Подробнее про определение своих стилей
 % можно прочитать в руководстве пользователя eskdx,
 % или заглянуть в eskdstamp.sty,
 % кусок оттуда был использован как основа для стиля freesize
 \ESKDnewStyle{freesize}{8mm}
-\ESKDputOnStyle{freesize}{frame}{\ESKDdrawFrameFree}
-\ESKDputOnStyle{freesize}{stamp}{\ESKDdrawStampIIa}
-\ifESKD@enable@columns@xix
-  \ESKDputOnStyle{freesize}{columnsxix}{\ESKDdrawColumnsXIX}
-\fi
-\ifESKD@enable@column@xxvi
-  \ESKDputOnStyle{freesize}{columnxxvi}{\ESKDdrawColumnXXVI}
-\fi
-\ifESKD@enable@columns@xxvii
-  \ESKDputOnStyle{freesize}{columnsxxvii}{\ESKDdrawColumnsXXVIIi}
-\fi
-\ifESKD@enable@column@xxxi
-  \ESKDputOnStyle{freesize}{columnxxxi}{\ESKDdrawColumnXXXI}
-\fi
-\ifESKD@enable@column@xxxii
-  % наша новая графа 32
-  \ESKDputOnStyle{freesize}{columnxxxii}{\ESKDdrawColumnXXXIIfree}
-\fi
-\ifESKD@enable@column@xxxiii
-  \ESKDputOnStyle{freesize}{columnxxxiii}{\ESKDdrawColumnXXXIII}
-\fi
-\ifESKD@enable@column@xxxiv
-  \ESKDputOnStyle{freesize}{columnxxxiv}{\ESKDdrawColumnXXXIV}
-\fi
-\ifESKD@zonelabels%
-  \ESKDputOnStyle{freesize}{zonelabels}{\ESKDdrawZoneLabelsI}
-\fi
 
+\@ifpackageloaded{eskdplain}{
+  \ESKDputOnStyle{freesize}{pagenumber}{\ESKDdrawPlainPageNumber}}
+{
+  \ESKDputOnStyle{freesize}{frame}{\ESKDdrawFrameFree}
+  \ESKDputOnStyle{freesize}{stamp}{\ESKDdrawStampIIa}
+  \ifESKD@enable@columns@xix
+    \ESKDputOnStyle{freesize}{columnsxix}{\ESKDdrawColumnsXIX}
+  \fi
+  \ifESKD@enable@column@xxvi
+    \@ifclassloaded{eskdgraph}{% графа 26 нужна только для чертежей
+      \ESKDputOnStyle{freesize}{columnxxvi}{\ESKDdrawColumnXXVI}}
+  \fi
+  \ifESKD@enable@column@xxxii
+    % наша новая графа 32
+    \ESKDputOnStyle{freesize}{columnxxxii}{\ESKDdrawColumnXXXIIfree}
+  \fi
+  \ifESKD@enable@column@xxxiii
+    \ESKDputOnStyle{freesize}{columnxxxiii}{\ESKDdrawColumnXXXIII}
+  \fi
+  \ifESKD@enable@column@xxxiv
+    \ESKDputOnStyle{freesize}{columnxxxiv}{\ESKDdrawColumnXXXIV}
+  \fi
+  \ifESKD@zonelabels%
+    \ESKDputOnStyle{freesize}{zonelabels}{\ESKDdrawZoneLabelsI}
+  \fi}
 
 % вспомогательные счетчики для записей в лог
 \newcounter{ESKD@free@sizepagebegin}
@@ -106,6 +102,7 @@
 
 % теперь самое сложное - сам переключатель
 \newcommand{\ESKDfreeSize}[3]{%
+  \@ifundefined{ESKD@no@specii@sizes}{}{\ESKD@no@specii@sizes}% для нормальной работы с плазовой спецификацией
   \ESKDclearDoublePage%
   \setcounter{ESKD@free@sizepagebegin}{\value{page}}% запомним текущую страницу
   \pdfpagewidth=#1%
@@ -138,6 +135,14 @@
 
 
 % Определим несколько готовых к употреблению форматов
+\newcommand{\ESKDlandscapeAIV}[1]{%
+  \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa4FormatName}}%
+  \ESKDfreeSize{297mm}{210mm}{#1}}
+
+\newcommand{\ESKDportraitAIV}[1]{%
+  \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa4FormatName}}%
+  \ESKDfreeSize{210mm}{297mm}{#1}}
+
 \newcommand{\ESKDlandscapeAIII}[1]{%
   \renewcommand\ESKDtheColumnXXXIIfree{\@nameuse{ESKDa3FormatName}}%
   \ESKDfreeSize{420mm}{297mm}{#1}}

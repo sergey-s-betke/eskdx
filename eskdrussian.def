@@ -19,7 +19,7 @@
 % This is automaticaly generated file, do not edit it.
 %
 
-\ProvidesFile{eskdrussian.def}[$Date::            $ v0.99 Language File]
+\ProvidesFile{eskdrussian.def}[2010/10/14 v0.97 Language File]
 
 \newcommand{\ESKDcolumnIVname}{%
   \cyr\CYRL\cyri\cyrt.}
@@ -105,6 +105,7 @@
   \def\figurename{{\cyr\CYRR\cyri\cyrs\cyru\cyrn\cyro\cyrk}}%
 }
 
+% спецификация
 \newcommand{\ESKDspecColumnIname}{%
   \cyr\CYRF\cyro\cyrr\cyrm\cyra\cyrt}
 \newcommand{\ESKDspecColumnIIname}{%
@@ -120,6 +121,7 @@
 \newcommand{\ESKDspecColumnVIIname}{%
   \cyr\CYRP\cyrr\cyri\cyrm\cyre\cyrch\cyra\cyrn\cyri\cyre}
 
+% спецификация в плазовом исполнении
 \newcommand{\ESKDspecIIcolumnIname}{\ESKDspecColumnIname}
 \newcommand{\ESKDspecIIcolumnIIname}{\ESKDspecColumnIIname}
 \newcommand{\ESKDspecIIcolumnIIIname}{\ESKDspecColumnIIIname}
@@ -132,10 +134,54 @@
   \cyr\CYRM\cyra\cyrt\cyre\cyrr\cyri\cyra\cyrl}
 \newcommand{\ESKDspecIIcolumnIXname}{\ESKDspecColumnVIIname}
 
+% перечень элементов
+\newcommand{\ESKDcmplistColumnIname}{%
+  \cyr\CYRP\cyro\cyrz.\par \cyro\cyrb\cyro\cyrz\cyrn\cyra\-\cyrch\cyre\-\cyrn\cyri\cyre}
+\newcommand{\ESKDcmplistColumnIIname}{%
+  \cyr\CYRN\cyra\cyri\cyrm\cyre\cyrn\cyro\cyrv\cyra\cyrn\cyri\cyre}
+\newcommand{\ESKDcmplistColumnIIIname}{%
+  \cyr\CYRK\cyro\cyrl.}
+\newcommand{\ESKDcmplistColumnIVname}{%
+  \cyr\CYRP\cyrr\cyri\cyrm\cyre\cyrch\cyra\cyrn\cyri\cyre}
+
+% ведомость покупных изделий
+\newcommand{\ESKDbomColumnIname}{%
+  \No\ \cyr\cyrs\cyrt\cyrr\cyro\cyrk\cyri}
+\newcommand{\ESKDbomColumnIIname}{%
+  \cyr\CYRN\cyra\cyri\cyrm\cyre\cyrn\cyro\cyrv\cyra\cyrn\cyri\cyre}
+\newcommand{\ESKDbomColumnIIIname}{%
+  \cyr\CYRK\cyro\cyrd\ \cyrp\cyrr\cyro\cyrd\cyru\cyrk\cyrc\cyri\cyri}
+\newcommand{\ESKDbomColumnIVname}{%
+  \cyr\CYRO\cyrb\cyro\cyrz\cyrn\cyra\cyrch\cyre\cyrn\cyri\cyre\ 
+  \cyrd\cyro\cyrk\cyru\cyrm\cyre\cyrn\cyrt\cyra\par
+  \cyrn\cyra\ 
+  \cyrp\cyro\cyrs\cyrt\cyra\cyrv\cyrk\cyru}
+\newcommand{\ESKDbomColumnVname}{%
+  \cyr\CYRP\cyro\cyrs\cyrt\cyra\cyrv\cyrshch\cyri\cyrk}
+\newcommand{\ESKDbomColumnVIname}{%
+  \cyr\CYRK\cyru\cyrd\cyra\ 
+  \cyrv\cyrh\cyro\cyrd\cyri\cyrt\
+  (\cyr\cyro\cyrb\cyro\cyrz\cyrn\cyra\cyrch\cyre\cyrn\cyri\cyre)}
+\newcommand{\ESKDbomColumnsVIIhname}{%
+  \cyr\CYRK\cyro\cyrl\cyri\cyrch\cyre\cyrs\cyrt\cyrv\cyro}
+\newcommand{\ESKDbomColumnVIIname}{%
+  \cyr\CYRN\cyra\ \cyri\cyrz\-\cyrd\cyre\cyrl\cyri\cyre}
+\newcommand{\ESKDbomColumnVIIIname}{%
+  \cyr\CYRV\ \cyrk\cyro\cyrm\-\cyrp\cyrl\cyre\cyrk\-\cyrt\cyrery}
+\newcommand{\ESKDbomColumnIXname}{%
+  \cyr\CYRN\cyra\ \cyrr\cyre\-\cyrg\cyru\cyrl\cyri\cyrr.}
+\newcommand{\ESKDbomColumnXname}{%
+  \cyr\CYRV\cyrs\cyre\cyrg\cyro}
+\newcommand{\ESKDbomColumnXIname}{%
+  \cyr\CYRP\cyrr\cyri\-\cyrm\cyre\-\cyrch\cyra\-\cyrn\cyri\cyre}
+
+% лист регистрации изменений
 \newcommand{\ESKDchangeSheetName}{%
   \cyr\CYRL\cyri\cyrs\cyrt\ %
   \cyrr\cyre\cyrg\cyri\cyrs\cyrt\cyrr\cyra\cyrc\cyri\cyri\ %
   \cyri\cyrz\cyrm\cyre\cyrn\cyre\cyrn\cyri\cyrishrt}
+\newcommand{\ESKDchngColumnIname}{%
+  \cyr\CYRI\cyrz\cyrm.}
 \newcommand{\ESKDchngColumnsIIhName}{%
   \cyr\CYRN\cyro\cyrm\cyre\cyrr\cyra\ \cyrl\cyri\cyrs\cyrt\cyro\cyrv\ %
   (\cyrs\cyrt\cyrr\cyra\cyrn\cyri\cyrc)}
@@ -151,11 +197,18 @@
 \newcommand{\ESKDchngColumnVIname}{%
   \cyr\CYRV\cyrs\cyre\cyrg\cyro\ \cyrl\cyri\cyrs\cyrt\cyro\cyrv\ %
   (\cyrs\cyrt\cyrr\cyra\cyrn\cyri\cyrc) \cyrv\ \cyrd\cyro\cyrk\cyru\cyrm.}
+\newcommand{\ESKDchngColumnVIIname}{%
+  \No\ \cyr\cyrd\cyro\cyrk\cyru\cyrm\cyre\cyrn\cyrt\cyra}
 \newcommand{\ESKDchngColumnVIIIname}{%
   \cyr\CYRV\cyrh\cyro\cyrd\cyrya\cyrshch\cyri\cyrishrt\ \No\ %
   \cyrs\cyro\cyrp\cyrr\cyro\cyrv\cyro\cyrd\cyri\cyrt\cyre\cyrl\cyrsftsn
   \cyrn\cyro\cyrg\cyro\ \cyrd\cyro\cyrk\cyru\cyrm. \cyri\ %
   \cyrd\cyra\cyrt\cyra}
+\newcommand{\ESKDchngColumnIXname}{%
+  \cyr\CYRP\cyr\cyro\cyrd\cyrp.}
+\newcommand{\ESKDchngColumnXname}{%
+  \cyr\CYRD\cyra\cyrt\cyra}
+
 
 \def\@Asbuk#1{\ifcase#1\or
   \CYRA\or\CYRB\or\CYRV\or\CYRG\or\CYRD\or\CYRE\or\CYRZH\or

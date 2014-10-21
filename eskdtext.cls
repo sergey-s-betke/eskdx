@@ -20,7 +20,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eskdtext}[$Date::            $ v0.99 Textual Documentation]
+\ProvidesClass{eskdtext}[2010/01/20 v0.97 Textual Documentation]
 
 \newcommand{\ESKD@docfont}{14pt}
 \newcommand{\ESKD@float@style}{single}
@@ -48,6 +48,8 @@
 \DeclareOption{equationsubsection}{\renewcommand{\ESKD@equation@style}{subsection}}
 \DeclareOption{footnotearabic}{\PassOptionsToPackage{\CurrentOption}{eskdfootnote}}
 \DeclareOption{footnoteasterisk}{\PassOptionsToPackage{\CurrentOption}{eskdfootnote}}
+\DeclareOption{listlikepar}{\PassOptionsToPackage{\CurrentOption}{eskdlist}}
+\DeclareOption{stdlist}{\PassOptionsToPackage{\CurrentOption}{eskdlist}}
 \DeclareOption{twoside}{%
   \PassOptionsToClass{\CurrentOption}{extarticle}%
   \PassOptionsToPackage{\CurrentOption}{eskdstamp}}

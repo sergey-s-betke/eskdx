@@ -20,7 +20,9 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eskdtab}[$Date::            $ v0.99 Tabular Documentation]
+\ProvidesClass{eskdtab}[2012/05/21 v0.97 Tabular Documentation]
+
+\RequirePackage{xkeyval}
 
 \DeclareOption{russian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{ukrainian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
@@ -41,10 +43,262 @@
   \ClassError{eskdtext}{Zone labels is not allowed for tabular documentaion}{}}
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{eskdstamp}}
 
+\newcommand{\ESKD@tabEmptyLineTop}{}
+\newcommand{\ESKD@tabEmptyLineBottom}{}
+\DeclareOption{emptylinetop}{\renewcommand{\ESKD@tabEmptyLineTop}{\ESKDtabStrut\tabularnewline}}
+\DeclareOption{emptylinebottom}{\renewcommand{\ESKD@tabEmptyLineBottom}{\ESKDtabStrut\tabularnewline}}
+
+\newcommand{\ESKD@tabfont}{10pt}
+\DeclareOption{10pt}{\renewcommand{\ESKD@tabfont}{10pt}}
+\DeclareOption{12pt}{\renewcommand{\ESKD@tabfont}{12pt}}
+\DeclareOption{14pt}{\renewcommand{\ESKD@tabfont}{14pt}}
+
+% расстояние между строками
+\newlength{\ESKDtabLineSpace}
+  \setlength{\ESKDtabLineSpace}{8mm}
+\define@key{eskd}{linespace}{\setlength{\ESKDtabLineSpace}{#1}}
+
+% пустое место внизу страницы, единицами измерения являются строки
+\newcounter{footwhitespace}
+  \setcounter{footwhitespace}{2}
+\define@key{eskd}{footwhitespace}{\setcounter{footwhitespace}{#1}}
+                                              
 \ProcessOptions\relax
+
+\newif\ifESKD@tab@first@column@enum
+\ESKD@tab@first@column@enumfalse
 
 \LoadClass{article}
 \RequirePackage{eskdlang}
-\RequirePackage[a4paper,formII]{eskdstamp}
+\RequirePackage[formII]{eskdstamp}
 \RequirePackage{eskdinfo}
+\RequirePackage{calc}
+
+% несколько служебных длин
+\newlength{\ESKDtabBodyH} % высота тела таблицы
+\newlength{\ESKDtabHeadH} % высота заголовка таблицы
+
+
+% макрос-подпорка для строк таблицы
+\newcommand{\ESKDtabStrut}{\parbox[c][\ESKDtabLineSpace][c]{0mm}{\rule{0mm}{0mm}}}
+
+% на случай, если запись не влезет в одну строку и произойдет перенос на
+% следующую, следует задать интерлиньяж равный \ESKDtabLineSpace. Возможно,
+% логичнее задать такой интерлиньяж в eskdfont.
+\renewcommand{\ESKDfontTabBody}{%
+  \fontsize{\ESKD@tabfont}{\ESKDtabLineSpace}%
+  \selectfont\ESKDfontShape}
+\renewcommand{\ESKDfontTabHead}{%
+  \fontsize{\ESKD@tabfont}{\ESKD@tabfont + 2pt}%
+  \selectfont\ESKDfontShape}
+
+
+
+% ------------------------------------------------------------------------
+% Анализатор "командной строки":
+% ------------------------------------------------------------------------
+% макрос принимает строку аргументов, разделенных пробелами
+% возвращает количество аргументов в макросе \narg и сами аргументы в макросах
+% \argi \argii и т.д.
+% Изначально он был написан для нужд eskdtab.cls, возможно он пригодится еще
+% где-то - тогда стоит вынести его в отдельный файл 
+\RequirePackage{xstring}
+\RequirePackage{ifthen}
+
+\newcommand{\ESKD@argparse}[1]{
+  \newcommand{\@arglist}{#1 }% добавим в конец пробел для нужд парсера
+  \newcounter{@iargc}
+  % удалим ведущие пробелы, если есть
+  \StrChar{\@arglist}{1}[\first@arg]
+  \whiledo{\equal{\first@arg}{ }}{%
+    \StrGobbleLeft{\@arglist}{1}[\@arglist]
+    \StrChar{\@arglist}{1}[\first@arg]}
+  \setcounter{@iargc}{0}
+  \StrLen{\@arglist}[\@arglistwidth]
+  \whiledo{\not\equal{\@arglistwidth}{0}}{%
+    \addtocounter{@iargc}{1}%
+    % откусим в \arg первое слово
+    \StrBefore{\@arglist}{ }[\@arg]
+    % сохраним в \argN откушенный кусок
+    \expandafter\edef\csname arg\roman{@iargc}\endcsname{\@arg}
+    % удалим отработанный кусок
+    \StrLen{\@arg}[\@argwidth]
+    \StrGobbleLeft{\@arglist}{\@argwidth}[\@arglist] % удалим использованный аргумент
+    \StrGobbleLeft{\@arglist}{1}[\@arglist] % удалим пробел после аргумента
+    \StrLen{\@arglist}[\@arglistwidth]
+    \edef\narg{\arabic{@iargc}}}}
+
+% завернем в более благозвучное название
+\newcommand{\ESKDtabColumnsWidth}[1]{\ESKD@argparse{#1}}
+
+
+% ------------------------------------------------------------------------
+% макросы разлиновки листа
+% ------------------------------------------------------------------------
+\RequirePackage{calc}
+\newcounter{narg@tmp}
+\newcounter{ESKD@tmpcnt}
+\let\ESKDlineCount=\ESKD@tmpdimc
+
+% отрисовка тела таблицы
+\newcommand{\ESKDtabDrawBody}[1][]{% принимает один необязательный параметр,
+% чтобы рисовать другую таблицу для второго и последующих листов его надо
+% установить в "1"
+  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
+    \begin{picture}(0,0)
+      \if 1#1 % настройки для второго и последующего листов 
+        \ESKD@tmpdima=\ESKD@style@sh@formIIb % высота рамки минус высота штампа.
+        % Для второго и последующих листов сделаем пустое пространство на 2 строки
+        % это требование ГОСТа. Так сделано для возможности руками дорисовывать
+        % штамп вверх, когда для фиксации изменений не будет хватать граф.
+        \setlength{\ESKD@tmpdima}{\ESKD@tmpdima + \value{footwhitespace}\ESKDtabLineSpace}
+      \else
+        \ESKD@tmpdima=\ESKD@style@sh@formII
+      \fi
+      % чтобы получить высоту тела таблицы, вычтем из высоты рамки
+      % высоту шапки и скорректированную (если надо) высоту штампа
+      \setlength{\ESKDtabBodyH}{\ESKDframeH - \ESKD@tmpdima - \ESKDtabHeadH}
+      % посчитаем, сколько строк укладывается на лист
+      \setlength{\ESKD@tmpdima}{\ESKDtabBodyH / \ESKDtabLineSpace}
+      \ESKDlineCount=\ESKD@tmpdima % сохраним рассчитанное количество строк
+      % скорректируем высоту таблицы с учетом того, что в нее укладывается не целое количество строк
+      \setlength{\ESKDtabBodyH}{\ESKDtabLineSpace * \ESKDlineCount}
+      % сохраним в "а" расстояние между нижним краем рамки и нижним краем таблицы
+      \setlength{\ESKD@tmpdima}{\ESKDframeH - \ESKDtabHeadH - \ESKDtabBodyH}
+
+      % рисуем вертикальные линии на высоте "а" от нижнего края рамки длинной в высоту таблицы
+      \linethickness{\ESKDlineThick}
+      \setcounter{narg@tmp}{0}
+      \ESKD@tmpdimb=0mm
+      \whiledo{\value{narg@tmp}<\narg}{
+        \addtocounter{narg@tmp}{1}
+        \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \csname arg\roman{narg@tmp}\endcsname}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabBodyH}}}}
+      
+      % рисуем рассчитанное количество горизонтальных линий начиная снизу ("а")
+      \linethickness{\ESKDlineThin}
+      \multiput(0,\ESKDltu{\ESKD@tmpdima})(0,\ESKDltu{\ESKDtabLineSpace}){\ESKDlineCount}{%
+        \line(1,0){\ESKDltu{\ESKDframeW}}}
+
+      % нумерация строк
+      \ifESKD@tab@first@column@enum
+        \setlength{\ESKD@tmpdimb}{\ESKDframeH - \ESKDtabHeadH}
+        \setcounter{ESKD@tmpcnt}{0}
+        \whiledo{\lengthtest{\ESKD@tmpdimb > \ESKD@tmpdima}}{%
+          \addtolength{\ESKD@tmpdimb}{-\ESKDtabLineSpace}%
+          \stepcounter{ESKD@tmpcnt}%
+          \put(0,\ESKDltu{\ESKD@tmpdimb}){\parbox[b][\ESKDtabLineSpace][c]{\argi}
+            {\ESKDfontTabBody\centering\ESKDtabStrut \arabic{ESKD@tmpcnt}}}}
+      \fi
+
+    \end{picture}}}
+
+
+% отрисовка шапки таблицы
+\newcommand{\ESKDtabDrawHead}{
+% На первый взгляд, этот код логичнее объединить с кодом, рисующим
+% вертикальные линии тепла таблицы, но в случае "многоэтажной" шапки
+% придется рисовать отдельно
+  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
+    \begin{picture}(0,0)
+      % вычислим расстояние от нижнего края рамки до нижнего края шапки таблицы
+      \setlength{\ESKD@tmpdima}{\ESKDframeH - \ESKDtabHeadH} 
+      % отчеркнем нижний край шапки
+      \linethickness{\ESKDlineThick}
+      \put(0,\ESKDltu{\ESKD@tmpdima}){\line(1,0){\ESKDltu{\ESKDframeW}}}
+      % нарисуем вертикальные линии шапки
+      \setcounter{narg@tmp}{0}
+      \ESKD@tmpdimb=0mm
+      \whiledo{\value{narg@tmp}<\narg}{
+        \addtocounter{narg@tmp}{1}
+        \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \csname arg\roman{narg@tmp}\endcsname}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}}
+    \end{picture}}%
+}
+
+
+% ------------------------------------------------------------------------
+% Комментарий слева от штампа для листов А3 и более
+% ------------------------------------------------------------------------
+%
+\newlength{\ESKDtabCommentPaddingV}
+\newlength{\ESKDtabCommentPaddingH}
+\setlength{\ESKDtabCommentPaddingV}{5mm}
+\setlength{\ESKDtabCommentPaddingH}{5mm}
+
+\newcommand{\ESKDtabComment}[1]{\def\ESKDtheTabComment{#1}}
+
+\newcommand{\ESKDtabDrawComment}{
+  \@ifundefined{ESKDtheTabComment}{}{%
+    % тут 185мм - длина штампа, 40мм - высота штампа
+    \setlength{\ESKD@tmpdima}{\ESKDframeW -185mm -2\ESKDtabCommentPaddingH}
+    \ifthenelse{\lengthtest{\ESKD@tmpdima > 10mm}}{% true
+      \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
+        \begin{picture}(0,0)
+          \put(\ESKDltu{\ESKDtabCommentPaddingH},\ESKDltu{\ESKDtabCommentPaddingV}){%
+            \parbox[b][40mm -2\ESKDtabCommentPaddingV][c]{\ESKD@tmpdima}{%
+            \setlength{\parindent}{15mm}%
+            \ESKDtheTabComment}}
+        \end{picture}}}%
+      {\@ifundefined{ESKDtheTabComment}{}{%
+        \ClassWarning{eskdtab}{%
+          Not anough space to place comment message}}}}% false
+}
+
+
+
+% ------------------------------------------------------------------------
+% Обертка для longtable
+% ------------------------------------------------------------------------
+% эти 2 макроса должны быть использованы
+% в стилевом файле разрабатываемого документа
+\newcommand{\ESKDtabLTPreamble}[2]{
+  \ESKDputOnStyle{formII}{grid}{\ESKDtabDrawBody\ESKDtabDrawHead}
+  \ESKDputOnStyle{formIIb}{grid}{\ESKDtabDrawBody[1]\ESKDtabDrawHead}
+  \ESKDputOnStyle{formII}{comment}{\ESKDtabDrawComment}
+  \begin{ESKDzeroPadding}
+  \setlength{\tabcolsep}{0.5mm}
+  \setlength{\LTpre}{0mm}
+  \setlength{\LTpost}{0mm}
+  \setlength{\LTleft}{0mm}
+  \setlength{\LTright}{\fill}
+  \begin{longtable}{#1}
+  % изменим некоторые константы longtable для того, чтобы
+  % таблица занимала всё свободное место
+  \setlength{\ESKD@tmpdima}%
+    {\ESKDframeH - \ESKD@style@sh@formIIb - \value{footwhitespace}\ESKDtabLineSpace}%
+  \global\@colht\ESKD@tmpdima%
+  \global\@colroom\ESKD@tmpdima%
+  % заполним шапку таблицы
+  #2
+  % первые и последние строки листов сделаем пустыми для эстетичности 
+  \ESKD@tabEmptyLineTop%
+  \endhead
+  \ESKD@tabEmptyLineBottom%
+  \endfoot}
+% закрывающий макрос
+\newcommand{\ESKDtabLTAmble}
+  {\end{longtable}
+  \end{ESKDzeroPadding}
+  \ESKDremoveFromStyle{formII}{grid}
+  \ESKDremoveFromStyle{formIIb}{grid}}
+
+
+% ----------------------------------------------------------------------
+% макрос уменьшает содержимое под заданный размер в случае необходимости
+% ----------------------------------------------------------------------
+\newcommand{\ESKDsmartScaleBox}[2]{
+  \settowidth{\ESKD@tmpdima}{#2}%
+  \setlength{\ESKD@tmpdimb}{#1}%
+  \ifthenelse{\lengthtest{\ESKD@tmpdima > \ESKD@tmpdimb}}%
+    {\ifthenelse{\lengthtest{0.75\ESKD@tmpdima > \ESKD@tmpdimb}}%
+      {\scalebox{0.45}[1]{\bfseries#2}}%
+      {\scalebox{0.75}[1]{#2}}%
+    }%
+    {#2}%
+}
+
+
+\let\ESKD@tmpdimc=\ESKDlineCount
+
 
