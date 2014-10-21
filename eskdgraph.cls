@@ -20,7 +20,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eskdgraph}[$Date::            $ v0.99 Graphical Documentation]
+\ProvidesClass{eskdgraph}[2010/01/14 v0.97 Graphical Documentation]
 
 \DeclareOption{russian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}
 \DeclareOption{ukrainian}{\PassOptionsToPackage{\CurrentOption}{eskdlang}}

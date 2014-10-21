@@ -1,0 +1,93 @@
+% Copyright 2006 Konstantin Korikov <lostclus@ua.fm>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+% 
+% This Current Maintainer of this work is Konstantin Korikov.
+%
+% This work consists of all files listed in manifest.txt.
+%
+
+%
+% This is automaticaly generated file, do not edit it.
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eskdlongtable}[2010/01/14 v0.97 Patches for Longtable]
+
+% Фактически, данный файл представляет собой набор исправлений,
+% возможно, некрасивых хаков, для пакета longtable.
+
+
+\RequirePackage{longtable}
+
+% Это необходимо для соответствия требованиям ЕСКД.
+% По ГОСТ, если таблица не умещается на странице, ее можно разорвать.
+% На месте разрыва закрывающую линию рисовать не положено, но
+% longtable так не умеет.
+\renewcommand\LT@@hline{%
+  \ifx\@let@token\hline
+    \global\let\@gtempa\@gobble
+    \gdef\LT@sep{\penalty-\@medpenalty\vskip\doublerulesep}%
+  \else
+    \global\let\@gtempa\@empty
+    \gdef\LT@sep{\penalty-\@lowpenalty\vskip-\arrayrulewidth}%
+  \fi
+  \ifnum0=`{\fi}%
+  \multispan\LT@cols
+%   \unskip\leaders\hrule\@height\arrayrulewidth\hfill\cr % оригинальная строка
+    \cr% исправленная строка
+  \noalign{\LT@sep}%
+  \multispan\LT@cols
+    \unskip\leaders\hrule\@height\arrayrulewidth\hfill\cr
+  \noalign{\penalty\@M}%
+  \@gtempa}
+
+
+
+% Данный кусок кода исправляет следующую ситуацию:
+% когда longtable окружена только командами секционирования
+% без "свободного" текста, отбивка между последней строкой
+% таблицы и новой (sub)section имеет размер \LTpost, по
+% умочанию \baselineskip (см. документацию longtable)
+% Фактически, мы просто переведем latex в вертикальный режим
+\renewcommand\endlongtable{%
+  \crcr
+  \noalign{%
+    \let\LT@entry\LT@entry@chop
+    \xdef\LT@save@row{\LT@save@row}}%
+  \LT@echunk
+  \LT@start
+  \unvbox\z@
+  \LT@get@widths
+  \if@filesw
+    {\let\LT@entry\LT@entry@write\immediate\write\@auxout{%
+      \gdef\expandafter\noexpand
+        \csname LT@\romannumeral\c@LT@tables\endcsname
+          {\LT@save@row}}}%
+  \fi
+  \ifx\LT@save@row\LT@@save@row
+  \else
+    \LT@warn{Column \@width s have changed\MessageBreak
+             in table \thetable}%
+    \LT@final@warn
+  \fi
+  \endgraf\penalty -\LT@end@pen
+  \endgroup
+  \global\@mparbottom\z@
+  \pagegoal\vsize
+% \endgraf\penalty\z@\addvspace\LTpost %оригинальная строка
+  \vskip-\baselineskip\mbox{} \endgraf\penalty\z@\addvspace\LTpost %исправленная
+  \ifvoid\footins\else\insert\footins{}\fi}
+
+
+
+
+

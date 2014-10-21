@@ -19,7 +19,7 @@
 % This is automaticaly generated file, do not edit it.
 %
 
-\ProvidesFile{eskdukrainian.def}[$Date::            $ v0.99 Language File]
+\ProvidesFile{eskdukrainian.def}[2010/01/14 v0.97 Language File]
 
 \newcommand{\ESKDcolumnIVname}{%
   \cyr\CYRL\cyri\cyrt.}

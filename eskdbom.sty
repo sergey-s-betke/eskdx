@@ -1,0 +1,156 @@
+% Copyright 2006 Konstantin Korikov <lostclus@ua.fm>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+% 
+% This Current Maintainer of this work is Konstantin Korikov.
+%
+% This work consists of all files listed in manifest.txt.
+%
+
+%
+% This is automaticaly generated file, do not edit it.
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eskdbom}[2010/03/08 v0.97 Bill of materials GOST 2.106-96]
+
+
+\RequirePackage{eskdlang}
+\RequirePackage{eskdstamp}
+\RequirePackage{array}
+\RequirePackage{longtable}
+
+
+% зададим размеры колонок таблицы.
+\ESKDtabColumnsWidth{7mm 45mm 60mm 70mm 55mm 70mm 16mm 16mm 16mm 16mm 24mm}
+% высота шапки таблицы
+\setlength{\ESKDtabHeadH}{27mm}
+
+
+% дополнительные горизонтальный промежуток
+% для эстетичности
+\newlength{\ESKDbomAddHspace}
+\setlength{\ESKDbomAddHspace}{2mm}
+
+% включим автоматическую нумерацию строк
+\ESKD@tab@first@column@enumtrue
+
+% переопределим команду отрисовки шапки
+\renewcommand{\ESKDtabDrawHead}{
+  \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
+    \begin{picture}(0,0)
+      \setlength{\ESKD@tmpdima}{\ESKDframeH - \ESKDtabHeadH} 
+
+      \linethickness{\ESKDlineThick}
+      \put(0,\ESKDltu{\ESKD@tmpdima}){\line(1,0){\ESKDltu{\ESKDframeW}}}
+
+      \ESKD@tmpdimb=0mm
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argi}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argii}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argiii}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argiv}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argv}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argvi}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argvii}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{18mm}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argviii}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{18mm}}}
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argix}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{18mm}}}
+
+      \setlength{\ESKD@tmpdimb}{\ESKD@tmpdimb + \argx}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(0,1){\ESKDltu{\ESKDtabHeadH}}}
+
+      \setlength{\ESKD@tmpdimb}{\argi + \argii + \argiii + \argvi + \argv + \argiv}
+      \setlength{\ESKD@tmpdima}{\ESKD@tmpdima+18mm}
+        \put(\ESKDltu{\ESKD@tmpdimb},\ESKDltu{\ESKD@tmpdima}){\line(1,0){\ESKDltu{64mm}}}
+
+    \end{picture}}}
+
+
+% окружение
+\newenvironment{ESKDbillOfMaterials}
+{\ESKDtabLTPreamble{%
+  >{\ESKDfontTabBody\centering}
+    p{\argi -2\tabcolsep}
+  @{\hspace{\ESKDbomAddHspace}}
+    >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argii -\ESKDbomAddHspace}
+    <{\ESKDtabStrut}
+  >{\ESKDfontTabBody\centering}
+    p{\argiii -2\tabcolsep}
+    <{\ESKDtabStrut}
+  >{\ESKDfontTabBody\centering}
+    p{\argiv -2\tabcolsep}
+    <{\ESKDtabStrut}
+  >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argv -2\tabcolsep}
+    <{\ESKDtabStrut}
+  >{\ESKDfontTabBody\centering}
+    p{\argvi -2\tabcolsep}
+    <{\ESKDtabStrut}
+  >{\ESKDfontTabBody\centering}
+    p{\argvii -2\tabcolsep}
+  >{\ESKDfontTabBody\centering}
+    p{\argviii -2\tabcolsep}
+  >{\ESKDfontTabBody\centering}
+    p{\argix -2\tabcolsep}
+  >{\ESKDfontTabBody\centering}
+    p{\argx -2\tabcolsep}
+  >{\ESKDfontTabBody\raggedright\ESKDtabStrut}
+    p{\argxi -2\tabcolsep}
+    <{\ESKDtabStrut}}
+  %
+  {%
+  \parbox[c][\ESKDtabHeadH][c]{\argi -2\tabcolsep}{\centering\begin{sideways}\ESKDfontTabHead%
+    \ESKDbomColumnIname\end{sideways}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argii -\ESKDbomAddHspace}{\centering\ESKDfontTabHead%
+    \hspace{-\ESKDbomAddHspace}%
+    \strut\ESKDbomColumnIIname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argiii -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnIIIname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argiv -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnIVname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argv -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnVname}&
+  \parbox[c][\ESKDtabHeadH][c]{\argvi -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnVIname}&
+  \multicolumn{4}{c}{%
+    \parbox{64mm -2\tabcolsep}{%
+      \parbox[c][8mm][c]{64mm -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \strut\ESKDbomColumnsVIIhname}
+      \parbox[c][17mm][c]{\argvii -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \ESKDbomColumnVIIname\strut}\hspace{2\tabcolsep}%
+      \parbox[c][17mm][c]{\argviii -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \ESKDbomColumnVIIIname\strut}\hspace{2\tabcolsep}%
+      \parbox[c][17mm][c]{\argix -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \ESKDbomColumnIXname\strut}\hspace{2\tabcolsep}%
+      \parbox[c][17mm][c]{\argx -2\tabcolsep}{\centering\ESKDfontTabHead%
+        \ESKDbomColumnXname\strut}}}&
+  \parbox[c][\ESKDtabHeadH][c]{\argxi -2\tabcolsep}{\centering\ESKDfontTabHead%
+    \strut\ESKDbomColumnXIname}
+  \tabularnewline%
+  }
+}
+%
+% прямо сюда вставится содержимое таблицы
+% 
+{\ESKDtabLTAmble}
+
+
+
