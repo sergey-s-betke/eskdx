@@ -279,10 +279,10 @@ headheight=0mm,headsep=0mm,footskip=0mm]{geometry}
 \setlength{\unitlength}{1mm}%
 \begin{picture}(0,0)(0,0)
 \linethickness{\ESKDlineThick}
-\put(0,\ESKDltu{\ESKDframeH}){\line(1,0){\ESKDltu{\ESKDframeW}}}
-\put(0,0){\line(1,0){\ESKDltu{\ESKDframeW}}}
-\put(0,0){\line(0,1){\ESKDltu{\ESKDframeH}}}
-\put(\ESKDltu{\ESKDframeW},0){\line(0,1){\ESKDltu{\ESKDframeH}}}
+\put(\ESKDltu{0.5\ESKDlineThick},\ESKDltu{\ESKDframeH}){\line(1,0){\ESKDltu{\ESKDframeW}}}
+\put(\ESKDltu{-0.5\ESKDlineThick},0){\line(1,0){\ESKDltu{\ESKDframeW}}}
+\put(0,\ESKDltu{0.5\ESKDlineThick}){\line(0,1){\ESKDltu{\ESKDframeH}}}
+\put(\ESKDltu{\ESKDframeW},\ESKDltu{-0.5\ESKDlineThick}){\line(0,1){\ESKDltu{\ESKDframeH}}}
 \end{picture}}}
 \newcommand{\ESKDdrawFrame}{%
   \put(\ESKDltu{\ESKDframeX},\ESKDltu{\ESKDframeY}){%
