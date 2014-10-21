@@ -1,0 +1,1122 @@
+% Copyright 2006 Konstantin Korikov <lostclus@ua.fm>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+%
+% This Current Maintainer of this work is Konstantin Korikov.
+%
+% This work consists of all files listed in manifest.txt.
+%
+
+%
+% This is automaticaly generated file, do not edit it.
+%
+
+\documentclass[russian,koi8-r,simple%
+]{eskdtext}
+\usepackage[T2A]{fontenc}
+\usepackage{pscyr}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{verbatimfiles}
+\usepackage{calc}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{graphics}
+
+\title{Коллекция eskdx v0.99}
+\ESKDdocName{Руководство пользователя}
+\author{Кориков~К.~В.}
+\date{$Date::            $}
+\renewcommand{\ESKDtheTitleFieldVIIIr}{%
+\copyright 2006 Константин Кориков}
+
+\usepackage[unicode]{hyperref}
+\hypersetup{pdfkeywords=ЕСКД ГОСТ LaTeX класс пакет}
+
+\newcommand{\gost}[1]{\mbox{ГОСТ}\ \mbox{#1}}
+\newcommand{\pkg}[1]{\mbox{\textsf{#1}}}
+\newcommand{\cmd}[1]{\texttt{\textbackslash\mbox{#1}}}
+\newcommand{\env}[1]{\mbox{\texttt{#1}}}
+\newcommand{\opt}[1]{\mbox{\texttt{#1}}}
+\newcommand{\optarg}[1]{\mbox{\textit{#1}}}
+\newcommand{\val}[1]{\mbox{\texttt{#1}}}
+\newenvironment{defs}{\begin{itemize}}{\end{itemize}}
+\newcommand{\cmddef}[2]{\item[]\texttt{\textbackslash#1#2}}
+\newcommand{\envdef}[3]{\item[]%
+  \texttt{\textbackslash begin\{#1\}#2}
+  \par\textit{\quad #3}%
+  \par\texttt{\textbackslash end\{#1\}}}
+\newcommand{\cmdarg}[1]{\mbox{\textrm{\textit{#1}}}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Общие сведения}
+\subsection{О коллекции \pkg{eskdx}}
+Коллекция пакетов и классов \pkg{eskdx} рассчитана на использование в
+среде \LaTeXe\ и предназначена для верстки документов в соответствии с
+требованиями Единой системы конструкторской документации.  Коллекция
+содержит три класса: \pkg{eskdtext} (для текстовой документации),
+\pkg{eskdgraph} (для чертежей и схем) и \pkg{eskdtab} (для документов,
+разбитых на графы), а также некоторое число пакетов (некоторые из них
+являются внутренними).
+
+\subsection{Возможности коллекции}
+Основные возможности \pkg{eskdx}:
+\begin{itemize}
+\item основная надпись и дополнительные графы по \gost{2.104-2006},
+форма 1, 2, 2а, 2б;
+\item поддерживаемые форматы листов: А0, А1, А2, А3, А4;
+\item поддержка двусторонней печати;
+\item настройка элементов текста (абзацы, перечисления, и т.п.) и
+рубрикации (разделы, подразделы, пункты, подпункты, приложения) по
+\gost{2.105-95};
+\item титульный лист и лист утверждения по \gost{2.105-95};
+\item спецификация по \gost{2.106-96}, форма 1, 1а, 2, 2а;
+\item лист регистрации изменений по \gost{2.503-90};
+\item поддержка множества языков (на данный момент русский и
+украинский).
+\end{itemize}
+
+\newpage
+\section{Базовые принципы использования}
+Для использования коллекции \pkg{eskdx} необходимо иметь как
+минимум базовые знания системы \LaTeXe.
+
+Основа коллекции "--- классы \pkg{eskdtext}, \pkg{eskdgraph} и
+\pkg{eskdtab}. Для текстовых документов, содержащих, в основном,
+сплошной текст, используют класс \pkg{eskdtext}, для чертежей и схем
+"--- \pkg{eskdgraph}, а для документов, содержащих текст, разбитый на
+графы "--- \pkg{eskdtab}.
+
+Примечание "--- в большинстве случаев для получения правильного
+выходного файла необходимо выполнить как минимум два прохода
+интерпретатора.
+
+\subsection{Пример простого документа}
+Пример простого текстового документа:
+\begin{quote}
+\verbatimlisting{example.tex}
+\end{quote}
+
+Опции \opt{russian} и \opt{koi8-r}, на строке 1, задают,
+соответственно язык и кодировку документа. Команды на строках 2 по 16
+задают информацию о документе, которая используется в титульном листе
+и в основной надписи. Строки 19 по 23 "--- тело документа.
+
+\subsection{Опции классов}
+
+
+
+\subsubsection{Общие опции всех классов}
+Опции, воспринимаемые классами \pkg{eskdtext} и \pkg{eskdgraph}
+приведены в таблице~\ref{t:common:opts}.
+\begin{longtable}{|%
+p{.32\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
+p{.68\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
+\caption{Общие опции классов \pkg{eskdtext} и
+\pkg{eskdgraph}}\label{t:common:opts}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endfirsthead
+\caption*{Продолжение таблицы \ref{t:common:opts}}\\\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endhead
+
+\opt{russian}\par\opt{ukrainian}&
+Выбирает язык документа, соответственно русский, украинский. По
+умолчанию русский.\\\hline
+\opt{koi8-r}\par\opt{koi8-u}\par\opt{cp1251}\par\opt{iso8859-5}\par
+\opt{cp866}\par\opt{utf8}\par\opt{utf-8}&
+Задает кодировку текста, соответственно \mbox{KOI8-R}, \mbox{KOI8-U},
+\mbox{CP1251}, \mbox{ISO8859-5}, \mbox{CP866}, \mbox{UTF-8}.\\\hline
+\opt{reduceheight=}&
+Уменьшает высоту рамки за счет увеличения нижнего поля на
+заданную высоту.\\\hline
+\opt{emptystyle}&
+Включает пустой стиль страниц, т.е. без рамки формы, без основной
+надписи и без дополнительных граф.\\\hline
+\opt{stitching}\par\opt{nostitching}&
+Включает/выключает поле для переплета. По умолчанию поле включено.\\\hline
+\opt{columnvii}\par\opt{nocolumnvii}&
+Включает/выключает графу 7 основной надписи (номер листа/страницы). По
+умолчанию графа 7 включена только для документов, содержащих больше
+одного листа\\\hline
+\opt{columnviii}\par\opt{nocolumnviii}&
+Включает/выключает графу 8 основной надписи (общее количество
+листов/страниц). По умолчанию графа 8 включена.\\\hline
+\opt{columnsxix}\par\opt{nocolumnsxix}&
+Включает/выключает дополнительные графы 19 по 23. По умолчанию
+включены.\\\hline
+\opt{columnsxxiv}\par\opt{nocolumnsxxiv}&
+Включает/выключает дополнительные графы 24 и 25. По умолчанию
+выключены.\\\hline
+\opt{columnsxxvii}\par\opt{nocolumnsxxvii}&
+Включает/выключает дополнительные графы 27 по 30. По умолчанию
+выключены.\\\hline
+\opt{columnxxxi}\par\opt{nocolumnxxxi}&
+Включает/выключает дополнительную графу 31. По умолчанию
+включена.\\\hline
+\opt{columnxxxii}\par\opt{nocolumnxxxii}&
+Включает/выключает дополнительную графу 32 (формат листа). По
+умолчанию включена.\\\hline
+\opt{simple}&
+Тоже самое что \opt{nocolumnsxix}, \opt{nocolumnxxxi} и
+\opt{nocolumnxxxii}.\\\hline
+\opt{linethick=}&
+Устанавливает толщину сплошной толстой линии. По умолчанию
+\val{.4mm}.\\\hline
+\opt{linethin=}&
+Устанавливает толщину сплошной тонкой линии. По умолчанию
+\val{.2mm}.\\\hline
+\opt{hpadding=}&
+Устанавливает расстояние от рамки формы до границ текста в начале и в
+конце строк. По умолчанию \val{3mm}.\\\hline
+\opt{vpadding=}&
+Устанавливает расстояние от верхней или нижней строки текста до
+верхней или нижней рамки. По умолчанию \val{10mm}.\\\hline
+\end{longtable}
+
+Примечание "--- Схемы расположения граф основной надписи приведены в
+приложении~\ref{a:columnlayout}.
+
+\subsubsection{Опции класса \pkg{eskdtext}}
+Опции, воспринимаемые классом \pkg{eskdtext} приведены в
+таблице~\ref{t:eskdtext:opts}.
+\begin{longtable}{|%
+p{.32\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
+p{.68\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
+\caption{Опции класса \pkg{eskdtext}}\label{t:eskdtext:opts}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endfirsthead
+\caption*{Продолжение таблицы \ref{t:eskdtext:opts}}\\\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endhead
+
+\opt{12pt}\par\opt{14pt}&
+Устанавливает размер шрифта документа, соответственно \val{12pt},
+\val{14pt}. По умолчанию \val{14pt}.\\\hline
+\opt{pointsingle}\par\opt{pointsection}\par\opt{pointsubsection}&
+Устанавливает стиль нумерации пунктов, соответственно в пределах всего
+документа, в пределах раздела, в пределах подраздела. По умолчанию
+пункты нумеруются в пределах всего документа (сквозная
+нумерация).\\\hline
+\opt{floatsingle}\par\opt{floatsection}\par\opt{floatsubsection}&
+Устанавливает стиль нумерации плавающих объектов (рисунки, таблицы),
+соответственно в пределах всего документа, в пределах раздела, в
+пределах подраздела. По умолчанию плавающие объекты нумеруются в
+пределах всего документа (сквозная нумерация).\\\hline
+\opt{equationsingle}\par\opt{equationsection}\par\opt{equationsubsection}&
+Устанавливает стиль нумерации формул, соответственно в пределах всего
+документа, в пределах раздела, в пределах подраздела. По умолчанию
+формулы нумеруются в пределах всего документа (сквозная
+нумерация).\\\hline
+\opt{footnotearabic}\par\opt{footnoteasterisk}&
+Устанавливает стиль нумерации сносок, соответственно
+арабской цифрой с закрывающей круглой скобкой,
+либо звездочками (количество звездочек соответствует
+номеру сноски). Нумерация осуществляется в пределах 
+страницы. По умолчанию используется \val{footnotearabic}\\\hline
+\opt{twoside}&
+Включает двустороннюю печать.\\\hline
+\opt{draft}&
+Включает черновой режим.\\\hline
+\end{longtable}
+
+\subsubsection{Опции класса \pkg{eskdgraph}}
+Опции, воспринимаемые классом \pkg{eskdgraph} приведены в
+таблице~\ref{t:eskdgraph:opts}.
+\begin{longtable}{|%
+p{.32\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
+p{.68\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
+\caption{Опции класса \pkg{eskdgraph}}\label{t:eskdgraph:opts}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endfirsthead
+\caption*{Продолжение таблицы \ref{t:eskdgraph:opts}}\\\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endhead
+
+\opt{a0paper}\par\opt{a1paper}\par\opt{a2paper}\par\opt{a3paper}\par
+\opt{a4paper}&
+Устанавливает формат (размер) листа, соответственно А0, А1, А2, А3,
+А4. По умолчанию А4.\\\hline
+\opt{landscape}\par\opt{portrait}&
+Устанавливает ориентацию страницы, соответственно ландшафтная
+ориентация (основная надпись вдоль длинной стороны листа), портретная
+ориентация (основная надпись вдоль короткой стороны листа). По
+умолчанию ландшафтная ориентация для листов формата больше А4, и
+портретная ориентация для листов формата А4.\\\hline
+\opt{ignorestamp}\par\opt{noignorestamp}&
+Включает/выключает игнорирование основной надписи при
+позиционировании рисунка чертежа. По умолчанию основная надпись
+игнорируется.\\\hline
+\opt{columnxxvi}\par\opt{nocolumnxxvi}&
+Включает/выключает дополнительную графу 26. По умолчанию графа
+включена.\\\hline
+\opt{columnxxxiii}\par\opt{nocolumnxxxiii}&
+Включает/выключает дополнительную графу 33. По умолчанию
+выключена.\\\hline
+\opt{columnxxxiv}\par\opt{nocolumnxxxiv}&
+Включает/выключает дополнительную графу 34. По умолчанию
+выключена.\\\hline
+\opt{zonelabels}\par\opt{nozonelabels}&
+Включает/выключает отметки зон. По умолчанию отметки выключены.\\\hline
+\end{longtable}
+
+\subsubsection{Опции класса \pkg{eskdtab}}
+Опции, воспринимаемые классом \pkg{eskdtab} приведены в
+таблице~\ref{t:eskdtab:opts}.
+\begin{longtable}{|%
+p{.32\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
+p{.68\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
+\caption{Опции класса \pkg{eskdtab}}\label{t:eskdtab:opts}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endfirsthead
+\caption*{Продолжение таблицы \ref{t:eskdtab:opts}}\\\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endhead
+
+\opt{a3paper}\par\opt{a4paper}&
+Устанавливает формат (размер) листа, соответственно А3, А4. По
+умолчанию А4.\\\hline
+\opt{landscape}\par\opt{portrait}&
+Устанавливает ориентацию страницы, соответственно ландшафтная
+ориентация (основная надпись вдоль длинной стороны листа), портретная
+ориентация (основная надпись вдоль короткой стороны листа). По
+умолчанию ландшафтная ориентация для листов формата А3, и
+портретная ориентация для листов формата А4.\\\hline
+\opt{twoside}&
+Включает двустороннюю печать.\\\hline
+\opt{draft}&
+Включает черновой режим.\\\hline
+\end{longtable}
+
+\subsection{Информация о документе}
+\label{docinfo}
+Информацию о документе размещают в преамбуле документа используя
+описанные ниже команды.
+
+Наименование ведомства, в систему которого входит организация,
+разработавшая документ, задает команда
+\begin{defs}
+\cmddef{ESKDdepartment}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Наименование организации задает команда
+\begin{defs}
+\cmddef{ESKDcompany}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Код по классификатору продукции задает команда
+\begin{defs}
+\cmddef{ESKDclassCode}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Наименование изделия задают команды
+\begin{defs}
+\cmddef{ESKDunitName}{\{\cmdarg{текст}\}}
+\cmddef{ESKDtitle}{\{\cmdarg{текст}\}}
+\cmddef{title}{\{\cmdarg{текст}\}}
+\end{defs}
+все три команды действуют одинаково (команды близнецы).
+
+Наименование документа задает команда
+\begin{defs}
+\cmddef{ESKDdocName}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Обозначение документа задает команда
+\begin{defs}
+\cmddef{ESKDsignature}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Литеру, присвоенную данному документу, задает команда
+\begin{defs}
+\cmddef{ESKDletter}{\{\cmdarg{буква1}\}\{\cmdarg{буква2}\}%
+\{\cmdarg{буква3}\}}
+\end{defs}
+
+Обозначение материала детали задает команда
+\begin{defs}
+\cmddef{ESKDmaterial}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Массу изделия задает команда
+\begin{defs}
+\cmddef{ESKDmass}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Масштаб чертежа задает команда
+\begin{defs}
+\cmddef{ESKDscale}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Наименование или различительный индекс предприятия задает команда
+\begin{defs}
+\cmddef{ESKDgroup}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Фамилию автора задают команды
+\begin{defs}
+\cmddef{ESKDauthor}{\{\cmdarg{текст}\}}
+\cmddef{author}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Фамилию проверяющего задает команда
+\begin{defs}
+\cmddef{ESKDchecker}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Фамилию нормоконтролера задает команда
+\begin{defs}
+\cmddef{ESKDnormContr}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Фамилию утвердившего задает команда
+\begin{defs}
+\cmddef{ESKDapprovedBy}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Дату документа задают команды
+\begin{defs}
+\cmddef{ESKDdate}{\{\cmdarg{год/месяц/число}\}}
+\cmddef{date}{\{\cmdarg{год/месяц/число}\}}
+\end{defs}
+
+Описанные выше команды сохраняют значения своих аргументов в
+соответствующие \cmd{ESKDthe}-команды. Например, команда
+\cmd{ESKDtheAuthor} печатает фамилию автора, а команда
+\cmd{ESKDtheNormContr} печатает фамилию нормоконтролера.
+
+\sloppy
+Немного иначе обстоят дела с датой и литерой. Год печатает команда
+\cmd{ESKDtheYear}, месяц "--- \cmd{ESKDtheMonth}, а число "---
+\cmd{ESKDtheDay}. Буквы литеры печатают команды \cmd{ESKDtheLetterI},
+\cmd{ESKDtheLetterII}, \cmd{ESKDtheLetterIII}.
+
+\fussy
+
+\subsection{Титульный лист}
+Титульный лист печатает команда
+\begin{defs}
+\cmddef{maketitle}{}
+\end{defs}
+которую размещают в теле документа.
+
+Согласно \gost{2.105} титульный лист разбит на 10 полей. По
+умолчанию большинство полей уже содержат необходимые данные, заданные
+командами, описанными в разделе~\ref{docinfo}. Также для заполнения
+титульного листа существует несколько дополнительных команд, которые
+размещают в преамбуле документа.
+
+Команда
+\begin{defs}
+\cmddef{ESKDtitleApprovedBy}{\{\cmdarg{должность}\}\{\cmdarg{фамилия}\}}
+\end{defs}
+размещает гриф утверждения в правой части поля 3.
+
+Команда
+\begin{defs}
+\cmddef{ESKDtitleAgreedBy}{\{\cmdarg{должность}\}\{\cmdarg{фамилия}\}}
+\end{defs}
+размещает гриф согласования в левой части поля 3.  Если согласовавших
+лиц больше одного, то команду повторяют несколько раз, при этом
+остальные фамилии размещаются в левой части поля 8.
+
+Список разработчиков документа задают при помощи команды
+\begin{defs}
+\cmddef{ESKDtitleDesignedBy}{\{\cmdarg{должность}\}\{\cmdarg{фамилия}\}}
+\end{defs}
+Команду повторяют для каждого разработчика. Список размещается в
+правой части поля 8.
+
+При утверждении документа листом утверждения его обозначение указывают
+в левой части поля 3. Для этого используют команду
+\begin{defs}
+\cmddef{ESKDtitleApprovingSheet}{\{\cmdarg{обозначение}\}}
+\end{defs}
+
+Кроме описанных выше методов заполнения титульного листа, имеется
+метод, позволяющий принудительного указать какие данные нужно
+разместить в том или ином поле посредством переопределения
+\cmd{ESKDtheTitleField}-команд. Например, для того чтобы в поле 10
+разместить какой-нибудь текст (по умолчанию поле содержит год) в
+преамбулу документа нужно поместить
+\begin{quote}
+\begin{verbatim}
+\renewcommand{\ESKDtheTitleFieldX}{%
+какой-нибудь текст}
+\end{verbatim}
+\end{quote}
+
+Примечание "--- Схема расположения полей титульного листа и листа
+утверждения приведена в приложении~\ref{a:titlelayout}.
+
+\subsection{Заполнение граф основной надписи и дополнительных граф}
+По умолчанию большинство граф основной надписи и некоторые
+дополнительные графы содержат данные, заданные командами, описанными в
+разделе~\ref{docinfo}. Для принудительного заполнения граф
+предназначены \cmd{ESKDcolumn}-команды, которые размещают в преамбуле
+документа.
+
+Графу 1 (наименование изделия/документа) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnI}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 2 (обозначение документа) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 3 (обозначение материала детали) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnIII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 4 (литера) задают команды
+\begin{defs}
+\cmddef{ESKDcolumnIVfI}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnIVfII}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnIVfIII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 5 (масса изделия) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnV}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 6 (масштаб) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnVI}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 9 (наименование или различительный индекс предприятия) задает
+команда
+\begin{defs}
+\cmddef{ESKDcolumnIX}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 11 (фамилии лиц, подписывающих документ) задают команды
+\begin{defs}
+\cmddef{ESKDcolumnXIfI}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfII}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfIII}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfIV}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfV}{\{\cmdarg{текст}\}}
+\cmddef{ESKDcolumnXIfVI}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 19 (инвентарный номер подлинника) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXIX}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 21 (инвентарный номер подлинника, взамен которого выпущен данный
+подлинник) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXI}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 22 (инвентарный номер дубликата) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 24 (обозначение документа, взамен или на основании которого
+выпущен документ) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXIV}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 25 (обозначение соответствующего документа, в котором впервые
+записан документ) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXV}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 27 (знак, установленный заказчиком) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXVII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 28 (номер решения и год утверждения документации соответствующей
+литеры) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXVIII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 29 (номер решения и год утверждения документации) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXIX}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 30 (индекс заказчика) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXX}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 32 (обозначение формата листа) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXXII}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Графу 34 (номера авторских свидетельств на изобретения) задает команда
+\begin{defs}
+\cmddef{ESKDcolumnXXXIV}{\{\cmdarg{текст}\}}
+\end{defs}
+
+Описанные выше команды сохраняют значения своих аргументов в
+соответствующие \cmd{ESKDthe}-команды. Например, команда
+\cmd{ESKDtheColumnI} печатает содержимое графы 1.
+
+Примечание "--- Схемы расположения граф основной надписи приведены в
+приложении~\ref{a:columnlayout}.
+
+\subsection{Рубрикация}
+Разделы, подразделы, подподразделы, пункты, подпункты, подподпункты
+создаются соответственно командами:
+\begin{defs}
+\cmddef{section}{\{\cmdarg{заголовок}\}}
+\cmddef{subsection}{\{\cmdarg{заголовок}\}}
+\cmddef{subsubsection}{\{\cmdarg{заголовок}\}}
+\cmddef{point}{}
+\cmddef{subpoint}{}
+\cmddef{subsubpoint}{}
+\end{defs}
+
+По умолчанию пункты нумеруются в пределах всего документа. Чтобы
+включить нумерацию пунктов в пределах раздела или подраздела
+используют опцию \opt{pointsection} или \opt{pointsubsection} класса
+\pkg{eskdtext} соответственно.
+
+Приложение создает команда
+\begin{defs}
+\cmddef{ESKDappendix}{\{\cmdarg{тип}\}\{\cmdarg{заголовок}\}}
+\end{defs}
+Первый аргумент "--- тип приложения (обязательное, рекомендуемое или
+справочное). Второй аргумент "--- заголовок приложения.
+
+\subsection{Пояснения символов, входящих в формулу}
+\sloppy
+Командные скобки
+\begin{defs}
+\envdef{ESKDexplanation}{[ширина]}{пояснения}
+\end{defs}
+создают список пояснений символов. Перед первым пояснением ставят
+\cmd{item[где ]}. Перед последующими пояснениями ставят \cmd{item}.
+Окружение может принимать один необязательный параметр~--- ширину
+маркера \mbox{<<где >>} в единицах, понятных \LaTeX. Это может быть
+полезно в случаях, когда значение по умолчанию не подходит, либо вы
+используете другой маркер вместо \mbox{<<где >>}. Для автоматического
+вычисления размера маркера можно воспользоваться командой
+\cmd{settowidth}.
+
+Длина \cmd{ESKDexplanIndent} задает отступ списка пояснений от левого
+края страницы. По умолчанию \val{0pt}.
+
+\fussy
+
+\subsection{Лист регистрации изменений}
+Пакет \pkg{eskdchngsheet} предоставляет командные скобки
+\begin{defs}
+\envdef{ESKDchangeSheet}{}{строки}
+\end{defs}
+которые создают лист регистрации изменений. По сути это таблица из
+десяти колонок, которую заполняют как обычную таблицу, разделяя данные
+ячеек символом \verb|&|, а строки "--- \verb|\\|.
+
+\subsection{Чертежи и схемы}
+Для чертежей и схем используют класс \pkg{eskdgraph}. Команды включения
+графики размещают внутри командных скобок
+\begin{defs}
+\envdef{ESKDdrawing}{}{графика}
+\end{defs}
+Для каждой страницы используют свое окружение \env{ESKDdrawing}.
+
+\subsection{Спецификация}
+Для спецификации используют класс \pkg{eskdtab} и пакет
+\pkg{eskdspec}. Создают спецификацию командные скобки
+\begin{defs}
+\envdef{ESKDspecification}{}{строки}
+\end{defs}
+По сути это таблица из семи колонок, которую заполняют как обычную
+таблицу, разделяя данные ячеек символом \verb|&|, а строки "---
+\verb|\\|.
+
+\subsection{Спецификация при плазовом методе}
+Для спецификации при плазовом методе (форма 2 и 2а) используют класс
+\pkg{eskdtab} и пакет \pkg{eskdspecii}. Создают спецификацию командные
+скобки
+\begin{defs}
+\envdef{ESKDspecificationII}{}{строки}
+\end{defs}
+По сути это таблица из девяти колонок, которую заполняют как обычную
+таблицу, разделяя данные ячеек символом \verb|&|, а строки "---
+\verb|\\|.
+
+\subsection{Лист утверждения}
+Лист утверждения создают как отдельный документ с подключением пакета
+\pkg{eskdappsheet}. Заполняют лист утверждения таким же образом как и
+титульный лист.
+
+Команда
+\begin{defs}
+\cmddef{ESKDapprovingDoc}{\{\cmdarg{обозначение}\}}
+\end{defs}
+размещает в нижней части поля 8 обозначение документа, на который
+распространяется данный лист утверждения. Если таких документов
+несколько, команду повторяют для каждого документа.
+
+Печатает лист утверждения команда
+\begin{defs}
+\cmddef{maketitle}{}
+\end{defs}
+или команда
+\begin{defs}
+\cmddef{ESKDmakeApprovingSheet}{}
+\end{defs}
+
+\subsection{Количество рисунков, таблиц, приложений, и т.д.}
+Пакет \pkg{eskdtotal} определяет команду
+\begin{defs}
+\cmddef{ESKDtotal}{\{\cmdarg{счетчик}\}}
+\end{defs}
+при помощи которой в текст можно подставлять общее число страниц,
+рисунков, таблиц, приложений и литературных источников. Допустимые
+значения аргумента \cmdarg{счетчик} соответственно: \val{page},
+\val{figure}, \val{table}, \val{appendix} и \val{bibitem}. Например,
+команда \cmd{ESKDtotal\{figure\}} печатает количество рисунков.
+
+\newpage
+\section{Тонкая настройка}
+\subsection{Управление стилями страниц}
+\label{s:pagestyles}
+Каждая страница оформляется в соответствии с определенным стилем
+страницы. Существуют такие предопределенные стили страниц:
+\val{empty}, \val{title}, \val{formI}, \val{formII}, \val{formIIab},
+\val{freesize}.
+Стиль \val{empty} "--- это пустой стиль, в нем нет ни рамки, ни
+основной надписи, ни дополнительных граф. Стиль \val{title}
+предназначен для титульного листа, в нем есть рамка и дополнительные
+графы 19 по 23. Стили \val{formI} и \val{formII} соответствуют форме~1
+и форме~2 по \gost{2.104} соответственно, имеют рамку, основную
+надпись и дополнительные графы.  Стиль \val{formIIab} соответствует
+форме 2б на четной странице при двусторонней печати, и форме 2а в
+остальных случаях. Стиль \val{freesize} используется для листов
+произвольного размера, подробное описание приведено в 
+разделе~\ref{s:freesize}
+
+Менять стиль страницы можно используя команды
+\begin{defs}
+\cmddef{ESKDstyle}{\{стиль\}}
+\cmddef{ESKDthisStyle}{\{стиль\}}
+\end{defs}
+Первая меняет стиль текущей и последующих страниц, вторая меняет стиль
+только текущей страницы.
+
+Также можно изменять существующие стили и добавлять собственные.
+
+Новый стиль создает команда
+\begin{defs}
+\cmddef{ESKDnewStyle}{\{\cmdarg{стиль}\}\{\cmdarg{высота}\}}
+\end{defs}
+Первый аргумент задает имя стиля, второй "--- высоту основной надписи.
+
+Команда
+\begin{defs}
+\cmddef{ESKDputOnStyle}{\{\cmdarg{стиль}\}\{\cmdarg{элемент}\}%
+\{\cmdarg{команды}\}}
+\end{defs}
+заменяет или добавляет в существующий \cmdarg{стиль} \cmdarg{элемент},
+для верстки которого используются \cmdarg{команды}. Первый аргумент
+"--- имя существующего стиля. Второй аргумент "--- имя элемента,
+который нужно добавить или заменить. Третий аргумент "--- команды,
+рисующие данный элемент (допустимы только команды окружения
+\env{picture}).
+
+Для удаления элементов из стиля используется команда
+\begin{defs}
+\cmddef{ESKDremoveFromStyle}{\{\cmdarg{стиль}\}\{\cmdarg{элемент}\}}
+\end{defs}
+
+В предопределенных стилях рамку формы рисует элемент \val{frame}, а
+основную надпись "--- \val{stamp}. Например, для того чтобы удалить
+основную надпись в стиле \val{formI} можно воспользоваться командой
+\begin{quote}
+\verb|\ESKDremoveFromStyle{formI}{stamp}|
+\end{quote}
+
+Команды
+\begin{defs}
+\cmddef{ESKDdefaultTitleStyle}{\{\cmdarg{стиль}\}}
+\cmddef{ESKDdefaultFirstStyle}{\{\cmdarg{стиль}\}}
+\cmddef{ESKDdefaultStyle}{\{\cmdarg{стиль}\}}
+\end{defs}
+задают стиль по умолчанию для титульного листа, первой страницы (не
+считая титульный лист) и остальных страниц соответственно. Нет смысла
+использовать эти команды вне преамбулы документа.
+
+\subsection{Настройка шрифтов}
+Команды
+\begin{defs}
+\cmddef{ESKDfontII}{}
+\cmddef{ESKDfontIII}{}
+\cmddef{ESKDfontV}{}
+\cmddef{ESKDfontVII}{}
+\cmddef{ESKDfontX}{}
+\end{defs}
+определяют базовые шрифты, соответственно размером $2{,}5$, $3{,}5$,
+$5$, $7$ и $10~\text{мм}$. Шрифты, заданные этими командами,
+используются в основной надписи и в дополнительных графах, а также по
+умолчанию в других элементах, таких как титульный лист, спецификация и
+лист регистрации изменений.
+
+По умолчанию эти команды устанавливают
+\cmd{baselinestretch} в
+\begin{defs}
+\cmddef{ESKDfontBaseLineStretch}{}
+\end{defs}
+Устанавливают размер используя соответственно команды 
+\begin{defs}
+\cmddef{ESKDfontIIsize}{}
+\cmddef{ESKDfontIIIsize}{}
+\cmddef{ESKDfontVsize}{}
+\cmddef{ESKDfontVIIsize}{}
+\cmddef{ESKDfontXsize}{}
+\end{defs}
+Выполняют \cmd{selectfont} и устанавливают начертание используя
+команду
+\begin{defs}
+\cmddef{ESKDfontShape}{}
+\end{defs}
+
+Шрифты элементов, представленных в виде таблицы, определяют команды
+\begin{defs}
+\cmddef{ESKDfontTabHead}{}
+\cmddef{ESKDfontTabBody}{}
+\end{defs}
+Первая определяет шрифт заголовка, вторая "--- шрифт тела таблицы. По
+умолчанию определены как \cmd{ESKDfontIII}.
+
+Все приведенные выше команды можно переопределять при помощи
+\cmd{renewcommand}.
+
+\subsection{Настройка титульного листа}
+Команды
+\begin{defs}
+\cmddef{ESKDtitleFontI}{}
+\cmddef{ESKDtitleFontII}{}
+\cmddef{ESKDtitleFontIII}{}
+\cmddef{ESKDtitleFontIV}{}
+\cmddef{ESKDtitleFontV}{}
+\cmddef{ESKDtitleFontVI}{}
+\cmddef{ESKDtitleFontVII}{}
+\cmddef{ESKDtitleFontVIII}{}
+\cmddef{ESKDtitleFontX}{}
+\end{defs}
+определяют шрифты полей титульного листа. Их можно переопределить
+посредством \cmd{renewcommand}.
+
+\subsection{Управление заголовками рубрикации}
+Заголовки разделов, подразделов и подподразделов можно выравнивать
+влево, вправо, по центру, а также можно задавать стиль отображения и
+вертикальные отступы.
+
+Команда
+\begin{defs}
+\cmddef{ESKDsectAlign}{\{\cmdarg{элемент}\}\{\cmdarg{выравнивание}\}}
+\end{defs}
+устанавливает выравнивание элемента. Первый аргумент "--- одно
+из значений: \val{section}, \val{subsection}, \val{subsubsection};
+соответственно для разделов, подразделов, подподразделов. Второй
+аргумент "--- одно из значений: \val{Left}, \val{Right}, \val{Center};
+соответственно для выравнивания по левому краю, по правому краю, по
+центру.
+
+\sloppy
+Стиль, в котором будут верстаться заголовки, задает команда
+\begin{defs}
+\cmddef{ESKDsectStyle}{\{\cmdarg{элемент}\}\{\cmdarg{стиль}\}}
+\end{defs}
+Первый аргумент "--- одно из значений: \val{section},
+\val{subsection}, \val{subsubsection}; соответственно для разделов,
+подразделов, подподразделов. Второй аргумент "--- стиль, который может
+содержать в себе такие команды как \cmd{Large}, \cmd{bfseries}, и т.п.
+
+Вертикальные отступы задает команда
+\begin{defs}
+\cmddef{ESKDsectSkip}{\{\cmdarg{элемент}\}\{\cmdarg{отступ перед}\}%
+\{\cmdarg{отступ после}\}}
+\end{defs}
+Первый аргумент "--- одно из значений: \val{section},
+\val{subsection}, \val{subsubsection}; соответственно для разделов,
+подразделов, подподразделов. Второй аргумент "--- отступ перед
+заголовком. Третий аргумент "--- отступ после заголовка.
+
+\fussy
+
+\subsection{Настройка листа регистрации изменений}
+\sloppy
+Шрифт заголовка и тела таблицы определяют команды
+\cmd{ESKDfontTabHead} и \cmd{ESKDfontTabBody}, их можно переопределить
+посредством \cmd{renewcommand}.
+
+Примечание "--- команды \cmd{ESKDchngFontHead} и
+\cmd{ESKDchngFontBody} являются устаревшими и будут удалены в будущих
+версиях \pkg{eskdx}.
+
+\fussy
+
+Ширину колонок таблицы определяют команды
+\begin{defs}
+\cmddef{ESKDchngColumnIwidth}{}
+\cmddef{ESKDchngColumnIIwidth}{}
+\cmddef{ESKDchngColumnIIIwidth}{}
+\cmddef{ESKDchngColumnIVwidth}{}
+\cmddef{ESKDchngColumnVwidth}{}
+\cmddef{ESKDchngColumnVIwidth}{}
+\cmddef{ESKDchngColumnVIIwidth}{}
+\cmddef{ESKDchngColumnVIIIwidth}{}
+\cmddef{ESKDchngColumnIXwidth}{}
+\cmddef{ESKDchngColumnXwidth}{}
+\end{defs}
+Их также можно переопределить посредством \cmd{renewcommand}.
+
+\subsection{Настройка спецификации}
+\sloppy
+Шрифт заголовка и тела таблицы определяют команды
+\cmd{ESKDfontTabHead} и \cmd{ESKDfontTabBody}, их можно переопределить
+посредством \cmd{renewcommand}.
+
+Примечание "--- команды \cmd{ESKDspecFontHead} и
+\cmd{ESKDspecFontBody} являются устаревшими и будут удалены в будущих
+версиях \pkg{eskdx}.
+
+\fussy
+
+\subsection{Текстовые документы без рамок формы и основной надписи}
+Опция \opt{emptystyle} класса \pkg{eskdtext} позволяет получить
+документ без таких элементов как рамка формы, основная надпись и
+дополнительные графы. По сути эта опция устанавливает для всех страниц
+стиль \val{empty}. Этот стиль не рекомендуется модифицировать, так что
+если необходимо добавить на страницу произвольные элементы, нужно
+создать и установить новый стиль, как это описано в
+разделе~\ref{s:pagestyles}.
+
+Пакет \pkg{eskdplain} создает новый стиль страницы \val{plain},
+который не содержит никаких элементов, кроме элемента
+\val{pagenumber}, который печатает по центру в нижней части страницы ее
+номер. Расположение номера на странице можно контролировать опциями
+пакета, которые приведены в таблице~\ref{t:eskdplain:opts}.
+
+\begin{longtable}{|%
+p{.32\textwidth-2\tabcolsep-1.5\arrayrulewidth}|
+p{.68\textwidth-2\tabcolsep-1.5\arrayrulewidth}|}
+\caption{Опции пакета \pkg{eskdplain}}\label{t:eskdplain:opts}\\
+\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endfirsthead
+\caption*{Продолжение таблицы \ref{t:eskdplain:opts}}\\\hline
+\multicolumn{1}{|c|}{Опция}&\multicolumn{1}{c|}{Описание}\\\hline
+\endhead
+
+\opt{numbertop}\par\opt{numberbottom}&
+Располагает номер в верхней или в нижней части страницы
+соответственно.\\\hline
+\opt{numberleft}\par\opt{numbercenter}\par\opt{numberright}&
+При \emph{односторонней} компоновке документа располагает номер 
+слева, по центру или справа соответственно.\par
+При \emph{двусторонней} компоновке располагает
+номер у переплета, по центру или
+у внешнего края страниц соответственно.\\\hline
+\end{longtable}
+
+Пакет \pkg{eskdplain} устанавливает стиль \val{empty} в качестве стиля
+титульного листа и стиль \val{plain} для всех остальных страниц.
+
+\subsection{Добавление листа нестандартного размера в документ}
+\label{s:freesize}
+
+\subsubsection{Общая информация}
+
+\textbf{По состоянию на 2010-01-12 данная возможность является
+экспериментальной и нуждается в тестировании и доводке. Формат команд
+в будущем может быть изменен.}
+
+Иногда бывает необходимо вставить в документ формата А4 несколько
+листов формата А3 в альбомной ориентации. С помощью пакета
+\pkg{eskdfreesize} можно вставить лист любого размера в любой
+ориентации.
+
+В пакете определена следующая команда:
+\begin{defs}
+  \cmddef{ESKDfreeSize\{\cmdarg{ширина}\}%
+  \{\cmdarg{высота}\}\{\cmdarg{содержимое}\}}{}
+\end{defs}
+
+Первые~2 аргумента~--- размеры листа в единицах, понятных \LaTeX.
+Третий аргумент~--- содержимое, которое необходимо разместить на
+данном листе. В качестве содержимого могу выступать рисунки, таблицы,
+текст и т.д.
+
+Данная команда при вызове автоматически начинает новый лист. Если все
+содержимое не поместится на один лист~--- будет начат следующий лист
+такого же нестандартного размера до тех пор, пока все содержимое не
+будет размещено. 
+
+Нестандартные листы оформляются в специальном стиле \val{freesize}
+(подробнее об управлении стилями см. раздел~\ref{s:pagestyles}) Данный
+стиль сам подбирает размер рамки и положение элементов основной
+надписи в зависимости от размеров листа.  Стиль \val{freesize} целиком
+<<унаследован>> от стиля \val{formIIab} за исключением графы 32 по
+причине того, что формат листа заранее не известен. По умолчанию графа
+32 в данном стиле содержит только слово \cmdarg{<<Формат>>} с
+последующим пробелом. Эту графу можно отключить во всем документе
+(опция \opt{nocolumnxxxii}), можно удалить из стиля \val{freesize} с
+помощью команды:
+\begin{defs}
+  \cmddef{ESKDremoveFromStyle\{\cmdarg{freesize}\}\{%
+    \cmdarg{columnxxxii}\}}{,}
+\end{defs}
+
+наконец, можно вручную переопределить ее содержимое, например:
+\begin{defs}
+  \cmddef{renewcommand\textbackslash 
+    ESKDtheColumnXXXIIfree\{\cmdarg{Формат А3}\}}{}
+\end{defs}
+
+Переопределять ее необходимо перед вызовом \cmd{ESKDfreeSize}.
+
+Для удобства, а так же в качестве примеров в конце
+\pkg{eskdfreesize.sty} были определены следующие команды:
+\begin{defs}
+  \cmddef{ESKDlandscapeAIII}{}
+  \cmddef{ESKDportraitAIII}{}
+  \cmddef{ESKDlandscapeAII}{}
+  \cmddef{ESKDportraitAII}{}
+  \cmddef{ESKDlandscapeAI}{}
+  \cmddef{ESKDportraitAI}{}
+  \cmddef{ESKDlandscapeAZERO}{}
+  \cmddef{ESKDportraitAZERO}{}
+  \cmddef{ESKDlandscapeBanner}{}
+\end{defs}
+
+Назначение команд понятно из их названий, все они принимают один
+аргумент~--- содержимое. 
+  
+\subsubsection{Дополнительные возможности}  
+
+Для удобства последующей автоматической сортировки страниц разного
+формата по разным файлам (например, с помощью утилиты \pkg{pdftk})
+факт вставки нестандартных листов фиксируется в \opt{jobname.log} в
+следующем формате:
+\small
+  \begin{verbatim}
+    eskdfreesize: sheet(s) with size (W x H) inserted at page(s) [RANGE]\end{verbatim}
+\normalsize
+\begin{ESKDexplanation} 
+\item [где ] W --- ширина;
+\item H --- высота;
+\item RANGE --- диапазон номеров страниц в виде \mbox{[$N_1$-$N_2$]},
+  либо [$N_1$], если страница только одна.
+\end{ESKDexplanation}
+
+Например, для альбомного листа А3, попавшего на 20-ю страницу,
+запись будет следующей:
+\small
+  \begin{verbatim}
+    eskdfreesize: sheet(s) with size (420mm x 297mm) inserted at page(s) [20]\end{verbatim}
+\normalsize
+
+\subsubsection{Ограничения и недостатки}
+
+В первую очередь, ограничения по размеру.  У Adobe Acrobat ограничение
+на размер листа 200х200in, у pdflatex~--- 16383x16383pt.
+
+Следующее ограничение связано с используемым интерпретатором:
+изменение размера возможно только при прямой компиляции в *.pdf c
+помощью pdflatex. Не смотря на то, что latex тоже сможет обработать
+такой документ, все листы, размер которых больше заданного в
+\cmd{documentclass} будут обрезаны.
+
+\subsection{Поддрежка ДСТУ (Украина)}
+
+В некоторых случаях требования ДСТУ отличаются от ГОСТов. Для
+поддержки ДСТУ существует пакет \pkg{eskddstu}, который выполняет
+все необходимые настройки.
+
+На данный момент пакет \pkg{eskddstu} выполняет только настройку
+окружения \env{ESKDexplanation} в соответствии с
+\mbox{ДСТУ}\ \mbox{3008-95}.
+
+\newpage
+\section{Благодарности}
+\sloppy
+Спасибо всем участникам почтовой рассылки \mbox{CyrTeX-ru}
+\mbox{[\url{https://info.vsu.ru/Lists/CyrTeX-ru/List.html}]}, которые
+помогают мне решать вопросы, связанные с разработкой \pkg{eskdx}.
+
+\fussy
+
+Спасибо всем, кто присылал свои предложения и сообщал об ошибках.
+
+Отдельная благодарность Александру Роженко за его коллекцию пакетов
+\pkg{ncctools}, откуда я позаимствовал некоторые принципы.
+
+Спасибо Владимиру Пылинскому за его вклад (\pkg{eskdfreesize}, и
+другие улучшения).
+
+А также спасибо Киевскому техникуму электронных приборов, который
+побудил меня на разработку коллекции \pkg{eskdx}. Если бы не курсовые
+и дипломная, я бы этого не делал.
+
+
+\ESKDappendix{справочное}{Расположение полей титульного листа и
+  листа утверждения}
+\label{a:titlelayout}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{img-title}
+\end{center}
+\end{figure}
+
+\ESKDappendix{справочное}{Расположение граф основной надписи}
+\label{a:columnlayout}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{img-form1}
+\end{center}
+\caption{Основная надпись для чертежей и схем. Форма~1}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{img-form2}
+\end{center}
+\caption{Основная надпись для текстовых конструкторских документов
+(первый или заглавный лист). Форма~2}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{img-form2a}
+\end{center}
+\caption{Основная надпись для чертежей (схем)
+и текстовых конструкторских документов (последующие листы). Форма~2а}
+\end{figure}
+
+\end{document}
+
